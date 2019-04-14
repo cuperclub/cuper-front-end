@@ -1,0 +1,12 @@
+{
+  "login": {
+    "title": "Login",
+    "form": {
+      "email": "Email address",
+      "password": "Password"
+    },
+    "signin": "Sign in",
+    "forgot_password": "Forgot your password?",
+    "create_account": "Don't have an account? Create One!"
+  }
+}

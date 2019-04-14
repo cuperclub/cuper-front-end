@@ -1,0 +1,12 @@
+{
+  "login": {
+    "title": "Login",
+    "form": {
+      "email": "Correo electrónico",
+      "password": "Contraseña"
+    },
+    "signin": "Iniciar sesión",
+    "forgot_password": "Olvidaste tu contraseña?",
+    "create_account": "¿Aún no tienes cuenta? Regístrate"
+  }
+}

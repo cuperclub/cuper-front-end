@@ -6,18 +6,18 @@
   <mat-form-field>
     <input matInput
         name="email"
-        placeholder="Email"
+        placeholder="{{ 'login.form.email' | translate }}"
         [(ngModel)]="user.email"
         required>
   </mat-form-field>
   <mat-form-field>
     <input matInput
         name="password"
-        placeholder="Password"
+        placeholder="{{ 'login.form.password' | translate }}"
         [(ngModel)]="user.password"
         [type]="hide ? 'password' : 'text'"
         required>
     <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
   </mat-form-field>
-  <button mat-flat-button color="primary" type="submit">Login</button>
+  <button mat-flat-button color="primary" type="submit">{{ 'login.signin' | translate }}</button>
 </form>
