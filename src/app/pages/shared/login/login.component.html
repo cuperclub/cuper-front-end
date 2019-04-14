@@ -1,0 +1,23 @@
+<p>
+  Cuper Club
+</p>
+
+<form (ngSubmit)="login()">
+  <mat-form-field>
+    <input matInput
+        name="email"
+        placeholder="Email"
+        [(ngModel)]="user.email"
+        required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+        name="password"
+        placeholder="Password"
+        [(ngModel)]="user.password"
+        [type]="hide ? 'password' : 'text'"
+        required>
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </mat-form-field>
+  <button mat-flat-button color="primary" type="submit">Login</button>
+</form>
