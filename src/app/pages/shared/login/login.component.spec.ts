@@ -4,6 +4,7 @@ import { LoginComponent } from './login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../../../material.module';
 import { FormsModule } from '@angular/forms';
+import { ComponentsModule } from '../../../components/components.module';
 import { TranslateModule, TranslateStore } from '@ngx-translate/core';
 
 describe('LoginComponent', () => {
@@ -16,6 +17,7 @@ describe('LoginComponent', () => {
         BrowserAnimationsModule,
         FormsModule,
         MaterialModule,
+        ComponentsModule,
         TranslateModule.forChild()
       ],
       declarations: [ LoginComponent ],
