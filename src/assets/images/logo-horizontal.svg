@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="362px" height="135px" viewBox="0 0 362 135" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 12</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="66.5" cy="65.5" r="47.5"></circle>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-10" transform="translate(-34.000000, -52.000000)">
+            <g id="Group-5">
+                <g id="Group-12" transform="translate(34.000000, 44.000000)">
+                    <text id="Cuper" font-family="Lato-Black, Lato" font-size="64" font-weight="700" letter-spacing="1.89999998" fill="#050817">
+                        <tspan x="178" y="63">Cuper</tspan>
+                    </text>
+                    <text id="Club" font-family="Lato-Light, Lato" font-size="58" font-weight="300" letter-spacing="1.721875" fill="#B3AFAF">
+                        <tspan x="238" y="134">Club</tspan>
+                    </text>
+                    <g id="Group-9" transform="translate(0.000000, 8.000000)">
+                        <circle id="Oval-6" fill="#2D50C6" cx="67.5" cy="67.5" r="67.5"></circle>
+                        <g id="Oval-6">
+                            <use fill-opacity="0.8" fill="#6689FF" xlink:href="#path-1"></use>
+                            <use fill="#314177" xlink:href="#path-1"></use>
+                        </g>
+                        <circle id="Oval-6" fill="#FFFFFF" cx="67.5" cy="66.5" r="28.5"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
