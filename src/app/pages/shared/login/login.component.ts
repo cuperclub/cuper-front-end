@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserLogin } from '../../../models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,22 @@ export class LoginComponent implements OnInit {
   };
   hide: true;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) {}
 
   ngOnInit() {
   }
 
   login() {
-    console.log(this.user);
+    if (this.user.email === 'user@example.com') {
+      this.router.navigate(['/user/home']);
+    } else if (this.user.email === 'employer@example.com') {
+      this.router.navigate(['/employer/home']);
+    } else if (this.user.email === 'company@example.com') {
+      this.router.navigate(['/company/home']);
+    } else {
+      alert('Credentials Error');
+    }
   }
 }

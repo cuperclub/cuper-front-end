@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from '../../../components/components.module';
 import { TranslateModule, TranslateStore } from '@ngx-translate/core';
 
+import { RouterTestingModule } from '@angular/router/testing';
+
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
@@ -18,7 +20,8 @@ describe('LoginComponent', () => {
         FormsModule,
         MaterialModule,
         ComponentsModule,
-        TranslateModule.forChild()
+        TranslateModule.forChild(),
+        RouterTestingModule
       ],
       declarations: [ LoginComponent ],
       providers: [ TranslateStore ]

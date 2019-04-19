@@ -12,13 +12,21 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // Pages
 import { LoginComponent } from './shared/login/login.component';
+import { UserHomeComponent } from './user/home/home.component';
+import { EmployerHomeComponent } from './employer/home/home.component';
+import { CompanyHomeComponent } from './company/home/home.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
 }
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [
+    LoginComponent,
+    UserHomeComponent,
+    EmployerHomeComponent,
+    CompanyHomeComponent
+  ],
   imports: [
     CommonModule,
     ComponentsModule,
