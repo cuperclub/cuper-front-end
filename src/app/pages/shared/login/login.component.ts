@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.user.email === 'user@example.com') {
       this.router.navigate(['/user/home']);
-    } else if (this.user.email === 'employer@example.com') {
-      this.router.navigate(['/employer/home']);
+    } else if (this.user.email === 'employee@example.com') {
+      this.router.navigate(['/employee/home']);
     } else if (this.user.email === 'company@example.com') {
       this.router.navigate(['/company/home']);
     } else {
