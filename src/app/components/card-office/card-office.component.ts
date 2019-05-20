@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Office } from '../../models';
 
 @Component({
   selector: 'app-card-office',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./card-office.component.scss']
 })
 export class CardOfficeComponent implements OnInit {
-  @Input() offices: object [];
+  @Input() offices: Office [];
 
   constructor() { }
 
