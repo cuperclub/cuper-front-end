@@ -1,0 +1,20 @@
+<mat-card>
+  <div class="cardHeader">
+    <h3>Sucursales</h3>
+    <button mat-flat-button color="primary" (click)="onAddOffice()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="cardContainer">
+    <ul class="officesList" *ngIf="offices">
+      <li class="office" *ngFor="let office of offices" (click)="onSelectOffice(office)">
+        <img class="avatar" src="../../../assets/images/shop.svg"/>
+        <span class="text">{{office.name}}</span>
+      </li>
+    </ul>
+    <div class="emptyState" *ngIf="!offices">
+      Empty state
+    </div>
+  </div>
+</mat-card>
