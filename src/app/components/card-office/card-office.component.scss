@@ -1,3 +1,5 @@
+@import '../../../styles/colors.scss';
+
 .cardHeader {
   display: flex;
   justify-content: space-between;
@@ -17,7 +19,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    border-bottom: 1px solid #e7e7e7;
+    border-bottom: 1px solid $mercury ;
     cursor: pointer;
 
     &:last-child {
@@ -25,7 +27,7 @@
     }
 
     &:hover {
-      background-color: #f7f7f7;
+      background-color: $labaster;
     }
 
     .avatar {
