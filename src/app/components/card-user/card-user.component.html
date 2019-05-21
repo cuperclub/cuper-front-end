@@ -1,0 +1,23 @@
+<mat-card>
+  <div class="cardHeader">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="onUpdateInformation()">
+        <mat-icon>edit</mat-icon>
+        <span>{{ 'common.update_data' | translate }}</span>
+      </button>
+      <button mat-menu-item (click)="onUpdatePassword()">
+        <mat-icon>vpn_key</mat-icon>
+        <span>{{ 'common.update_password' | translate }}</span>
+      </button>
+    </mat-menu>
+  </div>
+  <div class="cardContainer" *ngIf="user">
+    <img src="{{user.image}}" alt="">
+    <h3>{{user.name}}</h3>
+    <span>{{user.email}}</span>
+    <span>{{user.national_id}}</span>
+  </div>
+</mat-card>
