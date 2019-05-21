@@ -8,5 +8,10 @@
     "signin": "Iniciar sesión",
     "forgot_password": "Olvidaste tu contraseña?",
     "create_account": "¿Aún no tienes cuenta? Regístrate"
+  },
+  "common": {
+    "update_data": "Actualizar Información",
+    "update_password": "Actualizar Clave",
+    "offices": "Sucursales"
   }
 }

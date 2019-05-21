@@ -8,5 +8,10 @@
     "signin": "Sign in",
     "forgot_password": "Forgot your password?",
     "create_account": "Don't have an account? Create One!"
+  },
+  "common": {
+    "update_data": "Update Information",
+    "update_password": "Update Password",
+    "offices": "Offices"
   }
 }

@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MaterialModule } from '../../../app/material.module';
 import { TranslateModule, TranslateStore } from '@ngx-translate/core';
-import { CardOfficeComponent } from './card-office.component';
+import { CardUserComponent } from './card-user.component';
 
-describe('CardOfficeComponent', () => {
-  let component: CardOfficeComponent;
-  let fixture: ComponentFixture<CardOfficeComponent>;
+describe('CardUserComponent', () => {
+  let component: CardUserComponent;
+  let fixture: ComponentFixture<CardUserComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -13,14 +13,14 @@ describe('CardOfficeComponent', () => {
         MaterialModule,
         TranslateModule.forChild(),
       ],
-      declarations: [ CardOfficeComponent ],
+      declarations: [ CardUserComponent ],
       providers: [ TranslateStore ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CardOfficeComponent);
+    fixture = TestBed.createComponent(CardUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
