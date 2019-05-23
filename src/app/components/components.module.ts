@@ -10,6 +10,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FooterComponent } from './footer/footer.component';
 import { CardOfficeComponent } from './card-office/card-office.component';
 import { CardUserComponent } from './card-user/card-user.component';
+import { CardPlaceholderComponent } from './card-placeholder/card-placeholder.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -19,7 +20,8 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     FooterComponent,
     CardOfficeComponent,
-    CardUserComponent
+    CardUserComponent,
+    CardPlaceholderComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ export function createTranslateLoader(http: HttpClient) {
   exports: [
     FooterComponent,
     CardOfficeComponent,
-    CardUserComponent
+    CardUserComponent,
+    CardPlaceholderComponent
   ]
 })
 export class ComponentsModule { }
