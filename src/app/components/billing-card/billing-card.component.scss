@@ -1,0 +1,22 @@
+.card-header,
+.card-title {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.card-header {
+  margin-bottom: 10px;
+}
+
+.card-content {
+  margin-top: 20px;
+
+  .card-item {
+    margin-top: 5px;
+
+    .card-subtitle {
+      font-size: 12px;
+    }
+  }
+}
