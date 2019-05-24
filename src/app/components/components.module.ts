@@ -11,6 +11,9 @@ import { FooterComponent } from './footer/footer.component';
 import { CardOfficeComponent } from './card-office/card-office.component';
 import { CardUserComponent } from './card-user/card-user.component';
 import { CardPlaceholderComponent } from './card-placeholder/card-placeholder.component';
+import { AvatarComponent } from './avatar/avatar.component';
+import { BillingCardComponent } from './billing-card/billing-card.component';
+import { CompanyCardComponent } from './company-card/company-card.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -21,7 +24,10 @@ export function createTranslateLoader(http: HttpClient) {
     FooterComponent,
     CardOfficeComponent,
     CardUserComponent,
-    CardPlaceholderComponent
+    CardPlaceholderComponent,
+    AvatarComponent,
+    BillingCardComponent,
+    CompanyCardComponent
   ],
   imports: [
     CommonModule,
@@ -29,9 +35,9 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
-          provide: TranslateLoader,
-          useFactory: (createTranslateLoader),
-          deps: [HttpClient]
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
       }
     })
   ],
@@ -39,7 +45,10 @@ export function createTranslateLoader(http: HttpClient) {
     FooterComponent,
     CardOfficeComponent,
     CardUserComponent,
-    CardPlaceholderComponent
+    CardPlaceholderComponent,
+    AvatarComponent,
+    BillingCardComponent,
+    CompanyCardComponent
   ]
 })
 export class ComponentsModule { }

@@ -1,0 +1,32 @@
+<mat-card>
+  <div class="card-header">
+    <div>{{ 'company.billing_info' | translate }}</div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="card-content">
+    <div class=card-item>
+      <div class="card-title">
+        {{ 'company.legal_representative' | translate }}
+      </div>
+      <div class="card-subtitle">{{company?.legal_representative || 'common.not_registered_yet' | translate }}</div>
+    </div>
+    <div class=card-item>
+      <div class="card-title">
+        {{ 'company.ruc' | translate }}
+      </div>
+      <div class="card-subtitle">{{company?.ruc || 'common.not_registered_yet' | translate }}</div>
+    </div>
+    <div class=card-item>
+      <div class="card-title">
+        {{ 'company.contributor_type' | translate }}
+      </div>
+      <div class="card-subtitle">{{company?.contributor_type || 'common.not_registered_yet' | translate }}</div>
+    </div>
+    <div class=card-item>
+      <div class="card-title">
+        {{ 'company.economic_activity' | translate }}
+      </div>
+      <div class="card-subtitle">{{company?.economic_activity || 'common.not_registered_yet' | translate }}</div>
+    </div>
+  </div>
+</mat-card>
