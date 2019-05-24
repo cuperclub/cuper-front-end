@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { CardOfficeComponent } from './card-office/card-office.component';
 import { CardUserComponent } from './card-user/card-user.component';
 import { AvatarComponent } from './avatar/avatar.component';
+import { BillingCardComponent } from './billing-card/billing-card.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -21,7 +22,8 @@ export function createTranslateLoader(http: HttpClient) {
     FooterComponent,
     CardOfficeComponent,
     CardUserComponent,
-    AvatarComponent
+    AvatarComponent,
+    BillingCardComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,8 @@ export function createTranslateLoader(http: HttpClient) {
     FooterComponent,
     CardOfficeComponent,
     CardUserComponent,
-    AvatarComponent
+    AvatarComponent,
+    BillingCardComponent
   ]
 })
 export class ComponentsModule { }

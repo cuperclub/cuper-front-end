@@ -12,6 +12,14 @@
   "common": {
     "update_data": "Actualizar Información",
     "update_password": "Actualizar Clave",
-    "offices": "Sucursales"
+    "offices": "Sucursales",
+    "not_registered_yet": "No se ha registrado aún"
+  },
+  "company": {
+    "billing_info": "Datos de facturación",
+    "legal_representative": "Representante Legal",
+    "ruc": "RUC",
+    "contributor_type": "Tipo de Contribuidor",
+    "economic_activity": "Actividad Económica"
   }
 }

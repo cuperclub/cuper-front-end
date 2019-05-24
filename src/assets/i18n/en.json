@@ -12,6 +12,14 @@
   "common": {
     "update_data": "Update Information",
     "update_password": "Update Password",
-    "offices": "Offices"
+    "offices": "Offices",
+    "not_registered_yet": "Not registered yet"
+  },
+  "company": {
+    "billing_info": "Billing Info",
+    "legal_representative": "Legal Representative",
+    "ruc": "RUC",
+    "contributor_type": "Contributor Type",
+    "economic_activity": "Economic Activity"
   }
 }
