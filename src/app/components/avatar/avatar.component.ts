@@ -12,12 +12,15 @@ interface Box {
 })
 export class AvatarComponent implements OnInit {
 
+  private defaultImage = '../../../../assets/images/logo-club.svg';
+
   @Input() imageSrc: string;
   @Input() size: number = 60;
 
   constructor() { }
 
   ngOnInit() {
+    this.imageSrc = this.imageSrc || this.defaultImage;
   }
 
   buildStyle(): Box {

@@ -1,0 +1,29 @@
+.card-header,
+.card-title {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.card-header {
+  margin-bottom: 10px;
+}
+
+.card-content {
+  & > div {
+    margin-top: 10px;
+  }
+
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+
+  .company-name {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .company-slogan {
+    font-style: italic;
+  }
+}
