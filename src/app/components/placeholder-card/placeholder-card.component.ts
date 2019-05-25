@@ -8,7 +8,7 @@ import { Component, OnInit , Input} from '@angular/core';
 export class PlaceholderCardComponent implements OnInit {
   @Input() icon: string = 'add';
   @Input() text: string;
-  @Input() onClick: Function = () => console.log('no Function');
+  @Input() onClick: Function = () => null;
 
   constructor() { }
 

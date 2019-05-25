@@ -14,6 +14,7 @@ import { AvatarComponent } from './avatar/avatar.component';
 import { BillingCardComponent } from './billing-card/billing-card.component';
 import { CompanyCardComponent } from './company-card/company-card.component';
 import { PlaceholderCardComponent } from './placeholder-card/placeholder-card.component';
+import { RewardSmallCardComponent } from './reward-small-card/reward-small-card.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -27,7 +28,8 @@ export function createTranslateLoader(http: HttpClient) {
     AvatarComponent,
     BillingCardComponent,
     CompanyCardComponent,
-    PlaceholderCardComponent
+    PlaceholderCardComponent,
+    RewardSmallCardComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ export function createTranslateLoader(http: HttpClient) {
     PlaceholderCardComponent,
     AvatarComponent,
     BillingCardComponent,
-    CompanyCardComponent
+    CompanyCardComponent,
+    RewardSmallCardComponent
   ]
 })
 export class ComponentsModule { }
