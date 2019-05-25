@@ -1,0 +1,29 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '../../../app/material.module';
+import { AvatarComponent } from '../avatar/avatar.component';
+import { TableCardComponent } from './table-card.component';
+
+describe('TableCardComponent', () => {
+  let component: TableCardComponent;
+  let fixture: ComponentFixture<TableCardComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        MaterialModule
+      ],
+      declarations: [ TableCardComponent, AvatarComponent ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(TableCardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
