@@ -10,3 +10,9 @@ export interface User {
   email?: string;
   national_id?: string;
 }
+
+export enum UserStatus {
+  APPROVED = 'approved',
+  PENDING = 'pending',
+  DISABLED = 'disabled',
+}

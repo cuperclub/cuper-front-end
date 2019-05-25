@@ -1,0 +1,29 @@
+<mat-card>
+  <div class="cardHeader">
+    <h3>{{ 'common.cashiers' | translate }}</h3>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="cardContainer">
+    <ul class="cashierList" *ngIf="cashiers">
+      <li class="cashier" *ngFor="let cashier of cashiers">
+        <div class="status" [ngClass]="cashier.status">
+            {{ getStatusLabel(cashier.status) | translate }}
+        </div>
+        <div class="row-cashier">
+          <cuper-avatar [imageSrc]="cashier.image" [size]="50"></cuper-avatar>
+          <div class="data">
+            <span class="name">{{cashier.name}}</span>
+            <span class="email">{{cashier.email}}</span>
+          </div>
+          <button mat-flat-button
+                color="primary"
+                [ngClass]="cashier.status"
+                (click)="onDisabledCashier(cashier)">{{ getButtonName(cashier.status) | translate }}</button>
+        </div>
+      </li>
+    </ul>
+    <div class="emptyState" *ngIf="!cashiers">
+      Empty state
+    </div>
+  </div>
+</mat-card>

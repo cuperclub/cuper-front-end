@@ -14,7 +14,18 @@
     "update_password": "Actualizar Clave",
     "offices": "Sucursales",
     "not_registered_yet": "No se ha registrado aún",
-    "company": "Compañía"
+    "company": "Compañía",
+    "cashiers": "Cajeros",
+    "status": {
+      "approved": "Aprobado",
+      "pending": "Pendiente",
+      "disabled": "Deshabilitado"
+    },
+    "actions": {
+      "enable": "Activar",
+      "approve": "Aprobar",
+      "disable": "Desactivar"
+    }
   },
   "company": {
     "billing_info": "Datos de facturación",
