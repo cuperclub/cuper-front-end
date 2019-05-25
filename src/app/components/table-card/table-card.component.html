@@ -1,0 +1,15 @@
+<mat-card class="table-container">
+	<div class="item" *ngFor="let item of items" (click)="onClick()">
+		<div class="avatar-col">
+			<cuper-avatar [imageSrc]="item.image" [size]="50"></cuper-avatar>
+		</div>
+		<div class="content-col">
+			<div class="title">{{item.title}}</div>
+			<div class="description">{{item.description}}</div>
+		</div>
+		<div class="count-col">
+			<div class="number">{{item.number}}</div>
+			<div class="text">{{item.text}}</div>
+		</div>
+	</div>
+</mat-card>

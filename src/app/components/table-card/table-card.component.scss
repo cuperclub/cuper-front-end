@@ -1,0 +1,62 @@
+@import '../../../styles/colors.scss';
+
+$item-height: 3.5rem;
+$padding-row: 0.5rem;
+
+.table-container {
+	padding: 0;
+	margin: 0;
+	max-height: $item-height * 4;
+	overflow-y: scroll;
+
+	.item {
+		display: flex;
+		padding: $padding-row;
+		border-bottom: 1px solid $mercury;
+		height: $item-height;
+
+		&:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: $labaster;
+    }
+
+		.avatar-col {
+			flex-basis: 10%;
+			text-align: center;
+		}
+
+		.content-col {
+			flex-basis: 80%;
+			padding-left: 1rem;
+
+			.title {
+				font-family: 'Circular-Book';
+			}
+
+			.description {
+				font-size: 12px;
+				padding: 0.25rem 0;
+				color: $gray-dark;
+			}
+		}
+
+		.count-col {
+			flex-basis: 10%;
+			text-align: center;
+
+			.number {
+				font-family: 'Circular-Bold';
+				font-size: 20px;
+			}
+
+			.text {
+				font-family: 'Circular-Book';
+				font-size: 12px;
+				text-transform: capitalize;
+			}
+		}
+	}
+}
