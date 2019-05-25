@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UserLogin } from '../../../models';
 import { Router } from '@angular/router';
+import { AngularTokenService } from 'angular-token';
+import { MatSnackBar } from '@angular/material';
+
+import { UserLogin } from '../../../models';
+
 
 @Component({
   selector: 'app-login',
@@ -15,21 +19,31 @@ export class LoginComponent implements OnInit {
   hide: true;
 
   constructor(
-    private router: Router
-  ) {}
+    private router: Router,
+    private tokenService: AngularTokenService,
+    private message: MatSnackBar
+  ) { }
 
   ngOnInit() {
   }
 
   login() {
-    if (this.user.email === 'user@example.com') {
-      this.router.navigate(['/user/home']);
-    } else if (this.user.email === 'employee@example.com') {
-      this.router.navigate(['/employee/home']);
-    } else if (this.user.email === 'company@example.com') {
-      this.router.navigate(['/company/home']);
-    } else {
-      alert('Credentials Error');
-    }
+    this.tokenService.signIn({
+      login: this.user.email,
+      password: this.user.password
+    }).subscribe(
+      ({ body }) => {
+        this.router.navigate(['/user/home']);
+        const { data } = body;
+        this.message.open(data.name, '', {
+          duration: 2000
+        });
+      },
+      ({ error }) => {
+        this.message.open(error.errors, '', {
+          duration: 2000
+        });
+      }
+    );
   }
 }
