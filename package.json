@@ -25,6 +25,7 @@
     "@angular/router": "~7.1.0",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
+    "angular-token": "^7.0.1",
     "core-js": "^2.5.4",
     "express": "^4.16.4",
     "hammerjs": "^2.0.8",
