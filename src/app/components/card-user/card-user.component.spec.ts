@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MaterialModule } from '../../../app/material.module';
 import { TranslateModule, TranslateStore } from '@ngx-translate/core';
 import { CardUserComponent } from './card-user.component';
+import { ComponentsModule } from '../../components/components.module';
 
 describe('CardUserComponent', () => {
   let component: CardUserComponent;
@@ -11,9 +12,10 @@ describe('CardUserComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         MaterialModule,
+        ComponentsModule,
         TranslateModule.forChild(),
       ],
-      declarations: [CardUserComponent],
+      declarations: [ ],
       providers: [TranslateStore]
     })
       .compileComponents();

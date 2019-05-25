@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Office } from '../../models';
 
 @Component({
-  selector: 'app-card-office',
+  selector: 'cuper-card-office',
   templateUrl: './card-office.component.html',
   styleUrls: ['./card-office.component.scss']
 })

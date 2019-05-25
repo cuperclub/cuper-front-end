@@ -3,7 +3,7 @@ import { User } from '../../models';
 
 
 @Component({
-  selector: 'app-card-user',
+  selector: 'cuper-card-user',
   templateUrl: './card-user.component.html',
   styleUrls: ['./card-user.component.scss']
 })
