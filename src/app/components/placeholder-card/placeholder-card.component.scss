@@ -1,0 +1,33 @@
+@import '../../../styles/colors.scss';
+
+.card-placeholder {
+	border: 4px dashed $gray-base;
+	min-width: 8rem;
+	min-height: 6rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	border-radius: 8px;
+	padding: 10px;
+	cursor: pointer;
+
+	mat-icon {
+    display: flex;
+		justify-content: center;
+    align-items: center;
+		font-size: 50px;
+		color: $dark;
+	}
+
+	&:hover {
+		background-color: $secondary;
+		color: $labaster;
+		border: 4px dashed $secondary;
+
+		mat-icon {
+			color: $labaster;
+		}
+	}
+}
