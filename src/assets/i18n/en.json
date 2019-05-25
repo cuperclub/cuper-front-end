@@ -14,7 +14,18 @@
     "update_password": "Update Password",
     "offices": "Offices",
     "not_registered_yet": "Not registered yet",
-    "company": "Company"
+    "company": "Company",
+    "cashiers": "Cashiers",
+    "status": {
+      "approved": "Approved",
+      "pending": "Pending",
+      "disabled": "Disabled"
+    },
+    "actions": {
+      "enable": "Enabled",
+      "approve": "Approve",
+      "disable": "Disabled"
+    }
   },
   "company": {
     "billing_info": "Billing Info",

@@ -16,6 +16,7 @@ import { CompanyCardComponent } from './company-card/company-card.component';
 import { PlaceholderCardComponent } from './placeholder-card/placeholder-card.component';
 import { RewardSmallCardComponent } from './reward-small-card/reward-small-card.component';
 import { TableCardComponent } from './table-card/table-card.component';
+import { CardCashierComponent } from './card-cashier/card-cashier.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -31,7 +32,8 @@ export function createTranslateLoader(http: HttpClient) {
     CompanyCardComponent,
     PlaceholderCardComponent,
     RewardSmallCardComponent,
-    TableCardComponent
+    TableCardComponent,
+    CardCashierComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +56,8 @@ export function createTranslateLoader(http: HttpClient) {
     BillingCardComponent,
     CompanyCardComponent,
     RewardSmallCardComponent,
-    TableCardComponent
+    TableCardComponent,
+    CardCashierComponent
   ]
 })
 export class ComponentsModule { }

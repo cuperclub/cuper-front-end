@@ -1,28 +1,28 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MaterialModule } from '../../../app/material.module';
 import { TranslateModule, TranslateStore } from '@ngx-translate/core';
-import { CardUserComponent } from './card-user.component';
+import { CardCashierComponent } from './card-cashier.component';
 import { ComponentsModule } from '../../components/components.module';
 
-describe('CardUserComponent', () => {
-  let component: CardUserComponent;
-  let fixture: ComponentFixture<CardUserComponent>;
+describe('CardCashierComponent', () => {
+  let component: CardCashierComponent;
+  let fixture: ComponentFixture<CardCashierComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        MaterialModule,
         ComponentsModule,
+        MaterialModule,
         TranslateModule.forChild(),
       ],
       declarations: [ ],
-      providers: [TranslateStore]
+      providers: [ TranslateStore ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CardUserComponent);
+    fixture = TestBed.createComponent(CardCashierComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
