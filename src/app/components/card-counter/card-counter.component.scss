@@ -1,0 +1,27 @@
+@import '../../../styles/colors.scss';
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: $labaster;
+  padding: 1rem;
+
+  .title {
+    font-size: 12px;
+    font-family: 'Circular-Book';
+    text-transform: capitalize;
+  }
+
+  .count {
+    font-family: 'Circular-Bold';
+    font-size: 30px;
+  }
+
+  .description {
+    font-size: 14px;
+    font-family: 'Lato-Regular';
+    text-transform: capitalize;
+  }
+}
