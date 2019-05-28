@@ -18,6 +18,7 @@ import { RewardSmallCardComponent } from './reward-small-card/reward-small-card.
 import { TableCardComponent } from './table-card/table-card.component';
 import { CardCashierComponent } from './card-cashier/card-cashier.component';
 import { PreviewRewardComponent } from './preview-reward/preview-reward.component';
+import { CardCounterComponent } from './card-counter/card-counter.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -35,7 +36,8 @@ export function createTranslateLoader(http: HttpClient) {
     RewardSmallCardComponent,
     TableCardComponent,
     CardCashierComponent,
-    PreviewRewardComponent
+    PreviewRewardComponent,
+    CardCounterComponent
   ],
   imports: [
     CommonModule,
@@ -60,7 +62,8 @@ export function createTranslateLoader(http: HttpClient) {
     RewardSmallCardComponent,
     TableCardComponent,
     CardCashierComponent,
-    PreviewRewardComponent
+    PreviewRewardComponent,
+    CardCounterComponent
   ]
 })
 export class ComponentsModule { }
