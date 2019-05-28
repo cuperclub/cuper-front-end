@@ -1,0 +1,44 @@
+@import "../../../styles/colors.scss";
+
+.preview-reward-container {
+  width: 400px;
+  height: 200px;
+  background-size: cover;
+  border-radius: 30px;
+  padding: 10px;
+  background-color: $mercury;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: $white;
+
+  &:hover {
+    opacity: 0.9;
+
+    .logo-camera {
+      display: flex;
+      align-self: center;
+    }
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+
+    .company-name {
+      margin-left: 10px;
+    }
+  }
+
+  .logo-camera {
+    display: none;
+  }
+
+  .promotion-description {
+    margin-bottom: 20px;
+  }
+}
+
+input {
+  display: none;
+}
