@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MaterialModule } from '../../../app/material.module';
 import { TranslateModule, TranslateStore } from '@ngx-translate/core';
 import { CardCashierComponent } from './card-cashier.component';
-import { ComponentsModule } from '../../components/components.module';
+import { AvatarComponent } from '../avatar/avatar.component';
 
 describe('CardCashierComponent', () => {
   let component: CardCashierComponent;
@@ -11,11 +11,10 @@ describe('CardCashierComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        ComponentsModule,
         MaterialModule,
         TranslateModule.forChild(),
       ],
-      declarations: [ ],
+      declarations: [ CardCashierComponent, AvatarComponent, ],
       providers: [ TranslateStore ]
     })
     .compileComponents();
