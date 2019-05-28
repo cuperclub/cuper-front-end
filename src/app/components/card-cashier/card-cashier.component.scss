@@ -1,83 +1,53 @@
 @import '../../../styles/colors.scss';
 
-.cardHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cashierList {
-  padding: 0;
+.card-container {
+	padding: 0;
   margin: 0;
-  max-height: 14rem;
-  overflow: scroll;
 
-  .cashier {
-    list-style: none;
+
+  .cardHeader {
     display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid $mercury;
-    position: relative;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    &:last-child {
-      border-bottom: none;
-    }
+  .cashierList {
+    padding: 0;
+    margin: 0;
+    max-height: 14rem;
+    overflow: scroll;
 
-    &:hover {
-      background-color: $labaster;
-    }
-
-    .status {
-      position: absolute;
-      top: 0;
-      left: 0;
-      color: white;
-      padding: 0.1rem;
-
-      &.approved {
-        background-color: $primary;
-      }
-
-      &.disabled {
-        background-color: $red;
-      }
-
-      &.pending {
-        background-color: $celeste;
-      }
-    }
-
-    .row-cashier {
+    .cashier {
       display: flex;
+      padding: 1.5rem 0.5rem;
+      justify-content: space-between;
       align-items: center;
-      margin-top: 1.5%;
+      position: relative;
+      border-bottom: 1px solid $mercury;
 
-      .avatar {
-        width: 2.5rem;
-        height: 2.5rem;
+      &:last-child {
+        border-bottom: none;
       }
 
-      .data {
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-        margin-left: 5%;
-        margin-right: 5%;
-
-        .name {
-          font-size: 16px;
-          font-weight: bold;
-        }
-
-        .email {
-          font-size: 12px;
-        }
+      &:hover {
+        background-color: $labaster;
       }
 
-      .mat-flat-button {
-        width: 7%;
+      .status {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: white;
+        padding: 0.1rem 1rem;
+        font-size: 14px;
+        width: 7rem;
+        text-align: center;
 
         &.approved {
+          background-color: $primary;
+        }
+
+        &.disabled {
           background-color: $red;
         }
 
@@ -85,7 +55,46 @@
           background-color: $celeste;
         }
       }
-    }
 
+      .avatar-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 7rem;
+        padding: 0.1rem 1rem;
+      }
+
+      .cashier-data {
+        display: flex;
+        flex-direction: column;
+        width: 85%;
+
+        .name {
+          font-family: 'Circular-Book';
+        }
+
+        .email {
+          font-size: 12px;
+          padding: 0.25rem 0;
+          color: $gray-dark;
+        }
+      }
+
+      .mat-flat-button {
+        width: 7rem;
+
+        &.disabled {
+          background-color: $celeste;
+        }
+
+        &.approved {
+          background-color: $celeste;
+        }
+
+        &.pending {
+          background-color: $celeste;
+        }
+      }
+    }
   }
 }
