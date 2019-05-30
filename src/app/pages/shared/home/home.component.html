@@ -37,3 +37,23 @@
     </div>
   </div>
 </div>
+
+<div class="main-view">
+    <div class="left-panel">
+      <a routerLink="company" class="tabs" routerLinkActive="active">
+        <mat-icon>view_module</mat-icon>
+        <span>Dashboard</span>
+      </a>
+      <a routerLink="rewards" class="tabs" routerLinkActive="active">
+        <mat-icon>cake</mat-icon>
+        <span>Recompensas</span>
+      </a>
+      <a routerLink="my_company" class="tabs" routerLinkActive="active">
+        <mat-icon>business</mat-icon>
+        <span>Compañia</span>
+      </a>
+    </div>
+    <div class="render-container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>

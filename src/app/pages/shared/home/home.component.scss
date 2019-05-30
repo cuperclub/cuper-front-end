@@ -85,3 +85,46 @@
   }
 }
 
+
+.main-view {
+  display: flex;
+  height: 100%;
+
+  .left-panel {
+    background: white;
+    width: 25rem;
+    padding: 2rem 1rem 0 1rem;
+
+    .tabs {
+      display: flex;
+      width: 100%;
+
+      i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 3rem;
+      }
+
+      p {
+        padding: 1rem;
+      }
+
+      &:hover:not(.active) {
+        background: lightNeutral;
+      }
+    }
+
+    .active {
+      background: #303f79;
+
+      i, p {
+        color: whiteColor;
+      }
+
+      path {
+        fill: whiteColor;
+      }
+    }
+  }
+}
