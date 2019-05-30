@@ -5,8 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'cuper-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   currentUser: object;
