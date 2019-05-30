@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       password: this.user.password
     }).subscribe(
       ({ body }) => {
-        this.router.navigate(['/user/home']);
+        this.router.navigate(['home']);
         const { data } = body;
         this.message.open(data.name, '', {
           duration: 2000

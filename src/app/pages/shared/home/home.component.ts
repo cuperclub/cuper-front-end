@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { AngularTokenService } from 'angular-token';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cuper-home',
@@ -8,9 +10,16 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tokenService: AngularTokenService, private router: Router,) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  logOut() {
+    this.tokenService.signOut().subscribe(resp =>{
+      if(resp.success){
+        this.router.navigateByUrl('');
+      }
+    });
   }
 
 }

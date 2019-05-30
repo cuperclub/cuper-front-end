@@ -5,10 +5,11 @@ import { HomeComponent } from './pages/shared';
 import { UserHomeComponent } from './pages/user/home/home.component';
 import { EmployeeHomeComponent } from './pages/employee/home/home.component';
 import { CompanyHomeComponent } from './pages/company/home/home.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
-  { path: 'home', component: HomeComponent},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'user/dashboard', component: UserHomeComponent},
   { path: 'employee/dashboard', component: EmployeeHomeComponent},
   { path: 'company/dashboard', component: CompanyHomeComponent},
