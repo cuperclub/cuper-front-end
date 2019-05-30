@@ -1,13 +1,13 @@
-<mat-card>
-  <div class="cardHeader">
-    <h3>{{ 'common.offices' | translate }}</h3>
+<mat-card class="card-container">
+  <div class="card-header">
+    <span class="text">{{ 'common.offices' | translate }}</span>
     <button mat-flat-button color="primary" (click)="onAddOffice()">
       <mat-icon>add</mat-icon>
     </button>
   </div>
   <mat-divider></mat-divider>
-  <div class="cardContainer">
-    <ul class="officesList" *ngIf="offices">
+  <div class="card-content">
+    <ul class="offices" *ngIf="offices">
       <li class="office" *ngFor="let office of offices" (click)="onSelectOffice(office)">
         <img class="avatar" src="../../../assets/images/shop.svg"/>
         <span class="text">{{office.name}}</span>
