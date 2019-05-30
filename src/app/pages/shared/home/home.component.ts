@@ -1,6 +1,7 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
+import { User } from '../../../models';
 
 @Component({
   selector: 'cuper-home',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  currentUser: object;
+  currentUser: User;
 
   constructor(private tokenService: AngularTokenService, private router: Router,) {}
 

@@ -55,6 +55,6 @@
     </a>
   </div>
   <div class="render-container">
-    <router-outlet></router-outlet>
+    <router-outlet *ngIf="currentUser"></router-outlet>
   </div>
 </div>
