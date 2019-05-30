@@ -12,6 +12,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // Pages
 import { LoginComponent } from './shared/login/login.component';
+import { HomeComponent } from './shared/home/home.component';
 import { UserHomeComponent } from './user/home/home.component';
 import { EmployeeHomeComponent } from './employee/home/home.component';
 import { CompanyHomeComponent } from './company/home/home.component';
@@ -23,6 +24,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     LoginComponent,
+    HomeComponent,
     UserHomeComponent,
     EmployeeHomeComponent,
     CompanyHomeComponent

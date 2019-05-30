@@ -16,6 +16,8 @@
     "not_registered_yet": "No se ha registrado aún",
     "company": "Compañía",
     "cashiers": "Cajeros",
+    "profile": "Perfil",
+    "logout": "Cerrar Sesion",
     "status": {
       "approved": "Aprobado",
       "pending": "Pendiente",

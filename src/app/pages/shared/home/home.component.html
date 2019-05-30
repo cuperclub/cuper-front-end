@@ -1,0 +1,40 @@
+<div class="header-container">
+  <div class="logo-container">
+    <a routerLink="home">
+      <img class="logo" src="../../../../assets/images/logo-horizontal.svg" alt="cuper-logo" />
+    </a>
+  </div>
+  <div class="tabs-header">
+    <div class="status-user">
+      <!-- TODO: Just to partner and cashier role -->
+      <div *ngIf="company" class="tex">
+        <h3>{{company.businessName}}</h3>
+        <div class="status">
+          <mat-icon>{{status.icon}}</mat-icon>
+          <span>{{status.message}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-container">
+      <div class="menu" [matMenuTriggerFor]="menu">
+        <cuper-avatar size='40'></cuper-avatar>
+        <span class="title">Darwin Gualotuña</span>
+      </div>
+      <mat-menu #menu="matMenu">
+        <div class="user-data">
+          <cuper-avatar size='40'></cuper-avatar>
+          <div class="user-info">
+            <span class="name">Darwin Gualotuña</span>
+            <span class="email">daosgc@gmail.com</span>
+          </div>
+        </div>
+        <button mat-menu-item (click)="goToMyProfile()">
+          <span>{{ 'common.profile' | translate }}</span>
+        </button>
+        <button mat-menu-item (click)="logOut()">
+          <span>{{ 'common.logout' | translate }}</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</div>

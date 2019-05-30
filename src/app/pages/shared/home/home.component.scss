@@ -1,0 +1,87 @@
+@import '../../../../styles/colors';
+
+.header-container {
+  height: 3.7rem;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3%;
+  border-bottom: 1px solid $gray-medium;
+  align-items: center;
+
+  .logo-container {
+    padding-left: 1rem;
+    width: 19rem;
+    display: flex;
+
+    .logo {
+      height: 2rem;
+    }
+  }
+
+  .tabs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 0.5rem;
+
+    .status-user {
+
+      .status {
+        display: flex;
+        align-items: center;
+
+        span {
+          font-size: 0.7rem;
+        }
+      }
+    }
+
+    .menu-container {
+      display: flex;
+      align-items: center;
+      padding-right: 1rem;
+
+      .menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+
+        .title {
+          font-family: 'Circular-Book';
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+.mat-menu-content {
+  width: 12rem;
+
+  .user-data {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid $gray-medium;
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+
+      .name {
+        font-family: 'Circular-Book';
+        font-size: 12px;
+      }
+
+      .email {
+        font-family: 'Lato-Regular';
+        font-size: 10px;
+        color: $gray-dark;
+      }
+    }
+  }
+}
+
