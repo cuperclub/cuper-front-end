@@ -1,10 +1,10 @@
 <mat-card class="card-container">
   <div class="card-header">
-    <h3>{{ 'common.cashiers' | translate }}</h3>
+    <span class="text">{{ 'common.cashiers' | translate }}</span>
   </div>
   <mat-divider></mat-divider>
-  <div class="cardContainer">
-    <div class="cashierList" *ngIf="cashiers">
+  <div class="card-content">
+    <div class="cashiers" *ngIf="cashiers">
       <div class="cashier" *ngFor="let cashier of cashiers">
         <div class="status" [ngClass]="cashier.status">
             {{ getStatusLabel(cashier.status) | translate }}
