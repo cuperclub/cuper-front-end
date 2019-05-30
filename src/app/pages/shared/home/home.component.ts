@@ -9,10 +9,20 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
+  currentUser: object;
 
   constructor(private tokenService: AngularTokenService, private router: Router,) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.tokenService.validateToken().subscribe(
+      res =>  this.setAuth(res),
+      error =>  console.log(error)
+    );
+  }
+
+  setAuth(res) {
+    this.currentUser = res.data;
+  }
 
   logOut() {
     this.tokenService.signOut().subscribe(resp =>{
