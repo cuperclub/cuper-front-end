@@ -1,4 +1,4 @@
-@import '../../../styles/colors.scss';
+@import "../../../styles/colors.scss";
 
 .card-container {
   display: flex;
@@ -7,21 +7,22 @@
   flex-direction: column;
   background: $labaster;
   padding: 1rem;
+  min-height: 4.3rem;
 
   .title {
     font-size: 12px;
-    font-family: 'Circular-Book';
+    font-family: "Circular-Book";
     text-transform: capitalize;
   }
 
   .count {
-    font-family: 'Circular-Bold';
+    font-family: "Circular-Bold";
     font-size: 30px;
   }
 
   .description {
     font-size: 14px;
-    font-family: 'Lato-Regular';
+    font-family: "Lato-Regular";
     text-transform: capitalize;
   }
 }

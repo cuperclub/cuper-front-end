@@ -25,7 +25,14 @@
       "enable": "Activar",
       "approve": "Aprobar",
       "disable": "Desactivar"
-    }
+    },
+    "office": "Sucursal",
+    "validity": "Validez",
+    "available": "Disponible",
+    "people": "Personas",
+    "unlimited": "Ilimitado",
+    "needed": "Necesario",
+    "points": "Puntos"
   },
   "company": {
     "billing_info": "Datos de facturación",
@@ -34,6 +41,12 @@
     "contributor_type": "Tipo de Contribuidor",
     "economic_activity": "Actividad Económica",
     "not_slogan": "Aún no tienes un slogan",
-    "registered_at": "Registrado en"
+    "registered_at": "Registrado"
+  },
+  "promotion": {
+    "terms": "Términos y condiciones"
+  },
+  "reward": {
+    "edit": "Editar Recompensa"
   }
 }

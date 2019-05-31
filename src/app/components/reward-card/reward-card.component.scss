@@ -1,0 +1,31 @@
+.card-details {
+  font-size: 12px;
+  margin-top: 1rem;
+
+  .card {
+    &-label {
+      font-weight: bold;
+
+      &:not(:first-child) {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+.card-cards {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.button-container {
+  height: 2rem;
+
+  .edit-button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 10px;
+  }
+}

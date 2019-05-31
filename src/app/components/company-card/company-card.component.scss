@@ -1,3 +1,9 @@
+@import "../../../styles/colors.scss";
+
+mat-card {
+  padding: 0;
+}
+
 .card-header,
 .card-title {
   text-transform: uppercase;
@@ -6,7 +12,19 @@
 }
 
 .card-header {
-  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &-title {
+    align-items: center;
+    display: flex;
+  }
+
+  .edit-button {
+    font-size: 10px;
+    color: $celeste;
+  }
 }
 
 .card-content {
@@ -14,7 +32,8 @@
     margin-top: 10px;
   }
 
-  margin-top: 20px;
+  padding: 10px;
+
   text-align: center;
   font-size: 12px;
 

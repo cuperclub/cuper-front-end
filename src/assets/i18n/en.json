@@ -25,7 +25,14 @@
       "enable": "Enabled",
       "approve": "Approve",
       "disable": "Disabled"
-    }
+    },
+    "office": "Office",
+    "validity": "Validity",
+    "available": "Available",
+    "people": "People",
+    "unlimited": "Unlimited",
+    "needed": "Needed",
+    "points": "Points"
   },
   "company": {
     "billing_info": "Billing Info",
@@ -34,6 +41,12 @@
     "contributor_type": "Contributor Type",
     "economic_activity": "Economic Activity",
     "not_slogan": "You don't have a slogan yet",
-    "registered_at": "Registered at"
+    "registered_at": "Registered"
+  },
+  "promotion": {
+    "terms": "Términos y condiciones"
+  },
+  "reward": {
+    "edit": "Editar Recompensa"
   }
 }
