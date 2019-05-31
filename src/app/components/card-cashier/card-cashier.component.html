@@ -1,20 +1,20 @@
 <mat-card class="card-container">
-  <div class="cardHeader">
-    <h3>{{ 'common.cashiers' | translate }}</h3>
+  <div class="card-header">
+    <span class="text">{{ 'common.cashiers' | translate }}</span>
   </div>
   <mat-divider></mat-divider>
-  <div class="cardContainer">
-    <div class="cashierList" *ngIf="cashiers">
+  <div class="card-content">
+    <div class="cashiers" *ngIf="cashiers">
       <div class="cashier" *ngFor="let cashier of cashiers">
-        <div class="status" [ngClass]="cashier.status">
-            {{ getStatusLabel(cashier.status) | translate }}
-        </div>
         <div class="avatar-container">
           <cuper-avatar [imageSrc]="cashier.image" [size]="60"></cuper-avatar>
         </div>
         <div class="cashier-data">
           <span class="name">{{cashier.name}}</span>
           <span class="email">{{cashier.email}}</span>
+          <div class="status" [ngClass]="cashier.status">
+            {{ getStatusLabel(cashier.status) | translate }}
+        </div>
         </div>
         <button mat-flat-button
                 color="primary"

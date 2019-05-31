@@ -1,48 +1,57 @@
 @import "../../../styles/colors.scss";
 
-mat-card {
+.card-container {
   padding: 0;
-}
+  margin: 0;
 
-.card-header,
-.card-title {
-  text-transform: uppercase;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  &-title {
-    align-items: center;
+  .card-header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 3rem;
+    padding: 0 1rem;
+    height: 15%;
+
+    &-title {
+      align-items: center;
+      display: flex;
+
+      mat-icon {
+        margin-right: 0.5rem;
+      }
+    }
+
+    .edit-button {
+      font-size: 10px;
+      color: $celeste;
+    }
+
+    .text {
+      font-family: 'Circular-Book';
+    }
   }
 
-  .edit-button {
-    font-size: 10px;
-    color: $celeste;
-  }
-}
+  .card-content {
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-.card-content {
-  & > div {
-    margin-top: 10px;
-  }
+    & > div {
+      margin-bottom: 10px;
+    }
 
-  padding: 10px;
+    text-align: center;
+    font-size: 12px;
 
-  text-align: center;
-  font-size: 12px;
+    .company-name {
+      font-size: 16px;
+      font-weight: bold;
+    }
 
-  .company-name {
-    font-size: 16px;
-    font-weight: bold;
-  }
-
-  .company-slogan {
-    font-style: italic;
+    .company-slogan {
+      font-style: italic;
+    }
   }
 }

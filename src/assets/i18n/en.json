@@ -16,6 +16,8 @@
     "not_registered_yet": "Not registered yet",
     "company": "Company",
     "cashiers": "Cashiers",
+    "profile": "Profile",
+    "logout": "Logout",
     "status": {
       "approved": "Approved",
       "pending": "Pending",

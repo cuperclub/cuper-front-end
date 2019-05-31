@@ -12,14 +12,7 @@ export class CardUserComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    this.user = {
-      name: 'Partner',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYsTHWKk3Dw4iLwCPa-CuzWTTqeFXG7M5QaigOGP49l1bdckUo',
-      email: 'partner@example.com',
-      national_id: '123456789'
-    };
-  }
+  ngOnInit() { }
 
   onUpdateInformation() {
     console.log('launch modal to update information');

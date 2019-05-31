@@ -14,8 +14,10 @@
     "update_password": "Actualizar Clave",
     "offices": "Sucursales",
     "not_registered_yet": "No se ha registrado aún",
-    "company": "Compañía",
+    "company": "Companía",
     "cashiers": "Cajeros",
+    "profile": "Perfil",
+    "logout": "Cerrar Sesion",
     "status": {
       "approved": "Aprobado",
       "pending": "Pendiente",
@@ -48,5 +50,10 @@
   },
   "reward": {
     "edit": "Editar Recompensa"
+  },
+  "tabs": {
+    "dashboard": "Dashboard",
+    "rewards": "Recompensas",
+    "company": "Companía"
   }
 }

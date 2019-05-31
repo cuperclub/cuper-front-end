@@ -1,11 +1,16 @@
-.cardHeader {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
+.card-container {
+  padding: 0;
+  margin: 0;
 
-.cardContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  .card-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
