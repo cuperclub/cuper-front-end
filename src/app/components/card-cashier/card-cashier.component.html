@@ -6,15 +6,15 @@
   <div class="card-content">
     <div class="cashiers" *ngIf="cashiers">
       <div class="cashier" *ngFor="let cashier of cashiers">
-        <div class="status" [ngClass]="cashier.status">
-            {{ getStatusLabel(cashier.status) | translate }}
-        </div>
         <div class="avatar-container">
           <cuper-avatar [imageSrc]="cashier.image" [size]="60"></cuper-avatar>
         </div>
         <div class="cashier-data">
           <span class="name">{{cashier.name}}</span>
           <span class="email">{{cashier.email}}</span>
+          <div class="status" [ngClass]="cashier.status">
+            {{ getStatusLabel(cashier.status) | translate }}
+        </div>
         </div>
         <button mat-flat-button
                 color="primary"

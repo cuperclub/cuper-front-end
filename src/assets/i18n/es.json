@@ -50,5 +50,10 @@
   },
   "reward": {
     "edit": "Editar Recompensa"
+  },
+  "tabs": {
+    "dashboard": "Dashboard",
+    "rewards": "Recompensas",
+    "company": "Companía"
   }
 }

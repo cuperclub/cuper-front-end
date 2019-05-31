@@ -15,6 +15,11 @@
     .text {
       font-family: 'Circular-Book';
     }
+
+    .add-button {
+      font-size: 10px;
+      color: $celeste;
+    }
   }
 
   .card-content {
@@ -34,7 +39,7 @@
       justify-content: space-between;
       align-items: center;
       position: relative;
-      border-bottom: 1px solid $mercury ;
+      border-bottom: 1px solid $mercury;
       cursor: pointer;
 
       &:last-child {
