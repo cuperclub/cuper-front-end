@@ -6,7 +6,7 @@ $padding-row: 0.5rem;
 .table-container {
 	padding: 0;
 	margin: 0;
-	max-height: $item-height * 4;
+	max-height: 100%;
 	overflow-y: scroll;
 
 	.item {

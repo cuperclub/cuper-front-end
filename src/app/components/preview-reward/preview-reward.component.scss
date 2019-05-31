@@ -1,8 +1,7 @@
 @import "../../../styles/colors.scss";
 
 .preview-reward-container {
-  width: 400px;
-  height: 200px;
+  min-height: 100px;
   background-size: cover;
   border-radius: 30px;
   padding: 10px;
@@ -12,12 +11,14 @@
   justify-content: space-between;
   color: $white;
 
-  &:hover {
-    opacity: 0.9;
+  &.selectable {
+    &:hover {
+      opacity: 0.9;
 
-    .logo-camera {
-      display: flex;
-      align-self: center;
+      .logo-camera {
+        display: flex;
+        align-self: center;
+      }
     }
   }
 
@@ -27,6 +28,7 @@
 
     .company-name {
       margin-left: 10px;
+      font-weight: bold;
     }
   }
 
@@ -35,7 +37,7 @@
   }
 
   .promotion-description {
-    margin-bottom: 20px;
+    text-align: left;
   }
 }
 

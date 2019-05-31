@@ -16,6 +16,11 @@ export class CardOfficeComponent implements OnInit {
       { name: 'Office 1' },
       { name: 'Office 2' },
       { name: 'Office 3' },
+      { name: 'Office 3w' },
+      { name: 'Office 3s' },
+      { name: 'Office 3' },
+      { name: 'Office 3a' },
+      { name: 'Office 3s' },
     ];
   }
 

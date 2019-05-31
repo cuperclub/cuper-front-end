@@ -1,5 +1,5 @@
-<mat-card>
-  <div class="cardHeader">
+<mat-card class="card-container">
+  <div class="card-header">
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
@@ -14,7 +14,7 @@
       </button>
     </mat-menu>
   </div>
-  <div class="cardContainer" *ngIf="user">
+  <div class="card-content" *ngIf="user">
     <cuper-avatar [imageSrc]="user.image" [size]="80"></cuper-avatar>
     <h3>{{user.name}}</h3>
     <span>{{user.email}}</span>

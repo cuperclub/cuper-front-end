@@ -14,8 +14,10 @@
     "update_password": "Actualizar Clave",
     "offices": "Sucursales",
     "not_registered_yet": "No se ha registrado aún",
-    "company": "Compañía",
+    "company": "Companía",
     "cashiers": "Cajeros",
+    "profile": "Perfil",
+    "logout": "Cerrar Sesion",
     "status": {
       "approved": "Aprobado",
       "pending": "Pendiente",
@@ -25,7 +27,14 @@
       "enable": "Activar",
       "approve": "Aprobar",
       "disable": "Desactivar"
-    }
+    },
+    "office": "Sucursal",
+    "validity": "Validez",
+    "available": "Disponible",
+    "people": "Personas",
+    "unlimited": "Ilimitado",
+    "needed": "Necesario",
+    "points": "Puntos"
   },
   "company": {
     "billing_info": "Datos de facturación",
@@ -34,6 +43,17 @@
     "contributor_type": "Tipo de Contribuidor",
     "economic_activity": "Actividad Económica",
     "not_slogan": "Aún no tienes un slogan",
-    "registered_at": "Registrado en"
+    "registered_at": "Registrado"
+  },
+  "promotion": {
+    "terms": "Términos y condiciones"
+  },
+  "reward": {
+    "edit": "Editar Recompensa"
+  },
+  "tabs": {
+    "dashboard": "Dashboard",
+    "rewards": "Recompensas",
+    "company": "Companía"
   }
 }

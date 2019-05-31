@@ -1,6 +1,14 @@
-<mat-card>
+<mat-card class="card-container">
   <div class="card-header">
-    <div>{{ 'common.company' | translate }}</div>
+    <div class="card-header-title">
+      <mat-icon>business</mat-icon>
+      <div class="text">{{ 'common.company' | translate }}</div>
+    </div>
+    <div>
+      <button mat-icon-button class="edit-button" (click)="editCompany()">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
   </div>
   <mat-divider></mat-divider>
   <div class="card-content">
