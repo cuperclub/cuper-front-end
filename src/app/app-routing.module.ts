@@ -18,9 +18,9 @@ const routes: Routes = [
     children: [
       { path: 'user', component: UserHomeComponent },
       { path: 'employee', component: EmployeeHomeComponent },
-      { path: 'company', component: CompanyHomeComponent },
+      { path: 'company', component: MyCompanyComponent },
       { path: 'rewards', component: RewardsComponent },
-      { path: 'my_company', component: MyCompanyComponent },
+      { path: 'dashboard', component: CompanyHomeComponent },
     ],
   }
 ];
