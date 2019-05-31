@@ -12,6 +12,8 @@ interface OptionSquare {
 })
 export class SquareSelectComponent implements OnInit {
   @Input() options: OptionSquare [];
+  @Input() onSelect: Function = () => console.log('selected');
+
   activeIndex: Number;
 
   constructor() { }
@@ -40,8 +42,10 @@ export class SquareSelectComponent implements OnInit {
   onClick (index) {
     if (this.activeIndex == index){
       this.activeIndex = null;
+      this.onSelect(null);
     }else{
       this.activeIndex = index;
+      this.onSelect(this.options[index]);
     }
   }
 }
