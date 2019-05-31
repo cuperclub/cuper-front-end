@@ -10,6 +10,7 @@ import { Company } from '../../models';
 export class CompanyCardComponent implements OnInit {
 
   @Input() company: Company;
+  @Input() editCompany: Function = () => console.log('editting');
 
   constructor() { }
 
