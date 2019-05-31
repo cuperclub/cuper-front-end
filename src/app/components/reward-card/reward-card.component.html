@@ -1,0 +1,28 @@
+<mat-card>
+  <div class="card-content">
+    <cuper-preview-reward [disableEvents]="true" [file]="promotion?.image" [companyAvatar]="company?.logo"
+      [companyName]="company?.business_name" [promotionDescription]="promotion?.description">
+    </cuper-preview-reward>
+    <div class="card-details">
+      <div class="card-label">{{ 'promotion.terms' | translate }}</div>
+      <div class="card-text">{{ promotion?.terms }}</div>
+      <div class="card-label">{{ 'common.office' | translate }}</div>
+      <div class="card-text">{{ office?.address}}</div>
+      <div class="card-label">{{ 'common.validity' | translate }}</div>
+      <div class="card-text"> {{ promotion?.start_at | date }} - {{ promotion?.end_at | date }}</div>
+    </div>
+    <div class="card-cards">
+      <cuper-card-counter [title]="'common.available' | translate"
+        [count]="promotion?.unlimited ? null : promotion?.total_rewards"
+        [description]="promotion?.unlimited ? ('common.unlimited' | translate) : ('common.people' | translate)">
+      </cuper-card-counter>
+      <cuper-card-counter [title]="'common.needed' | translate" [count]="promotion?.points_required"
+        [description]="'common.points' | translate">
+      </cuper-card-counter>
+    </div>
+  </div>
+  <div class="button-container">
+    <button mat-raised-button color="primary" class="edit-button"
+      (click)="editReward()">{{ 'reward.edit' | translate }}</button>
+  </div>
+</mat-card>

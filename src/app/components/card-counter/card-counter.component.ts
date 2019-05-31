@@ -13,9 +13,6 @@ export class CardCounterComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.title = 'Disponible';
-    this.count = 10;
-    this.description = 'Personas';
   }
 
 }

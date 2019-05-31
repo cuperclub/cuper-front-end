@@ -6,4 +6,5 @@ export interface Company {
   image?: string;
   business_name?: string;
   created_at?: Date;
+  logo?: string;
 }
