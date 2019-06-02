@@ -19,6 +19,7 @@ import { TableCardComponent } from './table-card/table-card.component';
 import { CardCashierComponent } from './card-cashier/card-cashier.component';
 import { PreviewRewardComponent } from './preview-reward/preview-reward.component';
 import { CardCounterComponent } from './card-counter/card-counter.component';
+import { SquareSelectComponent } from './square-select/square-select.component';
 import { RewardCardComponent } from './reward-card/reward-card.component';
 
 export function createTranslateLoader(http: HttpClient) {
@@ -39,6 +40,7 @@ export function createTranslateLoader(http: HttpClient) {
     CardCashierComponent,
     PreviewRewardComponent,
     CardCounterComponent,
+    SquareSelectComponent,
     RewardCardComponent
   ],
   imports: [
@@ -66,6 +68,7 @@ export function createTranslateLoader(http: HttpClient) {
     CardCashierComponent,
     PreviewRewardComponent,
     CardCounterComponent,
+    SquareSelectComponent,
     RewardCardComponent
   ]
 })
