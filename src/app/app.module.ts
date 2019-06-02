@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 
 import { PagesModule } from './pages/pages.module';
 import { environment } from '../environments/environment';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,14 @@ import { environment } from '../environments/environment';
       apiBase: environment.apiBase,
     })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {
+        disableClose: true,
+        hasBackdrop: true
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
