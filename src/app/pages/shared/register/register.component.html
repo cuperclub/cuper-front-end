@@ -5,13 +5,13 @@
         <img class="logoName" src="../../../../assets/images/logo-club.svg" />
       </div>
       <Form class="form" (ngSubmit)="register()">
-        <!-- <mat-form-field class="field-group">
+        <mat-form-field class="field-group">
           <input matInput [(ngModel)]="user.email" name="email" placeholder="{{ 'login.form.email' | translate }}" required>
         </mat-form-field>
         <mat-form-field class="field-group">
           <input matInput [(ngModel)]="user.password" name="password"
             placeholder="{{ 'login.form.password' | translate }}" type="password" required>
-        </mat-form-field> -->
+        </mat-form-field>
         <button mat-flat-button color="primary" type="submit">{{ 'register.create' | translate }}</button>
       </Form>
       <div class="linkBtn">

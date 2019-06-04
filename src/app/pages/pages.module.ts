@@ -14,6 +14,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Pages
 import { LoginComponent } from './shared/login/login.component';
+import { RegisterComponent } from './shared/register/register.component';
 import { HomeComponent } from './shared/home/home.component';
 import { UserHomeComponent } from './user/home/home.component';
 import { EmployeeHomeComponent } from './employee/home/home.component';
@@ -31,6 +32,7 @@ export const ROUTES: Routes = [];
 @NgModule({
   declarations: [
     LoginComponent,
+    RegisterComponent,
     HomeComponent,
     UserHomeComponent,
     EmployeeHomeComponent,

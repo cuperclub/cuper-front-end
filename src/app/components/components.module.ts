@@ -21,7 +21,6 @@ import { PreviewRewardComponent } from './preview-reward/preview-reward.componen
 import { CardCounterComponent } from './card-counter/card-counter.component';
 import { SquareSelectComponent } from './square-select/square-select.component';
 import { RewardCardComponent } from './reward-card/reward-card.component';
-import { RegisterComponent } from '../pages/shared/register/register.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -42,8 +41,7 @@ export function createTranslateLoader(http: HttpClient) {
     PreviewRewardComponent,
     CardCounterComponent,
     SquareSelectComponent,
-    RewardCardComponent,
-    RegisterComponent
+    RewardCardComponent
   ],
   imports: [
     CommonModule,
