@@ -60,6 +60,9 @@
         "office": "Address",
         "description": "Describe your campaign",
         "duration": "Duration",
+        "unlimited": "Unlimited",
+        "start_at": "Start Date",
+        "end_at": "End Date",
         "totalRewards": {
           "label": "How rewards do you want use?",
           "placeholder": "Select a number"

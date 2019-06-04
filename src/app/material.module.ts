@@ -10,7 +10,8 @@ import {
   MatSnackBarModule,
   MatMenuModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatCheckboxModule
 } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
@@ -29,7 +30,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatMenuModule,
     MatSnackBarModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCheckboxModule
   ]
 })
 export class MaterialModule { }

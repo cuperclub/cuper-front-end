@@ -35,7 +35,7 @@
     "unlimited": "Ilimitado",
     "needed": "Necesario",
     "points": "Puntos",
-    "new_reward": "New Reward",
+    "new_reward": "Nueva Promoción",
     "save": "Guardar",
     "preview": "Previsualización"
   },
@@ -60,6 +60,9 @@
         "office": "Seleccione lugar de canje",
         "description": "Describe tu campaña",
         "duration": "Duración",
+        "unlimited": "Ilimitada",
+        "start_at": "Fecha de inicio",
+        "end_at": "Fecha de finalización",
         "totalRewards": {
           "label": "Disponibles",
           "description": "Numero de clientes que accederan a este reward"

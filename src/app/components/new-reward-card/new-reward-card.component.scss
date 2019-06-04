@@ -2,19 +2,47 @@
 
   .header-card {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+
+    .content {
+      width: 57%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   .panel-card {
     display: flex;
     justify-content: center;
 
+    .preview-container {
+      height: 9.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
     .column-card {
       display: flex;
       flex-direction: column;
       width: 25%;
       margin: 1rem;
+
+      .double-column {
+        display: flex;
+        justify-content: space-between;
+
+        .field-group {
+          width: 45%;
+        }
+      }
+
+      .unlimited-reward {
+        width: 21%;
+        margin: 1rem 0;
+      }
     }
   }
 }

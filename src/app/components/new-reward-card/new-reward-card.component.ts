@@ -7,7 +7,9 @@ import { Promotion } from 'src/app/models';
   styleUrls: ['./new-reward-card.component.scss']
 })
 export class NewRewardCardComponent implements OnInit {
-  reward: Promotion = {};
+  reward: Promotion = {
+    unlimited: false
+  };
 
   constructor() { }
 
