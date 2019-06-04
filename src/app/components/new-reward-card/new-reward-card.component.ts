@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Promotion } from 'src/app/models';
+import { OfficeService, CompanyService} from 'src/app/services';
 
 @Component({
   selector: 'cuper-new-reward-card',
@@ -11,9 +12,14 @@ export class NewRewardCardComponent implements OnInit {
     unlimited: false
   };
 
-  constructor() { }
+  constructor(
+    private officeService: OfficeService,
+    private companyService: CompanyService
+  ) { }
 
   ngOnInit() {
+    this.officeService.getOffices().subscribe(resp => console.log('offices', resp));
+    this.companyService.getMyCompany().subscribe(resp => console.log('my_company', resp))
   }
 
   onSaveReward() {
