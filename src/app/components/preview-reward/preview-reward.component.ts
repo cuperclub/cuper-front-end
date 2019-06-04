@@ -12,7 +12,7 @@ export class PreviewRewardComponent implements OnInit {
   @Input() file: string | ArrayBuffer;
   @Input() companyAvatar: string;
   @Input() companyName: string;
-  @Input() promotionDescription: string;
+  @Input() promotionTitle: string;
   @Input() disableEvents: boolean = false;
 
   ngOnInit() {

@@ -9,7 +9,7 @@
     <mat-card class="column-card">
       <div class="preview-container">
         <span class="label">{{ 'common.preview' | translate }}</span>
-        <cuper-preview-reward></cuper-preview-reward>
+        <cuper-preview-reward [promotionTitle]="reward?.title"></cuper-preview-reward>
       </div>
       <mat-form-field class="field-group">
         <input matInput
