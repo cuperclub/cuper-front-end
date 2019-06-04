@@ -34,7 +34,10 @@
     "people": "People",
     "unlimited": "Unlimited",
     "needed": "Needed",
-    "points": "Points"
+    "points": "Points",
+    "new_reward": "New Reward",
+    "save": "Save",
+    "preview": "Preview"
   },
   "company": {
     "billing_info": "Billing Info",
@@ -49,6 +52,23 @@
     "terms": "Términos y condiciones"
   },
   "reward": {
-    "edit": "Editar Recompensa"
+    "edit": "Editar Recompensa",
+    "new": {
+      "form": {
+        "title": "What's the name of your campaign?",
+        "customMessage": "Terms and Conditions (Optional)",
+        "office": "Address",
+        "description": "Describe your campaign",
+        "duration": "Duration",
+        "totalRewards": {
+          "label": "How rewards do you want use?",
+          "placeholder": "Select a number"
+        },
+        "pointsRequired": {
+          "label": "How points are required?",
+          "placeholder": "Select a number"
+        }
+      }
+    }
   }
 }

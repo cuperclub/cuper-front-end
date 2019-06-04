@@ -8,7 +8,9 @@ import {
   MatCardModule,
   MatDividerModule,
   MatSnackBarModule,
-  MatMenuModule
+  MatMenuModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
@@ -25,7 +27,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatCardModule,
     MatDividerModule,
     MatMenuModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class MaterialModule { }

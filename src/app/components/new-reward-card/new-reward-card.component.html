@@ -1,0 +1,37 @@
+<form class="card-container" (ngSubmit)="onSaveReward()">
+  <div class="header-card">
+    <span class="title">{{ 'common.new_reward' | translate }}</span>
+    <button mat-stroked-button color="primary" type="submit">{{ 'common.save' | translate }}</button>
+  </div>
+  <div class="panel-card">
+    <mat-card class="column-card">
+      <cuper-preview-reward></cuper-preview-reward>
+      <mat-form-field class="field-group">
+        <input matInput
+          [(ngModel)]="reward.title"
+          name="title"
+          placeholder="{{ 'reward.new.form.title' | translate }}"
+          required>
+      </mat-form-field>
+      <mat-form-field class="field-group">
+        <textarea matInput
+          [(ngModel)]="reward.customMessage"
+          name="customMessage"
+          placeholder="{{ 'reward.new.form.customMessage' | translate }}">
+        </textarea>
+      </mat-form-field>
+    </mat-card>
+    <mat-card class="column-card">
+      <mat-form-field class="field-group">
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="field-group">
+        <input matInput [matDatepicker]="picker1" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </mat-card>
+  </div>
+</form>

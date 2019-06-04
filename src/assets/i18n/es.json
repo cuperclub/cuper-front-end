@@ -34,7 +34,10 @@
     "people": "Personas",
     "unlimited": "Ilimitado",
     "needed": "Necesario",
-    "points": "Puntos"
+    "points": "Puntos",
+    "new_reward": "New Reward",
+    "save": "Guardar",
+    "preview": "Previsualización"
   },
   "company": {
     "billing_info": "Datos de facturación",
@@ -49,7 +52,24 @@
     "terms": "Términos y condiciones"
   },
   "reward": {
-    "edit": "Editar Recompensa"
+    "edit": "Editar Recompensa",
+    "new": {
+      "form": {
+        "title": "Describe tu promoción",
+        "customMessage": "Terminos y Condiciones (Opcional)",
+        "office": "Seleccione lugar de canje",
+        "description": "Describe tu campaña",
+        "duration": "Duración",
+        "totalRewards": {
+          "label": "Disponibles",
+          "description": "Numero de clientes que accederan a este reward"
+        },
+        "pointsRequired": {
+          "label": "Puntos",
+          "description": "Puntos necesarios para obtener este reward"
+        }
+      }
+    }
   },
   "tabs": {
     "dashboard": "Dashboard",
