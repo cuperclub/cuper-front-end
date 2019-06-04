@@ -12,6 +12,7 @@
   "register": {
     "title": "Registro",
     "form": {
+      "name": "Nombre y Apellido",
       "email": "Correo electrónico",
       "password": "Contraseña"
     },

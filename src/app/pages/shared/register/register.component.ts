@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   user: UserRegister = {
     email: '',
     password: '',
-    identification: ''
+    name: ''
   };
 
   hide: true;
@@ -28,13 +28,15 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    debugger
     this.tokenService.registerAccount({
       login: this.user.email,
       password: this.user.password,
       passwordConfirmation: this.user.password,
-      identification: this.user.identification
+      name: this.user.name
     }).subscribe(
       ({ body }) => {
+        debugger
         this.router.navigate(['home']);
         const { data } = body;
         this.message.open(data.name, '', {
@@ -42,6 +44,7 @@ export class RegisterComponent implements OnInit {
         });
       },
       ({ error }) => {
+        debugger
         this.message.open(error.errors, '', {
           duration: 2000
         });

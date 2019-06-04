@@ -4,7 +4,7 @@ export interface UserLogin {
 }
 
 export interface UserRegister {
-  identification: string;
+  name: string;
   email: string;
   password: string;
 }
