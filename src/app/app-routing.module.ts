@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/shared';
+import { RegisterComponent } from './pages/shared';
 import { HomeComponent } from './pages/shared';
 import { UserHomeComponent } from './pages/user';
 import { EmployeeHomeComponent } from './pages/employee';
@@ -11,6 +12,7 @@ import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
+  { path: 'register', component: RegisterComponent, pathMatch: 'full' },
   {
     path: 'home',
     component: HomeComponent,
