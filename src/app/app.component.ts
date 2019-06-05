@@ -1,7 +1,6 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AngularTokenService } from 'angular-token';
-import { User } from './models';
 
 @Component({
   selector: 'app-root',
@@ -11,17 +10,12 @@ import { User } from './models';
 })
 export class AppComponent implements OnInit{
   title = 'cuper-front-end';
-  currentUser: User;
 
   constructor(private translate: TranslateService, private tokenService: AngularTokenService) {
     this.initTranslate();
   }
 
-  ngOnInit() {
-    this.tokenService.validateToken().subscribe(resp => {
-      this.currentUser = resp.data;
-    });
-  }
+  ngOnInit() { }
 
   initTranslate() {
     // Set the default language for translation strings, and the current language.
