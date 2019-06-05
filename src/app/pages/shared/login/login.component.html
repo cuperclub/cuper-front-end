@@ -6,12 +6,20 @@
       </div>
       <form class="form" (ngSubmit)="login()">
         <mat-form-field class="field-group">
-          <input matInput [(ngModel)]="user.email" name="email" placeholder="{{ 'login.form.email' | translate }}"
+          <input matInput
+            type="email"
+            [(ngModel)]="user.email"
+            name="email"
+            placeholder="{{ 'login.form.email' | translate }}"
             required>
         </mat-form-field>
         <mat-form-field class="field-group">
-          <input matInput [(ngModel)]="user.password" name="password"
-            placeholder="{{ 'login.form.password' | translate }}" type="password" required>
+          <input matInput
+            type="password"
+            [(ngModel)]="user.password"
+            name="password"
+            placeholder="{{ 'login.form.password' | translate }}"
+            required>
         </mat-form-field>
         <button mat-flat-button color="primary" type="submit">
           {{ 'login.signin' | translate }}

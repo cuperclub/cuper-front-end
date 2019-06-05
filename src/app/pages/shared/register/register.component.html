@@ -6,14 +6,28 @@
       </div>
       <form class="form" (ngSubmit)="register()">
         <mat-form-field class="field-group">
-          <input matInput [(ngModel)]="user.name" name="name" placeholder="{{ 'register.form.name' | translate }}" required>
+          <input matInput
+            type="text"
+            [(ngModel)]="user.name"
+            name="name"
+            placeholder="{{ 'register.form.name' | translate }}"
+            required>
         </mat-form-field>
         <mat-form-field class="field-group">
-          <input matInput [(ngModel)]="user.email" type="email" name="email" placeholder="{{ 'register.form.email' | translate }}" required>
+          <input matInput
+            type="email"
+            [(ngModel)]="user.email"
+            type="email" name="email"
+            placeholder="{{ 'register.form.email' | translate }}"
+            required>
         </mat-form-field>
         <mat-form-field class="field-group">
-          <input matInput [(ngModel)]="user.password" name="password"
-            placeholder="{{ 'register.form.password' | translate }}" type="password" required>
+          <input matInput
+            type="password"
+            [(ngModel)]="user.password"
+            name="password"
+            placeholder="{{ 'register.form.password' | translate }}"
+            required>
         </mat-form-field>
         <button mat-flat-button color="primary" type="submit">{{ 'register.create' | translate }}</button>
       </form>
