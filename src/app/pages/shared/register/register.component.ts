@@ -16,8 +16,6 @@ export class RegisterComponent implements OnInit {
     name: ''
   };
 
-  hide: true;
-
   constructor(
     private router: Router,
     private tokenService: AngularTokenService,
@@ -28,25 +26,20 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    debugger
     this.tokenService.registerAccount({
       login: this.user.email,
       password: this.user.password,
       passwordConfirmation: this.user.password,
       name: this.user.name
     }).subscribe(
-      ({ body }) => {
-        debugger
+      () => {
         this.router.navigate(['home']);
-        const { data } = body;
-        this.message.open(data.name, '', {
-          duration: 2000
-        });
       },
       ({ error }) => {
-        debugger
-        this.message.open(error.errors, '', {
-          duration: 2000
+        let errors = error.errors.full_messages;
+            errors = errors.join(', ');
+        this.message.open(errors, '', {
+          duration: 10000
         });
       }
     );
