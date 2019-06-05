@@ -37,7 +37,9 @@
     "points": "Points",
     "new_reward": "New Reward",
     "save": "Save",
-    "preview": "Preview"
+    "preview": "Preview",
+    "last": "Last",
+    "all": "All"
   },
   "company": {
     "billing_info": "Billing Info",
@@ -53,6 +55,7 @@
   },
   "reward": {
     "edit": "Editar Recompensa",
+    "create": "Create new reward",
     "new": {
       "form": {
         "title": "What's the name of your campaign?",

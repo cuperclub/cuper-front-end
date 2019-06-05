@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Promotion } from 'src/app/models';
 import { OfficeService, CompanyService} from 'src/app/services';
-import { Company, Office } from '../../models';
-import { Observable, of } from 'rxjs';
+import { Company } from '../../models';
+import { Observable } from 'rxjs';
 
 interface OptionSquare {
   description: string

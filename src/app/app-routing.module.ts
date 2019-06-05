@@ -6,6 +6,7 @@ import { UserHomeComponent } from './pages/user';
 import { EmployeeHomeComponent } from './pages/employee';
 import { CompanyHomeComponent } from './pages/company';
 import { MyCompanyComponent } from './pages/company';
+import { NewRewardCardComponent } from './components/new-reward-card/new-reward-card.component';
 import { RewardsComponent } from './pages/company';
 import { AuthGuard } from './guards/auth.guard';
 
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'employee', component: EmployeeHomeComponent },
       { path: 'company', component: MyCompanyComponent },
       { path: 'rewards', component: RewardsComponent },
+      { path: 'rewards/new', component: NewRewardCardComponent },
       { path: 'dashboard', component: CompanyHomeComponent },
     ],
   }

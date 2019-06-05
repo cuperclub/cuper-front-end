@@ -1,1 +1,10 @@
-<cuper-new-reward-card></cuper-new-reward-card>
+<div class="reward-container">
+  <div class="title">{{'common.last' | translate}}</div>
+  <div class="last-rewards">
+    <cuper-placeholder-card [text]="'reward.create' | translate"
+      [onClick]="onNewReward"></cuper-placeholder-card>
+    <cuper-reward-small-card></cuper-reward-small-card>
+  </div>
+  <div class="title">{{'common.all' | translate}}</div>
+  <cuper-table-card></cuper-table-card>
+</div>

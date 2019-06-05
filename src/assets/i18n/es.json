@@ -37,7 +37,9 @@
     "points": "Puntos",
     "new_reward": "Nueva Promoción",
     "save": "Guardar",
-    "preview": "Previsualización"
+    "preview": "Previsualización",
+    "last": "Utimas",
+    "all": "Todas"
   },
   "company": {
     "billing_info": "Datos de facturación",
@@ -53,6 +55,7 @@
   },
   "reward": {
     "edit": "Editar Recompensa",
+    "create": "Crear nueva recompensa",
     "new": {
       "form": {
         "title": "Describe tu promoción",
