@@ -7,4 +7,5 @@ export interface Company {
   business_name?: string;
   created_at?: Date;
   logo?: string;
+  slogan?: string;
 }
