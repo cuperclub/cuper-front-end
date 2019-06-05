@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Company } from '../../models';
+import { CompanyService} from 'src/app/services';
 import { CompanyFormComponent } from '../company-form/company-form.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'cuper-company-card',
@@ -9,13 +11,15 @@ import { CompanyFormComponent } from '../company-form/company-form.component';
   styleUrls: ['./company-card.component.scss']
 })
 export class CompanyCardComponent implements OnInit {
-  @Input() company: Company;
+  myCompany$: Observable<Company>;
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private companyService: CompanyService
   ) { }
 
   ngOnInit() {
+    this.myCompany$ = this.companyService.getMyCompany();
   }
 
   editCompany() {
