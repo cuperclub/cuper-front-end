@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularTokenService } from 'angular-token';
-import { User } from '../../../models';
 
 @Component({
   selector: 'app-company-home',
@@ -8,12 +6,10 @@ import { User } from '../../../models';
   styleUrls: ['./home.component.scss']
 })
 export class CompanyHomeComponent implements OnInit {
-  currentUser: User;
 
-  constructor(private tokenService: AngularTokenService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.currentUser = this.tokenService.currentUserData;
   }
 
 }

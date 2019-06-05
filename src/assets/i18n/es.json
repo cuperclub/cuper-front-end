@@ -7,7 +7,19 @@
     },
     "signin": "Iniciar sesión",
     "forgot_password": "Olvidaste tu contraseña?",
-    "create_account": "¿Aún no tienes cuenta? Regístrate"
+    "create_account": "¿Aún no tienes cuenta?",
+    "register": "Regístrate"
+  },
+  "register": {
+    "title": "Registro",
+    "form": {
+      "name": "Nombre y Apellido",
+      "email": "Correo electrónico",
+      "password": "Contraseña"
+    },
+    "create": "Crear cuenta",
+    "forgot_password": "Olvidaste tu contraseña?",
+    "already_account": "Ya tengo una cuenta"
   },
   "common": {
     "update_data": "Actualizar Información",

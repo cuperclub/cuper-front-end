@@ -3,6 +3,12 @@ export interface UserLogin {
   password: string;
 }
 
+export interface UserRegister {
+  name: string;
+  email: string;
+  password: string;
+}
+
 export interface User {
   name?: string;
   nickname?: string;

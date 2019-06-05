@@ -1,0 +1,30 @@
+<div class="register-container">
+  <div class="content">
+    <div class="view">
+      <div class="logo">
+        <img class="logoName" src="../../../../assets/images/logo-club.svg" />
+      </div>
+      <form class="form" (ngSubmit)="register()">
+        <mat-form-field class="field-group">
+          <input matInput [(ngModel)]="user.name" name="name" placeholder="{{ 'register.form.name' | translate }}" required>
+        </mat-form-field>
+        <mat-form-field class="field-group">
+          <input matInput [(ngModel)]="user.email" type="email" name="email" placeholder="{{ 'register.form.email' | translate }}" required>
+        </mat-form-field>
+        <mat-form-field class="field-group">
+          <input matInput [(ngModel)]="user.password" name="password"
+            placeholder="{{ 'register.form.password' | translate }}" type="password" required>
+        </mat-form-field>
+        <button mat-flat-button color="primary" type="submit">{{ 'register.create' | translate }}</button>
+      </form>
+      <div class="links">
+        <a routerLink="/login">
+          {{ 'register.already_account' | translate }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<img class="illustration" src="../../../../assets/images/illustration-footer.svg" />
+<app-footer></app-footer>

@@ -1,0 +1,11 @@
+.page-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	.card {
+		width: 22rem;
+		padding: 1rem;
+		height: 17rem;
+	}
+}
