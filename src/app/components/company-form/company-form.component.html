@@ -1,0 +1,54 @@
+<div class="company-form">
+  <form class="form" (ngSubmit)="onCloseDialog()">
+    <mat-form-field class="field-group">
+      <input matInput
+        [(ngModel)]="data.company.legal_representative"
+        name="legal_representative"
+        placeholder="{{ 'company.legal_representative' | translate }}"
+        required>
+    </mat-form-field>
+    <mat-form-field class="field-group">
+      <input matInput
+        [(ngModel)]="data.company.business_name"
+        name="business_name"
+        placeholder="{{ 'company.business_name' | translate }}"
+        required>
+    </mat-form-field>
+    <mat-form-field class="field-group">
+      <input matInput
+        [(ngModel)]="data.company.slogan"
+        name="slogan"
+        placeholder="{{ 'company.slogan' | translate }}"
+        required>
+    </mat-form-field>
+    <mat-form-field class="field-group">
+      <input matInput
+        [(ngModel)]="data.company.ruc"
+        name="ruc"
+        placeholder="{{ 'company.ruc' | translate }}"
+        required>
+    </mat-form-field>
+    <mat-form-field class="field-group">
+      <input matInput
+        [(ngModel)]="data.company.contributor_type"
+        name="contributor_type"
+        placeholder="{{ 'company.contributor_type' | translate }}"
+        required>
+    </mat-form-field>
+    <mat-form-field class="field-group">
+      <input matInput
+        [(ngModel)]="data.company.economic_activity"
+        name="economic_activity"
+        placeholder="{{ 'company.economic_activity' | translate }}"
+        required>
+    </mat-form-field>
+    <div class="footer-form">
+      <button mat-flat-button color="primary" [mat-dialog-close]="data.company" type="submit">
+        {{ 'common.ok' | translate }}
+      </button>
+      <button mat-flat-button color="secondary" (ngClick)="onCloseDialog()">
+        {{ 'common.cancel' | translate }}
+      </button>
+    </div>
+  </form>
+</div>
