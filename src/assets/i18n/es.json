@@ -22,7 +22,7 @@
     "already_account": "Ya tengo una cuenta"
   },
   "common": {
-    "update_data": "Actualizar Información",
+    "update_data": "Actualizar Datos",
     "update_password": "Actualizar Clave",
     "offices": "Sucursales",
     "not_registered_yet": "No se ha registrado aún",
@@ -53,7 +53,10 @@
     "last": "Utimas",
     "all": "Todas",
     "ok": "Aceptar",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "messages": {
+      "updated": "Actualizado correctamente"
+    }
   },
   "company": {
     "billing_info": "Datos de facturación",

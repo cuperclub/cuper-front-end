@@ -10,7 +10,7 @@
     "create_account": "Don't have an account? Create One!"
   },
   "common": {
-    "update_data": "Update Information",
+    "update_data": "Update Data",
     "update_password": "Update Password",
     "offices": "Offices",
     "not_registered_yet": "Not registered yet",
@@ -41,7 +41,10 @@
     "last": "Last",
     "all": "All",
     "ok": "Ok",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "messages": {
+      "updated": "Updated successfully"
+    }
   },
   "company": {
     "billing_info": "Billing Info",

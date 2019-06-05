@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Company } from '../../models';
 import { CompanyService} from 'src/app/services';
 import { CompanyFormComponent } from '../company-form/company-form.component';
-import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'cuper-company-card',
@@ -11,27 +12,45 @@ import { Observable } from 'rxjs';
   styleUrls: ['./company-card.component.scss']
 })
 export class CompanyCardComponent implements OnInit {
-  myCompany$: Observable<Company>;
+  company: Company = {};
 
   constructor(
     private dialog: MatDialog,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private message: MatSnackBar,
+    private translate: TranslateService,
   ) { }
 
   ngOnInit() {
-    this.myCompany$ = this.companyService.getMyCompany();
+    this.companyService.getMyCompany().subscribe(resp => this.company = resp);
   }
 
   editCompany() {
     const dialogRef = this.dialog.open(CompanyFormComponent, {
       width: '400px',
       data: {
-        company: {}
+        company: Object.assign({}, this.company)
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
+    dialogRef.afterClosed().subscribe(companyData => {
+      if(companyData){
+        this.companyService.updateMyCompany(companyData).subscribe(
+          (resp) => {
+            this.translate.get('common.messages.updated').subscribe((message: string) => {
+              this.message.open(message, '', {
+                duration: 2000
+              });
+              this.company = resp;
+            });
+          },
+          ({ error }) => {
+            this.message.open(error.errors, '', {
+              duration: 2000
+            });
+          }
+        );
+      }
     });
   }
 

@@ -1,6 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { AngularTokenService } from 'angular-token';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +10,7 @@ import { AngularTokenService } from 'angular-token';
 export class AppComponent implements OnInit{
   title = 'cuper-front-end';
 
-  constructor(private translate: TranslateService, private tokenService: AngularTokenService) {
+  constructor(private translate: TranslateService) {
     this.initTranslate();
   }
 
