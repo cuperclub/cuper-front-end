@@ -1,4 +1,4 @@
-import { User, UserStatus } from './user/user.model';
+import { User, UserStatus } from './user';
 
 export interface Cashier extends User {
   status?: UserStatus

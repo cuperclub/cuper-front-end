@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material.module';
+import { FormsModule } from '@angular/forms';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -21,6 +22,7 @@ import { PreviewRewardComponent } from './preview-reward/preview-reward.componen
 import { CardCounterComponent } from './card-counter/card-counter.component';
 import { SquareSelectComponent } from './square-select/square-select.component';
 import { RewardCardComponent } from './reward-card/reward-card.component';
+import { NewRewardCardComponent } from './new-reward-card/new-reward-card.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -41,11 +43,13 @@ export function createTranslateLoader(http: HttpClient) {
     PreviewRewardComponent,
     CardCounterComponent,
     SquareSelectComponent,
-    RewardCardComponent
+    RewardCardComponent,
+    NewRewardCardComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
+    FormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -69,7 +73,8 @@ export function createTranslateLoader(http: HttpClient) {
     PreviewRewardComponent,
     CardCounterComponent,
     SquareSelectComponent,
-    RewardCardComponent
+    RewardCardComponent,
+    NewRewardCardComponent
   ]
 })
 export class ComponentsModule { }

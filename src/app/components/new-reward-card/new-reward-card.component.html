@@ -1,0 +1,90 @@
+<form class="card-container" (ngSubmit)="onSaveReward()">
+  <div class="header-card">
+    <div class="content">
+      <span class="title">{{ 'common.new_reward' | translate }}</span>
+      <button mat-stroked-button color="primary" type="submit">{{ 'common.save' | translate }}</button>
+    </div>
+  </div>
+  <div class="panel-card">
+    <mat-card class="column-card">
+      <div class="preview-container">
+        <span class="label">{{ 'common.preview' | translate }}</span>
+        <cuper-preview-reward *ngIf="myCompany$ | async as company"
+          [file]="reward?.image"
+          [companyAvatar]="company?.logo"
+          [companyName]="company?.business_name"
+          [promotionTitle]="reward?.title"></cuper-preview-reward>
+      </div>
+      <mat-form-field class="field-group">
+        <input matInput
+          [(ngModel)]="reward.title"
+          name="title"
+          placeholder="{{ 'reward.new.form.title' | translate }}"
+          required>
+      </mat-form-field>
+      <mat-form-field class="field-group">
+        <textarea matInput
+          [(ngModel)]="reward.terms"
+          name="terms"
+          placeholder="{{ 'reward.new.form.customMessage' | translate }}">
+        </textarea>
+      </mat-form-field>
+    </mat-card>
+    <mat-card class="column-card">
+      <div class="offices-container">
+        <span class="label">{{ 'reward.new.form.office' | translate }}</span>
+        <div class="placeholder-container">
+          <cuper-placeholder-card *ngIf="myOffices && myOffices.length <= 0"
+            [text]="'office.create' | translate"
+            [onClick]="onNewOffice">
+          </cuper-placeholder-card>
+        </div>
+        <cuper-square-select *ngIf="myOffices && myOffices.length > 1" [options]="myOffices" [onSelect]="onSelectOffice"></cuper-square-select>
+      </div>
+      <div class="double-column">
+        <mat-form-field class="field-group">
+          <input matInput
+            type="number"
+            [(ngModel)]="reward.total_rewards"
+            name="total_rewards"
+            placeholder="{{ 'reward.new.form.totalRewards.label' | translate }}">
+          <mat-hint>{{ 'reward.new.form.totalRewards.description' | translate }}</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="field-group">
+          <input matInput
+            type="number"
+            [(ngModel)]="reward.points_required"
+            name="points_required"
+            placeholder="{{ 'reward.new.form.pointsRequired.label' | translate }}">
+          <mat-hint>{{ 'reward.new.form.pointsRequired.description' | translate }}</mat-hint>
+        </mat-form-field>
+      </div>
+      <mat-checkbox class="unlimited-reward" [ngModelOptions]="{standalone: true}" [(ngModel)]="reward.unlimited">
+        {{ 'reward.new.form.unlimited' | translate }}
+      </mat-checkbox>
+      <div class="dates-container">
+        <span class="label">{{ 'reward.new.form.duration' | translate }}</span>
+        <div class="double-column">
+          <mat-form-field class="field-group">
+            <input matInput
+              [matDatepicker]="picker"
+              [(ngModel)]="reward.start_at"
+              name="start_at"
+              placeholder="{{ 'reward.new.form.start_at' | translate }}">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field class="field-group">
+            <input matInput
+              [matDatepicker]="picker1"
+              [(ngModel)]="reward.end_at"
+              name="end_at"
+              placeholder="{{ 'reward.new.form.end_at' | translate }}">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</form>

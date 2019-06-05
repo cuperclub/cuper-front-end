@@ -34,7 +34,12 @@
     "people": "People",
     "unlimited": "Unlimited",
     "needed": "Needed",
-    "points": "Points"
+    "points": "Points",
+    "new_reward": "New Reward",
+    "save": "Save",
+    "preview": "Preview",
+    "last": "Last",
+    "all": "All"
   },
   "company": {
     "billing_info": "Billing Info",
@@ -45,10 +50,34 @@
     "not_slogan": "You don't have a slogan yet",
     "registered_at": "Registered"
   },
+  "office": {
+    "create": "Create a new office"
+  },
   "promotion": {
     "terms": "Términos y condiciones"
   },
   "reward": {
-    "edit": "Editar Recompensa"
+    "edit": "Editar Recompensa",
+    "create": "Create new reward",
+    "new": {
+      "form": {
+        "title": "What's the name of your campaign?",
+        "customMessage": "Terms and Conditions (Optional)",
+        "office": "Address",
+        "description": "Describe your campaign",
+        "duration": "Duration",
+        "unlimited": "Unlimited",
+        "start_at": "Start Date",
+        "end_at": "End Date",
+        "totalRewards": {
+          "label": "How rewards do you want use?",
+          "placeholder": "Select a number"
+        },
+        "pointsRequired": {
+          "label": "How points are required?",
+          "placeholder": "Select a number"
+        }
+      }
+    }
   }
 }
