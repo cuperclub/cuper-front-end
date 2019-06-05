@@ -32,12 +32,8 @@ export class LoginComponent implements OnInit {
       login: this.user.email,
       password: this.user.password
     }).subscribe(
-      ({ body }) => {
-        this.router.navigate(['home']);
-        const { data } = body;
-        this.message.open(data.name, '', {
-          duration: 2000
-        });
+      () => {
+        this.router.navigate(['home/dashboard']);
       },
       ({ error }) => {
         this.message.open(error.errors, '', {

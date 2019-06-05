@@ -4,22 +4,25 @@
       <div class="logo">
         <img class="logoName" src="../../../../assets/images/logo-club.svg" />
       </div>
-      <Form class="form" (ngSubmit)="onLogin()">
-        <form (ngSubmit)="login()">
-          <mat-form-field class="field-group">
-            <input matInput [(ngModel)]="user.email" name="email" placeholder="{{ 'login.form.email' | translate }}"
-              required>
-          </mat-form-field>
-          <mat-form-field class="field-group">
-            <input matInput [(ngModel)]="user.password" name="password"
-              placeholder="{{ 'login.form.password' | translate }}" type="password" required>
-          </mat-form-field>
-          <button mat-flat-button color="primary" type="submit">{{ 'login.signin' | translate }}</button>
-        </form>
-      </Form>
-      <div class="linkBtn">
+      <form class="form" (ngSubmit)="login()">
+        <mat-form-field class="field-group">
+          <input matInput [(ngModel)]="user.email" name="email" placeholder="{{ 'login.form.email' | translate }}"
+            required>
+        </mat-form-field>
+        <mat-form-field class="field-group">
+          <input matInput [(ngModel)]="user.password" name="password"
+            placeholder="{{ 'login.form.password' | translate }}" type="password" required>
+        </mat-form-field>
+        <button mat-flat-button color="primary" type="submit">
+          {{ 'login.signin' | translate }}
+        </button>
+      </form>
+      <div class="links">
+        <span>
+            {{ 'login.create_account' | translate }}
+        </span>
         <a routerLink="/register">
-          {{ 'login.create_account' | translate }}
+          {{ 'login.register' | translate }}
         </a>
       </div>
     </div>

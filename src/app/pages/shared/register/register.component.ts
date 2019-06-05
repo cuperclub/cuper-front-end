@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
       name: this.user.name
     }).subscribe(
       () => {
-        this.router.navigate(['home']);
+        this.router.navigate(['home/dashboard']);
       },
       ({ error }) => {
         let errors = error.errors.full_messages;
