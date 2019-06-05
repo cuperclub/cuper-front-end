@@ -39,7 +39,9 @@
     "save": "Save",
     "preview": "Preview",
     "last": "Last",
-    "all": "All"
+    "all": "All",
+    "ok": "Ok",
+    "cancel": "Cancel"
   },
   "company": {
     "billing_info": "Billing Info",
@@ -48,7 +50,8 @@
     "contributor_type": "Contributor Type",
     "economic_activity": "Economic Activity",
     "not_slogan": "You don't have a slogan yet",
-    "registered_at": "Registered"
+    "registered_at": "Registered",
+    "business_name": "Business Name"
   },
   "office": {
     "create": "Create a new office"

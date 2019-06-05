@@ -51,7 +51,9 @@
     "save": "Guardar",
     "preview": "Previsualización",
     "last": "Utimas",
-    "all": "Todas"
+    "all": "Todas",
+    "ok": "Aceptar",
+    "cancel": "Cancelar"
   },
   "company": {
     "billing_info": "Datos de facturación",
@@ -60,7 +62,8 @@
     "contributor_type": "Tipo de Contribuidor",
     "economic_activity": "Actividad Económica",
     "not_slogan": "Aún no tienes un slogan",
-    "registered_at": "Registrado"
+    "registered_at": "Registrado",
+    "business_name": "Nombre de la companía"
   },
   "office": {
     "create": "Crear una nueva oficina"
