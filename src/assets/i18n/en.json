@@ -50,6 +50,9 @@
     "not_slogan": "You don't have a slogan yet",
     "registered_at": "Registered"
   },
+  "office": {
+    "create": "Create a new office"
+  },
   "promotion": {
     "terms": "Términos y condiciones"
   },

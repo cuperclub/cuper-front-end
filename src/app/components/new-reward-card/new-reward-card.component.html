@@ -33,7 +33,13 @@
     <mat-card class="column-card">
       <div class="offices-container">
         <span class="label">{{ 'reward.new.form.office' | translate }}</span>
-        <cuper-square-select *ngIf="myOffices" [options]="myOffices" [onSelect]="onSelectOffice"></cuper-square-select>
+        <div class="placeholder-container">
+          <cuper-placeholder-card *ngIf="myOffices && myOffices.length <= 0"
+            [text]="'office.create' | translate"
+            [onClick]="onNewOffice">
+          </cuper-placeholder-card>
+        </div>
+        <cuper-square-select *ngIf="myOffices && myOffices.length > 1" [options]="myOffices" [onSelect]="onSelectOffice"></cuper-square-select>
       </div>
       <div class="double-column">
         <mat-form-field class="field-group">

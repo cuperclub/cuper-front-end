@@ -19,7 +19,7 @@ export class NewRewardCardComponent implements OnInit {
     unlimited: false
   };
   myCompany$: Observable<Company>;
-  myOffices: OptionSquare[];
+  myOffices: OptionSquare[] = [];
 
   constructor(
     private officeService: OfficeService,
@@ -45,6 +45,10 @@ export class NewRewardCardComponent implements OnInit {
 
   onSelectOffice(office) {
     console.log('office', office);
+  }
+
+  onNewOffice() {
+    console.log('launch new office modal')
   }
 
 }
