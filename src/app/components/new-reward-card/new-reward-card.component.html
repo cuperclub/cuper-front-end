@@ -9,7 +9,11 @@
     <mat-card class="column-card">
       <div class="preview-container">
         <span class="label">{{ 'common.preview' | translate }}</span>
-        <cuper-preview-reward [promotionTitle]="reward?.title"></cuper-preview-reward>
+        <cuper-preview-reward *ngIf="myCompany$ | async as company"
+          [file]="reward?.image"
+          [companyAvatar]="company?.logo"
+          [companyName]="company?.business_name"
+          [promotionTitle]="reward?.title"></cuper-preview-reward>
       </div>
       <mat-form-field class="field-group">
         <input matInput
@@ -29,7 +33,7 @@
     <mat-card class="column-card">
       <div class="offices-container">
         <span class="label">{{ 'reward.new.form.office' | translate }}</span>
-        <cuper-square-select></cuper-square-select>
+        <cuper-square-select *ngIf="myOffices" [options]="myOffices" [onSelect]="onSelectOffice"></cuper-square-select>
       </div>
       <div class="double-column">
         <mat-form-field class="field-group">

@@ -12,32 +12,13 @@ interface OptionSquare {
 })
 export class SquareSelectComponent implements OnInit {
   @Input() options: OptionSquare [];
-  @Input() onSelect: Function = () => console.log('selected');
+  @Input() onSelect: Function;
 
   activeIndex: Number;
 
   constructor() { }
 
-  ngOnInit() {
-    this.options = [
-      {
-        title: 'Rob Stark',
-        description: 'The King of the North'
-      },
-      {
-        title: 'Aria Stark',
-        description: 'the king of the North'
-      },
-      {
-        title: 'Jhon Snow',
-        description: 'the king of the North'
-      },
-      {
-        title: 'Sansa Stark',
-        description: 'the king of the North'
-      }
-    ];
-  }
+  ngOnInit() { }
 
   onClick (index) {
     if (this.activeIndex == index){

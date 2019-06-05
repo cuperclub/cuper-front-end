@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Promotion } from 'src/app/models';
 import { OfficeService, CompanyService} from 'src/app/services';
+import { Company, Office } from '../../models';
+import { Observable, of } from 'rxjs';
+
+interface OptionSquare {
+  description: string
+  title: string
+}
 
 @Component({
   selector: 'cuper-new-reward-card',
@@ -11,6 +18,8 @@ export class NewRewardCardComponent implements OnInit {
   reward: Promotion = {
     unlimited: false
   };
+  myCompany$: Observable<Company>;
+  myOffices: OptionSquare[];
 
   constructor(
     private officeService: OfficeService,
@@ -18,12 +27,24 @@ export class NewRewardCardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.officeService.getOffices().subscribe(resp => console.log('offices', resp));
-    this.companyService.getMyCompany().subscribe(resp => console.log('my_company', resp))
+    this.myCompany$ = this.companyService.getMyCompany();
+    this.officeService.getOffices().subscribe(resp => {
+      this.myOffices = resp['offices'].map(office => {
+        return {
+          id: office.id,
+          title: office.name,
+          description: office.address
+        };
+      });
+    });
   }
 
   onSaveReward() {
     console.log('this.reward', this.reward);
+  }
+
+  onSelectOffice(office) {
+    console.log('office', office);
   }
 
 }
