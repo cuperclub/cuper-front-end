@@ -1,15 +1,16 @@
 @import "../../../styles/colors.scss";
 
 .preview-reward-container {
-  min-height: 100px;
+  min-height: 120px;
   background-size: cover;
-  border-radius: 30px;
+  border-radius: 10px;
   padding: 10px;
   background-color: $mercury;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   color: $white;
+  position: relative;
 
   &.selectable {
     &:hover {
@@ -18,17 +19,24 @@
       .logo-camera {
         display: flex;
         align-self: center;
+        position: absolute;
+        z-index: 17;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
       }
     }
   }
 
   .card-header {
-    display: flex;
-    align-items: center;
+    // display: flex;
+    // align-items: center;
+    // text-align: end;
 
     .company-name {
       margin-left: 10px;
       font-weight: bold;
+      text-align: end;
     }
   }
 

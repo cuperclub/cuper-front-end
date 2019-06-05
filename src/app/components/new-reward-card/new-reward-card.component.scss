@@ -1,53 +1,70 @@
 .card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+	margin-top: 2rem;
 
-  .header-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .view {
+		width: 50rem;
 
-    .content {
-      width: 57%;
+    .header-card {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-    }
-  }
+			align-items: flex-start;
+			margin: 1rem;
 
-  .panel-card {
-    display: flex;
-    justify-content: center;
-
-    .preview-container {
-      height: 9.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      .title {
+				font-size: 20px;
+				font-family: 'Circular-Medium';
+      }
     }
 
-    .column-card {
+    .panel-card {
       display: flex;
-      flex-direction: column;
-      width: 25%;
-      margin: 1rem;
+      justify-content: center;
 
-      .double-column {
+      .preview-container {
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
 
-        .field-group {
-          width: 45%;
+        .reward {
+          margin: 1rem 0;
         }
       }
 
-      .unlimited-reward {
-        width: 21%;
-        margin: 1rem 0;
-      }
+      .column-card {
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+        margin: 1rem;
+				flex: 1;
 
-      .offices-container {
+				.label {
+					font-family: 'Lato-Semibold';
+				}
 
-        .placeholder-container {
-          width: 30%;
+        .double-column {
+          display: flex;
+          justify-content: space-between;
+					margin-bottom: 0.5rem;
+
+          .field-group {
+            width: 45%;
+          }
+        }
+
+        .unlimited-reward {
+          width: 21%;
+          margin: 1rem 0;
+        }
+
+        .offices-container {
+					margin-bottom: 0.5rem;
+
+          .placeholder-container {
+            width: 30%;
+          }
         }
       }
     }
