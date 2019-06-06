@@ -2,10 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/shared';
 import { RegisterComponent } from './pages/shared';
+import { DashboardComponent } from './pages/shared';
 import { HomeComponent } from './pages/shared';
-import { UserHomeComponent } from './pages/user';
-import { EmployeeHomeComponent } from './pages/employee';
-// import { CompanyHomeComponent } from './pages/company';
 import { MyCompanyComponent } from './pages/company';
 import { NewRewardCardComponent } from './components/new-reward-card/new-reward-card.component';
 import { RewardsComponent } from './pages/company';
@@ -22,12 +20,10 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'dashboard', component: UserHomeComponent },
-      { path: 'employee', component: EmployeeHomeComponent },
+      { path: 'dashboard', component: DashboardComponent },
       { path: 'company', component: MyCompanyComponent, canActivate: [IsPartnerGuard] },
       { path: 'rewards', component: RewardsComponent, canActivate: [IsPartnerGuard] },
-      { path: 'rewards/new', component: NewRewardCardComponent },
-      // { path: 'dashboard', component: CompanyHomeComponent },
+      { path: 'rewards/new', component: NewRewardCardComponent }
     ],
   }
 ];

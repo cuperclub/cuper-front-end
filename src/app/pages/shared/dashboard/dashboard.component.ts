@@ -3,11 +3,12 @@ import { User } from '../../../models';
 import { UserService } from '../../../services';
 
 @Component({
-  selector: 'app-user-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'cuper-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class UserHomeComponent implements OnInit {
+export class DashboardComponent implements OnInit {
+
   currentUser: User;
 
   constructor(private userService: UserService) { }

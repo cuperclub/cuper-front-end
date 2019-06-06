@@ -16,10 +16,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './shared/login/login.component';
 import { RegisterComponent } from './shared/register/register.component';
 import { HomeComponent } from './shared/home/home.component';
-import { UserHomeComponent } from './user/home/home.component';
-import { EmployeeHomeComponent } from './employee/home/home.component';
+import { DashboardComponent } from './shared/dashboard/dashboard.component';
 // Partner
-import { CompanyHomeComponent } from './company/home/home.component';
 import { MyCompanyComponent } from './company/my-company/my-company.component';
 import { RewardsComponent } from './company/rewards/rewards.component';
 
@@ -34,11 +32,9 @@ export const ROUTES: Routes = [];
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    UserHomeComponent,
-    EmployeeHomeComponent,
-    CompanyHomeComponent,
     MyCompanyComponent,
-    RewardsComponent
+    RewardsComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
