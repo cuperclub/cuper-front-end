@@ -45,11 +45,17 @@
       <mat-icon>view_module</mat-icon>
       <span>{{ 'tabs.dashboard' | translate }}</span>
     </a>
-    <a routerLink="rewards" class="tabs" routerLinkActive="active">
+    <a routerLink="rewards"
+      class="tabs"
+      routerLinkActive="active"
+      *ngIf="currentUser && currentUser.is_partner">
       <mat-icon>cake</mat-icon>
       <span>{{ 'tabs.rewards' | translate }}</span>
     </a>
-    <a routerLink="company" class="tabs" routerLinkActive="active">
+    <a routerLink="company"
+      class="tabs"
+      routerLinkActive="active"
+      *ngIf="currentUser && currentUser.is_partner">
       <mat-icon>business</mat-icon>
       <span>{{ 'tabs.company' | translate }}</span>
     </a>

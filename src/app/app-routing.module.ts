@@ -11,6 +11,7 @@ import { NewRewardCardComponent } from './components/new-reward-card/new-reward-
 import { RewardsComponent } from './pages/company';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { IsntSignedInGuard } from './guards/routes/isnt-signed-in.guard';
+import { IsPartnerGuard } from './guards/partner/is-partner.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -23,8 +24,8 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: UserHomeComponent },
       { path: 'employee', component: EmployeeHomeComponent },
-      { path: 'company', component: MyCompanyComponent },
-      { path: 'rewards', component: RewardsComponent },
+      { path: 'company', component: MyCompanyComponent, canActivate: [IsPartnerGuard] },
+      { path: 'rewards', component: RewardsComponent, canActivate: [IsPartnerGuard] },
       { path: 'rewards/new', component: NewRewardCardComponent },
       // { path: 'dashboard', component: CompanyHomeComponent },
     ],

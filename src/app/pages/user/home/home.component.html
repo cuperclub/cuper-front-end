@@ -1,4 +1,4 @@
 <div class="page-container">
   <cuper-card-user class="card" [user]="currentUser"></cuper-card-user>
-  <cuper-company-card class="card"></cuper-company-card>
+  <cuper-company-card class="card" *ngIf="currentUser.is_partner"></cuper-company-card>
 </div>
