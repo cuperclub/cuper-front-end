@@ -1,22 +1,24 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { AngularTokenService } from 'angular-token';
-import { Observable } from 'rxjs';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { UserService } from '../../services';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IsPartnerGuard implements CanActivate {
-  constructor(private tokenService: AngularTokenService) { }
+  constructor(
+    private router: Router,
+    private userService: UserService
+  ) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-
-
-    let currentUser = this.tokenService.currentUserData;
-    console.log(currentUser);
-
-    return true;
+    state: RouterStateSnapshot): boolean {
+    const currentUser = this.userService.getDataOnLocalStorage();
+    const isPartner = currentUser && currentUser.is_partner
+    if(!isPartner){
+      this.router.navigateByUrl('/home/dashboard');
+    }
+    return isPartner;
   }
 }
