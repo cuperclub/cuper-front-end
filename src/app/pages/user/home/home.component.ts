@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularTokenService } from 'angular-token';
 import { User } from '../../../models';
+import { UserService } from '../../../services';
 
 @Component({
   selector: 'app-user-home',
@@ -10,10 +10,10 @@ import { User } from '../../../models';
 export class UserHomeComponent implements OnInit {
   currentUser: User;
 
-  constructor(private tokenService: AngularTokenService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.currentUser = this.tokenService.currentUserData;
+    this.currentUser = this.userService.getDataOnLocalStorage();
   }
 
 }

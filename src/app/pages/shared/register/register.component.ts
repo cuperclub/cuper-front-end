@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AngularTokenService } from 'angular-token';
 import { MatSnackBar } from '@angular/material';
 import { UserRegister } from '../../../models';
+import { UserService } from '../../../services';
 
 @Component({
   selector: 'cuper-register',
@@ -19,7 +20,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private tokenService: AngularTokenService,
-    private message: MatSnackBar
+    private message: MatSnackBar,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -32,7 +34,8 @@ export class RegisterComponent implements OnInit {
       passwordConfirmation: this.user.password,
       name: this.user.name
     }).subscribe(
-      () => {
+      (resp) => {
+        this.userService.saveDataOnLocalStorage(resp.data);
         this.router.navigate(['home/dashboard']);
       },
       ({ error }) => {

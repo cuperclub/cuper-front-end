@@ -15,7 +15,6 @@ export class IsPartnerGuard implements CanActivate {
 
 
     let currentUser = this.tokenService.currentUserData;
-    debugger
     console.log(currentUser);
 
     return true;
