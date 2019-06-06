@@ -98,9 +98,18 @@
       }
     }
   },
+  "transactions": {
+    "title": "Mis Transacciones",
+    "promotions": "Promociones",
+    "tabs": {
+      "input": "Entrada",
+      "output": "Salida"
+    }
+  },
   "tabs": {
     "dashboard": "Dashboard",
     "rewards": "Recompensas",
-    "company": "Companía"
+    "company": "Companía",
+    "transactions": "Transacciones"
   }
 }

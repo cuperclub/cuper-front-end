@@ -1,0 +1,32 @@
+.transactions-container {
+  padding: 3rem 5% 0 5%;
+
+  .header {
+    display: flex;
+    width: 100%;
+    height: 5rem;
+    align-items: center;
+
+    .input-national-id {
+      width: 20%;
+      height: 80%;
+    }
+
+    .instructions {
+      width: 70%;
+      height: 80%;
+    }
+
+  }
+
+  .title {
+    font-family: 'Circular-Book';
+    font-size: 20px;
+    margin-bottom: 1.5%;
+
+    .description {
+      font-family: 'Lato-Regular';
+      font-size: 12px;
+    }
+  }
+}

@@ -85,5 +85,19 @@
         }
       }
     }
+  },
+  "transactions": {
+    "title": "My Transactions",
+    "promotions": "Rewards",
+    "tabs": {
+      "input": "Input",
+      "output": "Output"
+    }
+  },
+  "tabs": {
+    "dashboard": "Dashboard",
+    "rewards": "Rewards",
+    "company": "Company",
+    "transactions": "Transactions"
   }
 }
