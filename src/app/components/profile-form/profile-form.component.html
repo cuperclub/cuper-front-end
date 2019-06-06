@@ -1,5 +1,5 @@
 <div class="user-form">
-  <form class="form" (ngSubmit)="onCloseDialog()">
+  <form class="form">
     <mat-form-field class="field-group">
       <input matInput
         [(ngModel)]="data.user.name"
@@ -22,10 +22,10 @@
         required>
     </mat-form-field>
     <div class="footer-form">
-      <button mat-flat-button color="primary" [mat-dialog-close]="data.user" type="submit">
+      <button mat-flat-button color="primary" (click)="onSubmit(data.user)">
         {{ 'common.ok' | translate }}
       </button>
-      <button mat-flat-button color="secondary" (ngClick)="onCloseDialog()">
+      <button mat-flat-button color="secondary" (click)="onCloseDialog()">
         {{ 'common.cancel' | translate }}
       </button>
     </div>

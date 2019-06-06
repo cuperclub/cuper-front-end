@@ -13,8 +13,8 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   public saveDataOnLocalStorage(user: User){
-    let currentUser = this.getDataOnLocalStorage();
-    const updateUser = {...currentUser, ...user};
+    const currentUser = this.getDataOnLocalStorage(),
+          updateUser = {...currentUser, ...user};
     localStorage.setItem('current_user', JSON.stringify(updateUser));
   }
 

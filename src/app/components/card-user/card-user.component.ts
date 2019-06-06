@@ -37,29 +37,29 @@ export class CardUserComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(companyData => {
-      if(companyData){
-        this.userService.updateMyData(companyData).subscribe(
-          (resp) => {
-            this.translate.get('common.messages.updated').subscribe((message: string) => {
-              this.message.open(message, '', {
-                duration: 2000
-              });
-              this.user = this.saveAndGetUserFromStorage(resp);
-            });
-          },
-          ({ error }) => {
-            this.message.open(error.errors, '', {
-              duration: 2000
-            });
-          }
-        );
-      }
-    });
+    // dialogRef.beforeClosed().subscribe(userData => {
+    //   if(userData){
+    //     this.userService.updateMyData(userData).subscribe(
+    //       (resp) => {
+    //         this.translate.get('common.messages.updated').subscribe((message: string) => {
+    //           this.message.open(message, '', {
+    //             duration: 2000
+    //           });
+    //           this.user = this.saveAndGetUserFromStorage(resp);
+    //         });
+    //       },
+    //       ({ error }) => {
+    //         this.message.open(error.errors, '', {
+    //           duration: 2000
+    //         });
+    //       }
+    //     );
+    //   }
+    // });
   }
 
-  saveAndGetUserFromStorage(user){
-    this.userService.saveDataOnLocalStorage(user);
-    return this.userService.getDataOnLocalStorage();
-  }
+  // saveAndGetUserFromStorage(user){
+  //   this.userService.saveDataOnLocalStorage(user);
+  //   return this.userService.getDataOnLocalStorage();
+  // }
 }
