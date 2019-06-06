@@ -36,7 +36,6 @@ export class NewRewardCardComponent implements OnInit {
           description: office.address
         };
       });
-      console.log(this.myOffices);
     });
   }
 
