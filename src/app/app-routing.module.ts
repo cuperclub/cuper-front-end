@@ -9,12 +9,13 @@ import { EmployeeHomeComponent } from './pages/employee';
 import { MyCompanyComponent } from './pages/company';
 import { NewRewardCardComponent } from './components/new-reward-card/new-reward-card.component';
 import { RewardsComponent } from './pages/company';
-import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from './guards/auth/auth.guard';
+import { IsntSignedInGuard } from './guards/routes/isnt-signed-in.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, pathMatch: 'full' },
-  { path: 'register', component: RegisterComponent, pathMatch: 'full' },
+  { path: 'login', component: LoginComponent, pathMatch: 'full', canActivate: [IsntSignedInGuard] },
+  { path: 'register', component: RegisterComponent, pathMatch: 'full', canActivate: [IsntSignedInGuard] },
   {
     path: 'home',
     component: HomeComponent,
