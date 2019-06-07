@@ -1,29 +1,44 @@
 <div class="transactions-container">
-  <form class="header" (ngSubmit)="onSearch()">
-    <mat-form-field class="input-national-id">
-      <input matInput
-        [(ngModel)]="client.national_id"
-        name="national_id">
-      <button mat-button
-        *ngIf="client.national_id"
-        matSuffix mat-icon-button
-        aria-label="Clear"
-        (click)="client.national_id=''">
-        <mat-icon>close</mat-icon>
-      </button>
+  <div class="title">{{ 'transactions.new' | translate }}</div>
+  <mat-card class="user-card">
+    <mat-form-field class="input-search">
+      <input matInput placeholder="{{ 'common.user' | translate}}" [matAutocomplete]="auto" [formControl]="stateCtrl">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option class="item-list" *ngFor="let user of filteredUsers | async" [value]="user.name" (click)="onClickOption(user)">
+          <div class="user-search-item">
+            <div class="avatar-col">
+              <cuper-avatar [imageSrc]="user.image" [size]="25"></cuper-avatar>
+            </div>
+            <div class="content-col">
+              <div class="title">{{user.name}}</div>
+              <div class="description">{{user.email}}</div>
+            </div>
+          </div>
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
-    <div class="instructions">
-      <div class="content">
-        Por favor ingrese el numero de cedula para acreditar los puntos.
+    <div class="user-info" *ngIf="currentUser">
+      <div class="user-preview-card">
+        <div class="container">
+          <cuper-avatar [imageSrc]="currentUser.image" [size]="60"></cuper-avatar>
+          <div class="name">{{currentUser.name}}</div>
+          <div class="national_id">{{currentUser.national_id}}</div>
+        </div>
+        <div class="footer">
+          <button mat-flat-button
+            color="primary"
+            (click)="onInputTransaction()">
+            {{ 'transactions.input_transaction' | translate }}
+          </button>
+          <button mat-flat-button
+            color="accent"
+            (click)="onOutputTransaction()">
+            {{ 'transactions.output_transaction' | translate }}
+          </button>
+        </div>
       </div>
-      <button mat-flat-button color="primary" type="submit">{{ 'common.save' | translate }}</button>
     </div>
-  </form>
-  <div class="title">
-    <span class="label">{{ 'transactions.promotions' | translate }}</span>
-    <div class="description">Seleccione una promoción para canjearla</div>
-  </div>
-  <cuper-table-card></cuper-table-card>
+  </mat-card>
   <div class="title">{{ 'transactions.title' | translate }}</div>
   <mat-tab-group>
     <mat-tab label="{{ 'transactions.tabs.input' | translate }}">

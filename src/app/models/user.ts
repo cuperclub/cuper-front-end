@@ -15,6 +15,7 @@ export interface User {
   image?: string;
   email?: string;
   national_id?: string;
+  points?: number;
 }
 
 export enum UserStatus {

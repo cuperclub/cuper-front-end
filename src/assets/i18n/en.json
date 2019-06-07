@@ -42,6 +42,7 @@
     "all": "All",
     "ok": "Ok",
     "cancel": "Cancel",
+    "user": "User",
     "messages": {
       "updated": "Updated successfully"
     }
@@ -88,7 +89,9 @@
   },
   "transactions": {
     "title": "My Transactions",
-    "promotions": "Rewards",
+    "new": "New Transaction",
+    "input_transaction": "Add Points",
+    "output_transaction": "Get Reward",
     "tabs": {
       "input": "Input",
       "output": "Output"

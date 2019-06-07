@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from '../components/components.module';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -43,6 +43,7 @@ export const ROUTES: Routes = [];
     ComponentsModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
     TranslateModule.forRoot({
