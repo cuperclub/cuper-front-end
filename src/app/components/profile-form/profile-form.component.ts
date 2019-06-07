@@ -13,7 +13,6 @@ import { User } from '../../models';
   styleUrls: ['./profile-form.component.scss']
 })
 export class ProfileFormComponent {
-  user: User;
   errorsForm: any = {};
 
   constructor(
@@ -35,8 +34,8 @@ export class ProfileFormComponent {
           this.message.open(message, '', {
             duration: 2000
           });
-          this.user = this.saveAndGetUserFromStorage(resp);
-          this.dialogRef.close(this.user);
+          const user = this.saveAndGetUserFromStorage(resp);
+          this.dialogRef.close(user);
         });
       },
       ({ error }) => {

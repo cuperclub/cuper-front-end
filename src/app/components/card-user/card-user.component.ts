@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfileFormComponent } from '../profile-form/profile-form.component';
+import { UpdatePasswordFormComponent } from '../update-password-form/update-password-form.component';
 
 import { User } from '../../models';
 
@@ -20,7 +21,9 @@ export class CardUserComponent implements OnInit {
   ngOnInit() { }
 
   onUpdatePassword() {
-    console.log('launch modal to change password');
+    this.dialog.open(UpdatePasswordFormComponent, {
+      width: '300px'
+    });
   }
 
   onUpdateInformation() {

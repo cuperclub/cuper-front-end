@@ -101,7 +101,9 @@
   "user": {
     "name": "Nombre",
     "national_id": "Documento de identidad",
-    "email": "Email"
+    "email": "Email",
+    "passwordNew": "Nueva contraseña",
+    "passwordCurrent": "Contraseña actual"
   },
   "tabs": {
     "dashboard": "Dashboard",

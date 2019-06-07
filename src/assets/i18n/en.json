@@ -85,5 +85,17 @@
         }
       }
     }
+  },
+  "user": {
+    "name": "Name",
+    "national_id": "National Id",
+    "email": "Email",
+    "passwordNew": "New password",
+    "passwordCurrent": "Current password"
+  },
+  "tabs": {
+    "dashboard": "Dashboard",
+    "rewards": "Rewards",
+    "company": "Company"
   }
 }
