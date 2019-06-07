@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 import { User } from '../../models';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  apiURL = environment.apiBase;
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   public saveDataOnLocalStorage(user: User){
-    localStorage.setItem('current_user', JSON.stringify(user));
+    const currentUser = this.getDataOnLocalStorage(),
+          updateUser = {...currentUser, ...user};
+    localStorage.setItem('current_user', JSON.stringify(updateUser));
   }
 
   public getDataOnLocalStorage(){
@@ -19,5 +25,9 @@ export class UserService {
 
   public clearDataOnLocalStorage(){
     localStorage.removeItem('current_user');
+  }
+
+  public updateMyData(user: User): Observable<User>{
+    return this.httpClient.put<User>(`${this.apiURL}/api/users`, user);
   }
 }

@@ -1,4 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ProfileFormComponent } from '../profile-form/profile-form.component';
+import { UpdatePasswordFormComponent } from '../update-password-form/update-password-form.component';
+
 import { User } from '../../models';
 
 
@@ -10,16 +14,30 @@ import { User } from '../../models';
 export class CardUserComponent implements OnInit {
   @Input() user: User;
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() { }
 
-  onUpdateInformation() {
-    console.log('launch modal to update information');
-  }
-
   onUpdatePassword() {
-    console.log('launch modal to change password');
+    this.dialog.open(UpdatePasswordFormComponent, {
+      width: '300px'
+    });
   }
 
+  onUpdateInformation() {
+    const dialogRef = this.dialog.open(ProfileFormComponent, {
+      width: '400px',
+      data: {
+        user: Object.assign({}, this.user)
+      }
+    });
+
+    dialogRef.beforeClosed().subscribe(user => {
+      if(user){
+        this.user = user;
+      }
+    });
+  }
 }

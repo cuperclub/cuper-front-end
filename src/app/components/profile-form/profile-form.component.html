@@ -1,0 +1,42 @@
+<div class="user-form">
+  <form class="form">
+    <mat-form-field class="field-group">
+      <input matInput
+        [(ngModel)]="data.user.name"
+        name="name"
+        placeholder="{{ 'user.name' | translate }}"
+        required>
+    </mat-form-field>
+    <mat-error *ngIf="errorsForm.name">
+      {{errorsForm.name[0]}}
+    </mat-error>
+    <mat-form-field class="field-group">
+      <input matInput
+        [(ngModel)]="data.user.email"
+        name="email"
+        placeholder="{{ 'user.email' | translate }}"
+        required>
+    </mat-form-field>
+    <mat-error *ngIf="errorsForm.email">
+      {{errorsForm.email[0]}}
+    </mat-error>
+    <mat-form-field class="field-group">
+      <input matInput
+        [(ngModel)]="data.user.national_id"
+        name="national_id"
+        placeholder="{{ 'user.national_id' | translate }}"
+        required>
+    </mat-form-field>
+    <mat-error *ngIf="errorsForm.national_id">
+      {{errorsForm.national_id[0]}}
+    </mat-error>
+    <div class="footer-form">
+      <button mat-flat-button color="primary" (click)="onSubmit(data.user)">
+        {{ 'common.ok' | translate }}
+      </button>
+      <button mat-flat-button color="secondary" (click)="onCloseDialog()">
+        {{ 'common.cancel' | translate }}
+      </button>
+    </div>
+  </form>
+</div>

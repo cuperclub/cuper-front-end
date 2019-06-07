@@ -89,6 +89,13 @@
       }
     }
   },
+  "user": {
+    "name": "Name",
+    "national_id": "National Id",
+    "email": "Email",
+    "passwordNew": "New password",
+    "passwordCurrent": "Current password"
+  },
   "transactions": {
     "title": "My Transactions",
     "rewards_availables": "Availables Rewards",

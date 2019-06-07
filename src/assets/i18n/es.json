@@ -101,6 +101,13 @@
       }
     }
   },
+  "user": {
+    "name": "Nombre",
+    "national_id": "Documento de identidad",
+    "email": "Email",
+    "passwordNew": "Nueva contraseña",
+    "passwordCurrent": "Contraseña actual"
+  },
   "transactions": {
     "title": "Mis Transacciones",
     "rewards_availables": "Promociones Disponibles",

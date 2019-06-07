@@ -24,6 +24,8 @@ import { SquareSelectComponent } from './square-select/square-select.component';
 import { RewardCardComponent } from './reward-card/reward-card.component';
 import { NewRewardCardComponent } from './new-reward-card/new-reward-card.component';
 import { CompanyFormComponent } from './company-form/company-form.component';
+import { ProfileFormComponent } from './profile-form/profile-form.component';
+import { UpdatePasswordFormComponent } from './update-password-form/update-password-form.component';
 import { InputTransactionFormComponent } from './input-transaction-form/input-transaction-form.component';
 import { OutputTransactionFormComponent } from './output-transaction-form/output-transaction-form.component';
 
@@ -49,11 +51,15 @@ export function createTranslateLoader(http: HttpClient) {
     RewardCardComponent,
     NewRewardCardComponent,
     CompanyFormComponent,
+    ProfileFormComponent,
+    UpdatePasswordFormComponent,
     InputTransactionFormComponent,
     OutputTransactionFormComponent
   ],
   entryComponents: [
     CompanyFormComponent,
+    ProfileFormComponent,
+    UpdatePasswordFormComponent,
     InputTransactionFormComponent,
     OutputTransactionFormComponent
   ],
