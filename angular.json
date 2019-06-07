@@ -55,6 +55,14 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]
             }
           }
         },
@@ -66,6 +74,9 @@
           "configurations": {
             "production": {
               "browserTarget": "cuper-front-end:build:production"
+            },
+            "staging": {
+              "browserTarget": "cuper-front-end:build:staging"
             }
           }
         },
