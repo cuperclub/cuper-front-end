@@ -1,6 +1,9 @@
 <div class="select-container">
-  <div class="option-container">
-    <div class="option" [ngClass]="{'active': activeIndex === i}" *ngFor="let option of options; let i = index;" (click)="onClick(i)">
+  <div class="option-container" [ngClass]="className">
+    <div class="option"
+      [class.active]="activeIndex === i"
+      *ngFor="let option of options; let i = index;"
+      (click)="onClick(i)">
       <span class="title">{{option.title}}</span>
       <span class="description">{{option.description}}</span>
     </div>
