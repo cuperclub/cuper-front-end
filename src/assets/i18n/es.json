@@ -55,6 +55,8 @@
     "ok": "Aceptar",
     "cancel": "Cancelar",
     "user": "Usuario",
+    "names": "Nombres",
+    "national_id": "Cedula",
     "messages": {
       "updated": "Actualizado correctamente"
     }

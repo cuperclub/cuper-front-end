@@ -43,6 +43,8 @@
     "ok": "Ok",
     "cancel": "Cancel",
     "user": "User",
+    "names": "Names",
+    "national_id": "National Id",
     "messages": {
       "updated": "Updated successfully"
     }

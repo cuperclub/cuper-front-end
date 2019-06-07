@@ -39,6 +39,10 @@
 
         .footer {
           margin-top: 0.5rem;
+
+          .mat-primary {
+            margin-right: 5px;
+          }
         }
       }
     }
@@ -69,6 +73,7 @@
   .content-col {
     flex-basis: 80%;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     line-height: 1;
 

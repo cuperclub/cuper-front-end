@@ -17,22 +17,27 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <div class="user-info" *ngIf="currentUser">
+    <div class="user-info">
       <div class="user-preview-card">
         <div class="container">
-          <cuper-avatar [imageSrc]="currentUser.image" [size]="60"></cuper-avatar>
-          <div class="name">{{currentUser.name}}</div>
-          <div class="national_id">{{currentUser.national_id}}</div>
+          <cuper-avatar *ngIf="!currentUser" [imageSrc]="defaultImageProfile" [size]="60"></cuper-avatar>
+          <cuper-avatar *ngIf="currentUser" [imageSrc]="currentUser.image" [size]="60"></cuper-avatar>
+          <div class="name" *ngIf="currentUser">{{currentUser.name}}</div>
+          <div class="name" *ngIf="!currentUser">{{'common.names' | translate}}</div>
+          <div class="national_id" *ngIf="currentUser">{{currentUser.national_id}}</div>
+          <div class="national_id" *ngIf="!currentUser">{{'common.national_id' | translate}}</div>
         </div>
         <div class="footer">
           <button mat-flat-button
             color="primary"
-            (click)="onInputTransaction()">
+            (click)="onInputTransaction()"
+            [disabled]="!currentUser">
             {{ 'transactions.input_transaction' | translate }}
           </button>
           <button mat-flat-button
             color="accent"
-            (click)="onOutputTransaction()">
+            (click)="onOutputTransaction()"
+            [disabled]="!currentUser">
             {{ 'transactions.output_transaction' | translate }}
           </button>
         </div>

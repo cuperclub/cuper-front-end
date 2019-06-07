@@ -12,6 +12,7 @@ import { User } from '../../../models';
 export class TransactionsComponent implements OnInit {
   stateCtrl = new FormControl();
   filteredUsers: Observable<User[]>;
+  defaultImageProfile: string = '../../../../assets/images/profile-placeholder.png';
   currentUser: User;
 
   users: User[] = [
@@ -55,6 +56,7 @@ export class TransactionsComponent implements OnInit {
 
   private _filterUsers(value: string): User[] {
     const filterValue = value.toLowerCase();
+    if(this.currentUser) this.currentUser = undefined;
     return this.users.filter(state => state.name.toLowerCase().indexOf(filterValue) === 0);
   }
 
