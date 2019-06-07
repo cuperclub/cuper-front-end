@@ -5,7 +5,10 @@
       <div class="text">{{ 'common.company' | translate }}</div>
     </div>
     <div>
-      <button mat-icon-button class="edit-button" (click)="editCompany()">
+      <button mat-icon-button
+        *ngIf="!disableEvents"
+        class="edit-button"
+        (click)="editCompany()">
         <mat-icon>edit</mat-icon>
       </button>
     </div>

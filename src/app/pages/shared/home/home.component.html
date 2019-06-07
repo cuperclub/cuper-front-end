@@ -59,6 +59,13 @@
       <mat-icon>business</mat-icon>
       <span>{{ 'tabs.company' | translate }}</span>
     </a>
+    <a routerLink="transactions"
+      class="tabs"
+      routerLinkActive="active"
+      *ngIf="currentUser && currentUser.is_cashier">
+      <mat-icon>account_balance_wallet</mat-icon>
+      <span>{{ 'tabs.transactions' | translate }}</span>
+    </a>
   </div>
   <div class="render-container">
     <router-outlet *ngIf="currentUser"></router-outlet>

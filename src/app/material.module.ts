@@ -12,7 +12,9 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatCheckboxModule,
-  MatDialogModule
+  MatDialogModule,
+  MatTabsModule,
+  MatAutocompleteModule
 } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
@@ -33,7 +35,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTabsModule,
+    MatAutocompleteModule
   ]
 })
 export class MaterialModule { }

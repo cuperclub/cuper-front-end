@@ -8,6 +8,13 @@
     overflow-x: auto;
     overflow-y: hidden;
 
+    &.grid-container {
+      justify-content: center;
+      flex-wrap: wrap;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
     .option {
       max-width: 33.333%;
       padding: .5rem;

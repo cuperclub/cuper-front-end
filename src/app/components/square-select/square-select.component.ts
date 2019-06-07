@@ -13,6 +13,7 @@ interface OptionSquare {
 export class SquareSelectComponent implements OnInit {
   @Input() options: OptionSquare [];
   @Input() onSelect: Function;
+  @Input() className: string = '';
 
   activeIndex: Number;
 

@@ -26,6 +26,8 @@ import { NewRewardCardComponent } from './new-reward-card/new-reward-card.compon
 import { CompanyFormComponent } from './company-form/company-form.component';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
 import { UpdatePasswordFormComponent } from './update-password-form/update-password-form.component';
+import { InputTransactionFormComponent } from './input-transaction-form/input-transaction-form.component';
+import { OutputTransactionFormComponent } from './output-transaction-form/output-transaction-form.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -55,7 +57,9 @@ export function createTranslateLoader(http: HttpClient) {
   entryComponents: [
     CompanyFormComponent,
     ProfileFormComponent,
-    UpdatePasswordFormComponent
+    UpdatePasswordFormComponent,
+    InputTransactionFormComponent,
+    OutputTransactionFormComponent
   ],
   imports: [
     CommonModule,

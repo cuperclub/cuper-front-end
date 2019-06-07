@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from '../components/components.module';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -20,6 +20,7 @@ import { DashboardComponent } from './shared/dashboard/dashboard.component';
 // Partner
 import { MyCompanyComponent } from './company/my-company/my-company.component';
 import { RewardsComponent } from './company/rewards/rewards.component';
+import { TransactionsComponent } from './employee/transactions/transactions.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -34,13 +35,15 @@ export const ROUTES: Routes = [];
     HomeComponent,
     MyCompanyComponent,
     RewardsComponent,
-    DashboardComponent
+    DashboardComponent,
+    TransactionsComponent
   ],
   imports: [
     CommonModule,
     ComponentsModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
     TranslateModule.forRoot({

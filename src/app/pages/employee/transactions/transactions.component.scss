@@ -1,0 +1,90 @@
+@import '../../../../styles/colors';
+
+.transactions-container {
+  padding: 3rem 5% 0 5%;
+
+  .user-card {
+    margin-bottom: 1.5%;
+
+    .input-search {
+      width: 100%;
+    }
+
+    .user-info {
+      display: flex;
+      justify-content: center;
+
+      .user-preview-card{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .container {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .name {
+            font-family: 'Circular-Book';
+            font-size: 25px;
+          }
+
+          .national_id {
+            font-family: 'Lato Regular';
+            font-size: 16px;
+            color: $gray-dark;
+          }
+        }
+
+        .footer {
+          margin-top: 0.5rem;
+
+          .mat-primary {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .title {
+    margin-bottom: 1.5%;
+    font-family: 'Circular-Book';
+    font-size: 20px;
+  }
+}
+
+.item-list {
+  padding: 0;
+  border-bottom: 1px solid $mercury;
+}
+
+.user-search-item {
+  width: 100%;
+  display: flex;
+  height: 2.5rem;
+
+  .avatar-col {
+    flex-basis: 10%;
+    text-align: center;
+  }
+
+  .content-col {
+    flex-basis: 80%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    line-height: 1;
+
+    .title {
+      font-family: 'Circular-Book';
+    }
+
+    .description {
+      font-size: 12px;
+      padding: 0.25rem 0;
+      color: $gray-dark;
+    }
+  }
+}

@@ -42,6 +42,9 @@
     "all": "All",
     "ok": "Ok",
     "cancel": "Cancel",
+    "user": "User",
+    "names": "Names",
+    "national_id": "National Id",
     "messages": {
       "updated": "Updated successfully"
     }
@@ -93,9 +96,27 @@
     "passwordNew": "New password",
     "passwordCurrent": "Current password"
   },
+  "transactions": {
+    "title": "My Transactions",
+    "rewards_availables": "Availables Rewards",
+    "new": "New Transaction",
+    "input_transaction": "Add Points",
+    "input_form": {
+      "cost": {
+        "label": "Cost",
+        "description": "Write the inovice's cost in dollars"
+      }
+    },
+    "output_transaction": "Get Reward",
+    "tabs": {
+      "input": "Input",
+      "output": "Output"
+    }
+  },
   "tabs": {
     "dashboard": "Dashboard",
     "rewards": "Rewards",
-    "company": "Company"
+    "company": "Company",
+    "transactions": "Transactions"
   }
 }
