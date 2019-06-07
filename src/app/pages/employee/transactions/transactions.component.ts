@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
 import { User } from '../../../models';
+import { InputTransactionFormComponent } from '../../../components/input-transaction-form/input-transaction-form.component';
+import { OutputTransactionFormComponent } from '../../../components/output-transaction-form/output-transaction-form.component';
 
 @Component({
   selector: 'cuper-transactions',
@@ -46,7 +49,9 @@ export class TransactionsComponent implements OnInit {
     }
   ];
 
-  constructor() {
+  constructor(
+    private dialog: MatDialog
+  ) {
     this.filteredUsers = this.stateCtrl.valueChanges
       .pipe(
         startWith(''),
@@ -66,6 +71,45 @@ export class TransactionsComponent implements OnInit {
 
   onClickOption(option){
     this.currentUser = option;
+  }
+
+  onInputTransaction(){
+    const dialogRef = this.dialog.open(InputTransactionFormComponent, {
+      width: '250px',
+      data: {
+        user: this.currentUser,
+        invoice: {}
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(resp => {
+      console.log('resp', resp);
+    });
+  }
+
+  onOutputTransaction(){
+    const dialogRef = this.dialog.open(OutputTransactionFormComponent, {
+      width: '400px',
+      data: {
+        user: this.currentUser,
+        rewards : [
+          {
+            title: 'First Promotion',
+            description: '2x1 in hotdogs'
+          },
+          {
+            title: 'Second Promotion',
+            description: '2x1 in hotdogs'
+          },
+          {
+            title: 'Third Promotion',
+            description: '2x1 in hotdogs'
+          }
+        ],
+        onSelectReward: (reward) => console.log('reward selected', reward),
+        onSubmitReward: () => console.log('onSubmitReward')
+      }
+    });
   }
 
 }

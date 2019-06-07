@@ -91,8 +91,15 @@
   },
   "transactions": {
     "title": "My Transactions",
+    "rewards_availables": "Availables Rewards",
     "new": "New Transaction",
     "input_transaction": "Add Points",
+    "input_form": {
+      "cost": {
+        "label": "Cost",
+        "description": "Write the inovice's cost in dollars"
+      }
+    },
     "output_transaction": "Get Reward",
     "tabs": {
       "input": "Input",

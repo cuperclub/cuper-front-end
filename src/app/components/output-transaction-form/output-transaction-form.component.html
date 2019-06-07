@@ -1,0 +1,16 @@
+<div class="company-form">
+  <div class="title">{{ 'transactions.rewards_availables' | translate }}</div>
+  <cuper-square-select *ngIf="data.rewards"
+    [options]="data.rewards"
+    [onSelect]="data.onSelectReward"
+    [className]="'grid-container'">
+  </cuper-square-select>
+  <div class="footer-form">
+    <button mat-flat-button color="primary" (click)="onCloseDialog(); data.onSubmitReward();">
+      {{ 'common.ok' | translate }}
+    </button>
+    <button mat-flat-button color="secondary" (click)="onCloseDialog()">
+      {{ 'common.cancel' | translate }}
+    </button>
+  </div>
+</div>

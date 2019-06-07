@@ -24,6 +24,8 @@ import { SquareSelectComponent } from './square-select/square-select.component';
 import { RewardCardComponent } from './reward-card/reward-card.component';
 import { NewRewardCardComponent } from './new-reward-card/new-reward-card.component';
 import { CompanyFormComponent } from './company-form/company-form.component';
+import { InputTransactionFormComponent } from './input-transaction-form/input-transaction-form.component';
+import { OutputTransactionFormComponent } from './output-transaction-form/output-transaction-form.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -46,10 +48,14 @@ export function createTranslateLoader(http: HttpClient) {
     SquareSelectComponent,
     RewardCardComponent,
     NewRewardCardComponent,
-    CompanyFormComponent
+    CompanyFormComponent,
+    InputTransactionFormComponent,
+    OutputTransactionFormComponent
   ],
   entryComponents: [
-    CompanyFormComponent
+    CompanyFormComponent,
+    InputTransactionFormComponent,
+    OutputTransactionFormComponent
   ],
   imports: [
     CommonModule,

@@ -56,7 +56,7 @@
     "cancel": "Cancelar",
     "user": "Usuario",
     "names": "Nombres",
-    "national_id": "Cedula",
+    "national_id": "Cédula",
     "messages": {
       "updated": "Actualizado correctamente"
     }
@@ -103,8 +103,15 @@
   },
   "transactions": {
     "title": "Mis Transacciones",
+    "rewards_availables": "Promociones Disponibles",
     "new": "Nueva Transacción",
     "input_transaction": "Añadir Puntos",
+    "input_form": {
+      "cost": {
+        "label": "Consumo",
+        "description": "Ingrese el valor de la factura en dolares"
+      }
+    },
     "output_transaction": "Canjear Promoción",
     "tabs": {
       "input": "Entrada",
