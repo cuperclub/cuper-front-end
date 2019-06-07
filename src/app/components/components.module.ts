@@ -52,7 +52,9 @@ export function createTranslateLoader(http: HttpClient) {
     NewRewardCardComponent,
     CompanyFormComponent,
     ProfileFormComponent,
-    UpdatePasswordFormComponent
+    UpdatePasswordFormComponent,
+    InputTransactionFormComponent,
+    OutputTransactionFormComponent
   ],
   entryComponents: [
     CompanyFormComponent,
