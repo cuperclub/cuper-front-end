@@ -7,6 +7,9 @@
         placeholder="{{ 'user.name' | translate }}"
         required>
     </mat-form-field>
+    <mat-error *ngIf="errorsForm.name">
+      {{errorsForm.name[0]}}
+    </mat-error>
     <mat-form-field class="field-group">
       <input matInput
         [(ngModel)]="data.user.email"
@@ -14,6 +17,9 @@
         placeholder="{{ 'user.email' | translate }}"
         required>
     </mat-form-field>
+    <mat-error *ngIf="errorsForm.email">
+      {{errorsForm.email[0]}}
+    </mat-error>
     <mat-form-field class="field-group">
       <input matInput
         [(ngModel)]="data.user.national_id"
@@ -21,6 +27,9 @@
         placeholder="{{ 'user.national_id' | translate }}"
         required>
     </mat-form-field>
+    <mat-error *ngIf="errorsForm.national_id">
+      {{errorsForm.national_id[0]}}
+    </mat-error>
     <div class="footer-form">
       <button mat-flat-button color="primary" (click)="onSubmit(data.user)">
         {{ 'common.ok' | translate }}
