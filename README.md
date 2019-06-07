@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/cuperclub/cuper-front-end.svg?style=svg)](https://circleci.com/gh/cuperclub/cuper-front-end)
+
 # CuperFrontEnd
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
