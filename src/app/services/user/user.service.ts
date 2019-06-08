@@ -30,4 +30,12 @@ export class UserService {
   public updateMyData(user: User): Observable<User>{
     return this.httpClient.put<User>(`${this.apiURL}/api/users`, user);
   }
+
+  public getAvatar(joinNumber){
+    let date = joinNumber.toString();
+    const lastNumber = date.substr(date.length - 1);
+    const routeBase = '../../../../assets/images/avatars/';
+    const path = routeBase + `${lastNumber}.png`;
+    return path;
+  }
 }

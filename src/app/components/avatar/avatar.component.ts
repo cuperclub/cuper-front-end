@@ -12,7 +12,7 @@ interface Box {
 })
 export class AvatarComponent implements OnInit {
 
-  private defaultImage = '../../../../assets/images/logo-club.svg';
+  private defaultImage = '../../../../assets/images/avatars/0.png';
 
   @Input() imageSrc: string;
   @Input() size: number = 60;
