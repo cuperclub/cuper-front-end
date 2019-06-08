@@ -4,6 +4,7 @@ import { ProfileFormComponent } from '../profile-form/profile-form.component';
 import { UpdatePasswordFormComponent } from '../update-password-form/update-password-form.component';
 
 import { User } from '../../models';
+import { UserService } from 'src/app/services';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class CardUserComponent implements OnInit {
   @Input() user: User;
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private userService: UserService,
   ) { }
 
   ngOnInit() { }

@@ -6,6 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./preview-reward.component.scss']
 })
 export class PreviewRewardComponent implements OnInit {
+  placeholder: string = '../../../assets/images/background-reward.png';
 
   constructor() { }
 

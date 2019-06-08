@@ -17,11 +17,11 @@
     </div>
     <div class="menu-container" *ngIf="currentUser">
       <div class="menu" [matMenuTriggerFor]="menu">
-        <cuper-avatar [imageSrc]="currentUser.image" size='40'></cuper-avatar>
+        <cuper-avatar [imageSrc]="currentUser.image || userService.getAvatar(currentUser.join_at)" [size]="40"></cuper-avatar>
         <span class="title" *ngIf="currentUser">{{currentUser.name || currentUser.username}}</span>
         <mat-menu #menu="matMenu">
           <div class="user-data">
-            <cuper-avatar [imageSrc]="currentUser.image" size='40'></cuper-avatar>
+            <cuper-avatar [imageSrc]="currentUser.image || userService.getAvatar(currentUser.join_at)" size='40'></cuper-avatar>
             <div class="user-info">
               <span class="name">{{currentUser.name || currentUser.username}}</span>
               <span class="email">{{currentUser.email}}</span>
