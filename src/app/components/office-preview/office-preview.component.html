@@ -1,0 +1,20 @@
+<div class="office-preview" *ngIf="data.office">
+  <div class="office-container">
+    <div class="office-data">
+      <div class="title">{{data.office.name}}</div>
+      <div class="description">{{data.office.email}}</div>
+      <div class="description">{{data.office.address}}</div>
+    </div>
+    <div class="map-container">
+      MAP
+    </div>
+  </div>
+  <div class="footer-dialog">
+    <button mat-flat-button color="primary" (click)="data.onEditOffice(data.office)">
+      {{ 'common.edit' | translate }}
+    </button>
+    <button mat-flat-button color="secondary" (click)="onCloseDialog()">
+      {{ 'common.cancel' | translate }}
+    </button>
+  </div>
+</div>

@@ -3,8 +3,8 @@
     <span class="text">{{ 'common.cashiers' | translate }}</span>
   </div>
   <mat-divider></mat-divider>
-  <div class="card-content">
-    <div class="cashiers" *ngIf="cashiers">
+  <div class="card-content" *ngIf="myEmployees$ | async as data">
+    <div class="cashiers" *ngIf="data.employees as cashiers">
       <div class="cashier" *ngFor="let cashier of cashiers">
         <div class="avatar-container">
           <cuper-avatar [imageSrc]="cashier.image" [size]="60"></cuper-avatar>
@@ -24,7 +24,7 @@
         </button>
       </div>
     </div>
-    <div class="emptyState" *ngIf="!cashiers">
+    <div class="emptyState" *ngIf="!data.employees">
       Empty state
     </div>
   </div>

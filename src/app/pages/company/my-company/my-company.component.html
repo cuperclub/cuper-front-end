@@ -1,6 +1,6 @@
 <div class="page-container">
-  <cuper-company-card class="card"></cuper-company-card>
-  <cuper-billing-card class="card"></cuper-billing-card>
+  <cuper-company-card class="card" (propagateCompanyData)="onListerCompanyData($event)"></cuper-company-card>
+  <cuper-billing-card class="card" [company]="myCompany"></cuper-billing-card>
   <cuper-card-office class="card"></cuper-card-office>
   <cuper-card-cashier class="card"></cuper-card-cashier>
 </div>

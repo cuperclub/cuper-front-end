@@ -1,5 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Office } from '../../models';
+import { OfficeService } from 'src/app/services';
+import { Observable } from 'rxjs';
+import { OfficePreviewComponent } from '../office-preview/office-preview.component';
 
 @Component({
   selector: 'cuper-card-office',
@@ -7,28 +11,28 @@ import { Office } from '../../models';
   styleUrls: ['./card-office.component.scss']
 })
 export class CardOfficeComponent implements OnInit {
-  @Input() offices: Office [];
+  myOffices$: Observable<Office[]>;
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog,
+    private officeService: OfficeService
+  ) { }
 
   ngOnInit() {
-    this.offices = [
-      { name: 'Office 1' },
-      { name: 'Office 2' },
-      { name: 'Office 3' },
-      { name: 'Office 3w' },
-      { name: 'Office 3s' },
-      { name: 'Office 3' },
-      { name: 'Office 3a' },
-      { name: 'Office 3s' },
-    ];
+    this.myOffices$ = this.officeService.getOffices()
   }
 
   onSelectOffice = office => {
-    console.log('office selected', office);
+    this.dialog.open(OfficePreviewComponent, {
+      width: '300px',
+      data: {
+        office: Object.assign({}, office),
+        onEditOffice: this.onAddOffice
+      }
+    });
   }
 
-  onAddOffice = () => {
+  onAddOffice = (office) => {
     console.log('add new office');
   }
 

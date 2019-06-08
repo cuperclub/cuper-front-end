@@ -31,4 +31,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  goToMyProfile() {
+    this.router.navigate(['home/profile']);
+  }
 }
