@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Employee, UserStatus } from '../../models';
+import { Component, OnInit } from '@angular/core';
+import { Employee } from '../../models';
 import { EmployeeService } from 'src/app/services';
 import { Observable } from 'rxjs';
 
