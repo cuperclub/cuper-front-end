@@ -1,0 +1,38 @@
+@import "../../../styles/colors.scss";
+
+.office-preview {
+
+  .office-container {
+    font-family: 'Circular-Book';
+
+    .office-data {
+
+      .title {
+        font-size: 18px;
+      }
+
+      .description  {
+        font-size: 12px;
+        font-family: 'Lato-Regular';
+        color: $gray-dark;
+      }
+    }
+
+    .map-container {
+      height: 12rem;
+      margin: 3% 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $labaster;
+    }
+  }
+
+  .footer-dialog {
+    text-align: end;
+
+    .mat-primary {
+      margin-right: 2%;
+    }
+  }
+}
