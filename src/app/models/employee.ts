@@ -1,5 +1,5 @@
 import { User, UserStatus } from './user';
 
-export interface Cashier extends User {
+export interface Employee extends User {
   status?: UserStatus
 }

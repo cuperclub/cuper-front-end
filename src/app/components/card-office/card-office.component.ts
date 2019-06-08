@@ -11,7 +11,6 @@ import { OfficePreviewComponent } from '../office-preview/office-preview.compone
   styleUrls: ['./card-office.component.scss']
 })
 export class CardOfficeComponent implements OnInit {
-  offices: Office [];
   myOffices$: Observable<Office[]>;
 
   constructor(
