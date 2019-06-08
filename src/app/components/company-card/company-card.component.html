@@ -20,6 +20,6 @@
     </div>
     <div class="company-name">{{company?.business_name}}</div>
     <div class="company-slogan">{{company?.slogan || 'company.not_slogan' | translate}}</div>
-    <div class="company-created-at">{{'company.registered_at' | translate}}: {{company?.created_at | date }}</div>
+    <div class="company-created-at">{{'company.registered_at' | translate}}: {{company?.join_at | date }}</div>
   </div>
 </mat-card>

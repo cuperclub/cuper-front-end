@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Company } from '../../models';
 import { CompanyService} from 'src/app/services';
@@ -14,6 +14,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class CompanyCardComponent implements OnInit {
   company: Company = {};
   @Input() disableEvents: boolean = false;
+  @Output() propagateCompanyData = new EventEmitter<Company>();
 
   constructor(
     private dialog: MatDialog,
@@ -23,7 +24,10 @@ export class CompanyCardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.companyService.getMyCompany().subscribe(resp => this.company = resp);
+    this.companyService.getMyCompany().subscribe(resp => {
+      this.company = resp
+      this.propagateCompanyData.emit(this.company);
+    });
   }
 
   editCompany() {

@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/shared';
 import { RegisterComponent } from './pages/shared';
 import { DashboardComponent } from './pages/shared';
 import { HomeComponent } from './pages/shared';
+import { ProfileComponent } from './pages/shared';
 import { MyCompanyComponent } from './pages/company';
 import { NewRewardCardComponent } from './components/new-reward-card/new-reward-card.component';
 import { RewardsComponent } from './pages/company';
@@ -22,11 +23,12 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'dashboard', component: DashboardComponent },
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
       { path: 'company', component: MyCompanyComponent, canActivate: [IsPartnerGuard] },
       { path: 'rewards', component: RewardsComponent, canActivate: [IsPartnerGuard] },
       { path: 'rewards/new', component: NewRewardCardComponent, canActivate: [IsPartnerGuard] },
-      { path: 'transactions', component: TransactionsComponent, canActivate: [IsCashierGuard] }
+      { path: 'transactions', component: TransactionsComponent, canActivate: [IsCashierGuard] },
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] }
     ],
   }
 ];

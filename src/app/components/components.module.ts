@@ -28,6 +28,7 @@ import { ProfileFormComponent } from './profile-form/profile-form.component';
 import { UpdatePasswordFormComponent } from './update-password-form/update-password-form.component';
 import { InputTransactionFormComponent } from './input-transaction-form/input-transaction-form.component';
 import { OutputTransactionFormComponent } from './output-transaction-form/output-transaction-form.component';
+import { OfficePreviewComponent } from './office-preview/office-preview.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -54,14 +55,16 @@ export function createTranslateLoader(http: HttpClient) {
     ProfileFormComponent,
     UpdatePasswordFormComponent,
     InputTransactionFormComponent,
-    OutputTransactionFormComponent
+    OutputTransactionFormComponent,
+    OfficePreviewComponent
   ],
   entryComponents: [
     CompanyFormComponent,
     ProfileFormComponent,
     UpdatePasswordFormComponent,
     InputTransactionFormComponent,
-    OutputTransactionFormComponent
+    OutputTransactionFormComponent,
+    OfficePreviewComponent
   ],
   imports: [
     CommonModule,
