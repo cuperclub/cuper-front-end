@@ -60,7 +60,8 @@
     "national_id": "Cédula",
     "messages": {
       "updated": "Actualizado correctamente"
-    }
+    },
+    "available_points": "Puntos Disponibles"
   },
   "company": {
     "billing_info": "Datos de facturación",

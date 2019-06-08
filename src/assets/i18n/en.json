@@ -48,7 +48,8 @@
     "national_id": "National Id",
     "messages": {
       "updated": "Updated successfully"
-    }
+    },
+    "available_points": "Available Points"
   },
   "company": {
     "billing_info": "Billing Info",

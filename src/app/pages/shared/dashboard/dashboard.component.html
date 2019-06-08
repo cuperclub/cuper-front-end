@@ -1,5 +1,6 @@
 <div class="page-container">
   <cuper-card-user class="card" [user]="currentUser"></cuper-card-user>
+  <cuper-card-points class="card" [user]="currentUser"></cuper-card-points>
   <cuper-company-card class="card"
     *ngIf="currentUser && (currentUser.is_partner || currentUser.is_cashier)"
     [disableEvents]="currentUser && currentUser.is_cashier">

@@ -29,6 +29,7 @@ import { UpdatePasswordFormComponent } from './update-password-form/update-passw
 import { InputTransactionFormComponent } from './input-transaction-form/input-transaction-form.component';
 import { OutputTransactionFormComponent } from './output-transaction-form/output-transaction-form.component';
 import { OfficePreviewComponent } from './office-preview/office-preview.component';
+import { CardPointsComponent } from './card-points/card-points.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -56,7 +57,8 @@ export function createTranslateLoader(http: HttpClient) {
     UpdatePasswordFormComponent,
     InputTransactionFormComponent,
     OutputTransactionFormComponent,
-    OfficePreviewComponent
+    OfficePreviewComponent,
+    CardPointsComponent
   ],
   entryComponents: [
     CompanyFormComponent,
@@ -94,7 +96,8 @@ export function createTranslateLoader(http: HttpClient) {
     CardCounterComponent,
     SquareSelectComponent,
     RewardCardComponent,
-    NewRewardCardComponent
+    NewRewardCardComponent,
+    CardPointsComponent
   ]
 })
 export class ComponentsModule { }
