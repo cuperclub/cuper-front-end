@@ -10,8 +10,8 @@
           <cuper-avatar [imageSrc]="cashier.image" [size]="60"></cuper-avatar>
         </div>
         <div class="cashier-data">
-          <span class="name">{{cashier.name}}</span>
-          <span class="email">{{cashier.email}}</span>
+          <span class="name">{{cashier.user.name}}</span>
+          <span class="email">{{cashier.user.email}}</span>
           <div class="status" [ngClass]="cashier.status">
             {{ getStatusLabel(cashier.status) | translate }}
         </div>
