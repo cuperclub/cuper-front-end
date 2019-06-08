@@ -5,8 +5,6 @@
 	margin-top: 2rem;
 
   .view {
-		width: 50rem;
-
     .header-card {
       display: flex;
       justify-content: space-between;
@@ -22,6 +20,8 @@
     .panel-card {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
+      align-items: end;
 
       .preview-container {
         display: flex;
@@ -36,9 +36,10 @@
       .column-card {
         display: flex;
         flex-direction: column;
-        width: 25%;
+        width: 22rem;
+        height: 20rem;
         margin: 1rem;
-				flex: 1;
+        padding: 1rem;
 
 				.label {
 					font-family: 'Lato-Semibold';
@@ -64,6 +65,7 @@
 
           .placeholder-container {
             width: 30%;
+            margin-top: 1rem;
           }
         }
       }

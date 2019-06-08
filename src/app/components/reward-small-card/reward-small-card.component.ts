@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./reward-small-card.component.scss']
 })
 export class RewardSmallCardComponent implements OnInit {
-  private defaultImage = '../../../../assets/images/logo-club.svg';
+  private defaultImage = '../../../../assets/images/background-reward.png';
 
   @Input() imageSrc: string;
   @Input() text: string;

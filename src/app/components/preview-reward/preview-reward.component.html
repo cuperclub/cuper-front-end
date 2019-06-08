@@ -1,6 +1,7 @@
 <div class="preview-reward-container"
-  [ngStyle]="{'background-image': 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(' + file + ')'}"
+  [class.backdrop]="file"
   (click)="!disableEvents && openUploader()" [ngClass]="{'selectable': !disableEvents}">
+  <img class="img-reward" src="{{file || placeholder}}" />
   <div class="card-header">
     <!-- <cuper-avatar [imageSrc]="companyAvatar" [size]="40"></cuper-avatar> -->
     <div class="company-name">{{companyName}}</div>
