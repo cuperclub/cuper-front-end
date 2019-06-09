@@ -5,6 +5,7 @@ export interface Office {
   name?: string;
   email?: string;
   address?: string;
+  phone?: string;
   active?: boolean;
   company_id?: number;
 }

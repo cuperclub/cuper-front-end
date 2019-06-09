@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -30,37 +30,44 @@ import { InputTransactionFormComponent } from './input-transaction-form/input-tr
 import { OutputTransactionFormComponent } from './output-transaction-form/output-transaction-form.component';
 import { OfficePreviewComponent } from './office-preview/office-preview.component';
 import { MapComponent } from './map/map.component';
+import { OfficeFormComponent } from './office-form/office-form.component';
+import { ControlMessagesComponent } from './control-messages/control-messages.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
 }
 
+const components = [
+  FooterComponent,
+  CardOfficeComponent,
+  CardUserComponent,
+  AvatarComponent,
+  BillingCardComponent,
+  CompanyCardComponent,
+  PlaceholderCardComponent,
+  RewardSmallCardComponent,
+  TableCardComponent,
+  CardCashierComponent,
+  PreviewRewardComponent,
+  CardCounterComponent,
+  RewardCardComponent,
+  OfficeFormComponent,
+  CompanyFormComponent,
+  ProfileFormComponent,
+  UpdatePasswordFormComponent,
+  InputTransactionFormComponent,
+  OutputTransactionFormComponent,
+  NewRewardCardComponent,
+  SquareSelectComponent,
+  OfficePreviewComponent,
+  ControlMessagesComponent,
+  MapComponent
+];
+
 @NgModule({
-  declarations: [
-    FooterComponent,
-    CardOfficeComponent,
-    CardUserComponent,
-    AvatarComponent,
-    BillingCardComponent,
-    CompanyCardComponent,
-    PlaceholderCardComponent,
-    RewardSmallCardComponent,
-    TableCardComponent,
-    CardCashierComponent,
-    PreviewRewardComponent,
-    CardCounterComponent,
-    SquareSelectComponent,
-    RewardCardComponent,
-    NewRewardCardComponent,
-    CompanyFormComponent,
-    ProfileFormComponent,
-    UpdatePasswordFormComponent,
-    InputTransactionFormComponent,
-    OutputTransactionFormComponent,
-    OfficePreviewComponent,
-    MapComponent
-  ],
+  declarations: components,
   entryComponents: [
+    OfficeFormComponent,
     CompanyFormComponent,
     ProfileFormComponent,
     UpdatePasswordFormComponent,
@@ -79,25 +86,10 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    FormsModule,
+    ReactiveFormsModule
   ],
-  exports: [
-    FooterComponent,
-    CardOfficeComponent,
-    CardUserComponent,
-    PlaceholderCardComponent,
-    AvatarComponent,
-    BillingCardComponent,
-    CompanyCardComponent,
-    RewardSmallCardComponent,
-    TableCardComponent,
-    CardCashierComponent,
-    PreviewRewardComponent,
-    CardCounterComponent,
-    SquareSelectComponent,
-    RewardCardComponent,
-    NewRewardCardComponent,
-    MapComponent
-  ]
+  exports: components
 })
 export class ComponentsModule { }
