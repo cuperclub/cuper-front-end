@@ -1,0 +1,21 @@
+<mat-card class="card-container">
+  <div class="card-content">
+    <img class="img" src="../../../../assets/images/reward-sprites.svg" alt="cuper-join-company" />
+    <div class="text">
+      <span class="title">
+        {{ 'common.promotion.company_register_tile' | translate }}
+      </span>
+      <div class="promo-wrapper">
+        <span class="number">3</span>
+        <div>
+          <span class="time">Meses</span>
+          <br>
+          <span class="promo">*Gratis</span>
+        </div>
+      </div>
+      <button mat-stroked-button color="primary" (click)="registerCompany()">
+        {{ 'common.promotion.company_register' | translate }}
+      </button>
+    </div>
+  </div>
+</mat-card>

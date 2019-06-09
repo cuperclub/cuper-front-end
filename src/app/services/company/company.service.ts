@@ -19,4 +19,8 @@ export class CompanyService {
   public updateMyCompany(company: Company): Observable<Company>{
     return this.httpClient.put<Company>(`${this.apiURL}/api/partner/company`, company);
   }
+
+  public registerMyCompany(company: Company): Observable<Company>{
+    return this.httpClient.post<Company>(`${this.apiURL}/api/partner/company`, company);
+  }
 }

@@ -30,6 +30,7 @@ import { InputTransactionFormComponent } from './input-transaction-form/input-tr
 import { OutputTransactionFormComponent } from './output-transaction-form/output-transaction-form.component';
 import { OfficePreviewComponent } from './office-preview/office-preview.component';
 import { CardPointsComponent } from './card-points/card-points.component';
+import { CardRegisterCompanyComponent } from './card-register-company/card-register-company.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -58,7 +59,8 @@ export function createTranslateLoader(http: HttpClient) {
     InputTransactionFormComponent,
     OutputTransactionFormComponent,
     OfficePreviewComponent,
-    CardPointsComponent
+    CardPointsComponent,
+    CardRegisterCompanyComponent
   ],
   entryComponents: [
     CompanyFormComponent,
@@ -97,7 +99,8 @@ export function createTranslateLoader(http: HttpClient) {
     SquareSelectComponent,
     RewardCardComponent,
     NewRewardCardComponent,
-    CardPointsComponent
+    CardPointsComponent,
+    CardRegisterCompanyComponent
   ]
 })
 export class ComponentsModule { }

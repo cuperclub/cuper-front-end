@@ -61,7 +61,11 @@
     "messages": {
       "updated": "Actualizado correctamente"
     },
-    "available_points": "Puntos Disponibles"
+    "available_points": "Puntos Disponibles",
+    "promotion": {
+      "company_register_tile": "Registra tu negocio y obten",
+      "company_register": "Registrar"
+    }
   },
   "company": {
     "billing_info": "Datos de facturación",
@@ -69,6 +73,7 @@
     "ruc": "RUC",
     "contributor_type": "Tipo de Contribuidor",
     "economic_activity": "Actividad Económica",
+    "slogan": "Slogan",
     "not_slogan": "Aún no tienes un slogan",
     "registered_at": "Registrado",
     "business_name": "Nombre de la companía"
