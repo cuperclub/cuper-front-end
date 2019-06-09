@@ -74,7 +74,11 @@
     "business_name": "Nombre de la companía"
   },
   "office": {
-    "create": "Crear una nueva oficina"
+    "create": "Crear una nueva oficina",
+    "name": "Nombre",
+    "phone": "Teléfono",
+    "email": "Correo electrónico",
+    "address": "Dirección"
   },
   "promotion": {
     "terms": "Términos y condiciones"
@@ -134,5 +138,9 @@
     "rewards": "Recompensas",
     "company": "Companía",
     "transactions": "Transacciones"
+  },
+  "errors": {
+    "required": "Llena este campo por favor.",
+    "email": "Formato de correo incorrecto."
   }
 }

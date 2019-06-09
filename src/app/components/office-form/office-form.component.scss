@@ -1,0 +1,31 @@
+@import "../../../styles/colors";
+
+.card-container {
+  display: flex;
+
+  .left-container {
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .right-container {
+    width: 300px;
+  }
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  color: $gray-dark;
+}
+
+.submit-button {
+  margin-left: 1rem;
+}

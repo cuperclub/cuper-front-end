@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+
+import { OfficeFormComponent } from '../office-form/office-form.component';
 import { Office } from '../../models';
 import { OfficeService } from 'src/app/services';
 import { Observable } from 'rxjs';
@@ -17,6 +19,7 @@ export class CardOfficeComponent implements OnInit {
     private dialog: MatDialog,
     private officeService: OfficeService
   ) { }
+  @Input() offices: Office[];
 
   ngOnInit() {
     this.myOffices$ = this.officeService.getOffices()
@@ -32,8 +35,8 @@ export class CardOfficeComponent implements OnInit {
     });
   }
 
-  onAddOffice = (office) => {
-    console.log('add new office');
+  onAddOffice = () => {
+    this.dialog.open(OfficeFormComponent);
   }
 
 }
