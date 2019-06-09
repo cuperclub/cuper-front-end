@@ -4,5 +4,5 @@
     *ngIf="currentUser && (currentUser.is_partner || currentUser.is_cashier)"
     [disableEvents]="currentUser && currentUser.is_cashier">
   </cuper-company-card>
-  <cuper-map class="card"></cuper-map>
+  <cuper-map class="card" (onChangePosition)="onListerMapPosition($event)"></cuper-map>
 </div>

@@ -17,4 +17,8 @@ export class DashboardComponent implements OnInit {
     this.currentUser = this.userService.getDataOnLocalStorage();
   }
 
+  onListerMapPosition(coordinates){
+    console.log('current position', coordinates);
+  }
+
 }
