@@ -1,0 +1,8 @@
+<div *ngIf="control.invalid && (control.dirty || control.touched)">
+  <div *ngIf="control.errors.required">
+    {{ 'errors.required' | translate }}
+  </div>
+  <div *ngIf="control.errors.email">
+    {{ 'errors.email' | translate }}
+  </div>
+</div>
