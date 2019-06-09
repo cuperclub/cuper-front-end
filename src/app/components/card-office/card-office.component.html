@@ -9,7 +9,7 @@
   <div class="card-content" *ngIf="myOffices$ | async as data">
     <ul class="offices" *ngIf="data.offices as offices">
       <li class="office" *ngFor="let office of offices" (click)="onSelectOffice(office)">
-        <img class="avatar" src="../../../assets/images/shop.svg" />
+        <img class="avatar" src="../../../assets/images/shop.svg"/>
         <span class="text">{{office.name}}</span>
       </li>
     </ul>
