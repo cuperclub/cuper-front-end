@@ -31,4 +31,8 @@ export class OfficeFormComponent implements OnInit {
     console.log('guardando', this.officeForm.value);
   }
 
+  onListerMapPosition(coordinates){
+    console.log('current position', coordinates);
+  }
+
 }

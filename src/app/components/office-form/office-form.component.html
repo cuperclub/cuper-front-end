@@ -6,7 +6,6 @@
 <mat-dialog-content>
   <div class="card-container">
     <div class="left-container">
-
       <form [formGroup]="officeForm" novalidate>
         <mat-form-field>
           <input matInput placeholder="{{ 'office.name' | translate }}" formControlName="name">
@@ -38,7 +37,7 @@
       </form>
     </div>
     <div class="right-container">
-      <span>here goes the map</span>
+      <cuper-map (onChangePosition)="onListerMapPosition($event)"></cuper-map>
     </div>
   </div>
 </mat-dialog-content>
