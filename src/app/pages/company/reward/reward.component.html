@@ -1,0 +1,17 @@
+<div class="card-container">
+  <div class="view">
+    <div class="header-card">
+      <div class="title">{{ 'reward.preview' | translate }}</div>
+    </div>
+    <div class="panel-card">
+      <cuper-reward-card class="reward-card"
+        [promotion]="reward"
+        [editReward]="onEditReward">
+      </cuper-reward-card>
+      <mat-card class="column-card beneficiaries">
+        <div class="title-column">{{ 'reward.beneficiaries' | translate }}</div>
+        <cuper-table-card></cuper-table-card>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Promotion } from 'src/app/models';
-import { OfficeService, CompanyService} from 'src/app/services';
+import { OfficeService, CompanyService, PromotionService } from 'src/app/services';
 import { Company } from '../../models';
 import { Observable } from 'rxjs';
 
@@ -22,8 +23,10 @@ export class NewRewardCardComponent implements OnInit {
   myOffices: OptionSquare[] = [];
 
   constructor(
+    private route: ActivatedRoute,
     private officeService: OfficeService,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private promotionService: PromotionService
   ) { }
 
   ngOnInit() {
@@ -36,6 +39,14 @@ export class NewRewardCardComponent implements OnInit {
           description: office.address
         };
       });
+    });
+    this.route.paramMap.subscribe(params => {
+      const rewardId = parseInt(params.get('rewardId'));
+      if(rewardId){
+        this.promotionService.getPromotion(rewardId).subscribe(reward => {
+          this.reward = reward;
+        });
+      }
     });
   }
 

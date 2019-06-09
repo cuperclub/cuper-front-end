@@ -69,6 +69,8 @@
   "reward": {
     "edit": "Editar Recompensa",
     "create": "Create new reward",
+    "preview": "Reward Details",
+    "beneficiaries": "beneficiaries of this reward",
     "new": {
       "form": {
         "title": "What's the name of your campaign?",

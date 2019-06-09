@@ -14,4 +14,8 @@ export class PromotionService {
   public getMyPromotions(){
     return this.httpClient.get<Promotion[]>(`${this.apiURL}/api/partner/company/promotions`);
   }
+
+  public getPromotion(rewardId: number){
+    return this.httpClient.get<Promotion>(`${this.apiURL}/api/partner/company/promotions/${rewardId}`);
+  }
 }

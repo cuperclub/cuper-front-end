@@ -81,6 +81,8 @@
   "reward": {
     "edit": "Editar Recompensa",
     "create": "Crear nueva recompensa",
+    "preview": "Detalles Promoción",
+    "beneficiaries": "Beneficiarios de esta promoción",
     "new": {
       "form": {
         "title": "Describe tu promoción",

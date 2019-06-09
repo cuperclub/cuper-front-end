@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Promotion } from 'src/app/models';
 
 @Component({
   selector: 'cuper-reward-small-card',
@@ -8,14 +9,17 @@ import { Component, OnInit, Input } from '@angular/core';
 export class RewardSmallCardComponent implements OnInit {
   private defaultImage = '../../../../assets/images/background-reward.png';
 
-  @Input() imageSrc: string;
-  @Input() text: string;
-  @Input() onClick: Function = () => null;
+  @Input() reward: Promotion;
+  @Input() onClick: Function;
+
+  imageSrc: string;
+  text: string;
 
   constructor() { }
 
   ngOnInit() {
-    this.imageSrc = this.imageSrc || this.defaultImage;
+    this.imageSrc = this.reward.image || this.defaultImage;
+    this.text = this.reward.title || '';
   }
 
 }
