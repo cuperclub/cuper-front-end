@@ -1,8 +1,10 @@
-<form class="card-container" (ngSubmit)="onSaveReward()">
+<form class="card-container" (ngSubmit)="onSubmitReward()">
   <div class="view">
     <div class="header-card">
       <span class="title">{{ 'common.new_reward' | translate }}</span>
-      <button mat-flat-button color="primary" type="submit">{{ 'common.save' | translate }}</button>
+      <button mat-flat-button color="primary" type="submit">
+        {{ (isEditRoute ? 'common.update_data' : 'common.save')  | translate }}
+      </button>
     </div>
     <div class="panel-card">
       <mat-card class="column-card">
@@ -33,12 +35,16 @@
         <div class="offices-container">
           <span class="label">{{ 'reward.new.form.office' | translate }}</span>
           <div class="placeholder-container">
-            <cuper-placeholder-card *ngIf="myOffices && myOffices.length <= 0"
+            <cuper-placeholder-card *ngIf="officeSelected && myOffices && myOffices.length <= 0"
               [text]="'office.create' | translate"
               [onClick]="onNewOffice">
             </cuper-placeholder-card>
           </div>
-          <cuper-square-select *ngIf="myOffices && myOffices.length > 0" [options]="myOffices" [onSelect]="onSelectOffice"></cuper-square-select>
+          <cuper-square-select *ngIf="officeSelected && myOffices && myOffices.length > 0"
+            [options]="myOffices"
+            [onSelect]="onSelectOffice"
+            [seletedOption]="officeSelected">
+          </cuper-square-select>
         </div>
         <div class="double-column">
           <mat-form-field class="field-group">

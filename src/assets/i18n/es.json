@@ -59,6 +59,7 @@
     "names": "Nombres",
     "national_id": "Cédula",
     "messages": {
+      "created": "Creado correctamente",
       "updated": "Actualizado correctamente"
     }
   },

@@ -47,6 +47,7 @@
     "names": "Names",
     "national_id": "National Id",
     "messages": {
+      "created": "Created successfully",
       "updated": "Updated successfully"
     }
   },

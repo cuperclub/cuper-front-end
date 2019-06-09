@@ -20,7 +20,7 @@ export class CompanyCardComponent implements OnInit {
     private dialog: MatDialog,
     private companyService: CompanyService,
     private message: MatSnackBar,
-    private translate: TranslateService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {
