@@ -6,6 +6,7 @@ import {
   ElementRef,
   EventEmitter } from '@angular/core';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'cuper-map',
@@ -25,8 +26,7 @@ export class MapComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    //TO DO: Environment
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZGFvc2djIiwiYSI6ImNqa2VnbW9ldTNiYWUzcG1rdmoyZ29jcnkifQ.LhnLZHX-gNhQefUN2iihPg';
+    mapboxgl.accessToken = environment.mapboxAuth;
 
     const optionsMap = {
       container: this.elRef.nativeElement.querySelector('div'),

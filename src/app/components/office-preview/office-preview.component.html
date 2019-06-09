@@ -5,8 +5,8 @@
       <div class="description">{{data.office.email}}</div>
       <div class="description">{{data.office.address}}</div>
     </div>
-    <div class="map-container">
-      MAP
+    <div class="map">
+      <cuper-map (onChangePosition)="onListerMapPosition($event)"></cuper-map>
     </div>
   </div>
   <div class="footer-dialog">
