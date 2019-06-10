@@ -23,6 +23,7 @@ import { RewardsComponent } from './company/rewards/rewards.component';
 import { TransactionsComponent } from './employee/transactions/transactions.component';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { RewardComponent } from './company/reward/reward.component';
+import { CompanyRegisterComponent } from './company/company-register/company-register.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -40,7 +41,8 @@ export const ROUTES: Routes = [];
     DashboardComponent,
     TransactionsComponent,
     ProfileComponent,
-    RewardComponent
+    RewardComponent,
+    CompanyRegisterComponent
   ],
   imports: [
     CommonModule,
