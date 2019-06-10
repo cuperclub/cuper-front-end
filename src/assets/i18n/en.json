@@ -60,7 +60,8 @@
     "economic_activity": "Economic Activity",
     "not_slogan": "You don't have a slogan yet",
     "registered_at": "Registered",
-    "business_name": "Business Name"
+    "business_name": "Business Name",
+    "register": "Register Company"
   },
   "office": {
     "create": "Create a new office"

@@ -33,22 +33,63 @@
     width: 100%;
     padding: 0 0.5rem;
 
-    .status-user {
+    .status-company {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      .status {
+      .employee-container {
         display: flex;
         align-items: center;
+        cursor: pointer;
 
-        span {
-          font-size: 0.7rem;
+        .account {
+          display: flex;
+          flex-direction: column;
+
+          .company-name{
+            font-family: 'Circular-Book';
+            font-size: 12px;
+          }
+
+          .employee-status{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Lato-Regular';
+            font-size: 10px;
+
+            &.approved {
+              color: $green;
+            }
+
+            &.disabled {
+              color: $gray-dark;
+            }
+
+            &.pending {
+              color: $orange;
+            }
+
+            .icon {
+              font-size: 12px;
+              width: 0.6rem;
+              height: 0.6rem;
+              margin-right: 0.5rem;
+            }
+          }
         }
+      }
+
+      .add-button {
+        font-size: 10px;
+        color: $celeste;
       }
     }
 
     .menu-container {
       display: flex;
       align-items: center;
-      padding-right: 1rem;
 
       .menu {
         display: flex;
@@ -56,10 +97,20 @@
         align-items: center;
         cursor: pointer;
 
-        .title {
-          font-family: 'Circular-Book';
-          font-size: 12px;
-          margin-left: 1rem;
+        .menu-action {
+          display: flex;
+          align-items: center;
+
+          .profile-container {
+            display: flex;
+            align-items: center;
+
+            .title {
+              font-family: 'Circular-Book';
+              font-size: 12px;
+              margin-left: 1rem;
+            }
+          }
         }
       }
     }

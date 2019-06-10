@@ -77,7 +77,8 @@
     "slogan": "Slogan",
     "not_slogan": "Aún no tienes un slogan",
     "registered_at": "Registrado",
-    "business_name": "Nombre de la companía"
+    "business_name": "Nombre de la companía",
+    "register": "Registrar Companía"
   },
   "office": {
     "create": "Crear una nueva oficina",

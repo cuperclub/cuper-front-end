@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
-import { User } from '../../../models';
+import { User, UserStatus, Employee, EmployeeRol } from '../../../models';
 import { UserService } from '../../../services';
 
 @Component({
@@ -11,6 +11,8 @@ import { UserService } from '../../../services';
 })
 export class HomeComponent implements OnInit {
   currentUser: User;
+  employeeRecords: Employee [];
+  currentEmployee: Employee;
 
   constructor(
     private tokenService: AngularTokenService,
@@ -20,6 +22,33 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.userService.getDataOnLocalStorage();
+    this.employeeRecords = [
+      {
+        user : this.currentUser,
+        company: {
+          business_name: 'Mr. Krabs'
+        },
+        status: UserStatus.APPROVED,
+        role: EmployeeRol.PARTNER,
+      },
+      {
+        user : this.currentUser,
+        company: {
+          business_name: 'PupilaBox'
+        },
+        status: UserStatus.DISABLED,
+        role: EmployeeRol.CASHIER,
+      },
+      {
+        user : this.currentUser,
+        company: {
+          business_name: 'Rumberitos'
+        },
+        status: UserStatus.PENDING,
+        role: EmployeeRol.CASHIER,
+      }
+    ];
+    this.currentEmployee = this.employeeRecords[0];
   }
 
   logOut() {
@@ -33,5 +62,30 @@ export class HomeComponent implements OnInit {
 
   goToMyProfile() {
     this.router.navigate(['home/profile']);
+  }
+
+  onRegisterCompany() {
+
+  }
+
+  onChangeEmployeeAccount = (employee) => this.currentEmployee = employee;
+
+  getStatusAccount(status) {
+    let iconStatus = '';
+    switch (status) {
+      case UserStatus.APPROVED:
+        iconStatus = 'check_circle_outline';
+        break;
+      case UserStatus.PENDING:
+        iconStatus = 'input';
+        break;
+      case UserStatus.DELETED:
+        iconStatus = 'remove_circle_outline';
+        break;
+      case UserStatus.DISABLED:
+        iconStatus = 'domain_disabled';
+        break;
+    }
+    return iconStatus;
   }
 }
