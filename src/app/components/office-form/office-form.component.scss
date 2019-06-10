@@ -19,12 +19,7 @@
 mat-dialog-actions {
   display: flex;
   justify-content: flex-end;
-}
-
-.header {
-  display: flex;
-  justify-content: flex-end;
-  color: $gray-dark;
+  padding: 0;
 }
 
 .submit-button {

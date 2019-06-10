@@ -8,4 +8,6 @@ export interface Office {
   phone?: string;
   active?: boolean;
   company_id?: number;
+  lat?: number;
+  long?: number;
 }

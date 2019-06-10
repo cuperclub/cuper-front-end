@@ -5,7 +5,6 @@ import { OfficeFormComponent } from '../office-form/office-form.component';
 import { Office } from '../../models';
 import { OfficeService } from 'src/app/services';
 import { Observable } from 'rxjs';
-import { OfficePreviewComponent } from '../office-preview/office-preview.component';
 
 @Component({
   selector: 'cuper-card-office',
@@ -14,6 +13,7 @@ import { OfficePreviewComponent } from '../office-preview/office-preview.compone
 })
 export class CardOfficeComponent implements OnInit {
   myOffices$: Observable<Office[]>;
+  isEditMode: boolean = false;
 
   constructor(
     private dialog: MatDialog,
@@ -26,8 +26,8 @@ export class CardOfficeComponent implements OnInit {
   }
 
   onSelectOffice = office => {
-    this.dialog.open(OfficePreviewComponent, {
-      width: '300px',
+    this.isEditMode = true;
+    this.dialog.open(OfficeFormComponent, {
       data: {
         office: Object.assign({}, office),
         onEditOffice: this.onAddOffice
@@ -36,6 +36,7 @@ export class CardOfficeComponent implements OnInit {
   }
 
   onAddOffice = () => {
+    this.isEditMode = false;
     this.dialog.open(OfficeFormComponent);
   }
 

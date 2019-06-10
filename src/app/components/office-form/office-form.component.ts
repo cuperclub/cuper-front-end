@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Office } from '../../models';
 
 
 @Component({
@@ -32,7 +33,8 @@ export class OfficeFormComponent implements OnInit {
   }
 
   onListerMapPosition(coordinates){
-    console.log('current position', coordinates);
+    this.officeForm.value.lat = coordinates.lat;
+    this.officeForm.value.long = coordinates.lng;
   }
 
 }
