@@ -10,6 +10,7 @@ import { Promotion } from '../../../models';
 })
 export class RewardsComponent implements OnInit {
   myRewards: Promotion[];
+  lastRewards: Promotion[];
 
   constructor(
     private router: Router,
@@ -20,6 +21,7 @@ export class RewardsComponent implements OnInit {
     this.promotionService.getMyPromotions().subscribe(resp => {
       this.myRewards = resp['promotions'].map(reward => {
         return {
+          id: reward.id,
           title: reward.title,
           description: reward.description,
           image: reward.image,
@@ -27,8 +29,11 @@ export class RewardsComponent implements OnInit {
           text: 'pts'
         };
       });
+      this.lastRewards = this.myRewards.slice(0, 10);
     });
   }
 
   onNewReward = () => this.router.navigate(['home/rewards/new']);
+
+  onEditReward = (reward) => this.router.navigate(['home/rewards/details', reward.id]);
 }

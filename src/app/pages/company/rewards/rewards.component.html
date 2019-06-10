@@ -6,8 +6,16 @@
         [onClick]="onNewReward">
       </cuper-placeholder-card>
     </div>
-    <cuper-reward-small-card></cuper-reward-small-card>
+    <div *ngFor="let reward of lastRewards">
+      <cuper-reward-small-card
+        [reward]="reward"
+        [onClick]="onEditReward">
+      </cuper-reward-small-card>
+    </div>
   </div>
   <div class="title">{{'common.all' | translate}}</div>
-  <cuper-table-card *ngIf="myRewards" [items]="myRewards"></cuper-table-card>
+  <cuper-table-card *ngIf="myRewards"
+    [items]="myRewards"
+    [onClick]="onEditReward">
+  </cuper-table-card>
 </div>
