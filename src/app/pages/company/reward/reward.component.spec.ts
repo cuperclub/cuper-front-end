@@ -1,20 +1,20 @@
 // import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { RewardSmallCardComponent } from './reward-small-card.component';
+// import { RewardComponent } from './reward.component';
 
-// describe('RewardSmallCardComponent', () => {
-//   let component: RewardSmallCardComponent;
-//   let fixture: ComponentFixture<RewardSmallCardComponent>;
+// describe('RewardComponent', () => {
+//   let component: RewardComponent;
+//   let fixture: ComponentFixture<RewardComponent>;
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       declarations: [ RewardSmallCardComponent ]
+//       declarations: [ RewardComponent ]
 //     })
 //     .compileComponents();
 //   }));
 
 //   beforeEach(() => {
-//     fixture = TestBed.createComponent(RewardSmallCardComponent);
+//     fixture = TestBed.createComponent(RewardComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });

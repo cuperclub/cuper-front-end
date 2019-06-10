@@ -1,0 +1,49 @@
+<div class="header">
+  <button mat-icon-button mat-dialog-close class="add-button">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-dialog-content>
+  <div class="card-container">
+    <div class="left-container">
+
+      <form [formGroup]="officeForm" novalidate>
+        <mat-form-field>
+          <input matInput placeholder="{{ 'office.name' | translate }}" formControlName="name">
+          <mat-error>
+            <cuper-control-messages [control]="officeForm.get('name')"></cuper-control-messages>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="{{ 'office.phone' | translate }}" formControlName="phone">
+          <mat-error>
+            <cuper-control-messages [control]="officeForm.get('phone')"></cuper-control-messages>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="{{ 'office.email' | translate }}" formControlName="email">
+          <mat-error>
+            <cuper-control-messages [control]="officeForm.get('email')"></cuper-control-messages>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="{{ 'office.address' | translate }}" formControlName="address">
+          <mat-error>
+            <cuper-control-messages [control]="officeForm.get('address')"></cuper-control-messages>
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="right-container">
+      <span>here goes the map</span>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-dialog-close mat-stroked-button color="primary">{{ 'common.cancel' | translate}}</button>
+  <button mat-raised-button color="accent" class="submit-button" [disabled]="!officeForm.valid"
+    (click)="saveOffice()">{{ 'common.save' | translate}}</button>
+</mat-dialog-actions>

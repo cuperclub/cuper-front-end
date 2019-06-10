@@ -1,0 +1,47 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+	margin-top: 2rem;
+
+  .view {
+    .header-card {
+      display: flex;
+      justify-content: space-between;
+			align-items: flex-start;
+			margin: 1rem;
+
+      .title {
+				font-size: 20px;
+				font-family: 'Circular-Medium';
+      }
+    }
+
+    .panel-card {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: end;
+
+      .reward-card {
+        width: 22rem;
+        height: 28.5rem;
+        padding: 1rem;
+      }
+
+      .column-card {
+        display: flex;
+        flex-direction: column;
+        width: 22rem;
+        height: 28.5rem;
+        margin: 1rem;
+        padding: 1rem;
+
+				.title-column {
+          font-family: 'Lato-Semibold';
+          margin-bottom: 0.5rem;
+				}
+      }
+    }
+  }
+}

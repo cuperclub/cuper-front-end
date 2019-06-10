@@ -16,6 +16,7 @@ export interface User {
   email?: string;
   national_id?: string;
   points?: number;
+  join_at?: Date;
 }
 
 export enum UserStatus {

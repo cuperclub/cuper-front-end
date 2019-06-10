@@ -59,6 +59,7 @@
     "names": "Nombres",
     "national_id": "Cédula",
     "messages": {
+      "created": "Creado correctamente",
       "updated": "Actualizado correctamente"
     },
     "available_points": "Puntos Disponibles",
@@ -79,7 +80,11 @@
     "business_name": "Nombre de la companía"
   },
   "office": {
-    "create": "Crear una nueva oficina"
+    "create": "Crear una nueva oficina",
+    "name": "Nombre",
+    "phone": "Teléfono",
+    "email": "Correo electrónico",
+    "address": "Dirección"
   },
   "promotion": {
     "terms": "Términos y condiciones"
@@ -87,6 +92,8 @@
   "reward": {
     "edit": "Editar Recompensa",
     "create": "Crear nueva recompensa",
+    "preview": "Detalles Promoción",
+    "beneficiaries": "Beneficiarios de esta promoción",
     "new": {
       "form": {
         "title": "Describe tu promoción",
@@ -137,5 +144,9 @@
     "rewards": "Recompensas",
     "company": "Companía",
     "transactions": "Transacciones"
+  },
+  "errors": {
+    "required": "Llena este campo por favor.",
+    "email": "Formato de correo incorrecto."
   }
 }

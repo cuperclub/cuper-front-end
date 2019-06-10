@@ -32,7 +32,7 @@ export class UserService {
   }
 
   public getAvatar(joinNumber){
-    let date = joinNumber.toString();
+    let date = joinNumber ? joinNumber.toString() : new Date().valueOf().toString();
     const lastNumber = date.substr(date.length - 1);
     const routeBase = '../../../../assets/images/avatars/';
     const path = routeBase + `${lastNumber}.png`;

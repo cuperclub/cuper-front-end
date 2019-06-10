@@ -11,7 +11,7 @@ export class RewardCardComponent implements OnInit {
   @Input() company: Company;
   @Input() promotion: Promotion;
   @Input() office: Office;
-  @Input() editReward: Function = () => console.log('editting');
+  @Input() editReward: Function;
 
   constructor() { }
 

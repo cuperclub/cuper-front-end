@@ -14,4 +14,16 @@ export class PromotionService {
   public getMyPromotions(){
     return this.httpClient.get<Promotion[]>(`${this.apiURL}/api/partner/company/promotions`);
   }
+
+  public getPromotion(rewardId: number){
+    return this.httpClient.get<Promotion>(`${this.apiURL}/api/partner/company/promotions/${rewardId}`);
+  }
+
+  public createPromotion(promotion: Promotion, officeId: number){
+    return this.httpClient.post<Promotion>(`${this.apiURL}/api/partner/offices/${officeId}/promotions`, promotion);
+  }
+
+  public updatePromotion(promotion: Promotion, officeId: number){
+    return this.httpClient.put<Promotion>(`${this.apiURL}/api/partner/offices/${officeId}/promotions/${promotion.id}`, promotion);
+  }
 }

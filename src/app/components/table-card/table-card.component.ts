@@ -15,7 +15,7 @@ interface OptionRow {
 })
 export class TableCardComponent implements OnInit {
   @Input() items: OptionRow[];
-  @Input() onClick: Function = () => null;
+  @Input() onClick: Function;
 
   constructor() {
     const mockData = [

@@ -14,12 +14,17 @@ export class SquareSelectComponent implements OnInit {
   @Input() options: OptionSquare [];
   @Input() onSelect: Function;
   @Input() className: string = '';
+  @Input() seletedOption: OptionSquare;
 
   activeIndex: Number;
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    if(this.seletedOption) {
+      this.activeIndex = this.options.indexOf(this.seletedOption);
+    }
+  }
 
   onClick (index) {
     if (this.activeIndex == index){
