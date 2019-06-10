@@ -59,6 +59,7 @@
     "names": "Nombres",
     "national_id": "Cédula",
     "messages": {
+      "created": "Creado correctamente",
       "updated": "Actualizado correctamente"
     }
   },
@@ -85,6 +86,8 @@
   "reward": {
     "edit": "Editar Recompensa",
     "create": "Crear nueva recompensa",
+    "preview": "Detalles Promoción",
+    "beneficiaries": "Beneficiarios de esta promoción",
     "new": {
       "form": {
         "title": "Describe tu promoción",
