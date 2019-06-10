@@ -24,7 +24,8 @@ export class CardUserComponent implements OnInit {
 
   onUpdatePassword() {
     this.dialog.open(UpdatePasswordFormComponent, {
-      width: '300px'
+      width: '300px',
+      data: {}
     });
   }
 

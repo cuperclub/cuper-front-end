@@ -7,7 +7,7 @@
     <div class="cashiers" *ngIf="data.employees as cashiers">
       <div class="cashier" *ngFor="let cashier of cashiers">
         <div class="avatar-container">
-          <cuper-avatar [imageSrc]="cashier.image" [size]="60"></cuper-avatar>
+          <cuper-avatar [imageSrc]="cashier.user.image" [size]="60"></cuper-avatar>
         </div>
         <div class="cashier-data">
           <span class="name">{{cashier.user.name}}</span>
