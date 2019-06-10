@@ -66,6 +66,10 @@
     "promotion": {
       "company_register_tile": "Registra tu negocio y obten",
       "company_register": "Registrar"
+    },
+    "buttons": {
+      "next": "Siguiente",
+      "back": "Regresar"
     }
   },
   "company": {
@@ -78,7 +82,13 @@
     "not_slogan": "Aún no tienes un slogan",
     "registered_at": "Registrado",
     "business_name": "Nombre de la companía",
-    "register": "Registrar Companía"
+    "register": "Registrar Companía",
+    "register_form": {
+      "step-1": "Selecciona un plan",
+      "step-2": "Registra tus datos",
+      "step-3": "Previsualización"
+    },
+    "register_company": "Registrar mi companía"
   },
   "office": {
     "create": "Crear una nueva oficina",

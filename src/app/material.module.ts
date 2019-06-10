@@ -15,7 +15,8 @@ import {
   MatDialogModule,
   MatTabsModule,
   MatAutocompleteModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatStepperModule
 } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
@@ -39,7 +40,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatDialogModule,
     MatTabsModule,
     MatAutocompleteModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatStepperModule
   ]
 })
 export class MaterialModule { }
