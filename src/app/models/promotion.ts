@@ -1,3 +1,5 @@
+import { Office } from './office';
+
 export interface Promotion {
   id?: number;
   title?: string;
@@ -9,4 +11,5 @@ export interface Promotion {
   start_at?: Date;
   end_at?: Date;
   image?: string;
+  office?: Office
 }
