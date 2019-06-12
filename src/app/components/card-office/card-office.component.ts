@@ -2,10 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
 import { OfficeFormComponent } from '../office-form/office-form.component';
-import { Office } from '../../models';
+import { Office, Company } from '../../models';
 import { OfficeService } from 'src/app/services';
-import { Observable } from 'rxjs';
-import { OfficePreviewComponent } from '../office-preview/office-preview.component';
 
 @Component({
   selector: 'cuper-card-office',
@@ -13,30 +11,48 @@ import { OfficePreviewComponent } from '../office-preview/office-preview.compone
   styleUrls: ['./card-office.component.scss']
 })
 export class CardOfficeComponent implements OnInit {
-  myOffices$: Observable<Office[]>;
+  @Input() company: Company;
+  @Input() offices: Office[];
 
   constructor(
     private dialog: MatDialog,
     private officeService: OfficeService
   ) { }
-  @Input() offices: Office[];
 
   ngOnInit() {
-    this.myOffices$ = this.officeService.getOffices()
+    this.officeService.getOffices().subscribe(data => {
+      this.offices = data['offices'];
+    });
   }
 
   onSelectOffice = office => {
-    this.dialog.open(OfficePreviewComponent, {
-      width: '300px',
+    const dialogRef = this.dialog.open(OfficeFormComponent, {
       data: {
         office: Object.assign({}, office),
-        onEditOffice: this.onAddOffice
+        companyId: this.company.id
+      }
+    });
+
+    dialogRef.beforeClosed().subscribe(currentOffice => {
+      if(currentOffice){
+        const indexOffice = this.offices.findIndex(office => office.id === currentOffice.id);
+        this.offices[indexOffice] = currentOffice;
       }
     });
   }
 
   onAddOffice = () => {
-    this.dialog.open(OfficeFormComponent);
+    const dialogRef = this.dialog.open(OfficeFormComponent,{
+      data: {
+        companyId: this.company.id
+      }
+    });
+
+    dialogRef.beforeClosed().subscribe(currentOffice => {
+      if(currentOffice){
+        this.offices.push(currentOffice);
+      }
+    });
   }
 
 }

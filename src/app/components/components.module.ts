@@ -29,6 +29,7 @@ import { UpdatePasswordFormComponent } from './update-password-form/update-passw
 import { InputTransactionFormComponent } from './input-transaction-form/input-transaction-form.component';
 import { OutputTransactionFormComponent } from './output-transaction-form/output-transaction-form.component';
 import { OfficePreviewComponent } from './office-preview/office-preview.component';
+import { MapComponent } from './map/map.component';
 import { OfficeFormComponent } from './office-form/office-form.component';
 import { ControlMessagesComponent } from './control-messages/control-messages.component';
 
@@ -59,7 +60,8 @@ const components = [
   NewRewardCardComponent,
   SquareSelectComponent,
   OfficePreviewComponent,
-  ControlMessagesComponent
+  ControlMessagesComponent,
+  MapComponent
 ];
 
 @NgModule({

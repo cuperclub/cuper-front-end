@@ -14,4 +14,12 @@ export class OfficeService {
   public getOffices(){
     return this.httpClient.get<Office[]>(`${this.apiURL}/api/partner/offices`);
   }
+
+  public createOffice(office: Office){
+    return this.httpClient.post<Office>(`${this.apiURL}/api/partner/offices`, office);
+  }
+
+  public updateOffice(office: Office){
+    return this.httpClient.put<Office>(`${this.apiURL}/api/partner/offices/${office.id}`, office);
+  }
 }

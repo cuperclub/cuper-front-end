@@ -1,3 +1,5 @@
+import { Company } from './company';
+
 export interface Office {
   id?: number;
   created_at?: Date;
@@ -8,4 +10,7 @@ export interface Office {
   phone?: string;
   active?: boolean;
   company_id?: number;
+  lat?: number;
+  long?: number;
+  company?: Company;
 }
