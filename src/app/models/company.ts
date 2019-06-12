@@ -1,4 +1,5 @@
 export interface Company {
+  id?: number;
   legal_representative?: string;
   ruc?: string;
   contributor_type?: string;

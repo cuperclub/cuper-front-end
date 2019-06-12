@@ -11,19 +11,15 @@
   }
 
   .right-container {
-    width: 300px;
+    width: 15rem;
+    margin-left: 1rem;
   }
 }
 
 mat-dialog-actions {
   display: flex;
   justify-content: flex-end;
-}
-
-.header {
-  display: flex;
-  justify-content: flex-end;
-  color: $gray-dark;
+  padding: 0;
 }
 
 .submit-button {

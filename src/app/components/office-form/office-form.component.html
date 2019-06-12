@@ -1,12 +1,6 @@
-<div class="header">
-  <button mat-icon-button mat-dialog-close class="add-button">
-    <mat-icon>close</mat-icon>
-  </button>
-</div>
 <mat-dialog-content>
   <div class="card-container">
     <div class="left-container">
-
       <form [formGroup]="officeForm" novalidate>
         <mat-form-field>
           <input matInput placeholder="{{ 'office.name' | translate }}" formControlName="name">
@@ -38,12 +32,17 @@
       </form>
     </div>
     <div class="right-container">
-      <span>here goes the map</span>
+      <cuper-map [coordinate]="officePosition" (onChangePosition)="onListerMapPosition($event)"></cuper-map>
     </div>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-dialog-close mat-stroked-button color="primary">{{ 'common.cancel' | translate}}</button>
-  <button mat-raised-button color="accent" class="submit-button" [disabled]="!officeForm.valid"
-    (click)="saveOffice()">{{ 'common.save' | translate}}</button>
+  <button mat-flat-button
+    color="primary"
+    class="submit-button"
+    [disabled]="!officeForm.valid"
+    (click)="onSubmitOffice()">
+    {{ 'common.save' | translate}}
+  </button>
+  <button mat-dialog-close mat-flat-button color="secondary">{{ 'common.cancel' | translate}}</button>
 </mat-dialog-actions>

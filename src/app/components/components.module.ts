@@ -31,6 +31,7 @@ import { OutputTransactionFormComponent } from './output-transaction-form/output
 import { OfficePreviewComponent } from './office-preview/office-preview.component';
 import { CardPointsComponent } from './card-points/card-points.component';
 import { CardRegisterCompanyComponent } from './card-register-company/card-register-company.component';
+import { MapComponent } from './map/map.component';
 import { OfficeFormComponent } from './office-form/office-form.component';
 import { ControlMessagesComponent } from './control-messages/control-messages.component';
 import { CardPlanComponent } from './card-plan/card-plan.component';
@@ -65,7 +66,8 @@ const components = [
   ControlMessagesComponent,
   CardPointsComponent,
   CardRegisterCompanyComponent,
-  CardPlanComponent
+  CardPlanComponent,
+  MapComponent
 ];
 
 @NgModule({

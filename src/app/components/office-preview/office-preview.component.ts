@@ -18,4 +18,8 @@ export class OfficePreviewComponent {
     this.dialogRef.close();
   }
 
+  onListerMapPosition(coordinates){
+    console.log('current position', coordinates);
+  }
+
 }
