@@ -8,13 +8,18 @@ import {
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
 import { environment } from '../../../environments/environment';
 
+interface Coordinate {
+  lat: number;
+  long: number;
+}
+
 @Component({
   selector: 'cuper-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
-  @Input() coordinates: number[];
+  @Input() coordinate: Coordinate;
   @Input() zoom: number;
   @Output() onChangePosition = new EventEmitter<number[]>();
 
@@ -27,21 +32,21 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     mapboxgl.accessToken = environment.mapboxAuth;
-
+    const myCoordinate = this.coordinate ? [this.coordinate.long, this.coordinate.lat] : undefined;
     const optionsMap = {
       container: this.elRef.nativeElement.querySelector('div'),
       style: 'mapbox://styles/mapbox/streets-v9',
-      center: this.coordinates || [-79.2042200, -3.9931300],
+      center: myCoordinate || [-79.2042200, -3.9931300],
       zoom: this.zoom || 13,
       scrollZoom: true
     };
 
     this.myMap = new mapboxgl.Map(optionsMap);
-
-    if(this.coordinates){
-      new mapboxgl.Marker()
-        .setLngLat(this.coordinates)
-        .addTo(this.myMap);
+    if(myCoordinate){
+      this.myMarker = new mapboxgl.Marker({ draggable: true })
+        .setLngLat(myCoordinate)
+        .addTo(this.myMap)
+        .on('dragend', this.populateMyPosition);
     }
 
     // Add geolocate control to the map.
@@ -70,13 +75,11 @@ export class MapComponent implements OnInit {
     if(this.myMarker) {
       this.myMarker.setLngLat(point);
     }else {
-      const markerOpts = { draggable: true };
-      const newMarker = new mapboxgl.Marker(markerOpts)
-                  .setLngLat(point)
-                  .addTo(this.myMap);
-      newMarker.on('dragend', this.populateMyPosition);
       //save marker instance
-      this.myMarker = newMarker;
+      this.myMarker = new mapboxgl.Marker({ draggable: true })
+                      .setLngLat(point)
+                      .addTo(this.myMap)
+                      .on('dragend', this.populateMyPosition);
     }
     this.populateMyPosition();
   }

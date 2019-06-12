@@ -6,14 +6,14 @@
     </button>
   </div>
   <mat-divider></mat-divider>
-  <div class="card-content" *ngIf="myOffices$ | async as data">
-    <ul class="offices" *ngIf="data.offices as offices">
+  <div class="card-content">
+    <ul class="offices" *ngIf="offices">
       <li class="office" *ngFor="let office of offices" (click)="onSelectOffice(office)">
         <img class="avatar" src="../../../assets/images/shop.svg"/>
         <span class="text">{{office.name}}</span>
       </li>
     </ul>
-    <div class="emptyState" *ngIf="!data.offices">
+    <div class="emptyState" *ngIf="!offices">
       Empty state
     </div>
   </div>

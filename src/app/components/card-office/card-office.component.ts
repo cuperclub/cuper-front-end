@@ -2,9 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
 import { OfficeFormComponent } from '../office-form/office-form.component';
-import { Office } from '../../models';
+import { Office, Company } from '../../models';
 import { OfficeService } from 'src/app/services';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'cuper-card-office',
@@ -12,32 +11,52 @@ import { Observable } from 'rxjs';
   styleUrls: ['./card-office.component.scss']
 })
 export class CardOfficeComponent implements OnInit {
-  myOffices$: Observable<Office[]>;
-  isEditMode: boolean = false;
+  @Input() company: Company;
+  @Input() offices: Office[];
 
   constructor(
     private dialog: MatDialog,
     private officeService: OfficeService
   ) { }
-  @Input() offices: Office[];
 
   ngOnInit() {
-    this.myOffices$ = this.officeService.getOffices()
+    this.officeService.getOffices().subscribe(data => {
+      this.offices = data['offices'];
+    });
   }
 
   onSelectOffice = office => {
-    this.isEditMode = true;
-    this.dialog.open(OfficeFormComponent, {
+    const dialogRef = this.dialog.open(OfficeFormComponent, {
       data: {
         office: Object.assign({}, office),
-        onEditOffice: this.onAddOffice
+        companyId: this.company.id
+      }
+    });
+
+    dialogRef.beforeClosed().subscribe(currentOffice => {
+      if(currentOffice){
+        const indexOffice = this.offices.findIndex(office => office.id === currentOffice.id);
+        if(indexOffice === -1){
+          this.offices.push(currentOffice);
+        }else{
+          this.offices[indexOffice] = currentOffice;
+        }
       }
     });
   }
 
   onAddOffice = () => {
-    this.isEditMode = false;
-    this.dialog.open(OfficeFormComponent);
+    const dialogRef = this.dialog.open(OfficeFormComponent,{
+      data: {
+        companyId: this.company.id
+      }
+    });
+
+    dialogRef.beforeClosed().subscribe(currentOffice => {
+      if(currentOffice){
+        this.offices.push(currentOffice);
+      }
+    });
   }
 
 }

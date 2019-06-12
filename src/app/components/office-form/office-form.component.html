@@ -32,7 +32,7 @@
       </form>
     </div>
     <div class="right-container">
-      <cuper-map (onChangePosition)="onListerMapPosition($event)"></cuper-map>
+      <cuper-map [coordinate]="officePosition" (onChangePosition)="onListerMapPosition($event)"></cuper-map>
     </div>
   </div>
 </mat-dialog-content>
@@ -41,7 +41,7 @@
     color="primary"
     class="submit-button"
     [disabled]="!officeForm.valid"
-    (click)="saveOffice()">
+    (click)="onSubmitOffice()">
     {{ 'common.save' | translate}}
   </button>
   <button mat-dialog-close mat-flat-button color="secondary">{{ 'common.cancel' | translate}}</button>
