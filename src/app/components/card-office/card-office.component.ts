@@ -36,11 +36,7 @@ export class CardOfficeComponent implements OnInit {
     dialogRef.beforeClosed().subscribe(currentOffice => {
       if(currentOffice){
         const indexOffice = this.offices.findIndex(office => office.id === currentOffice.id);
-        if(indexOffice === -1){
-          this.offices.push(currentOffice);
-        }else{
-          this.offices[indexOffice] = currentOffice;
-        }
+        this.offices[indexOffice] = currentOffice;
       }
     });
   }
