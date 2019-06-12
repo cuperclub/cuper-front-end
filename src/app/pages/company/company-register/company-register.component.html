@@ -1,51 +1,56 @@
-<div class="card-container">
+<div class="page-container">
   <div class="view">
     <div class="header-card">
       <span class="title">{{ 'company.register_company' | translate }}</span>
     </div>
-  </div>
-  <mat-card>
-    <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-        {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-      </button>
-      <mat-horizontal-stepper [linear]="isLinear" #stepper>
-        <mat-step [stepControl]="firstFormGroup">
-          <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>{{ 'company.register_form.step-1' | translate }}</ng-template>
-            <mat-form-field>
-              <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperNext>
-                {{ 'common.buttons.next' | translate }}
-              </button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="secondFormGroup">
-          <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>{{ 'company.register_form.step-2' | translate }}</ng-template>
-            <mat-form-field>
-              <input matInput placeholder="Address" formControlName="secondCtrl" required>
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious>
-                  {{ 'common.buttons.back' | translate }}
-              </button>
-              <button mat-button matStepperNext>
+    <mat-card class="form-container">
+        <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+          {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+        </button> -->
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
+          <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>{{ 'company.register_form.step-1' | translate }}</ng-template>
+              <!-- <div class="cashier" *ngFor="let cashier of cashiers"></div> -->
+              <div class="plans-container">
+                <cuper-card-plan
+                  *ngFor="let plan of plans"
+                  class="plan"
+                  [option]="plan">
+                </cuper-card-plan>
+              </div>
+              <div class="step">
+                <button mat-button matStepperNext>
                   {{ 'common.buttons.next' | translate }}
-              </button>
+                </button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>{{ 'company.register_form.step-2' | translate }}</ng-template>
+              <mat-form-field>
+                <input matInput placeholder="Address" formControlName="secondCtrl" required>
+              </mat-form-field>
+              <div>
+                <button mat-button matStepperPrevious>
+                    {{ 'common.buttons.back' | translate }}
+                </button>
+                <button mat-button matStepperNext>
+                    {{ 'common.buttons.next' | translate }}
+                </button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>{{ 'company.register_form.step-3' | translate }}</ng-template>
+            You are now done.
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="stepper.reset()">Reset</button>
             </div>
-          </form>
-        </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>{{ 'company.register_form.step-3' | translate }}</ng-template>
-          You are now done.
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-          </div>
-        </mat-step>
-      </mat-horizontal-stepper>
-    </mat-card>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </mat-card>
+  </div>
 </div>

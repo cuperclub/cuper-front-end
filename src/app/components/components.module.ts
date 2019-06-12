@@ -33,6 +33,7 @@ import { CardPointsComponent } from './card-points/card-points.component';
 import { CardRegisterCompanyComponent } from './card-register-company/card-register-company.component';
 import { OfficeFormComponent } from './office-form/office-form.component';
 import { ControlMessagesComponent } from './control-messages/control-messages.component';
+import { CardPlanComponent } from './card-plan/card-plan.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -63,7 +64,8 @@ const components = [
   OfficePreviewComponent,
   ControlMessagesComponent,
   CardPointsComponent,
-  CardRegisterCompanyComponent
+  CardRegisterCompanyComponent,
+  CardPlanComponent
 ];
 
 @NgModule({

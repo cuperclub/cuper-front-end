@@ -1,8 +1,8 @@
-.card-container {
+.page-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-		margin-top: 2rem;
+	margin-top: 2rem;
 
 	.view {
 		.header-card {
@@ -17,56 +17,18 @@
 			}
 		}
 
-		.panel-card {
-			display: flex;
-			justify-content: center;
-			flex-wrap: wrap;
-			align-items: end;
+		.form-container {
+			max-width: 40rem;
 
-			.preview-container {
+			.plans-container {
 				display: flex;
-				flex-direction: column;
-				justify-content: space-between;
+				flex-wrap: wrap;
+				justify-content: center;
 
-				.reward {
-					margin: 1rem 0;
-				}
-			}
-
-			.column-card {
-				display: flex;
-				flex-direction: column;
-				width: 22rem;
-				height: 20rem;
-				margin: 1rem;
-				padding: 1rem;
-
-				.label {
-					font-family: 'Lato-Semibold';
-				}
-
-				.double-column {
-					display: flex;
-					justify-content: space-between;
-					margin-bottom: 0.5rem;
-
-					.field-group {
-						width: 45%;
-					}
-				}
-
-				.unlimited-reward {
-					width: 21%;
-					margin: 1rem 0;
-				}
-
-				.offices-container {
-					margin-bottom: 0.5rem;
-
-					.placeholder-container {
-						width: 30%;
-						margin-top: 1rem;
-					}
+				.plan {
+					width: 15rem;
+					height: 8rem;
+					margin: 0.5rem;
 				}
 			}
 		}

@@ -11,6 +11,8 @@ export class CompanyRegisterComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
+  plans: any;
+
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
@@ -20,6 +22,27 @@ export class CompanyRegisterComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+    this.plans = [
+      {
+        price: "0",
+        time: " 3 meses",
+        promotion: "Gratis"
+      },
+      {
+        price: "4.99",
+        time: "mensual"
+      },
+      {
+        price: "19.99",
+        time: "6 meses",
+        promotion: "Ahorra $20"
+      },
+      {
+        price: "30",
+        time: "anual",
+        promotion: "Ahorra $30"
+      },
+    ]
   }
 
 }
