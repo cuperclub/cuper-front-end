@@ -35,6 +35,7 @@ import { MapComponent } from './map/map.component';
 import { OfficeFormComponent } from './office-form/office-form.component';
 import { ControlMessagesComponent } from './control-messages/control-messages.component';
 import { CardPlanComponent } from './card-plan/card-plan.component';
+import { UserSearchComponent } from './user-search/user-search.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -67,7 +68,8 @@ const components = [
   CardPointsComponent,
   CardRegisterCompanyComponent,
   CardPlanComponent,
-  MapComponent
+  MapComponent,
+  UserSearchComponent
 ];
 
 @NgModule({
