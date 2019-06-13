@@ -1,6 +1,9 @@
 <mat-card class="card-container">
   <div class="card-header">
     <span class="text">{{ 'common.cashiers' | translate }}</span>
+    <button mat-icon-button class="add-button" (click)="onAddCashier()">
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
   <mat-divider></mat-divider>
   <div class="card-content" *ngIf="myEmployees$ | async as data">

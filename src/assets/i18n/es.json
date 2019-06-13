@@ -49,6 +49,7 @@
     "points": "Puntos",
     "new_reward": "Nueva Recompensa",
     "save": "Guardar",
+    "send_invitation": "Enviar Invitación",
     "preview": "Previsualización",
     "last": "Utimas",
     "all": "Todas",
@@ -88,7 +89,8 @@
       "step-2": "Registra tus datos",
       "step-3": "Previsualización"
     },
-    "register_company": "Registrar mi companía"
+    "register_company": "Registrar mi companía",
+    "request_cashier": "Usuario no econtrado, desea enviarle una invitación?"
   },
   "office": {
     "create": "Crear una nueva oficina",
