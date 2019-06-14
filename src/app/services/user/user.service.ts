@@ -27,8 +27,8 @@ export class UserService {
     localStorage.removeItem('current_user');
   }
 
-  public updateMyData(user: User): Observable<User>{
-    return this.httpClient.put<User>(`${this.apiURL}/api/users`, user);
+  public updateMyData(userInput: FormData): Observable<User>{
+    return this.httpClient.put<User>(`${this.apiURL}/api/users`, userInput);
   }
 
   public getAvatar(joinNumber){

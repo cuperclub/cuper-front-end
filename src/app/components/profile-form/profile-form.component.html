@@ -30,6 +30,7 @@
     <mat-error *ngIf="errorsForm.national_id">
       {{errorsForm.national_id[0]}}
     </mat-error>
+    <input id="uploader" type="file" (change)="onFileChange($event)" />
     <div class="footer-form">
       <button mat-flat-button color="primary" (click)="onSubmit(data.user)">
         {{ 'common.ok' | translate }}

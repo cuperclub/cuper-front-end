@@ -12,7 +12,7 @@ export interface UserRegister {
 export interface User {
   name?: string;
   nickname?: string;
-  image?: string;
+  image_url?: string;
   email?: string;
   national_id?: string;
   points?: number;

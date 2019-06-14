@@ -7,6 +7,11 @@ import { MatSnackBar } from '@angular/material';
 import { UserService } from 'src/app/services';
 import { User } from '../../models';
 
+interface FileOptions {
+  file?: File;
+  imageBase64?: string | ArrayBuffer;
+}
+
 @Component({
   selector: 'cuper-profile-form',
   templateUrl: './profile-form.component.html',
@@ -14,6 +19,7 @@ import { User } from '../../models';
 })
 export class ProfileFormComponent {
   errorsForm: any = {};
+  uploadFile: FileOptions = {};
 
   constructor(
     private userService: UserService,
@@ -28,7 +34,11 @@ export class ProfileFormComponent {
   }
 
   onSubmit(user): void {
-    this.userService.updateMyData(user).subscribe(
+    let input = new FormData();
+    input.append('name', user.name);
+    input.append('email', user.email);
+    input.append('image', this.uploadFile.file);
+    this.userService.updateMyData(input).subscribe(
       (resp) => {
         this.translate.get('common.messages.updated').subscribe((message: string) => {
           this.message.open(message, '', {
@@ -47,6 +57,17 @@ export class ProfileFormComponent {
   saveAndGetUserFromStorage(user){
     this.userService.saveDataOnLocalStorage(user);
     return this.userService.getDataOnLocalStorage();
+  }
+
+  onFileChange(event): void {
+    let reader = new FileReader();
+    const file = event.target.files[0];
+    if (file) {
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.uploadFile = { file: file, imageBase64: reader.result };
+      };
+    }
   }
 
 }

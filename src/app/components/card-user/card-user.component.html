@@ -15,7 +15,7 @@
     </mat-menu>
   </div>
   <div class="card-content" *ngIf="user">
-    <cuper-avatar [imageSrc]="user.image || userService.getAvatar(user.join_at)" [size]="80"></cuper-avatar>
+    <cuper-avatar [imageSrc]="user.image_url || userService.getAvatar(user.join_at)" [size]="80"></cuper-avatar>
     <h3>{{user.name}}</h3>
     <span>{{user.email}}</span>
     <span>{{user.national_id}}</span>
