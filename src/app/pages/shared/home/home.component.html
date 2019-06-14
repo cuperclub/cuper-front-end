@@ -10,7 +10,7 @@
         <div *ngIf="currentEmployee" class="employee-container">
           <div class="account">
             <div class="company-name">
-              {{currentEmployee.company.business_name}}
+              {{currentEmployee.name}}
             </div>
             <div class="employee-status" [ngClass]="currentEmployee.status">
               <mat-icon class="icon">
@@ -25,7 +25,7 @@
           <button *ngFor="let employee of employeeRecords"
             mat-menu-item
             (click)="onChangeEmployeeAccount(employee)">
-            <span>{{ employee.company.business_name}}</span>
+            <span>{{ employee.name}}</span>
           </button>
         </mat-menu>
       </div>

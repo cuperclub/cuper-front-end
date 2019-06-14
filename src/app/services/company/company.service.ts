@@ -12,8 +12,8 @@ export class CompanyService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getMyCompany(){
-    return this.httpClient.get<Company>(`${this.apiURL}/api/partner/company`);
+  public getMyCompany(id){
+    return this.httpClient.get<Company>(`${this.apiURL}/api/partner/companies/${id}`);
   }
 
   public updateMyCompany(company: Company): Observable<Company>{

@@ -22,32 +22,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.userService.getDataOnLocalStorage();
-    this.employeeRecords = [
-      {
-        user : this.currentUser,
-        company: {
-          business_name: 'Mr. Krabs'
-        },
-        status: UserStatus.APPROVED,
-        role: EmployeeRol.PARTNER,
-      },
-      {
-        user : this.currentUser,
-        company: {
-          business_name: 'PupilaBox'
-        },
-        status: UserStatus.DISABLED,
-        role: EmployeeRol.CASHIER,
-      },
-      {
-        user : this.currentUser,
-        company: {
-          business_name: 'Rumberitos'
-        },
-        status: UserStatus.PENDING,
-        role: EmployeeRol.CASHIER,
-      }
-    ];
+    this.employeeRecords = this.currentUser.companies;
     this.currentEmployee = this.employeeRecords[0];
   }
 

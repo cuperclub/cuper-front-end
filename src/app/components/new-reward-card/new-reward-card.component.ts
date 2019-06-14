@@ -38,7 +38,7 @@ export class NewRewardCardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.myCompany$ = this.companyService.getMyCompany();
+    this.myCompany$ = this.companyService.getMyCompany(1);
     this.officeService.getOffices().subscribe(resp => {
       this.myOffices = resp['offices'].map(office => {
         return {
