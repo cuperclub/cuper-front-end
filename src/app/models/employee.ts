@@ -12,4 +12,5 @@ export interface Employee {
   role?: EmployeeRol;
   user?: User;
   company?: Company;
+  id?: number;
 }

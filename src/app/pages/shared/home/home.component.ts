@@ -43,10 +43,12 @@ export class HomeComponent implements OnInit {
   onRegisterCompany = () => this.router.navigate(['home/company/register']);
 
   onChangeEmployeeAccount (company) {
-    this.currentEmployee = company;
-    this.updatedView = true;
-    this.userService.setCompanyIdView(company.id);
-    setTimeout(() => { this.updatedView = false }, 1000);
+    if (this.currentEmployee.id !== company.id){
+      this.currentEmployee = company;
+      this.updatedView = true;
+      this.userService.setCompanyIdView(company.id);
+      setTimeout(() => { this.updatedView = false }, 1000);
+    }
   }
 
   getStatusAccount(status) {
