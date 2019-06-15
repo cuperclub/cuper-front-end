@@ -17,8 +17,12 @@
         </div>
       </li>
     </ul>
-    <div class="emptyState" *ngIf="!offices">
+    <div class="emptyState" *ngIf="offices && offices.length === 0">
       Empty state
     </div>
+    <cuper-loader
+      class="loader"
+      *ngIf="!offices">
+    </cuper-loader>
   </div>
 </mat-card>

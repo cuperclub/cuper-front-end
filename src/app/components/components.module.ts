@@ -37,6 +37,7 @@ import { ControlMessagesComponent } from './control-messages/control-messages.co
 import { CardPlanComponent } from './card-plan/card-plan.component';
 import { UserSearchComponent } from './user-search/user-search.component';
 import { RequestCashierComponent } from './request-cashier/request-cashier.component';
+import { LoaderComponent } from './loader/loader.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -71,7 +72,8 @@ const components = [
   CardPlanComponent,
   MapComponent,
   UserSearchComponent,
-  RequestCashierComponent
+  RequestCashierComponent,
+  LoaderComponent
 ];
 
 @NgModule({
