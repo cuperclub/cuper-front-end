@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Company } from '../../models';
+import { UserService} from '../user/user.service'
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,14 +11,19 @@ import { Observable } from 'rxjs';
 export class CompanyService {
   apiURL = environment.apiBase;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient,
+    private userService: UserService
+  ) { }
 
-  public getMyCompany(id){
+  public getMyCompany(){
+    const id = this.userService.getCompanyIdView();
     return this.httpClient.get<Company>(`${this.apiURL}/api/partner/companies/${id}`);
   }
 
   public updateMyCompany(company: Company): Observable<Company>{
-    return this.httpClient.put<Company>(`${this.apiURL}/api/partner/company`, company);
+    const id = this.userService.getCompanyIdView();
+    return this.httpClient.put<Company>(`${this.apiURL}/api/partner/company/${id}`, company);
   }
 
   public registerMyCompany(company: Company): Observable<Company>{

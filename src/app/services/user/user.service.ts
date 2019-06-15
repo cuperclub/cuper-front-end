@@ -39,6 +39,11 @@ export class UserService {
     return path;
   }
 
+  public getCompanyIdView(){
+    const currentUser = this.getDataOnLocalStorage();
+    return currentUser.current_company_id;
+  }
+
   public getMockData() {
     const users = [
       {

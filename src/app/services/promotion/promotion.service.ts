@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Promotion } from '../../models';
+import { UserService} from '../user/user.service'
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +10,19 @@ import { Promotion } from '../../models';
 export class PromotionService {
   apiURL = environment.apiBase;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient,
+    private userService: UserService
+  ) { }
 
   public getMyPromotions(){
-    return this.httpClient.get<Promotion[]>(`${this.apiURL}/api/partner/company/promotions`);
+    const companyId = this.userService.getCompanyIdView();
+    return this.httpClient.get<Promotion[]>(`${this.apiURL}/api/partner/companies/${companyId}/promotions`);
   }
 
   public getPromotion(rewardId: number){
-    return this.httpClient.get<Promotion>(`${this.apiURL}/api/partner/company/promotions/${rewardId}`);
+    const companyId = this.userService.getCompanyIdView();
+    return this.httpClient.get<Promotion>(`${this.apiURL}/api/partner/companies/${companyId}/promotions/${rewardId}`);
   }
 
   public createPromotion(promotion: Promotion, officeId: number){

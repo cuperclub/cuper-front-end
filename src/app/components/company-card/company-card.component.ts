@@ -24,7 +24,7 @@ export class CompanyCardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.companyService.getMyCompany(1).subscribe(resp => {
+    this.companyService.getMyCompany().subscribe(resp => {
       this.company = resp
       this.propagateCompanyData.emit(this.company);
     });
