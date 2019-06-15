@@ -44,6 +44,12 @@ export class UserService {
     return currentUser.current_company_id;
   }
 
+  public setCompanyIdView(id){
+    let currentUser = this.getDataOnLocalStorage();
+    currentUser = {...currentUser, ...{current_company_id: id}};
+    localStorage.setItem('current_user', JSON.stringify(currentUser));
+  }
+
   public getMockData() {
     const users = [
       {

@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   currentUser: User;
   employeeRecords: Employee [];
   currentEmployee: Employee;
+  updatedView: boolean = false
 
   constructor(
     private tokenService: AngularTokenService,
@@ -41,7 +42,12 @@ export class HomeComponent implements OnInit {
 
   onRegisterCompany = () => this.router.navigate(['home/company/register']);
 
-  onChangeEmployeeAccount = (employee) => this.currentEmployee = employee;
+  onChangeEmployeeAccount (company) {
+    this.currentEmployee = company;
+    this.updatedView = true;
+    this.userService.setCompanyIdView(company.id);
+    setTimeout(() => { this.updatedView = false }, 1000);
+  }
 
   getStatusAccount(status) {
     let iconStatus = '';
