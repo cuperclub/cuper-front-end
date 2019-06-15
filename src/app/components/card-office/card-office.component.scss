@@ -36,7 +36,6 @@
       list-style: none;
       display: flex;
       padding: 1rem;
-      justify-content: space-between;
       align-items: center;
       position: relative;
       border-bottom: 1px solid $mercury;
@@ -55,9 +54,18 @@
         height: 2.5rem;
       }
 
-      .text {
-        width: 80%;
-        text-align: left;
+      .information {
+        margin-left: 1rem;
+
+        .text {
+          font-family: 'Circular-Book';
+        }
+
+        .name {
+          font-size: 12px;
+          padding: 0.25rem 0;
+          color: $gray-dark;
+        }
       }
     }
   }

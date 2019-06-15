@@ -26,10 +26,14 @@ export class PromotionService {
   }
 
   public createPromotion(promotion: Promotion, officeId: number){
-    return this.httpClient.post<Promotion>(`${this.apiURL}/api/partner/offices/${officeId}/promotions`, promotion);
+    const companyId = this.userService.getCompanyIdView();
+    const url = `${this.apiURL}/api/partner/companies/${companyId}/offices/${officeId}/promotions`
+    return this.httpClient.post<Promotion>(url, promotion);
   }
 
   public updatePromotion(promotion: Promotion, officeId: number){
-    return this.httpClient.put<Promotion>(`${this.apiURL}/api/partner/offices/${officeId}/promotions/${promotion.id}`, promotion);
+    const companyId = this.userService.getCompanyIdView();
+    const url = `${this.apiURL}/api/partner/companies/${companyId}/offices/${officeId}/promotions/${promotion.id}`
+    return this.httpClient.put<Promotion>(url, promotion);
   }
 }
