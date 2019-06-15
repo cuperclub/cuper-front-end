@@ -142,6 +142,26 @@
       }
     }
   }
+
+  .item-wrapper {
+    display: flex;
+    align-items: center;
+
+    .information {
+      margin-left: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      line-height: normal;
+
+      .name {
+        font-family: 'Lato-Regular';
+      }
+
+      .role {
+        font-size: 8px;
+      }
+    }
+  }
 }
 
 .main-view {
