@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-interface OptionPlan {
+export interface OptionPlan {
   price: number
   time: string
   promotion?: string
@@ -11,16 +11,12 @@ interface OptionPlan {
   templateUrl: './card-plan.component.html',
   styleUrls: ['./card-plan.component.scss']
 })
-export class CardPlanComponent implements OnInit {
+export class CardPlanComponent {
   @Input() option: OptionPlan;
   @Input() isSelected: boolean = false;
   @Output() propagatePlanData = new EventEmitter<any>();
 
-  activeIndex: Number;
-
   constructor() { }
-
-  ngOnInit() { }
 
   onClickCard = (plan) => this.propagatePlanData.emit(plan);
 }

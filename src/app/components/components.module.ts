@@ -38,6 +38,7 @@ import { CardPlanComponent } from './card-plan/card-plan.component';
 import { UserSearchComponent } from './user-search/user-search.component';
 import { RequestCashierComponent } from './request-cashier/request-cashier.component';
 import { LoaderComponent } from './loader/loader.component';
+import { CompanyDialogComponent } from './company-dialog/company-dialog.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -73,14 +74,15 @@ const components = [
   MapComponent,
   UserSearchComponent,
   RequestCashierComponent,
-  LoaderComponent
+  LoaderComponent,
+  CompanyDialogComponent
 ];
 
 @NgModule({
   declarations: components,
   entryComponents: [
     OfficeFormComponent,
-    CompanyFormComponent,
+    CompanyDialogComponent,
     ProfileFormComponent,
     UpdatePasswordFormComponent,
     InputTransactionFormComponent,

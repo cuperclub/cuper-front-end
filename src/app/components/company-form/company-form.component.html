@@ -1,22 +1,22 @@
 <div class="company-form">
-  <form class="form" (ngSubmit)="onCloseDialog()">
+  <form class="form" (ngSubmit)="onSubmit()">
     <mat-form-field class="field-group">
       <input matInput
-        [(ngModel)]="data.company.legal_representative"
+        [(ngModel)]="company.legal_representative"
         name="legal_representative"
         placeholder="{{ 'company.legal_representative' | translate }}"
         required>
     </mat-form-field>
     <mat-form-field class="field-group">
       <input matInput
-        [(ngModel)]="data.company.business_name"
+        [(ngModel)]="company.business_name"
         name="business_name"
         placeholder="{{ 'company.business_name' | translate }}"
         required>
     </mat-form-field>
     <mat-form-field class="field-group">
         <input matInput
-          [(ngModel)]="data.company.ruc"
+          [(ngModel)]="company.ruc"
           name="ruc"
           type="number"
           placeholder="{{ 'company.ruc' | translate }}"
@@ -24,29 +24,21 @@
     </mat-form-field>
     <mat-form-field class="field-group">
       <input matInput
-        [(ngModel)]="data.company.slogan"
+        [(ngModel)]="company.slogan"
         name="slogan"
         placeholder="{{ 'company.slogan' | translate }}">
     </mat-form-field>
     <mat-form-field class="field-group">
       <input matInput
-        [(ngModel)]="data.company.contributor_type"
+        [(ngModel)]="company.contributor_type"
         name="contributor_type"
         placeholder="{{ 'company.contributor_type' | translate }}">
     </mat-form-field>
     <mat-form-field class="field-group">
       <input matInput
-        [(ngModel)]="data.company.economic_activity"
+        [(ngModel)]="company.economic_activity"
         name="economic_activity"
         placeholder="{{ 'company.economic_activity' | translate }}">
     </mat-form-field>
-    <div class="footer-form">
-      <button mat-flat-button color="primary" [mat-dialog-close]="data.company" type="submit">
-        {{ 'common.ok' | translate }}
-      </button>
-      <button mat-flat-button color="secondary" (click)="onCloseDialog()">
-        {{ 'common.cancel' | translate }}
-      </button>
-    </div>
   </form>
 </div>

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Company } from '../../models';
 import { CompanyService} from 'src/app/services';
-import { CompanyFormComponent } from '../company-form/company-form.component';
+import { CompanyDialogComponent } from '../company-dialog/company-dialog.component';
 import { MatSnackBar } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -31,7 +31,7 @@ export class CompanyCardComponent implements OnInit {
   }
 
   editCompany() {
-    const dialogRef = this.dialog.open(CompanyFormComponent, {
+    const dialogRef = this.dialog.open(CompanyDialogComponent, {
       width: '400px',
       data: {
         company: Object.assign({}, this.company)

@@ -1,0 +1,10 @@
+<cuper-company-form [company]="data.company"></cuper-company-form>
+<mat-dialog-actions>
+  <button mat-flat-button
+    color="primary"
+    class="submit-button"
+    (click)="onSubmitCompany()">
+    {{ 'common.ok' | translate}}
+  </button>
+  <button mat-dialog-close mat-flat-button color="secondary">{{ 'common.cancel' | translate}}</button>
+</mat-dialog-actions>

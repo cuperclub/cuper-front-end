@@ -1,8 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CompanyCardComponent } from '../company-card/company-card.component';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Company } from '../../models';
-
 
 @Component({
   selector: 'cuper-company-form',
@@ -10,13 +7,10 @@ import { Company } from '../../models';
   styleUrls: ['./company-form.component.scss']
 })
 export class CompanyFormComponent {
+  @Input() company: Company = {};
+  @Output() propagateFormCompany = new EventEmitter<any>();
 
-  constructor(
-    public dialogRef: MatDialogRef<CompanyCardComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Company
-  ) {}
+  constructor() {}
 
-  onCloseDialog(): void {
-    this.dialogRef.close();
-  }
+  onSubmit = () => this.propagateFormCompany.emit(this.company);
 }
