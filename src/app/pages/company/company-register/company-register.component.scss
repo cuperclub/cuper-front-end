@@ -30,7 +30,12 @@
 					height: 8rem;
 					margin: 0.5rem;
 				}
-			}
+      }
+
+      .step-container {
+        display: flex;
+        justify-content: flex-end;
+      }
 		}
 	}
 }

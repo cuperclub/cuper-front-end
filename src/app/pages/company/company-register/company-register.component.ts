@@ -7,11 +7,11 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./company-register.component.scss']
 })
 export class CompanyRegisterComponent implements OnInit {
-  isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
   plans: any;
+  planSelected: any;
 
   constructor(private _formBuilder: FormBuilder) {}
 
@@ -25,7 +25,7 @@ export class CompanyRegisterComponent implements OnInit {
     this.plans = [
       {
         price: "0",
-        time: " 3 meses",
+        time: "3 meses",
         promotion: "Gratis"
       },
       {
@@ -44,5 +44,11 @@ export class CompanyRegisterComponent implements OnInit {
       },
     ]
   }
+
+  onListenerPlan(plan) {
+    this.planSelected = plan;
+  }
+
+  isSelectedPlan = (plan) => plan === this.planSelected;
 
 }

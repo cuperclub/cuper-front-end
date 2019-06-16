@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 interface OptionPlan {
   price: number
@@ -13,19 +13,14 @@ interface OptionPlan {
 })
 export class CardPlanComponent implements OnInit {
   @Input() option: OptionPlan;
-  @Input() onSelect: Function;
+  @Input() isSelected: boolean = false;
+  @Output() propagatePlanData = new EventEmitter<any>();
 
   activeIndex: Number;
 
   constructor() { }
 
-  ngOnInit() {
-    // if(this.seletedOption) {
-    //   this.activeIndex = this.options.indexOf(this.seletedOption);
-    // }
-  }
+  ngOnInit() { }
 
-  onClick (index) {
-    this.onSelect(this.option);
-  }
+  onClickCard = (plan) => this.propagatePlanData.emit(plan);
 }
