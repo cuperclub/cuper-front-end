@@ -42,10 +42,12 @@
         </mat-step>
         <mat-step>
           <ng-template matStepLabel>{{ 'company.register_form.step-3' | translate }}</ng-template>
-          <cuper-card-plan class="plan"
-            [option]="planSelected"
-            [isSelected]="isSelectedPlan(planSelected)">
-          </cuper-card-plan>
+          <div class="plan-container">
+            <cuper-card-plan class="selected"
+              [option]="planSelected"
+              [isSelected]="isSelectedPlan(planSelected)">
+            </cuper-card-plan>
+          </div>
           <div class="company-preview-panel">
             <div class="item-container" *ngFor="let item of companyFormGroup.value | keyvalue">
               <div class="field">{{ 'company.'+item.key | translate }}</div>
