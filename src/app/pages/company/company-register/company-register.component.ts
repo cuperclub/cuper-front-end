@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Company } from '../../../models'
 import { OptionPlan } from '../../../components/card-plan/card-plan.component';
@@ -9,26 +9,24 @@ import { OptionPlan } from '../../../components/card-plan/card-plan.component';
   styleUrls: ['./company-register.component.scss']
 })
 export class CompanyRegisterComponent implements OnInit {
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+  planFormGroup: FormGroup;
+  companyFormGroup: FormGroup;
 
   plans: OptionPlan [];
   planSelected: OptionPlan;
-  companyForm: Company = {};
+  isUserNew: boolean = false;
 
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+    this.companyFormGroup = this._formBuilder.group({
+      legal_representative: ['', Validators.required],
+      business_name: ['', Validators.required],
+      ruc: ['', Validators.required],
+      slogan: [''],
+      contributor_type: [''],
+      economic_activity: ['']
     });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
-    this.planSelected = {
-      price: 0,
-      time: '3 meses',
-    };
     this.plans = [
       {
         price: 0,
@@ -48,18 +46,29 @@ export class CompanyRegisterComponent implements OnInit {
         price: 30,
         time: 'anual',
         promotion: 'Ahorra $30'
-      },
-    ]
+      }
+    ];
+    const defaultPlan = {
+      price: 0,
+      time: '',
+    };
+    this.planSelected = this.isUserNew ? this.plans[0] : defaultPlan;
+    this.planFormGroup = this._formBuilder.group({
+      selectPlan: [this.planSelected.time, Validators.required]
+    });
   }
 
   onListenerPlan(plan) {
     this.planSelected = plan;
+    this.planFormGroup = this._formBuilder.group({
+      selectPlan: [this.planSelected.time, Validators.required]
+    });
   }
 
   isSelectedPlan = (plan) => plan === this.planSelected;
 
   onSubmitCompany() {
-    console.log('register company', this.companyForm);
+    console.log('register company', this.companyFormGroup.value);
     console.log('plan selected', this.planSelected);
   }
 }

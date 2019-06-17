@@ -1,44 +1,53 @@
 <div class="company-form">
-  <form class="form" (ngSubmit)="onSubmit()">
+  <form class="form" (ngSubmit)="onSubmit()" [formGroup]="companyFormGroup" novalidate>
     <mat-form-field class="field-group">
       <input matInput
-        [(ngModel)]="company.legal_representative"
         name="legal_representative"
         placeholder="{{ 'company.legal_representative' | translate }}"
-        required>
+        formControlName="legal_representative">
+        <mat-error>
+          <cuper-control-messages [control]="companyFormGroup.get('legal_representative')">
+          </cuper-control-messages>
+        </mat-error>
     </mat-form-field>
     <mat-form-field class="field-group">
       <input matInput
-        [(ngModel)]="company.business_name"
         name="business_name"
         placeholder="{{ 'company.business_name' | translate }}"
-        required>
-    </mat-form-field>
-    <mat-form-field class="field-group">
-        <input matInput
-          [(ngModel)]="company.ruc"
-          name="ruc"
-          type="number"
-          placeholder="{{ 'company.ruc' | translate }}"
-          required>
+        formControlName="business_name">
+        <mat-error>
+          <cuper-control-messages [control]="companyFormGroup.get('business_name')">
+          </cuper-control-messages>
+        </mat-error>
     </mat-form-field>
     <mat-form-field class="field-group">
       <input matInput
-        [(ngModel)]="company.slogan"
+        name="ruc"
+        type="number"
+        placeholder="{{ 'company.ruc' | translate }}"
+        formControlName="ruc">
+        <mat-error>
+          <cuper-control-messages [control]="companyFormGroup.get('ruc')">
+          </cuper-control-messages>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="field-group">
+      <input matInput
         name="slogan"
-        placeholder="{{ 'company.slogan' | translate }}">
+        placeholder="{{ 'company.slogan' | translate }}"
+        formControlName="slogan">
     </mat-form-field>
     <mat-form-field class="field-group">
       <input matInput
-        [(ngModel)]="company.contributor_type"
         name="contributor_type"
-        placeholder="{{ 'company.contributor_type' | translate }}">
+        placeholder="{{ 'company.contributor_type' | translate }}"
+        formControlName="contributor_type">
     </mat-form-field>
     <mat-form-field class="field-group">
       <input matInput
-        [(ngModel)]="company.economic_activity"
         name="economic_activity"
-        placeholder="{{ 'company.economic_activity' | translate }}">
+        placeholder="{{ 'company.economic_activity' | translate }}"
+        formControlName="economic_activity">
     </mat-form-field>
   </form>
 </div>
