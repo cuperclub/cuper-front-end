@@ -40,21 +40,7 @@ export class CompanyCardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(companyData => {
       if(companyData){
-        this.companyService.updateMyCompany(companyData).subscribe(
-          (resp) => {
-            this.translate.get('common.messages.updated').subscribe((message: string) => {
-              this.message.open(message, '', {
-                duration: 2000
-              });
-              this.company = resp;
-            });
-          },
-          ({ error }) => {
-            this.message.open(error.errors, '', {
-              duration: 2000
-            });
-          }
-        );
+        this.company = companyData;
       }
     });
   }
