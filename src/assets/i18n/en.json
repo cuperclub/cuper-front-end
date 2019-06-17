@@ -64,7 +64,8 @@
     "business_name": "Business Name",
     "register": "Register Company",
     "request_cashier": "User not found, would you like send invitation?",
-    "validating": "your company will be validate"
+    "validating": "your company will be validate",
+    "category": "Category"
   },
   "office": {
     "create": "Create a new office"

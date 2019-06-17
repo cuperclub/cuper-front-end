@@ -10,4 +10,5 @@ export interface Company {
   logo?: string;
   slogan?: string;
   join_at?: number;
+  category_id?: number;
 }

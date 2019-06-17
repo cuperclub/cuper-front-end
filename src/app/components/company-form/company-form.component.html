@@ -49,5 +49,17 @@
         placeholder="{{ 'company.economic_activity' | translate }}"
         formControlName="economic_activity">
     </mat-form-field>
+    <mat-form-field class="field-group" *ngIf="categories$ | async as data">
+      <mat-label>{{ 'company.category' | translate }}</mat-label>
+      <mat-select formControlName="category_id">
+        <mat-option *ngFor="let category of data.categories" [value]="category.id">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error>
+        <cuper-control-messages [control]="companyFormGroup.get('category_id')">
+        </cuper-control-messages>
+      </mat-error>
+    </mat-form-field>
   </form>
 </div>

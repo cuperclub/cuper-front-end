@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-import { Company } from '../../models';
+import { Company, Category } from '../../models';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { CategoryService } from '../../services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'cuper-company-form',
@@ -12,8 +14,11 @@ export class CompanyFormComponent implements OnInit{
   @Input() companyFormGroup: FormGroup;
   @Output() propagateFormCompany = new EventEmitter<any>();
 
+  categories$: Observable<Category[]>;
+
   constructor(
     private fb: FormBuilder,
+    private categoryService: CategoryService
   ) {}
 
   ngOnInit() {
@@ -35,6 +40,7 @@ export class CompanyFormComponent implements OnInit{
       economic_activity: [defaultCompany.economic_activity]
     });
     this.companyFormGroup = this.companyFormGroup || defaultFormControl;
+    this.categories$ = this.categoryService.getCategories();
   }
 
   onSubmit = () => this.propagateFormCompany.emit(this.companyFormGroup.value);

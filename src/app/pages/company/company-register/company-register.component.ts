@@ -34,7 +34,8 @@ export class CompanyRegisterComponent implements OnInit {
       ruc: ['', Validators.required],
       slogan: [''],
       contributor_type: [''],
-      economic_activity: ['']
+      economic_activity: [''],
+      category_id: ['', Validators.required]
     });
     this.plans = [
       {
@@ -88,7 +89,7 @@ export class CompanyRegisterComponent implements OnInit {
       this.message.open(message, '', {
         duration: 2000
       });
-      this.router.navigate(['home/dasboard']);
+      this.router.navigate(['home/dashboard']);
     });
   }
 
