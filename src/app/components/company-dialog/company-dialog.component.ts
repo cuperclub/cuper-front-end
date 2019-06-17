@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 import { CompanyService } from '../../services';
 import { Company } from '../../models';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'cuper-company-dialog',
@@ -12,6 +13,7 @@ import { Company } from '../../models';
   styleUrls: ['./company-dialog.component.scss']
 })
 export class CompanyDialogComponent implements OnInit {
+  companyFormGroup: FormGroup;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -19,12 +21,34 @@ export class CompanyDialogComponent implements OnInit {
     private companyService: CompanyService,
     private message: MatSnackBar,
     private translate: TranslateService,
+    private _formBuilder: FormBuilder,
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const defaultCompany: Company = {
+      legal_representative: '',
+      business_name: '',
+      ruc: '',
+      slogan: '',
+      contributor_type: '',
+      economic_activity: '',
+      category_id: 0,
+      category: {}
+    };
+    const currentOffice = Object.assign(defaultCompany, this.data.company);
+    this.companyFormGroup = this._formBuilder.group({
+      legal_representative: [currentOffice.legal_representative, [Validators.required]],
+      business_name: [currentOffice.business_name, [Validators.required]],
+      ruc: [currentOffice.ruc, [Validators.required]],
+      slogan: [defaultCompany.slogan],
+      contributor_type: [defaultCompany.contributor_type],
+      economic_activity: [defaultCompany.economic_activity],
+      category_id: [defaultCompany.category.id || defaultCompany.category_id, Validators.required]
+    });
+  }
 
   onSubmitCompany() {
-    const inputCompany = this.data.company || {};
+    const inputCompany = this.companyFormGroup.value || {};
     let companyToSave: Company = Object.assign({}, inputCompany);
     this.editCompany(companyToSave);
   }

@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./company-form.component.scss']
 })
 export class CompanyFormComponent implements OnInit{
-  @Input() company: Company = {};
   @Input() companyFormGroup: FormGroup;
   @Output() propagateFormCompany = new EventEmitter<any>();
 
@@ -22,22 +21,14 @@ export class CompanyFormComponent implements OnInit{
   ) {}
 
   ngOnInit() {
-    const defaultCompany: Company = {
-      legal_representative: '',
-      business_name: '',
-      ruc: '',
-      slogan: '',
-      contributor_type: '',
-      economic_activity: ''
-    };
-    const currentOffice = Object.assign(defaultCompany, this.company);
     const defaultFormControl = this.fb.group({
-      legal_representative: [currentOffice.legal_representative, [Validators.required]],
-      business_name: [currentOffice.business_name, [Validators.required]],
-      ruc: [currentOffice.ruc, [Validators.required]],
-      slogan: [defaultCompany.slogan],
-      contributor_type: [defaultCompany.contributor_type],
-      economic_activity: [defaultCompany.economic_activity]
+      legal_representative: ['', Validators.required],
+      business_name: ['', Validators.required],
+      ruc: ['', Validators.required],
+      slogan: [''],
+      contributor_type: [''],
+      economic_activity: [''],
+      category_id: ['', Validators.required]
     });
     this.companyFormGroup = this.companyFormGroup || defaultFormControl;
     this.categories$ = this.categoryService.getCategories();

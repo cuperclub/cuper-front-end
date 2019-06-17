@@ -28,7 +28,7 @@
         </mat-step>
         <mat-step [stepControl]="companyFormGroup">
           <ng-template matStepLabel>{{ 'company.register_form.step-2' | translate }}</ng-template>
-          <cuper-company-form [company]="companyForm" [companyFormGroup]="companyFormGroup"></cuper-company-form>
+          <cuper-company-form [companyFormGroup]="companyFormGroup"></cuper-company-form>
           <div class="step-container">
             <button mat-button matStepperPrevious>
               <mat-icon>navigate_before</mat-icon>

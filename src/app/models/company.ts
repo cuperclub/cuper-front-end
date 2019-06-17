@@ -1,3 +1,5 @@
+import { Category } from './category';
+
 export interface Company {
   id?: number;
   legal_representative?: string;
@@ -11,4 +13,5 @@ export interface Company {
   slogan?: string;
   join_at?: number;
   category_id?: number;
+  category?: Category
 }

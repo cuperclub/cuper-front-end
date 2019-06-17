@@ -3,8 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Company } from '../../models';
 import { CompanyService} from 'src/app/services';
 import { CompanyDialogComponent } from '../company-dialog/company-dialog.component';
-import { MatSnackBar } from '@angular/material';
-import { TranslateService } from '@ngx-translate/core';
 import { UserService } from 'src/app/services';
 
 @Component({
@@ -20,8 +18,6 @@ export class CompanyCardComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private companyService: CompanyService,
-    private message: MatSnackBar,
-    private translate: TranslateService,
     private userService: UserService,
   ) { }
 
@@ -44,6 +40,7 @@ export class CompanyCardComponent implements OnInit {
     dialogRef.afterClosed().subscribe(companyData => {
       if(companyData){
         this.company = companyData;
+        this.propagateCompanyData.emit(companyData);
       }
     });
   }

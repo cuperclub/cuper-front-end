@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { CompanyService } from '../../../services'
+import { CompanyService, UserService } from '../../../services'
 import { OptionPlan } from '../../../components/card-plan/card-plan.component';
 import { MatSnackBar } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
@@ -24,7 +24,8 @@ export class CompanyRegisterComponent implements OnInit {
     private router: Router,
     private companyService: CompanyService,
     private message: MatSnackBar,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private userService: UserService,
   ) {}
 
   ngOnInit() {
@@ -79,16 +80,30 @@ export class CompanyRegisterComponent implements OnInit {
 
   onSubmitCompany() {
     this.companyService.registerMyCompany(this.companyFormGroup.value).subscribe(
-      () =>    this.onSuccess('company.validating'),
+      (resp) => this.onSuccess('company.validating', resp),
       error =>  this.onError(error)
     );
   }
 
-  onSuccess(message: string): void {
+  onSuccess(message: string, company): void {
     this.translate.get(message).subscribe((message: string) => {
       this.message.open(message, '', {
         duration: 2000
       });
+      const currenUser = this.userService.getDataOnLocalStorage();
+      const formatCompany = {
+        id: company.id,
+        join_at: company.join_at,
+        name: company.business_name,
+        role: 'partner',
+        status: 'pending'
+      }
+      if(currenUser.companies) {
+        currenUser.companies.push(formatCompany);
+      }else {
+        currenUser.companies = [formatCompany];
+      }
+      this.userService.saveDataOnLocalStorage(currenUser);
       this.router.navigate(['home/dashboard']);
     });
   }
