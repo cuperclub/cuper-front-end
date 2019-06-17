@@ -16,7 +16,8 @@
               <mat-icon class="icon">
                 {{getStatusAccount(currentEmployee.status)}}
               </mat-icon>
-              <span>{{currentEmployee.status}}</span>
+              <span>
+                {{ 'common.status.'+ currentEmployee.status | translate }}</span>
             </div>
           </div>
           <mat-icon>arrow_drop_down</mat-icon>
