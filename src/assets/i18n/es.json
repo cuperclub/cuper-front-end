@@ -90,7 +90,8 @@
       "step-3": "Previsualización"
     },
     "register_company": "Registrar mi companía",
-    "request_cashier": "Usuario no econtrado, desea enviarle una invitación?"
+    "request_cashier": "Usuario no econtrado, desea enviarle una invitación?",
+    "validating": "Su companía sera validada"
   },
   "office": {
     "create": "Crear una nueva oficina",

@@ -1,7 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { Company } from '../../../models'
+import { CompanyService } from '../../../services'
 import { OptionPlan } from '../../../components/card-plan/card-plan.component';
+import { MatSnackBar } from '@angular/material';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'cuper-company-register',
@@ -16,7 +19,13 @@ export class CompanyRegisterComponent implements OnInit {
   planSelected: OptionPlan;
   isUserNew: boolean = false;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(
+    private _formBuilder: FormBuilder,
+    private router: Router,
+    private companyService: CompanyService,
+    private message: MatSnackBar,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit() {
     this.companyFormGroup = this._formBuilder.group({
@@ -68,7 +77,24 @@ export class CompanyRegisterComponent implements OnInit {
   isSelectedPlan = (plan) => plan === this.planSelected;
 
   onSubmitCompany() {
-    console.log('register company', this.companyFormGroup.value);
-    console.log('plan selected', this.planSelected);
+    this.companyService.registerMyCompany(this.companyFormGroup.value).subscribe(
+      () =>    this.onSuccess('company.validating'),
+      error =>  this.onError(error)
+    );
+  }
+
+  onSuccess(message: string): void {
+    this.translate.get(message).subscribe((message: string) => {
+      this.message.open(message, '', {
+        duration: 2000
+      });
+      this.router.navigate(['home/dasboard']);
+    });
+  }
+
+  onError(resp): void {
+    this.message.open(resp.errors, '', {
+      duration: 2000
+    });
   }
 }
