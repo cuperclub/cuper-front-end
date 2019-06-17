@@ -9,4 +9,5 @@ export interface Company {
   created_at?: Date;
   logo?: string;
   slogan?: string;
+  join_at?: number;
 }

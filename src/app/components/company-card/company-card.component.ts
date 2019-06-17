@@ -5,6 +5,7 @@ import { CompanyService} from 'src/app/services';
 import { CompanyDialogComponent } from '../company-dialog/company-dialog.component';
 import { MatSnackBar } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
+import { UserService } from 'src/app/services';
 
 @Component({
   selector: 'cuper-company-card',
@@ -20,13 +21,15 @@ export class CompanyCardComponent implements OnInit {
     private dialog: MatDialog,
     private companyService: CompanyService,
     private message: MatSnackBar,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private userService: UserService,
   ) { }
 
   ngOnInit() {
     this.companyService.getMyCompany().subscribe(resp => {
       this.company = resp
       this.propagateCompanyData.emit(this.company);
+      this.company.image = this.company.image || this.userService.getAvatar(this.company.join_at);
     });
   }
 
