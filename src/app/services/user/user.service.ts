@@ -50,6 +50,12 @@ export class UserService {
     localStorage.setItem('current_user', JSON.stringify(currentUser));
   }
 
+  public getCurrentCompany(){
+    let currentUser = this.getDataOnLocalStorage();
+    const currentCompany =  currentUser.companies.find(company => company.id == currentUser.current_company_id);
+    return currentCompany;
+  }
+
   public getMockData() {
     const users = [
       {

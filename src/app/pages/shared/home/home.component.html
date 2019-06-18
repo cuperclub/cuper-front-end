@@ -72,7 +72,7 @@
 </div>
 
 <div class="main-view">
-  <div class="left-panel">
+  <div class="left-panel" *ngIf="!updatedView">
     <a routerLink="dashboard" class="tabs" routerLinkActive="active">
       <mat-icon>view_module</mat-icon>
       <span>{{ 'tabs.dashboard' | translate }}</span>
@@ -94,7 +94,7 @@
     <a routerLink="transactions"
       class="tabs"
       routerLinkActive="active"
-      *ngIf="currentUser && currentUser.is_cashier">
+      *ngIf="currentUser && (currentUser.is_cashier || currentUser.is_partner)">
       <mat-icon>account_balance_wallet</mat-icon>
       <span>{{ 'tabs.transactions' | translate }}</span>
     </a>
