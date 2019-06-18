@@ -60,9 +60,6 @@ export class HomeComponent implements OnInit {
       case UserStatus.PENDING:
         iconStatus = 'input';
         break;
-      case UserStatus.DELETED:
-        iconStatus = 'remove_circle_outline';
-        break;
       case UserStatus.DISABLED:
         iconStatus = 'domain_disabled';
         break;

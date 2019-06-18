@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { Employee } from '../../models';
+import { Employee, UserStatus } from '../../models';
 import { EmployeeService } from 'src/app/services';
-import { Observable } from 'rxjs';
 import { RequestCashierComponent } from '../request-cashier/request-cashier.component';
 
 @Component({
@@ -11,7 +10,21 @@ import { RequestCashierComponent } from '../request-cashier/request-cashier.comp
   styleUrls: ['./card-cashier.component.scss']
 })
 export class CardCashierComponent implements OnInit {
-  myEmployees$: Observable<Employee[]>;
+  myEmployees: Employee[];
+  mappingStatus = {
+    approved: {
+      action: UserStatus.DISABLED,
+      translation: 'common.actions.disable'
+    },
+    pending: {
+      action: UserStatus.APPROVED,
+      translation: 'common.actions.approve'
+    },
+    disabled: {
+      action: UserStatus.APPROVED,
+      translation: 'common.actions.enable'
+    },
+  };
 
   constructor(
     private dialog: MatDialog,
@@ -19,24 +32,27 @@ export class CardCashierComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.myEmployees$ = this.employeeService.getMyEmployees();
+    this.employeeService.getMyEmployees().subscribe((data) => this.myEmployees = data['employees']);
   }
 
-  onDisabledCashier(){
-    console.log('oonDisabledCashier');
+  onDisabledCashier(cashier: Employee) {
+    const statusData = {
+      status: this.mappingStatus[cashier.status].action,
+      feedback: ''
+    };
+    this.employeeService.updateStatusEmployee(cashier.id, statusData).subscribe(currentEmployee => {
+      const indexEmployee = this.myEmployees.findIndex(employee => employee.id === currentEmployee.id);
+      this.myEmployees[indexEmployee] = currentEmployee;
+    });
   }
 
   getStatusLabel(status){
     return `common.status.${status}`;
   }
 
-  getButtonName(status){
-    const translations = {
-      approved: 'common.actions.disable',
-      pending: 'common.actions.approve',
-      disabled: 'common.actions.enable'
-    };
-    return translations[status];
+  getButtonName(status) {
+    const translation = this.mappingStatus[status].translation;
+    return translation;
   }
 
   onAddCashier() {

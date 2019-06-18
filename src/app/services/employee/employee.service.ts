@@ -2,7 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Employee } from '../../models';
-import { UserService} from '../user/user.service'
+import { UserService} from '../user/user.service';
+
+interface StatusData {
+  status: string;
+  feedback: string;
+};
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +24,12 @@ export class EmployeeService {
     const companyId = this.userService.getCompanyIdView();
     const url = `${this.apiURL}/api/partner/companies/${companyId}/employees`
     return this.httpClient.get<Employee[]>(url);
+  }
+
+
+  public updateStatusEmployee(employeeId: number, data: StatusData){
+    const companyId = this.userService.getCompanyIdView();
+    const url = `${this.apiURL}/api/partner/companies/${companyId}/employees/${employeeId}/update_state`
+    return this.httpClient.put<Employee>(url, data);
   }
 }
