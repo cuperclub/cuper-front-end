@@ -179,6 +179,11 @@
       color: $gray-dark;
       font-size: 12px;
 
+      &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
       mat-icon{
         padding-left: 3rem;
       }

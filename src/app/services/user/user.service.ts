@@ -56,6 +56,18 @@ export class UserService {
     return currentCompany;
   }
 
+  public userIsCashier(){
+    const currentCompany =  this.getCurrentCompany();
+    const isCashier = currentCompany && (currentCompany.role === 'cashier' || currentCompany.role === 'partner');
+    return isCashier;
+  }
+
+  public userIsPartner(){
+    const currentCompany =  this.getCurrentCompany();
+    const isPartner = currentCompany && (currentCompany.role === 'partner');
+    return isPartner;
+  }
+
   public getMockData() {
     const users = [
       {

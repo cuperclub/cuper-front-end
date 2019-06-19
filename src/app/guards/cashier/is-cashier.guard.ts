@@ -14,9 +14,7 @@ export class IsCashierGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    const currentUser = this.userService.getDataOnLocalStorage();
-    const currentCompany =  currentUser.companies.find(company => company.id == currentUser.current_company_id);
-    const isCashier = currentCompany && (currentCompany.role === 'cashier' || currentCompany.role === 'partner') ;
+    const isCashier = this.userService.userIsCashier();
     if(!isCashier){
       this.router.navigateByUrl('/home/dashboard');
     }

@@ -79,22 +79,22 @@
     </a>
     <a routerLink="rewards"
       class="tabs"
-      routerLinkActive="active"
-      *ngIf="currentUser && currentUser.is_partner">
+      [class.disabled]="!userService.userIsPartner()"
+      routerLinkActive="active">
       <mat-icon>cake</mat-icon>
       <span>{{ 'tabs.rewards' | translate }}</span>
     </a>
     <a routerLink="company"
       class="tabs"
-      routerLinkActive="active"
-      *ngIf="currentUser && currentUser.is_partner">
+      [class.disabled]="!userService.userIsPartner()"
+      routerLinkActive="active">
       <mat-icon>business</mat-icon>
       <span>{{ 'tabs.company' | translate }}</span>
     </a>
     <a routerLink="transactions"
       class="tabs"
-      routerLinkActive="active"
-      *ngIf="currentUser && (currentUser.is_cashier || currentUser.is_partner)">
+      [class.disabled]="!userService.userIsCashier()"
+      routerLinkActive="active">
       <mat-icon>account_balance_wallet</mat-icon>
       <span>{{ 'tabs.transactions' | translate }}</span>
     </a>

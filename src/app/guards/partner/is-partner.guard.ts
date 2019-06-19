@@ -14,9 +14,7 @@ export class IsPartnerGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    const currentUser = this.userService.getDataOnLocalStorage();
-    const currentCompany =  currentUser.companies.find(company => company.id == currentUser.current_company_id);
-    const isPartner = currentCompany && currentCompany.role === 'partner';
+    const isPartner = this.userService.userIsPartner();
     if(!isPartner){
       this.router.navigateByUrl('/home/dashboard');
     }
