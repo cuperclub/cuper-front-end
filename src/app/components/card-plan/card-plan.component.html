@@ -1,0 +1,18 @@
+<mat-card class="card-container" (click)="onClickCard(option)">
+  <mat-icon class="icon" *ngIf="isSelected">check_circle</mat-icon>
+  <div class="card-content">
+    <div class="promo-wrapper">
+      <div class="price">
+        <span class="currency">$</span>
+        <span class="number">{{option.price}}</span>
+      </div>
+      <div class="information">
+        <span class="time">/ {{option.time}}</span>
+      </div>
+    </div>
+    <span class="promo"
+      *ngIf="option.promotion">
+      *{{option.promotion}}
+    </span>
+  </div>
+</mat-card>

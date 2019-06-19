@@ -10,11 +10,19 @@
     <ul class="offices" *ngIf="offices">
       <li class="office" *ngFor="let office of offices" (click)="onSelectOffice(office)">
         <img class="avatar" src="../../../assets/images/shop.svg"/>
-        <span class="text">{{office.name}}</span>
+        <div class="information">
+          <span class="text">{{office.address}}</span>
+          <br>
+          <span class="name">{{office.name}}</span>
+        </div>
       </li>
     </ul>
-    <div class="emptyState" *ngIf="!offices">
+    <div class="emptyState" *ngIf="offices && offices.length === 0">
       Empty state
     </div>
+    <cuper-loader
+      class="loader"
+      *ngIf="!offices">
+    </cuper-loader>
   </div>
 </mat-card>

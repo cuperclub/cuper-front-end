@@ -1,0 +1,24 @@
+::ng-deep .user-card {
+  box-shadow: none !important;
+}
+
+.panel-invitation {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .field-group {
+    width: 15rem;
+  }
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.submit-button {
+  margin-left: 1rem;
+}

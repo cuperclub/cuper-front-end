@@ -29,9 +29,16 @@ import { UpdatePasswordFormComponent } from './update-password-form/update-passw
 import { InputTransactionFormComponent } from './input-transaction-form/input-transaction-form.component';
 import { OutputTransactionFormComponent } from './output-transaction-form/output-transaction-form.component';
 import { OfficePreviewComponent } from './office-preview/office-preview.component';
+import { CardPointsComponent } from './card-points/card-points.component';
+import { CardRegisterCompanyComponent } from './card-register-company/card-register-company.component';
 import { MapComponent } from './map/map.component';
 import { OfficeFormComponent } from './office-form/office-form.component';
 import { ControlMessagesComponent } from './control-messages/control-messages.component';
+import { CardPlanComponent } from './card-plan/card-plan.component';
+import { UserSearchComponent } from './user-search/user-search.component';
+import { RequestCashierComponent } from './request-cashier/request-cashier.component';
+import { LoaderComponent } from './loader/loader.component';
+import { CompanyDialogComponent } from './company-dialog/company-dialog.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -61,19 +68,27 @@ const components = [
   SquareSelectComponent,
   OfficePreviewComponent,
   ControlMessagesComponent,
-  MapComponent
+  CardPointsComponent,
+  CardRegisterCompanyComponent,
+  CardPlanComponent,
+  MapComponent,
+  UserSearchComponent,
+  RequestCashierComponent,
+  LoaderComponent,
+  CompanyDialogComponent
 ];
 
 @NgModule({
   declarations: components,
   entryComponents: [
     OfficeFormComponent,
-    CompanyFormComponent,
+    CompanyDialogComponent,
     ProfileFormComponent,
     UpdatePasswordFormComponent,
     InputTransactionFormComponent,
     OutputTransactionFormComponent,
-    OfficePreviewComponent
+    OfficePreviewComponent,
+    RequestCashierComponent
   ],
   imports: [
     CommonModule,

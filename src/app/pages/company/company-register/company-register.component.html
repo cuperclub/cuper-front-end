@@ -1,0 +1,70 @@
+<div class="page-container">
+  <div class="view">
+    <div class="header-card">
+      <span class="title">{{ 'company.register_company' | translate }}</span>
+    </div>
+    <mat-card class="form-container">
+      <mat-horizontal-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="planFormGroup">
+          <form [formGroup]="planFormGroup">
+            <ng-template matStepLabel>{{ 'company.register_form.step-1' | translate }}</ng-template>
+            <input matInput class="select-plan" formControlName="selectPlan">
+            <div class="plans-container">
+              <cuper-card-plan
+                *ngFor="let plan of plans"
+                class="plan"
+                [option]="plan"
+                [isSelected]="isSelectedPlan(plan)"
+                (propagatePlanData)="onListenerPlan($event)">
+              </cuper-card-plan>
+            </div>
+            <div class="step-container">
+              <button mat-button matStepperNext>
+                {{ 'common.buttons.next' | translate }}
+                <mat-icon>navigate_next</mat-icon>
+              </button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="companyFormGroup">
+          <ng-template matStepLabel>{{ 'company.register_form.step-2' | translate }}</ng-template>
+          <cuper-company-form [companyFormGroup]="companyFormGroup"></cuper-company-form>
+          <div class="step-container">
+            <button mat-button matStepperPrevious>
+              <mat-icon>navigate_before</mat-icon>
+              {{ 'common.buttons.back' | translate }}
+            </button>
+            <button mat-button matStepperNext>
+              {{ 'common.buttons.next' | translate }}
+              <mat-icon>navigate_next</mat-icon>
+            </button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>{{ 'company.register_form.step-3' | translate }}</ng-template>
+          <div class="plan-container">
+            <cuper-card-plan class="selected"
+              [option]="planSelected"
+              [isSelected]="isSelectedPlan(planSelected)">
+            </cuper-card-plan>
+          </div>
+          <div class="company-preview-panel">
+            <div class="item-container" *ngFor="let item of companyFormGroup.value | keyvalue">
+              <div class="field">{{ 'company.'+item.key | translate }}</div>
+              <div class="value">{{ item.value }}</div>
+            </div>
+          </div>
+          <div class="step-container">
+            <button mat-button matStepperPrevious>
+              <mat-icon>navigate_before</mat-icon>
+              {{ 'common.buttons.back' | translate }}
+            </button>
+            <button mat-button (click)="onSubmitCompany()">
+              {{ 'common.ok' | translate }}
+            </button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<mat-card class="user-card">
+  <mat-form-field class="input-search">
+    <input matInput placeholder="{{ 'common.user' | translate}}" [matAutocomplete]="auto" [formControl]="stateCtrl">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option class="item-list" *ngFor="let user of filteredUsers | async" [value]="user.name" (click)="onClickOption(user)">
+        <div class="user-search-item">
+          <div class="avatar-col">
+            <cuper-avatar [imageSrc]="user.image" [size]="25"></cuper-avatar>
+          </div>
+          <div class="content-col">
+            <div class="title">{{user.name}}</div>
+            <div class="description">{{user.email}}</div>
+          </div>
+        </div>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <div class="user-info">
+    <div class="user-preview-card">
+      <div class="container">
+        <cuper-avatar *ngIf="!currentUser" [imageSrc]="defaultImageProfile" [size]="60"></cuper-avatar>
+        <cuper-avatar *ngIf="currentUser" [imageSrc]="currentUser.image" [size]="60"></cuper-avatar>
+        <div class="name" *ngIf="currentUser">{{currentUser.name}}</div>
+        <div class="name" *ngIf="!currentUser">{{'common.names' | translate}}</div>
+        <div class="national_id" *ngIf="currentUser">{{currentUser.national_id}}</div>
+        <div class="national_id" *ngIf="!currentUser">{{'common.national_id' | translate}}</div>
+      </div>
+      <div class="footer">
+        <div></div>
+        <button mat-flat-button *ngIf="rightButton"
+          color="primary"
+          (click)="rightButton.action()"
+          [disabled]="!currentUser">
+          {{ rightButton.label | translate }}
+        </button>
+        <button mat-flat-button *ngIf="leftButton"
+          color="accent"
+          (click)="leftButton.action()"
+          [disabled]="!currentUser">
+          {{ leftButton.label | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-card>

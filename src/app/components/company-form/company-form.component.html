@@ -1,54 +1,65 @@
 <div class="company-form">
-  <form class="form" (ngSubmit)="onCloseDialog()">
+  <form class="form" (ngSubmit)="onSubmit()" [formGroup]="companyFormGroup" novalidate>
     <mat-form-field class="field-group">
       <input matInput
-        [(ngModel)]="data.company.legal_representative"
         name="legal_representative"
         placeholder="{{ 'company.legal_representative' | translate }}"
-        required>
+        formControlName="legal_representative">
+        <mat-error>
+          <cuper-control-messages [control]="companyFormGroup.get('legal_representative')">
+          </cuper-control-messages>
+        </mat-error>
     </mat-form-field>
     <mat-form-field class="field-group">
       <input matInput
-        [(ngModel)]="data.company.business_name"
         name="business_name"
         placeholder="{{ 'company.business_name' | translate }}"
-        required>
+        formControlName="business_name">
+        <mat-error>
+          <cuper-control-messages [control]="companyFormGroup.get('business_name')">
+          </cuper-control-messages>
+        </mat-error>
     </mat-form-field>
     <mat-form-field class="field-group">
       <input matInput
-        [(ngModel)]="data.company.slogan"
+        name="ruc"
+        type="number"
+        placeholder="{{ 'company.ruc' | translate }}"
+        formControlName="ruc">
+        <mat-error>
+          <cuper-control-messages [control]="companyFormGroup.get('ruc')">
+          </cuper-control-messages>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="field-group">
+      <input matInput
         name="slogan"
         placeholder="{{ 'company.slogan' | translate }}"
-        required>
+        formControlName="slogan">
     </mat-form-field>
     <mat-form-field class="field-group">
       <input matInput
-        [(ngModel)]="data.company.ruc"
-        name="ruc"
-        placeholder="{{ 'company.ruc' | translate }}"
-        required>
-    </mat-form-field>
-    <mat-form-field class="field-group">
-      <input matInput
-        [(ngModel)]="data.company.contributor_type"
         name="contributor_type"
         placeholder="{{ 'company.contributor_type' | translate }}"
-        required>
+        formControlName="contributor_type">
     </mat-form-field>
     <mat-form-field class="field-group">
       <input matInput
-        [(ngModel)]="data.company.economic_activity"
         name="economic_activity"
         placeholder="{{ 'company.economic_activity' | translate }}"
-        required>
+        formControlName="economic_activity">
     </mat-form-field>
-    <div class="footer-form">
-      <button mat-flat-button color="primary" [mat-dialog-close]="data.company" type="submit">
-        {{ 'common.ok' | translate }}
-      </button>
-      <button mat-flat-button color="secondary" (click)="onCloseDialog()">
-        {{ 'common.cancel' | translate }}
-      </button>
-    </div>
+    <mat-form-field class="field-group" *ngIf="categories$ | async as data">
+      <mat-label>{{ 'company.category' | translate }}</mat-label>
+      <mat-select formControlName="category_id">
+        <mat-option *ngFor="let category of data.categories" [value]="category.id">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error>
+        <cuper-control-messages [control]="companyFormGroup.get('category_id')">
+        </cuper-control-messages>
+      </mat-error>
+    </mat-form-field>
   </form>
 </div>

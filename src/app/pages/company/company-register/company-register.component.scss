@@ -1,0 +1,79 @@
+@import "../../../../styles/colors";
+
+.page-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 2rem;
+
+	.view {
+		.header-card {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			margin: 1rem;
+
+			.title {
+				font-size: 20px;
+				font-family: 'Circular-Medium';
+			}
+		}
+
+		.form-container {
+			max-width: 40rem;
+
+			.plans-container {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+
+				.plan {
+					width: 15rem;
+					height: 8rem;
+					margin: 0.5rem;
+				}
+      }
+
+      .select-plan {
+        display: none;
+      }
+
+      .step-container {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+    .plan-container {
+      display: flex;
+      justify-content: center;
+
+      .selected {
+        width: 18.5rem;
+        height: 8rem;
+      }
+    }
+
+    .company-preview-panel {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 1%;
+
+      .item-container {
+        display: flex;
+        width: 50%;
+        justify-content: space-between;
+
+        .field {
+          font-family: 'Circular-Book';
+        }
+
+        .value {
+          font-family: 'Lato-Regular';
+          color: $gray-dark;
+        }
+      }
+    }
+	}
+}
