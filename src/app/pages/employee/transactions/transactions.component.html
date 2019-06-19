@@ -1,49 +1,9 @@
 <div class="transactions-container">
   <div class="title">{{ 'transactions.new' | translate }}</div>
-  <mat-card class="user-card">
-    <mat-form-field class="input-search">
-      <input matInput placeholder="{{ 'common.user' | translate}}" [matAutocomplete]="auto" [formControl]="stateCtrl">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option class="item-list" *ngFor="let user of filteredUsers | async" [value]="user.name" (click)="onClickOption(user)">
-          <div class="user-search-item">
-            <div class="avatar-col">
-              <cuper-avatar [imageSrc]="user.image" [size]="25"></cuper-avatar>
-            </div>
-            <div class="content-col">
-              <div class="title">{{user.name}}</div>
-              <div class="description">{{user.email}}</div>
-            </div>
-          </div>
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-    <div class="user-info">
-      <div class="user-preview-card">
-        <div class="container">
-          <cuper-avatar *ngIf="!currentUser" [imageSrc]="defaultImageProfile" [size]="60"></cuper-avatar>
-          <cuper-avatar *ngIf="currentUser" [imageSrc]="currentUser.image" [size]="60"></cuper-avatar>
-          <div class="name" *ngIf="currentUser">{{currentUser.name}}</div>
-          <div class="name" *ngIf="!currentUser">{{'common.names' | translate}}</div>
-          <div class="national_id" *ngIf="currentUser">{{currentUser.national_id}}</div>
-          <div class="national_id" *ngIf="!currentUser">{{'common.national_id' | translate}}</div>
-        </div>
-        <div class="footer">
-          <button mat-flat-button
-            color="primary"
-            (click)="onInputTransaction()"
-            [disabled]="!currentUser">
-            {{ 'transactions.input_transaction' | translate }}
-          </button>
-          <button mat-flat-button
-            color="accent"
-            (click)="onOutputTransaction()"
-            [disabled]="!currentUser">
-            {{ 'transactions.output_transaction' | translate }}
-          </button>
-        </div>
-      </div>
-    </div>
-  </mat-card>
+  <cuper-user-search class="user-card"
+    [rightButton]="rightButton"
+    [leftButton]="leftButton"
+    (propagateUserData)="onListerUserSearch($event)"></cuper-user-search>
   <div class="title">{{ 'transactions.title' | translate }}</div>
   <mat-tab-group>
     <mat-tab label="{{ 'transactions.tabs.input' | translate }}">

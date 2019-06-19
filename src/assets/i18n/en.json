@@ -37,6 +37,7 @@
     "points": "Points",
     "new_reward": "New Reward",
     "save": "Save",
+    "send_invitation": "Send Invitation",
     "preview": "Preview",
     "last": "Last",
     "all": "All",
@@ -49,7 +50,8 @@
     "messages": {
       "created": "Created successfully",
       "updated": "Updated successfully"
-    }
+    },
+    "available_points": "Available Points"
   },
   "company": {
     "billing_info": "Billing Info",
@@ -59,7 +61,11 @@
     "economic_activity": "Economic Activity",
     "not_slogan": "You don't have a slogan yet",
     "registered_at": "Registered",
-    "business_name": "Business Name"
+    "business_name": "Business Name",
+    "register": "Register Company",
+    "request_cashier": "User not found, would you like send invitation?",
+    "validating": "your company will be validate",
+    "category": "Category"
   },
   "office": {
     "create": "Create a new office"
@@ -120,7 +126,7 @@
   "tabs": {
     "dashboard": "Dashboard",
     "rewards": "Rewards",
-    "company": "Company",
+    "company": "My Company",
     "transactions": "Transactions"
   }
 }

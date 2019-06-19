@@ -10,23 +10,16 @@
       <mat-card class="column-card">
         <div class="preview-container">
           <span class="label">{{ 'common.preview' | translate }}</span>
-          <cuper-preview-reward *ngIf="myCompany$ | async as company" class="reward"
-            [file]="reward?.image"
-            [companyAvatar]="company?.logo"
-            [companyName]="company?.business_name"
-            [promotionTitle]="reward?.title"></cuper-preview-reward>
+          <cuper-preview-reward *ngIf="myCompany$ | async as company" class="reward" [file]="reward?.image"
+            [companyAvatar]="company?.logo" [companyName]="company?.business_name" [promotionTitle]="reward?.title">
+          </cuper-preview-reward>
         </div>
         <mat-form-field class="field-group">
-          <input matInput
-            [(ngModel)]="reward.title"
-            name="title"
-            placeholder="{{ 'reward.new.form.title' | translate }}"
-            required>
+          <input matInput [(ngModel)]="reward.title" name="title"
+            placeholder="{{ 'reward.new.form.title' | translate }}" required>
         </mat-form-field>
         <mat-form-field class="field-group">
-          <textarea matInput
-            [(ngModel)]="reward.terms"
-            name="terms"
+          <textarea matInput [(ngModel)]="reward.terms" name="terms"
             placeholder="{{ 'reward.new.form.customMessage' | translate }}">
           </textarea>
         </mat-form-field>
@@ -36,30 +29,21 @@
           <span class="label">{{ 'reward.new.form.office' | translate }}</span>
           <div class="placeholder-container">
             <cuper-placeholder-card *ngIf="officeSelected && myOffices && myOffices.length <= 0"
-              [text]="'office.create' | translate"
-              [onClick]="onNewOffice">
+              [text]="'office.create' | translate" [onClick]="onNewOffice">
             </cuper-placeholder-card>
           </div>
-          <cuper-square-select *ngIf="officeSelected && myOffices && myOffices.length > 0"
-            [options]="myOffices"
-            [onSelect]="onSelectOffice"
-            [seletedOption]="officeSelected">
+          <cuper-square-select *ngIf="officeSelected && myOffices && myOffices.length > 0" [options]="myOffices"
+            [onSelect]="onSelectOffice" [seletedOption]="officeSelected">
           </cuper-square-select>
         </div>
         <div class="double-column">
           <mat-form-field class="field-group">
-            <input matInput
-              type="number"
-              [(ngModel)]="reward.total_rewards"
-              name="total_rewards"
+            <input matInput type="number" [(ngModel)]="reward.total_rewards" name="total_rewards"
               placeholder="{{ 'reward.new.form.totalRewards.label' | translate }}">
             <mat-hint>{{ 'reward.new.form.totalRewards.description' | translate }}</mat-hint>
           </mat-form-field>
           <mat-form-field class="field-group">
-            <input matInput
-              type="number"
-              [(ngModel)]="reward.points_required"
-              name="points_required"
+            <input matInput type="number" [(ngModel)]="reward.points_required" name="points_required"
               placeholder="{{ 'reward.new.form.pointsRequired.label' | translate }}">
             <mat-hint>{{ 'reward.new.form.pointsRequired.description' | translate }}</mat-hint>
           </mat-form-field>
@@ -71,19 +55,13 @@
           <span class="label">{{ 'reward.new.form.duration' | translate }}</span>
           <div class="double-column">
             <mat-form-field class="field-group">
-              <input matInput
-                [matDatepicker]="picker"
-                [(ngModel)]="reward.start_at"
-                name="start_at"
+              <input matInput [matDatepicker]="picker" [(ngModel)]="reward.start_at" name="start_at"
                 placeholder="{{ 'reward.new.form.start_at' | translate }}">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             <mat-form-field class="field-group">
-              <input matInput
-                [matDatepicker]="picker1"
-                [(ngModel)]="reward.end_at"
-                name="end_at"
+              <input matInput [matDatepicker]="picker1" [(ngModel)]="reward.end_at" name="end_at"
                 placeholder="{{ 'reward.new.form.end_at' | translate }}">
               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
               <mat-datepicker #picker1></mat-datepicker>

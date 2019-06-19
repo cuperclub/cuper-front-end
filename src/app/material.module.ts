@@ -14,7 +14,10 @@ import {
   MatCheckboxModule,
   MatDialogModule,
   MatTabsModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatTooltipModule,
+  MatStepperModule,
+  MatSelectModule
 } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
@@ -37,7 +40,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatCheckboxModule,
     MatDialogModule,
     MatTabsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatTooltipModule,
+    MatStepperModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }

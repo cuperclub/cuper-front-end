@@ -49,6 +49,7 @@
     "points": "Puntos",
     "new_reward": "Nueva Recompensa",
     "save": "Guardar",
+    "send_invitation": "Enviar Invitación",
     "preview": "Previsualización",
     "last": "Utimas",
     "all": "Todas",
@@ -61,6 +62,15 @@
     "messages": {
       "created": "Creado correctamente",
       "updated": "Actualizado correctamente"
+    },
+    "available_points": "Puntos Disponibles",
+    "promotion": {
+      "company_register_tile": "Registra tu negocio y obten",
+      "company_register": "Registrar"
+    },
+    "buttons": {
+      "next": "Siguiente",
+      "back": "Regresar"
     }
   },
   "company": {
@@ -69,9 +79,20 @@
     "ruc": "RUC",
     "contributor_type": "Tipo de Contribuidor",
     "economic_activity": "Actividad Económica",
+    "slogan": "Slogan",
     "not_slogan": "Aún no tienes un slogan",
     "registered_at": "Registrado",
-    "business_name": "Nombre de la companía"
+    "business_name": "Nombre de la companía",
+    "register": "Registrar Companía",
+    "register_form": {
+      "step-1": "Selecciona un plan",
+      "step-2": "Registra tus datos",
+      "step-3": "Previsualización"
+    },
+    "register_company": "Registrar mi companía",
+    "request_cashier": "Usuario no econtrado, desea enviarle una invitación?",
+    "validating": "Su companía sera validada",
+    "category": "Categoria"
   },
   "office": {
     "create": "Crear una nueva oficina",
@@ -136,7 +157,7 @@
   "tabs": {
     "dashboard": "Dashboard",
     "rewards": "Recompensas",
-    "company": "Companía",
+    "company": "Mi Companía",
     "transactions": "Transacciones"
   },
   "errors": {

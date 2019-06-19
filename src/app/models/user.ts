@@ -18,6 +18,7 @@ export interface User {
   national_id?: string;
   points?: number;
   join_at?: Date;
+  companies?: Array<any>;
 }
 
 export enum UserStatus {

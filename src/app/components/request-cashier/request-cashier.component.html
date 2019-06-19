@@ -1,0 +1,23 @@
+<cuper-user-search (propagateUserData)="onListerUserSearch($event)">
+</cuper-user-search>
+<div class="panel-invitation" *ngIf="!currentUser">
+  <div class="label">{{ 'company.request_cashier' | translate }}</div>
+  <mat-form-field class="field-group">
+    <input matInput
+      type="email"
+      [(ngModel)]="emailInvitation"
+      name="email"
+      placeholder="{{ 'login.form.email' | translate }}">
+  </mat-form-field>
+</div>
+<mat-dialog-actions>
+  <button mat-flat-button
+    color="primary"
+    class="submit-button"
+    (click)="onSendInvitation()">
+    {{ 'common.send_invitation' | translate}}
+  </button>
+  <button mat-dialog-close mat-flat-button color="secondary">
+    {{ 'common.cancel' | translate}}
+  </button>
+</mat-dialog-actions>

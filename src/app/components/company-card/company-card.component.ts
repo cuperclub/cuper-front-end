@@ -2,9 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Company } from '../../models';
 import { CompanyService} from 'src/app/services';
-import { CompanyFormComponent } from '../company-form/company-form.component';
-import { MatSnackBar } from '@angular/material';
-import { TranslateService } from '@ngx-translate/core';
+import { CompanyDialogComponent } from '../company-dialog/company-dialog.component';
+import { UserService } from 'src/app/services';
 
 @Component({
   selector: 'cuper-company-card',
@@ -19,19 +18,19 @@ export class CompanyCardComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private companyService: CompanyService,
-    private message: MatSnackBar,
-    private translate: TranslateService
+    private userService: UserService,
   ) { }
 
   ngOnInit() {
     this.companyService.getMyCompany().subscribe(resp => {
       this.company = resp
       this.propagateCompanyData.emit(this.company);
+      this.company.image = this.company.image || this.userService.getAvatar(this.company.join_at);
     });
   }
 
   editCompany() {
-    const dialogRef = this.dialog.open(CompanyFormComponent, {
+    const dialogRef = this.dialog.open(CompanyDialogComponent, {
       width: '400px',
       data: {
         company: Object.assign({}, this.company)
@@ -40,21 +39,8 @@ export class CompanyCardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(companyData => {
       if(companyData){
-        this.companyService.updateMyCompany(companyData).subscribe(
-          (resp) => {
-            this.translate.get('common.messages.updated').subscribe((message: string) => {
-              this.message.open(message, '', {
-                duration: 2000
-              });
-              this.company = resp;
-            });
-          },
-          ({ error }) => {
-            this.message.open(error.errors, '', {
-              duration: 2000
-            });
-          }
-        );
+        this.company = companyData;
+        this.propagateCompanyData.emit(companyData);
       }
     });
   }
