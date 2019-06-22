@@ -6,3 +6,4 @@ export * from './promotion/promotion.service';
 export * from './category/category.service';
 //admin
 export * from './admin/company/company.service';
+export * from './admin/customer/customer.service';
