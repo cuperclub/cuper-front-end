@@ -163,5 +163,12 @@
   "errors": {
     "required": "Llena este campo por favor.",
     "email": "Formato de correo incorrecto."
+  },
+  "admin": {
+    "tabs": {
+      "companies": "Companias",
+      "customers": "Clientes",
+      "categorias": "Categorias"
+    }
   }
 }
