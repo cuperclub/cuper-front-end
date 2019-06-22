@@ -16,7 +16,7 @@ import { IsntSignedInGuard } from './guards/routes/isnt-signed-in.guard';
 import { IsPartnerGuard } from './guards/partner/is-partner.guard';
 import { IsCashierGuard } from './guards/cashier/is-cashier.guard';
 //admin
-import { AdministrationComponent } from './pages/shared';
+import { AdministrationComponent } from './pages/shared/administration/administration.component';
 import { CompaniesComponent } from './pages/admin';
 
 const routes: Routes = [
