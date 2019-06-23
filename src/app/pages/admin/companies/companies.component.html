@@ -4,7 +4,8 @@
     <cuper-table-card class="table"
       *ngIf="companies"
       [items]="companies"
-      [onClick]="selectCompany">
+      [onClick]="selectCompany"
+      [indexActive]="0">
     </cuper-table-card>
     <mat-card class="content-row" *ngIf="companySelected">
       <div class="card-header">

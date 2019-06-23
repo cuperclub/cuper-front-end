@@ -16,7 +16,7 @@ interface OptionRow {
 export class TableCardComponent implements OnInit {
   @Input() items: OptionRow[];
   @Input() onClick: Function;
-  indexActive: number = -1;
+  @Input() indexActive: number = -1;
 
   constructor() {
     this.items = this.items;
