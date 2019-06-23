@@ -3,9 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Promotion } from 'src/app/models';
 import { OfficeService, CompanyService, PromotionService } from 'src/app/services';
 import { Company } from '../../models';
-import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
+import { OfficeFormComponent } from '../office-form/office-form.component';
+import { MatDialog } from '@angular/material';
 
 interface OptionSquare {
   id?: number,
@@ -27,7 +28,7 @@ export class NewRewardCardComponent implements OnInit {
   reward: Promotion = {
     unlimited: false
   };
-  myCompany$: Observable<Company>;
+  myCompany: Company;
   myOffices: OptionSquare[] = [];
   isEditRoute: boolean = false;
   officeSelected: OptionSquare;
@@ -40,11 +41,12 @@ export class NewRewardCardComponent implements OnInit {
     private companyService: CompanyService,
     private promotionService: PromotionService,
     private message: MatSnackBar,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
-    this.myCompany$ = this.companyService.getMyCompany();
+    this.companyService.getMyCompany().subscribe((resp) => this.myCompany = resp);
     this.officeService.getOffices().subscribe(resp => {
       this.myOffices = resp['offices'].map(office => {
         return {
@@ -111,9 +113,24 @@ export class NewRewardCardComponent implements OnInit {
     });
   }
 
-  onNewOffice() {
-    console.log('launch new office modal')
-  }
+  onNewOffice = () => {
+    const dialogRef = this.dialog.open(OfficeFormComponent,{
+      data: {
+        companyId: this.myCompany.id
+      }
+    });
+
+    dialogRef.beforeClosed().subscribe(currentOffice => {
+      if(currentOffice){
+        this.officeSelected = {
+          id: currentOffice.id,
+          title: currentOffice.name,
+          description: currentOffice.address
+        };
+        this.myOffices.push(this.officeSelected);
+      }
+    });
+  };
 
   onListenerFile = (uploadFile) => this.uploadFile = uploadFile;
 
