@@ -62,7 +62,7 @@ export class CompanyDialogComponent implements OnInit {
   editCompany(company) {
     let input = new FormData();
     input.append('legal_representative', company.legal_representative);
-    input.append('business_name', company.email);
+    input.append('business_name', company.business_name);
     input.append('ruc', company.ruc);
     input.append('slogan', company.slogan);
     input.append('contributor_type', company.contributor_type);
