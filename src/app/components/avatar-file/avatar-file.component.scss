@@ -1,0 +1,32 @@
+.avatar-container {
+  position: relative;
+  border-radius: 50%;
+  color: white;
+
+  .avatar-image {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .logo-camera {
+    display: none;
+  }
+
+  &:hover {
+    opacity: 0.9;
+
+    .logo-camera {
+      display: flex;
+      align-self: center;
+      position: absolute;
+      z-index: 17;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+#uploader {
+  display: none;
+}

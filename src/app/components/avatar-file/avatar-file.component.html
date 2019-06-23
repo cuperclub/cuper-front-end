@@ -1,0 +1,5 @@
+<div class="avatar-container selectable" (click)="openUploader()">
+  <img class="avatar-image" [ngStyle]="buildStyle()" src="{{file}}">
+  <i class="material-icons logo-camera">camera_alt</i>
+</div>
+<input id="uploader" type="file" (change)="onFileChange($event)" />
