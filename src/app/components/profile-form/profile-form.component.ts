@@ -19,7 +19,7 @@ interface FileOptions {
 })
 export class ProfileFormComponent {
   errorsForm: any = {};
-  uploadFile: FileOptions = {};
+  uploadFile: FileOptions;
 
   constructor(
     private userService: UserService,
@@ -37,7 +37,9 @@ export class ProfileFormComponent {
     let input = new FormData();
     input.append('name', user.name);
     input.append('email', user.email);
-    input.append('image', this.uploadFile.file);
+    input.append('national_id', user.national_id);
+    if(this.uploadFile) input.append('image', this.uploadFile.file);
+
     this.userService.updateMyData(input).subscribe(
       (resp) => {
         this.translate.get('common.messages.updated').subscribe((message: string) => {
@@ -59,15 +61,6 @@ export class ProfileFormComponent {
     return this.userService.getDataOnLocalStorage();
   }
 
-  onFileChange(event): void {
-    let reader = new FileReader();
-    const file = event.target.files[0];
-    if (file) {
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.uploadFile = { file: file, imageBase64: reader.result };
-      };
-    }
-  }
+  onListenerFile = (uploadFile) => this.uploadFile = uploadFile;
 
 }

@@ -1,5 +1,12 @@
 <div class="user-form">
   <form class="form">
+    <div class="avatar-container">
+      <cuper-avatar-file
+        [file]="data.user.image_url || userService.getAvatar(user.join_at)"
+        (propagateFile)="onListenerFile($event)"
+        [size]="80">
+      </cuper-avatar-file>
+    </div>
     <mat-form-field class="field-group">
       <input matInput
         [(ngModel)]="data.user.name"
@@ -30,7 +37,6 @@
     <mat-error *ngIf="errorsForm.national_id">
       {{errorsForm.national_id[0]}}
     </mat-error>
-    <input id="uploader" type="file" (change)="onFileChange($event)" />
     <div class="footer-form">
       <button mat-flat-button color="primary" (click)="onSubmit(data.user)">
         {{ 'common.ok' | translate }}
