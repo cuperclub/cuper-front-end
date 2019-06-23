@@ -10,8 +10,12 @@
       <mat-card class="column-card">
         <div class="preview-container">
           <span class="label">{{ 'common.preview' | translate }}</span>
-          <cuper-preview-reward *ngIf="myCompany$ | async as company" class="reward" [file]="reward?.image"
-            [companyAvatar]="company?.logo" [companyName]="company?.business_name" [promotionTitle]="reward?.title">
+          <cuper-preview-reward *ngIf="myCompany$ | async as company" class="reward"
+            [file]="reward?.image"
+            [companyAvatar]="company?.logo"
+            [companyName]="company?.business_name"
+            [promotionTitle]="reward?.title"
+            (propagateFile)="onListenerFile($event)">
           </cuper-preview-reward>
         </div>
         <mat-form-field class="field-group">

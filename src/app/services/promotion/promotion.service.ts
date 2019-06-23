@@ -25,15 +25,15 @@ export class PromotionService {
     return this.httpClient.get<Promotion>(`${this.apiURL}/api/partner/companies/${companyId}/promotions/${rewardId}`);
   }
 
-  public createPromotion(promotion: Promotion, officeId: number){
+  public createPromotion(promotion: FormData, officeId: number){
     const companyId = this.userService.getCompanyIdView();
     const url = `${this.apiURL}/api/partner/companies/${companyId}/offices/${officeId}/promotions`
     return this.httpClient.post<Promotion>(url, promotion);
   }
 
-  public updatePromotion(promotion: Promotion, officeId: number){
+  public updatePromotion(promotion: FormData, promotionId: number, officeId: number){
     const companyId = this.userService.getCompanyIdView();
-    const url = `${this.apiURL}/api/partner/companies/${companyId}/offices/${officeId}/promotions/${promotion.id}`
+    const url = `${this.apiURL}/api/partner/companies/${companyId}/offices/${officeId}/promotions/${promotionId}`
     return this.httpClient.put<Promotion>(url, promotion);
   }
 }
