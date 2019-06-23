@@ -10,8 +10,7 @@ import { Company } from '../../../models';
 })
 export class CompaniesComponent implements OnInit {
   companies: Company[];
-  companiesObject: any = {};
-  companySelected: any;
+  companySelected: Company = {};
 
   constructor(
     private companyService: AdminCompanyService,
@@ -20,28 +19,36 @@ export class CompaniesComponent implements OnInit {
 
   ngOnInit() {
     this.companyService.getCompanies().subscribe(resp => {
-      console.log(resp);
       this.companies = resp['companies'].map(company => {
-        this.companiesObject[company.id] = company;
         return {
           id: company.id,
           title: company.business_name,
           description: `Owner: ${company.legal_representative}`,
           image: null,
           number: null,
+          data: company
         };
       });
       this.companySelected = resp['companies'][0];
+      this.companySelected.logo = this.getAvatar(this.companySelected);
     });
   }
 
-  selectCompany = (company) => this.companySelected = this.companiesObject[company.id];
+
+  selectCompany = (company) => {
+    this.companySelected = company.data;
+    this.companySelected.logo = this.getAvatar(company);
+  };
 
   approve() {
     this.companyService.approveCompany(
-      this.companySelected.id
-    ).subscribe(company => {
-      this.companySelected = company;
+      this.companySelected
+    ).subscribe(resp => {
+      this.companySelected = resp;
     });
+  }
+
+  getAvatar(company) {
+    return company.logo || this.userService.getAvatar(company.join_at);
   }
 }

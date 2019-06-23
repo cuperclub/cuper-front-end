@@ -19,8 +19,8 @@ export class AdminCompanyService {
     return this.httpClient.get<Company[]>(url);
   }
 
-  public approveCompany(id){
-    const url = `${this.apiURL}/api/admin/companies/${id}/change_status`
-    return this.httpClient.put<Company[]>(url, {status: 'approved'});
+  public approveCompany(company: Company): Observable<Company>{
+    const url = `${this.apiURL}/api/admin/companies/${company.id}/change_status`
+    return this.httpClient.put<Company>(url, {status: 'approved'});
   }
 }
