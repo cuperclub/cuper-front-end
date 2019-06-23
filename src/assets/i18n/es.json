@@ -169,6 +169,14 @@
       "companies": "Companias",
       "customers": "Clientes",
       "categorias": "Categorias"
+    },
+    "companies": {
+      "request": {
+        "approve": "Aprobar Solicitud",
+        "decline": "Rechazar Solicitud",
+        "disable": "Deshabilitar",
+        "remove": "Eliminar"
+      }
     }
   }
 }

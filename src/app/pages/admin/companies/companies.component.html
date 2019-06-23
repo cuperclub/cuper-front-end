@@ -1,6 +1,61 @@
-<div class="reward-container">
+<div class="companies-container">
   <div class="title">{{'common.all' | translate}}</div>
-  <cuper-table-card *ngIf="companies"
-    [items]="companies">
-  </cuper-table-card>
+  <div class="table-view">
+    <cuper-table-card class="table"
+      *ngIf="companies"
+      [items]="companies"
+      [onClick]="selectCompany">
+    </cuper-table-card>
+    <mat-card class="content-row" *ngIf="companySelected">
+      <div class="card-header">
+        <div class="avatar">
+          <cuper-avatar
+          [imageSrc]="companySelected.logo || userService.getAvatar(companySelected.join_at)"
+          [size]="50">
+          </cuper-avatar>
+        </div>
+        <div class="text">
+          <div class="name">{{companySelected.business_name}}</div>
+          <div class="slogan">{{companySelected.slogan}}</div>
+          <div class="status {{companySelected.status}}">
+            {{ 'common.status.'+ companySelected.status | translate }}
+          </div>
+        </div>
+      </div>
+      <div class="card-content">
+        <div class="card-item">
+          <div class="card-title">
+            {{ 'company.legal_representative' | translate }}
+          </div>
+          <div class="card-subtitle">{{companySelected.legal_representative || 'common.not_registered_yet' | translate }}</div>
+        </div>
+        <div class="card-item">
+          <div class="card-title">
+            {{ 'company.ruc' | translate }}
+          </div>
+          <div class="card-subtitle">{{companySelected.ruc || 'common.not_registered_yet' | translate }}</div>
+        </div>
+        <div class="card-item">
+          <div class="card-title">
+            {{ 'company.contributor_type' | translate }}
+          </div>
+          <div class="card-subtitle">{{companySelected.contributor_type || 'common.not_registered_yet' | translate }}</div>
+        </div>
+        <div class="card-item">
+          <div class="card-title">
+            {{ 'company.economic_activity' | translate }}
+          </div>
+          <div class="card-subtitle">{{companySelected.economic_activity || 'common.not_registered_yet' | translate }}</div>
+        </div>
+        <div class="buttons">
+          <button mat-flat-button
+            color="primary"
+            class="submit-button"
+            (click)="approve()">
+          {{ 'admin.companies.request.approve' | translate}}
+        </button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
 </div>

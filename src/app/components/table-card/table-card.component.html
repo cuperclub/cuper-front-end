@@ -1,6 +1,9 @@
 <mat-card class="table-container">
-	<div class="item" *ngFor="let item of items" (click)="onClick(item)">
-		<div class="avatar-col">
+	<div class="item"
+		*ngFor="let item of items; let i = index;"
+		(click)="onClick(item); indexActive = i;"
+		[class.active]="indexActive == i">
+		<div class="avatar-col" *ngIf="item.image">
 			<cuper-avatar [imageSrc]="item.image" [size]="50"></cuper-avatar>
 		</div>
 		<div class="content-col">

@@ -1,19 +1,100 @@
-.reward-container {
+@import "../../../../styles/colors.scss";
+
+.companies-container {
   padding: 3rem 5% 0 5%;
-
-  .last-rewards {
-    display: flex;
-    padding-bottom: 2%;
-
-    .placeholder-container {
-      width: 8rem;
-      height: 6.5rem;
-    }
-  }
 
   .title {
     font-family: 'Circular-Book';
     font-size: 20px;
     margin-bottom: 1.5%;
+  }
+
+  .table-view {
+    display: flex;
+    width: 50rem;
+
+    .table {
+      width: 60%;
+      height: 18rem;
+    }
+
+    .content-row {
+      width: 40%;
+      padding: 0;
+      margin: 0;
+      // margin: 0 0 0 1rem;
+      height: 18rem;
+      // border-top: 3px solid #d58900;
+
+      .status {
+        top: 0;
+        right: 0;
+        color: white;
+        padding: 0.1rem 1rem;
+        margin: 0.3rem 0 0 0;
+        font-size: 10px;
+        width: 3.5rem;
+        text-align: center;
+
+        &.approved {
+          background-color: $primary;
+        }
+
+        &.disabled {
+          background-color: $red;
+        }
+
+        &.pending {
+          background-color: $celeste;
+        }
+      }
+
+      .card-header {
+        display: flex;
+        padding: 0.5rem 1rem;
+
+        .text {
+          padding: 0 0 0 1rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .name {
+            font-family: 'Lato-Bold';
+            font-size: 14px;
+          }
+
+          .slogan {
+            font-family: 'Circular-Book';
+            color: $gray-dark;
+          }
+        }
+      }
+
+      .card-content {
+        height: 70%;
+        text-align: left;
+        font-size: 12px;
+        padding: 0 1rem;
+        position: relative;
+
+        .card-item {
+          margin: 5px 0 10px 0;
+
+          .card-title {
+            font-family: 'Circular-Book';
+          }
+
+          .card-subtitle {
+            font-family: 'Lato-Regular';
+            color: $gray-dark;
+          }
+        }
+      }
+
+      .buttons {
+        text-align: end;
+      }
+    }
   }
 }

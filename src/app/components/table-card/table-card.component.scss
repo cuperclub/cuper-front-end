@@ -21,7 +21,12 @@ $padding-row: 0.5rem;
 
     &:hover {
       background-color: $labaster;
-    }
+		}
+
+		&.active {
+			background: $labaster;
+			border-left: 10px solid #d58900;
+		}
 
 		.avatar-col {
 			flex-basis: 10%;
@@ -31,6 +36,9 @@ $padding-row: 0.5rem;
 		.content-col {
 			flex-basis: 80%;
 			padding-left: 1rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
 
 			.title {
 				font-family: 'Circular-Book';
