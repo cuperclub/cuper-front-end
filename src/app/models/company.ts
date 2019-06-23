@@ -10,6 +10,7 @@ export interface Company {
   business_name?: string;
   created_at?: Date;
   logo?: string;
+  logo_url?: string;
   slogan?: string;
   join_at?: number;
   category_id?: number;

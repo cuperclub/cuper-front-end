@@ -1,8 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 
 interface Box {
   height: string;
   width: string;
+}
+
+interface FileOptions {
+  file?: File;
+  imageBase64?: string | ArrayBuffer;
 }
 
 @Component({
@@ -16,8 +21,12 @@ export class AvatarFileComponent implements OnInit {
 
   @Input() file: string | ArrayBuffer;
   @Input() size: number = 60;
+  @Input() isLoading: boolean = false;
+  @Output() propagateFile = new EventEmitter<FileOptions>();
 
-  constructor() { }
+  constructor(
+    private elRef: ElementRef,
+  ) { }
 
   ngOnInit() {
     this.file = this.file || this.defaultImage;
@@ -37,14 +46,15 @@ export class AvatarFileComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
+        const uploadFile = { file: file, imageBase64: reader.result };
+        this.propagateFile.emit(uploadFile);
         this.file = reader.result;
       };
     }
   }
 
   openUploader(): void {
-    const uploadComponent = document.getElementById(`uploader`);
-    uploadComponent.click();
+    const uploadComponent = this.elRef.nativeElement.querySelector('input');
+    if(!this.isLoading) uploadComponent.click();
   }
 }
-

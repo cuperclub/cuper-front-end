@@ -16,7 +16,11 @@
   <mat-divider></mat-divider>
   <div class="card-content">
     <div class="avatar-container">
-      <cuper-avatar-file [file]="company?.image"></cuper-avatar-file>
+      <cuper-avatar-file
+        [file]="company?.logo_url"
+        [isLoading]="isLodingImage"
+        (propagateFile)="onListenerFile($event)">
+      </cuper-avatar-file>
     </div>
     <div class="company-name">{{company?.business_name}}</div>
     <div class="company-slogan">{{company?.slogan || 'company.not_slogan' | translate}}</div>

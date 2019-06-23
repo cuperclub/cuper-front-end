@@ -1,5 +1,8 @@
-<div class="avatar-container selectable" (click)="openUploader()">
+<div class="avatar-container"
+  [class.disable-click]="isLoading"
+  (click)="openUploader()">
   <img class="avatar-image" [ngStyle]="buildStyle()" src="{{file}}">
-  <i class="material-icons logo-camera">camera_alt</i>
+  <i class="material-icons logo-camera" *ngIf="!isLoading">camera_alt</i>
+  <cuper-loader class="loader" *ngIf="isLoading"></cuper-loader>
 </div>
-<input id="uploader" type="file" (change)="onFileChange($event)" />
+<input class="uploader" type="file" (change)="onFileChange($event)" />
