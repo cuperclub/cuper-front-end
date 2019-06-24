@@ -24,7 +24,7 @@ export class UserSearchComponent implements OnInit {
   filteredUsers: Observable<User[]>;
   defaultImageProfile: string = '../../../../assets/images/profile-placeholder.png';
   currentUser: User;
-  users: User[];
+  users: User[] = [];
 
   constructor(
     private customerService: AdminCustomerService,
@@ -44,7 +44,6 @@ export class UserSearchComponent implements OnInit {
 
   ngOnInit() {
     this.customerService.getCustomers().subscribe(resp => {
-      debugger
       this.users = resp
     });
   }
