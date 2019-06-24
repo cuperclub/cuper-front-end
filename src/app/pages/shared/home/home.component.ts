@@ -45,10 +45,12 @@ export class HomeComponent implements OnInit {
 
   onChangeEmployeeAccount (company) {
     if (this.currentEmployee.id !== company.id){
-      this.currentEmployee = company;
-      this.updatedView = true;
-      this.userService.setCompanyIdView(company.id);
-      setTimeout(() => { this.updatedView = false }, 1000);
+      this.userService.updateCompanyIdView(company.id).subscribe(resp =>{
+        this.currentEmployee = company;
+        this.updatedView = true;
+        this.userService.setCompanyIdView(resp['company_id']);
+        setTimeout(() => { this.updatedView = false }, 1000);
+      });
     }
   }
 

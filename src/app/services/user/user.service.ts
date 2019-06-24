@@ -48,6 +48,10 @@ export class UserService {
     localStorage.setItem('current_user', JSON.stringify(currentUser));
   }
 
+  public updateCompanyIdView(id){
+    return this.httpClient.put(`${this.apiURL}/api/users/current_view`, {company_id: id});
+  }
+
   public getCurrentCompany(){
     let currentUser = this.getDataOnLocalStorage();
     const currentCompany =  currentUser.companies.find(company => company.id == currentUser.current_company_id);
