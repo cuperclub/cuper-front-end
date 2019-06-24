@@ -34,7 +34,7 @@ export class UserService {
   public searchUsers(query) {
     query= query || '';
     let params = {params: {query: query}};
-    return this.httpClient.get(`${this.apiURL}/api/users/search`, params);
+    return this.httpClient.get<User[]>(`${this.apiURL}/api/users/search`, params);
   }
 
   public getCompanyIdView(){
