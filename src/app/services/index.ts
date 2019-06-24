@@ -5,6 +5,7 @@ export * from './employee/employee.service';
 export * from './promotion/promotion.service';
 export * from './category/category.service';
 export * from './utils/utils.service';
+export * from './input-transaction/input-transaction.service';
 //admin
 export * from './admin/company/company.service';
 export * from './admin/customer/customer.service';

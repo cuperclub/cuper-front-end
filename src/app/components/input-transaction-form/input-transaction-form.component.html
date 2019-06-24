@@ -1,5 +1,5 @@
 <div class="company-form">
-  <form class="form" (ngSubmit)="onCloseDialog()">
+  <form class="form" (ngSubmit)="onSubmitTransaction()">
     <mat-form-field class="field-group">
       <input matInput
         class="input-box"
@@ -9,13 +9,13 @@
         type="number">
       <mat-hint>{{ 'transactions.input_form.cost.description' | translate }}</mat-hint>
     </mat-form-field>
-    <div class="footer-form">
-      <button mat-flat-button color="primary" [mat-dialog-close]="data.invoice" type="submit">
+    <mat-dialog-actions class="footer-form">
+      <button mat-flat-button color="primary" type="submit">
         {{ 'common.ok' | translate }}
       </button>
-      <button mat-flat-button color="secondary" (click)="onCloseDialog()">
+      <button mat-flat-button mat-dialog-close color="secondary">
         {{ 'common.cancel' | translate }}
       </button>
-    </div>
+    </mat-dialog-actions>
   </form>
 </div>

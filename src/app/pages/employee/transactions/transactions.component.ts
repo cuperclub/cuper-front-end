@@ -4,6 +4,7 @@ import { User } from '../../../models';
 import { InputTransactionFormComponent } from '../../../components/input-transaction-form/input-transaction-form.component';
 import { OutputTransactionFormComponent } from '../../../components/output-transaction-form/output-transaction-form.component';
 import { ButtonOption } from '../../../components/user-search/user-search.component';
+import { InputTransactionService } from '../../../services';
 
 @Component({
   selector: 'cuper-transactions',
@@ -16,6 +17,7 @@ export class TransactionsComponent implements OnInit {
   leftButton: ButtonOption;
 
   constructor(
+    private transactionService: InputTransactionService,
     private dialog: MatDialog,
   ) { }
 
@@ -28,6 +30,7 @@ export class TransactionsComponent implements OnInit {
       action: this.onOutputTransaction,
       label: 'transactions.output_transaction'
     };
+    // this.transactionService.getAll().subscribe(resp => console.log(resp));
   }
 
   onListerCustomerSearch(user){
