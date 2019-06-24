@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminCustomerService, UserService } from '../../../services';
+import { AdminCustomerService, UtilsService } from '../../../services';
 import { User } from '../../../models';
 
 @Component({
@@ -12,7 +12,7 @@ export class CustomersComponent implements OnInit {
 
   constructor(
     private customerService: AdminCustomerService,
-    private userService: UserService
+    private utilsService: UtilsService
   ) { }
 
   ngOnInit() {
@@ -23,7 +23,7 @@ export class CustomersComponent implements OnInit {
           id: user.id,
           title: user.name,
           description: `Email: ${user.email}`,
-          image: user.image || this.userService.getAvatar(user.join_at),
+          image: user.image || this.utilsService.getAvatar(user.join_at),
           number: user.points,
           text: 'pts'
         };
