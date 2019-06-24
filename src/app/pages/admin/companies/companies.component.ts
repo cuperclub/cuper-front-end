@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AdminCompanyService, UserService } from '../../../services';
+import { AdminCompanyService, UtilsService } from '../../../services';
 import { Company } from '../../../models';
 
 @Component({
@@ -14,7 +13,7 @@ export class CompaniesComponent implements OnInit {
 
   constructor(
     private companyService: AdminCompanyService,
-    private userService: UserService
+    private utilsService: UtilsService
   ) { }
 
   ngOnInit() {
@@ -49,6 +48,6 @@ export class CompaniesComponent implements OnInit {
   }
 
   getAvatar(company) {
-    return company.logo || this.userService.getAvatar(company.join_at);
+    return company.logo || this.utilsService.getAvatar(company.join_at);
   }
 }
