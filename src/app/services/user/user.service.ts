@@ -31,6 +31,12 @@ export class UserService {
     return this.httpClient.put<User>(`${this.apiURL}/api/users`, userInput);
   }
 
+  public searchUsers(query) {
+    query= query || '';
+    let params = {params: {query: query}};
+    return this.httpClient.get(`${this.apiURL}/api/users/search`, params);
+  }
+
   public getCompanyIdView(){
     const currentUser = this.getDataOnLocalStorage();
     return currentUser.current_company_id;
