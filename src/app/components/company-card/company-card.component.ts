@@ -32,7 +32,7 @@ export class CompanyCardComponent implements OnInit {
     this.companyService.getMyCompany().subscribe(resp => {
       this.company = resp
       this.propagateCompanyData.emit(this.company);
-      this.company.image = this.company.image || this.utilsService.getAvatar(this.company.join_at);
+      this.company.logo_url = this.company.image || this.utilsService.getAvatar(this.company.join_at);
     });
   }
 

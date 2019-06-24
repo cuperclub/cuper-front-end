@@ -14,7 +14,7 @@ export class AdminCustomerService {
   ) { }
 
   public getCustomers(){
-    const url = `${this.apiURL}/api/admin/users`
+    const url = `${this.apiURL}/api/users`
     return this.httpClient.get<User[]>(url);
   }
 }

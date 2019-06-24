@@ -17,13 +17,12 @@ export class CustomersComponent implements OnInit {
 
   ngOnInit() {
     this.customerService.getCustomers().subscribe(resp => {
-      console.log(resp);
       this.customers = resp.map(user => {
         return {
           id: user.id,
           title: user.name,
           description: `Email: ${user.email}`,
-          image: user.image || this.utilsService.getAvatar(user.join_at),
+          image: user.image_url || this.utilsService.getAvatar(user.join_at),
           number: user.points,
           text: 'pts'
         };
