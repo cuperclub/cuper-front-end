@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Company } from '../../models';
 import { CompanyService} from 'src/app/services';
 import { CompanyDialogComponent } from '../company-dialog/company-dialog.component';
-import { UserService } from 'src/app/services';
+import { UtilsService } from 'src/app/services';
 import { TranslateService } from '@ngx-translate/core';
 import { MatSnackBar } from '@angular/material';
 
@@ -23,7 +23,7 @@ export class CompanyCardComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private companyService: CompanyService,
-    private userService: UserService,
+    private utilsService: UtilsService,
     private message: MatSnackBar,
     private translate: TranslateService,
   ) { }
@@ -32,7 +32,7 @@ export class CompanyCardComponent implements OnInit {
     this.companyService.getMyCompany().subscribe(resp => {
       this.company = resp
       this.propagateCompanyData.emit(this.company);
-      this.company.image = this.company.image || this.userService.getAvatar(this.company.join_at);
+      this.company.image = this.company.image || this.utilsService.getAvatar(this.company.join_at);
     });
   }
 

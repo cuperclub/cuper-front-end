@@ -16,7 +16,7 @@
   </div>
   <div class="card-content" *ngIf="user">
     <cuper-avatar-file
-      [file]="user.image_url || userService.getAvatar(user.join_at)"
+      [file]="user.image"
       [isLoading]="isLodingImage"
       (propagateFile)="onListenerFile($event)"
       [size]="80">

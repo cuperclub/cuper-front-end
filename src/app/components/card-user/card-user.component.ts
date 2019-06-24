@@ -6,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { MatSnackBar } from '@angular/material';
 
 import { User } from '../../models';
-import { UserService } from 'src/app/services';
+import { UserService, UtilsService } from 'src/app/services';
 
 
 @Component({
@@ -23,9 +23,12 @@ export class CardUserComponent implements OnInit {
     private userService: UserService,
     private message: MatSnackBar,
     private translate: TranslateService,
+    private utilsService: UtilsService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.user.image = this.user.image_url || this.utilsService.getAvatar(this.user.join_at);
+  }
 
   onUpdatePassword() {
     this.dialog.open(UpdatePasswordFormComponent, {

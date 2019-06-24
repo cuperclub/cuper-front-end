@@ -27,7 +27,7 @@
             *ngFor="let company of employeeRecords"
             class="item-wrapper"
             (click)="onChangeEmployeeAccount(company)">
-            <cuper-avatar [imageSrc]="company.image || userService.getAvatar(company.join_at)" [size]="25"></cuper-avatar>
+            <cuper-avatar [imageSrc]="company.image || getAvatar(company.join_at)" [size]="25"></cuper-avatar>
             <div class="information">
               <div class="name">{{ company.name}}</div>
               <div class="role">{{ company.role}}</div>
@@ -46,14 +46,14 @@
       <div class="menu" [matMenuTriggerFor]="menu">
         <div class="menu-action">
           <div class="profile-container">
-            <cuper-avatar [imageSrc]="currentUser.image || userService.getAvatar(currentUser.join_at)" [size]="40"></cuper-avatar>
+            <cuper-avatar [imageSrc]="currentUser.image || getAvatar(currentUser.join_at)" [size]="40"></cuper-avatar>
             <span class="title" *ngIf="currentUser">{{currentUser.name || currentUser.username}}</span>
           </div>
           <mat-icon>arrow_drop_down</mat-icon>
         </div>
         <mat-menu #menu="matMenu">
           <div class="user-data">
-            <cuper-avatar [imageSrc]="currentUser.image || userService.getAvatar(currentUser.join_at)" size='40'></cuper-avatar>
+            <cuper-avatar [imageSrc]="currentUser.image || getAvatar(currentUser.join_at)" size='40'></cuper-avatar>
             <div class="user-info">
               <span class="name">{{currentUser.name || currentUser.username}}</span>
               <span class="email">{{currentUser.email}}</span>

@@ -2,7 +2,7 @@
   <form class="form">
     <div class="avatar-container">
       <cuper-avatar-file
-        [file]="data.user.image_url || userService.getAvatar(user.join_at)"
+        [file]="data.user.image"
         (propagateFile)="onListenerFile($event)"
         [size]="80">
       </cuper-avatar-file>

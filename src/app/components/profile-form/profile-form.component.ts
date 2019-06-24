@@ -1,10 +1,10 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { CardUserComponent } from '../card-user/card-user.component';
 import { MatSnackBar } from '@angular/material';
 
-import { UserService } from 'src/app/services';
+import { UserService, UtilsService } from 'src/app/services';
 import { User } from '../../models';
 
 interface FileOptions {
@@ -12,22 +12,31 @@ interface FileOptions {
   imageBase64?: string | ArrayBuffer;
 }
 
+interface DataOptions {
+  user?: User;
+}
+
 @Component({
   selector: 'cuper-profile-form',
   templateUrl: './profile-form.component.html',
   styleUrls: ['./profile-form.component.scss']
 })
-export class ProfileFormComponent {
+export class ProfileFormComponent implements OnInit {
   errorsForm: any = {};
   uploadFile: FileOptions;
 
   constructor(
     private userService: UserService,
+    private utilsService: UtilsService,
     private message: MatSnackBar,
     private translate: TranslateService,
     public dialogRef: MatDialogRef<CardUserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: User
+    @Inject(MAT_DIALOG_DATA) public data: DataOptions
   ) {}
+
+  ngOnInit() {
+    this.data.user.image = this.data.user.image || this.utilsService.getAvatar(this.data.user.join_at);
+  }
 
   onCloseDialog(): void {
     this.dialogRef.close();
