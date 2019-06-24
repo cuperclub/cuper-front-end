@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { map, startWith } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { UserService } from '../../services';
+import { AdminCustomerService } from '../../services';
 import { User } from '../../models';
 
 export interface ButtonOption {
@@ -27,7 +27,7 @@ export class UserSearchComponent implements OnInit {
   users: User[];
 
   constructor(
-    private userService: UserService
+    private customerService: AdminCustomerService,
   ) {
     this.filteredUsers = this.stateCtrl.valueChanges
       .pipe(
@@ -43,7 +43,10 @@ export class UserSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.users = this.userService.getMockData();
+    this.customerService.getCustomers().subscribe(resp => {
+      debugger
+      this.users = resp
+    });
   }
 
   onClickOption(option){

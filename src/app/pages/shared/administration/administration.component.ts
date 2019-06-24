@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
-import { User, UserStatus, Employee, EmployeeRol } from '../../../models';
-import { UserService } from '../../../services';
+import { User, UserStatus, Employee } from '../../../models';
+import { UserService, UtilsService } from '../../../services';
 
 @Component({
   selector: 'cuper-administration',
@@ -18,7 +18,8 @@ export class AdministrationComponent implements OnInit {
   constructor(
     private tokenService: AngularTokenService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private utilsService: UtilsService,
   ) {}
 
   ngOnInit() {
@@ -41,6 +42,7 @@ export class AdministrationComponent implements OnInit {
   }
 
   onRegisterCompany = () => this.router.navigate(['home/company/register']);
+  getAvatar = this.utilsService.getAvatar;
 
   onChangeEmployeeAccount (company) {
     if (this.currentEmployee.id !== company.id){
