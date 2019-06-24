@@ -24,7 +24,7 @@ export class RewardsComponent implements OnInit {
           id: reward.id,
           title: reward.title,
           description: reward.description,
-          image: reward.image,
+          image: reward.image_url,
           number: reward.points_required,
           text: 'pts'
         };

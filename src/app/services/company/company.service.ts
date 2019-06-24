@@ -21,9 +21,9 @@ export class CompanyService {
     return this.httpClient.get<Company>(`${this.apiURL}/api/partner/companies/${id}`);
   }
 
-  public updateMyCompany(company: Company): Observable<Company>{
+  public updateMyCompany(companyInput: FormData): Observable<Company>{
     const id = this.userService.getCompanyIdView();
-    return this.httpClient.put<Company>(`${this.apiURL}/api/partner/companies/${id}`, company);
+    return this.httpClient.put<Company>(`${this.apiURL}/api/partner/companies/${id}`, companyInput);
   }
 
   public registerMyCompany(company: Company): Observable<Company>{

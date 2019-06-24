@@ -15,7 +15,12 @@
     </mat-menu>
   </div>
   <div class="card-content" *ngIf="user">
-    <cuper-avatar [imageSrc]="user.image || userService.getAvatar(user.join_at)" [size]="80"></cuper-avatar>
+    <cuper-avatar-file
+      [file]="user.image"
+      [isLoading]="isLodingImage"
+      (propagateFile)="onListenerFile($event)"
+      [size]="80">
+    </cuper-avatar-file>
     <h3>{{user.name}}</h3>
     <span>{{user.email}}</span>
     <span>{{user.national_id}}</span>

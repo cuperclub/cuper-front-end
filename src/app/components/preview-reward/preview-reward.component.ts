@@ -1,4 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+interface FileOptions {
+  file?: File;
+  imageBase64?: string | ArrayBuffer;
+}
 
 @Component({
   selector: 'cuper-preview-reward',
@@ -15,6 +20,7 @@ export class PreviewRewardComponent implements OnInit {
   @Input() companyName: string;
   @Input() promotionTitle: string;
   @Input() disableEvents: boolean = false;
+  @Output() propagateFile = new EventEmitter<FileOptions>();
 
   ngOnInit() {
   }
@@ -26,6 +32,8 @@ export class PreviewRewardComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
+        const uploadFile = { file: file, imageBase64: reader.result };
+        this.propagateFile.emit(uploadFile);
         this.file = reader.result;
       };
     }

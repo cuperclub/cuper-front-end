@@ -39,6 +39,7 @@ import { UserSearchComponent } from './user-search/user-search.component';
 import { RequestCashierComponent } from './request-cashier/request-cashier.component';
 import { LoaderComponent } from './loader/loader.component';
 import { CompanyDialogComponent } from './company-dialog/company-dialog.component';
+import { AvatarFileComponent } from './avatar-file/avatar-file.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -75,7 +76,8 @@ const components = [
   UserSearchComponent,
   RequestCashierComponent,
   LoaderComponent,
-  CompanyDialogComponent
+  CompanyDialogComponent,
+  AvatarFileComponent
 ];
 
 @NgModule({

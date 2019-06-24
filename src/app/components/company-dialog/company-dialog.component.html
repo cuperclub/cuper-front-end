@@ -1,3 +1,10 @@
+<div class="avatar-container">
+  <cuper-avatar-file
+    [file]="data.company.logo_url"
+    (propagateFile)="onListenerFile($event)"
+    [size]="80">
+  </cuper-avatar-file>
+</div>
 <cuper-company-form [companyFormGroup]="companyFormGroup"></cuper-company-form>
 <mat-dialog-actions>
   <button mat-flat-button

@@ -7,6 +7,11 @@ import { CompanyService } from '../../services';
 import { Company } from '../../models';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
+interface FileOptions {
+  file?: File;
+  imageBase64?: string | ArrayBuffer;
+}
+
 @Component({
   selector: 'cuper-company-dialog',
   templateUrl: './company-dialog.component.html',
@@ -14,6 +19,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class CompanyDialogComponent implements OnInit {
   companyFormGroup: FormGroup;
+  uploadFile: FileOptions;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -54,7 +60,17 @@ export class CompanyDialogComponent implements OnInit {
   }
 
   editCompany(company) {
-    this.companyService.updateMyCompany(company)
+    let input = new FormData();
+    input.append('legal_representative', company.legal_representative);
+    input.append('business_name', company.business_name);
+    input.append('ruc', company.ruc);
+    input.append('slogan', company.slogan);
+    input.append('contributor_type', company.contributor_type);
+    input.append('economic_activity', company.economic_activity);
+    input.append('category_id', company.category_id);
+    if(this.uploadFile) input.append('logo', this.uploadFile.file);
+
+    this.companyService.updateMyCompany(input)
     .subscribe(
       (resp) => this.onSuccess(resp, 'common.messages.updated'),
       error =>  this.onError(error)
@@ -75,5 +91,7 @@ export class CompanyDialogComponent implements OnInit {
       duration: 2000
     });
   }
+
+  onListenerFile = (uploadFile) => this.uploadFile = uploadFile;
 
 }

@@ -27,16 +27,8 @@ export class UserService {
     localStorage.removeItem('current_user');
   }
 
-  public updateMyData(user: User): Observable<User>{
-    return this.httpClient.put<User>(`${this.apiURL}/api/users`, user);
-  }
-
-  public getAvatar(joinNumber){
-    let date = joinNumber ? joinNumber.toString() : new Date().valueOf().toString();
-    const lastNumber = date.substr(date.length - 1);
-    const routeBase = '../../../../assets/images/avatars/';
-    const path = routeBase + `${lastNumber}.png`;
-    return path;
+  public updateMyData(userInput: FormData): Observable<User>{
+    return this.httpClient.put<User>(`${this.apiURL}/api/users`, userInput);
   }
 
   public getCompanyIdView(){

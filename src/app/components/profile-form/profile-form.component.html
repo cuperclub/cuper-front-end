@@ -1,5 +1,12 @@
 <div class="user-form">
   <form class="form">
+    <div class="avatar-container">
+      <cuper-avatar-file
+        [file]="data.user.image"
+        (propagateFile)="onListenerFile($event)"
+        [size]="80">
+      </cuper-avatar-file>
+    </div>
     <mat-form-field class="field-group">
       <input matInput
         [(ngModel)]="data.user.name"

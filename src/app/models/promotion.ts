@@ -11,5 +11,6 @@ export interface Promotion {
   start_at?: Date;
   end_at?: Date;
   image?: string;
+  image_url?: string;
   office?: Office
 }

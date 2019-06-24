@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
-import { User, UserStatus, Employee, EmployeeRol } from '../../../models';
-import { UserService } from '../../../services';
+import { User, UserStatus, Employee } from '../../../models';
+import { UserService, UtilsService } from '../../../services';
 
 @Component({
   selector: 'cuper-home',
@@ -18,7 +18,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private tokenService: AngularTokenService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private utilsService: UtilsService,
   ) {}
 
   ngOnInit() {
@@ -66,4 +67,6 @@ export class HomeComponent implements OnInit {
     }
     return iconStatus;
   }
+
+  getAvatar = this.utilsService.getAvatar;
 }
