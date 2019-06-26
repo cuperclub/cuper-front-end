@@ -40,6 +40,7 @@ import { RequestCashierComponent } from './request-cashier/request-cashier.compo
 import { LoaderComponent } from './loader/loader.component';
 import { CompanyDialogComponent } from './company-dialog/company-dialog.component';
 import { AvatarFileComponent } from './avatar-file/avatar-file.component';
+import { TableComponent } from './table/table.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -77,7 +78,8 @@ const components = [
   RequestCashierComponent,
   LoaderComponent,
   CompanyDialogComponent,
-  AvatarFileComponent
+  AvatarFileComponent,
+  TableComponent
 ];
 
 @NgModule({

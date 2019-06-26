@@ -7,7 +7,7 @@
   <div class="title">{{ 'transactions.title' | translate }}</div>
   <mat-tab-group>
     <mat-tab label="{{ 'transactions.tabs.input' | translate }}">
-      <cuper-table-card></cuper-table-card>
+      <cuper-table [columnsDef]="columns" [data]="exampleData"></cuper-table>
     </mat-tab>
     <mat-tab label="{{ 'transactions.tabs.output' | translate }}">
       <cuper-table-card></cuper-table-card>
