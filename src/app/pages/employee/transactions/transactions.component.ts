@@ -4,7 +4,7 @@ import { User } from '../../../models';
 import { InputTransactionFormComponent } from '../../../components/input-transaction-form/input-transaction-form.component';
 import { OutputTransactionFormComponent } from '../../../components/output-transaction-form/output-transaction-form.component';
 import { ButtonOption } from '../../../components/user-search/user-search.component';
-import { InputTransactionService } from '../../../services';
+import { InputTransactionService, OutputTransactionService } from '../../../services';
 import { ColumnDefinition } from '../../../components/table/table.component';
 import { DatetimeCellComponent, UserCellComponent } from '../../../components/table/partials';
 
@@ -18,17 +18,19 @@ export class TransactionsComponent implements OnInit {
   rightButton: ButtonOption;
   leftButton: ButtonOption;
 
-  columns: ColumnDefinition[];
-  exampleData: object [];
+  columnsInputTransaction: ColumnDefinition[];
+  columnsOutputTransaction: ColumnDefinition[];
+  inputTransactions: object [];
+  outputTransactions: object [];
 
   constructor(
-    private transactionService: InputTransactionService,
+    private inputTransactionService: InputTransactionService,
+    private outputTransactionService: OutputTransactionService,
     private dialog: MatDialog,
   ) { }
 
   ngOnInit() {
-    //mockdata
-    this.columns = [
+    this.columnsInputTransaction = [
       {
         label: 'user',
         displayName: 'Cliente',
@@ -37,6 +39,18 @@ export class TransactionsComponent implements OnInit {
       {
         label: 'points',
         displayName: 'Puntos'
+      },
+      {
+        label: 'created_at',
+        displayName: 'Fecha',
+        component: DatetimeCellComponent
+      }
+    ];
+    this.columnsOutputTransaction = [
+      {
+        label: 'user',
+        displayName: 'Cliente',
+        component: UserCellComponent
       },
       {
         label: 'created_at',
@@ -53,7 +67,8 @@ export class TransactionsComponent implements OnInit {
       action: this.onOutputTransaction,
       label: 'transactions.output_transaction'
     };
-    this.transactionService.getAll().subscribe(resp => this.exampleData = resp['transaction_inputs']);
+    this.inputTransactionService.getAll().subscribe(resp => this.inputTransactions = resp['transaction_inputs']);
+    this.outputTransactionService.getAll().subscribe(resp => this.outputTransactions = resp['transaction_outputs']);
   }
 
   onListerCustomerSearch(user){
@@ -70,31 +85,23 @@ export class TransactionsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(resp => {
-      console.log('resp', resp);
+      if(resp) {
+        this.inputTransactions.push(resp);
+      }
     });
   }
 
   onOutputTransaction = () => {
-    this.dialog.open(OutputTransactionFormComponent, {
+    const dialogRef = this.dialog.open(OutputTransactionFormComponent, {
       width: '400px',
       data: {
-        user: this.currentUser,
-        rewards : [
-          {
-            title: 'First Promotion',
-            description: '2x1 in hotdogs'
-          },
-          {
-            title: 'Second Promotion',
-            description: '2x1 in hotdogs'
-          },
-          {
-            title: 'Third Promotion',
-            description: '2x1 in hotdogs'
-          }
-        ],
-        onSelectReward: (reward) => console.log('reward selected', reward),
-        onSubmitReward: () => console.log('onSubmitReward')
+        user: this.currentUser
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(resp => {
+      if(resp) {
+        this.outputTransactions.push(resp);
       }
     });
   }

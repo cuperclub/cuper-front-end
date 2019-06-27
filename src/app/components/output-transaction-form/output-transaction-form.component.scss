@@ -1,12 +1,9 @@
-.field-group {
-  width: 100%;
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
 }
 
-.footer-form {
-  text-align: end;
-  margin-top: 5%;
-
-  .mat-primary {
-    margin-right: 2%;
-  }
+.submit-button {
+  margin-left: 1rem;
 }

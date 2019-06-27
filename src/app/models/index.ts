@@ -5,3 +5,4 @@ export * from './employee';
 export * from './promotion';
 export * from './category';
 export * from './input-transaction';
+export * from './output-transaction';
