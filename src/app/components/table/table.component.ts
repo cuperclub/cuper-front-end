@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Type } from '@angular/core';
 
 export interface ColumnDefinition {
   label: string;
   displayName: string;
+  component?: any;
 };
 
 @Component({

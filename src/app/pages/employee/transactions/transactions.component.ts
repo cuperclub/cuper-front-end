@@ -6,6 +6,7 @@ import { OutputTransactionFormComponent } from '../../../components/output-trans
 import { ButtonOption } from '../../../components/user-search/user-search.component';
 import { InputTransactionService } from '../../../services';
 import { ColumnDefinition } from '../../../components/table/table.component';
+import { DatetimeCellComponent } from '../../../components/table/partials';
 
 @Component({
   selector: 'cuper-transactions',
@@ -34,7 +35,8 @@ export class TransactionsComponent implements OnInit {
       },
       {
         label: 'created_at',
-        displayName: 'Fecha'
+        displayName: 'Fecha',
+        component: DatetimeCellComponent
       }
     ];
 

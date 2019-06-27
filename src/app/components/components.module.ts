@@ -41,6 +41,8 @@ import { LoaderComponent } from './loader/loader.component';
 import { CompanyDialogComponent } from './company-dialog/company-dialog.component';
 import { AvatarFileComponent } from './avatar-file/avatar-file.component';
 import { TableComponent } from './table/table.component';
+import { CellTableComponent } from './table/cell-table/cell-table.component';
+import { DatetimeCellComponent } from './table/partials';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -79,7 +81,9 @@ const components = [
   LoaderComponent,
   CompanyDialogComponent,
   AvatarFileComponent,
-  TableComponent
+  TableComponent,
+  CellTableComponent,
+  DatetimeCellComponent
 ];
 
 @NgModule({
@@ -92,7 +96,8 @@ const components = [
     InputTransactionFormComponent,
     OutputTransactionFormComponent,
     OfficePreviewComponent,
-    RequestCashierComponent
+    RequestCashierComponent,
+    DatetimeCellComponent
   ],
   imports: [
     CommonModule,
