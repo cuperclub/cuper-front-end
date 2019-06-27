@@ -6,7 +6,7 @@ import { OutputTransactionFormComponent } from '../../../components/output-trans
 import { ButtonOption } from '../../../components/user-search/user-search.component';
 import { InputTransactionService } from '../../../services';
 import { ColumnDefinition } from '../../../components/table/table.component';
-import { DatetimeCellComponent } from '../../../components/table/partials';
+import { DatetimeCellComponent, UserCellComponent } from '../../../components/table/partials';
 
 @Component({
   selector: 'cuper-transactions',
@@ -29,6 +29,11 @@ export class TransactionsComponent implements OnInit {
   ngOnInit() {
     //mockdata
     this.columns = [
+      {
+        label: 'user',
+        displayName: 'Cliente',
+        component: UserCellComponent
+      },
       {
         label: 'points',
         displayName: 'Puntos'
