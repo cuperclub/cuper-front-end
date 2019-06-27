@@ -6,7 +6,7 @@ import { OutputTransactionFormComponent } from '../../../components/output-trans
 import { ButtonOption } from '../../../components/user-search/user-search.component';
 import { InputTransactionService, OutputTransactionService } from '../../../services';
 import { ColumnDefinition } from '../../../components/table/table.component';
-import { DatetimeCellComponent, UserCellComponent } from '../../../components/table/partials';
+import { DatetimeCellComponent, UserCellComponent, PromotionCellComponent } from '../../../components/table/partials';
 
 @Component({
   selector: 'cuper-transactions',
@@ -47,6 +47,11 @@ export class TransactionsComponent implements OnInit {
       }
     ];
     this.columnsOutputTransaction = [
+      {
+        label: 'promotion',
+        displayName: 'Promoción',
+        component: PromotionCellComponent
+      },
       {
         label: 'user',
         displayName: 'Cliente',

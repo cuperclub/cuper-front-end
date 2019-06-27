@@ -42,7 +42,7 @@ import { CompanyDialogComponent } from './company-dialog/company-dialog.componen
 import { AvatarFileComponent } from './avatar-file/avatar-file.component';
 import { TableComponent } from './table/table.component';
 import { CellTableComponent } from './table/cell-table/cell-table.component';
-import { DatetimeCellComponent, UserCellComponent } from './table/partials';
+import { DatetimeCellComponent, UserCellComponent, PromotionCellComponent } from './table/partials';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -84,7 +84,8 @@ const components = [
   TableComponent,
   CellTableComponent,
   DatetimeCellComponent,
-  UserCellComponent
+  UserCellComponent,
+  PromotionCellComponent
 ];
 
 @NgModule({
@@ -99,7 +100,8 @@ const components = [
     OfficePreviewComponent,
     RequestCashierComponent,
     DatetimeCellComponent,
-    UserCellComponent
+    UserCellComponent,
+    PromotionCellComponent
   ],
   imports: [
     CommonModule,
