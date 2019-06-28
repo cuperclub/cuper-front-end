@@ -127,6 +127,7 @@
     "dashboard": "Dashboard",
     "rewards": "Rewards",
     "company": "My Company",
-    "transactions": "Transactions"
+    "transactions": "Transactions",
+    "promotions": "Promotions"
   }
 }

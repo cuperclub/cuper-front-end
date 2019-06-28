@@ -98,6 +98,13 @@
       <mat-icon>account_balance_wallet</mat-icon>
       <span>{{ 'tabs.transactions' | translate }}</span>
     </a>
+    <a routerLink="promotions"
+      class="tabs"
+      [class.disabled]="userService.isCustomer()"
+      routerLinkActive="active">
+      <mat-icon>card_giftcard</mat-icon>
+      <span>{{ 'tabs.promotions' | translate }}</span>
+    </a>
   </div>
   <div class="render-container">
     <router-outlet

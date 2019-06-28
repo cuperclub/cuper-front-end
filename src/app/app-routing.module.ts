@@ -11,6 +11,7 @@ import { RewardsComponent } from './pages/company';
 import { RewardComponent } from './pages/company';
 import { CompanyRegisterComponent } from './pages/company';
 import { TransactionsComponent } from './pages/employee';
+import { PromotionsComponent } from './pages/customer';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { IsntSignedInGuard } from './guards/routes/isnt-signed-in.guard';
 import { IsPartnerGuard } from './guards/partner/is-partner.guard';
@@ -39,7 +40,8 @@ const routes: Routes = [
       { path: 'rewards/edit/:rewardId', component: NewRewardCardComponent, canActivate: [IsPartnerGuard] },
       { path: 'rewards/details/:rewardId', component: RewardComponent, canActivate: [IsPartnerGuard] },
       { path: 'transactions', component: TransactionsComponent, canActivate: [IsCashierGuard] },
-      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] }
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+      { path: 'promotions', component: PromotionsComponent }
     ],
   },
   {

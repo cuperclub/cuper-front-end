@@ -70,4 +70,8 @@ export class UserService {
     return isPartner;
   }
 
+  public isCustomer() {
+    return !!this.getCurrentCompany();
+  }
+
 }

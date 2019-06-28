@@ -158,7 +158,8 @@
     "dashboard": "Dashboard",
     "rewards": "Recompensas",
     "company": "Mi Companía",
-    "transactions": "Transacciones"
+    "transactions": "Transacciones",
+    "promotions": "Promociones"
   },
   "errors": {
     "required": "Llena este campo por favor.",

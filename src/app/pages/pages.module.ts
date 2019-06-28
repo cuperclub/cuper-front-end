@@ -28,6 +28,8 @@ import { CompanyRegisterComponent } from './company/company-register/company-reg
 import { AdministrationComponent } from './shared/administration/administration.component';
 import { CompaniesComponent } from './admin/companies/companies.component';
 import { CustomersComponent } from './admin/customers/customers.component';
+// Customer
+import { PromotionsComponent } from './customer/promotions/promotions.component';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -50,7 +52,8 @@ export const ROUTES: Routes = [];
     CompanyRegisterComponent,
     AdministrationComponent,
     CompaniesComponent,
-    CustomersComponent
+    CustomersComponent,
+    PromotionsComponent
   ],
   imports: [
     CommonModule,
