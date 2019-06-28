@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { ComponentsModule } from './components/components.module';
 import { AdminModule } from './pages/admin/admin.module';
-import { PagesModule } from './pages/pages.module';
 import { environment } from '../environments/environment';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 
@@ -40,7 +39,6 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PagesModule,
     HttpClientModule,
     AdminModule,
     MaterialModule,

@@ -8,6 +8,7 @@ import { ComponentsModule } from '../../components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 
+//Pages
 import { PromotionsComponent } from './promotions/promotions.component';
 
 @NgModule({

@@ -28,6 +28,6 @@ export class RewardComponent implements OnInit {
     });
   }
 
-  onEditReward = () => this.router.navigate(['home/rewards/edit/', this.reward.id]);
+  onEditReward = () => this.router.navigate(['home/company/reward/edit/', this.reward.id]);
 
 }
