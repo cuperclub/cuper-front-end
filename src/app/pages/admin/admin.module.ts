@@ -5,9 +5,8 @@ import { MaterialModule } from '../../material.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ComponentsModule } from '../../components/components.module';
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
 
 //Pages
 import { AdministrationComponent } from './administration/administration.component';
@@ -15,9 +14,6 @@ import { CompaniesComponent } from './companies/companies.component';
 import { CustomersComponent } from './customers/customers.component';
 import { CategoriesComponent } from './categories/categories.component';
 
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
-}
 
 @NgModule({
   declarations: [
@@ -32,13 +28,7 @@ export function createTranslateLoader(http: HttpClient) {
     ComponentsModule,
     AdminRoutingModule,
     HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    }),
+    TranslateModule
   ]
 })
 export class AdminModule { }

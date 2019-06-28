@@ -10,12 +10,12 @@ import { NewRewardCardComponent } from './components/new-reward-card/new-reward-
 import { RewardsComponent } from './pages/company';
 import { RewardComponent } from './pages/company';
 import { CompanyRegisterComponent } from './pages/company';
-import { TransactionsComponent } from './pages/employee';
 import { PromotionsComponent } from './pages/customer';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { IsntSignedInGuard } from './guards/routes/isnt-signed-in.guard';
 import { IsPartnerGuard } from './guards/partner/is-partner.guard';
-import { IsCashierGuard } from './guards/cashier/is-cashier.guard';
+
+import { TransactionsComponent } from './pages/employee/transactions/transactions.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -33,9 +33,12 @@ const routes: Routes = [
       { path: 'rewards/new', component: NewRewardCardComponent, canActivate: [IsPartnerGuard] },
       { path: 'rewards/edit/:rewardId', component: NewRewardCardComponent, canActivate: [IsPartnerGuard] },
       { path: 'rewards/details/:rewardId', component: RewardComponent, canActivate: [IsPartnerGuard] },
-      { path: 'transactions', component: TransactionsComponent, canActivate: [IsCashierGuard] },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
       { path: 'promotions', component: PromotionsComponent },
+      {
+        path: 'transactions',
+        loadChildren: './pages/employee/employee.module#EmployeeModule'
+      }
     ],
   }
 ];

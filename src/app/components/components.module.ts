@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
 
 // components
 import { FooterComponent } from './footer/footer.component';
@@ -43,10 +42,6 @@ import { AvatarFileComponent } from './avatar-file/avatar-file.component';
 import { TableComponent } from './table/table.component';
 import { CellTableComponent } from './table/cell-table/cell-table.component';
 import { DatetimeCellComponent, UserCellComponent, PromotionCellComponent } from './table/partials';
-
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
-}
 
 const components = [
   FooterComponent,
@@ -108,13 +103,7 @@ const components = [
     MaterialModule,
     FormsModule,
     HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    }),
+    TranslateModule,
     FormsModule,
     ReactiveFormsModule
   ],
