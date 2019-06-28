@@ -13,6 +13,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AdministrationComponent } from './administration/administration.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { CustomersComponent } from './customers/customers.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -22,7 +23,8 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AdministrationComponent,
     CompaniesComponent,
-    CustomersComponent
+    CustomersComponent,
+    CategoriesComponent
   ],
   imports: [
     CommonModule,

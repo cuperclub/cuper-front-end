@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdministrationComponent } from './administration/administration.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { CustomersComponent } from './customers/customers.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,7 @@ const routes: Routes = [
     children: [
       { path: 'companies', component: CompaniesComponent},
       { path: 'customers', component: CustomersComponent },
-      { path: 'categories', component: CustomersComponent},
+      { path: 'categories', component: CategoriesComponent},
     ],
   }
 ];

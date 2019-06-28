@@ -1,0 +1,17 @@
+<div class="categories-page">
+  <div class="title">{{'common.all' | translate}}</div>
+    <div class="categories-container" *ngIf="categories$ | async as data">
+      <mat-card class="category" *ngFor="let category of data.categories">
+        <div class="content">
+          <span class="name">{{category.name}}</span>
+          <br>
+          <span class="points">Puntos: {{category.points_per_dollar}}</span>
+        </div>
+        <button mat-icon-button
+          class="edit-button"
+          (click)="editCategory()">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-card>
+    </div>
+</div>
