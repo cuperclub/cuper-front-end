@@ -1,27 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { EmployeeRoutingModule } from './employee-routing.module';
+import { CustomerRoutingModule } from './customer-routing.module';
 import { MaterialModule } from '../../material.module';
 import { ComponentsModule } from '../../components/components.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 
-//Pages
-import { TransactionsComponent } from './transactions/transactions.component';
+import { PromotionsComponent } from './promotions/promotions.component';
 
 @NgModule({
   declarations: [
-    TransactionsComponent
+    PromotionsComponent
   ],
   imports: [
     CommonModule,
-    EmployeeRoutingModule,
+    CustomerRoutingModule,
     MaterialModule,
     ComponentsModule,
     HttpClientModule,
     TranslateModule.forChild(),
   ]
 })
-export class EmployeeModule { }
+export class CustomerModule { }

@@ -16,8 +16,6 @@ import { MyCompanyComponent } from './company/my-company/my-company.component';
 import { RewardsComponent } from './company/rewards/rewards.component';
 import { RewardComponent } from './company/reward/reward.component';
 import { CompanyRegisterComponent } from './company/company-register/company-register.component';
-// Customer
-import { PromotionsComponent } from './customer/promotions/promotions.component';
 
 export const ROUTES: Routes = [];
 
@@ -26,8 +24,7 @@ export const ROUTES: Routes = [];
     MyCompanyComponent,
     RewardsComponent,
     RewardComponent,
-    CompanyRegisterComponent,
-    PromotionsComponent,
+    CompanyRegisterComponent
   ],
   imports: [
     CommonModule,

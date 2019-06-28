@@ -34,7 +34,10 @@ const routes: Routes = [
       { path: 'rewards/edit/:rewardId', component: NewRewardCardComponent, canActivate: [IsPartnerGuard] },
       { path: 'rewards/details/:rewardId', component: RewardComponent, canActivate: [IsPartnerGuard] },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-      { path: 'promotions', component: PromotionsComponent },
+      {
+        path: 'promotions',
+        loadChildren: './pages/customer/customer.module#CustomerModule'
+      },
       {
         path: 'transactions',
         loadChildren: './pages/employee/employee.module#EmployeeModule'
