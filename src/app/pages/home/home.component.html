@@ -77,14 +77,7 @@
       <mat-icon>view_module</mat-icon>
       <span>{{ 'tabs.dashboard' | translate }}</span>
     </a>
-    <a routerLink="company/reward/list"
-      class="tabs"
-      [class.disabled]="!userService.userIsPartner()"
-      routerLinkActive="active">
-      <mat-icon>cake</mat-icon>
-      <span>{{ 'tabs.rewards' | translate }}</span>
-    </a>
-    <a routerLink="company"
+    <a routerLink="company/home"
       class="tabs"
       [class.disabled]="!userService.userIsPartner()"
       routerLinkActive="active">

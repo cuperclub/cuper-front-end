@@ -159,7 +159,8 @@
     "rewards": "Recompensas",
     "company": "Mi Companía",
     "transactions": "Transacciones",
-    "promotions": "Promociones"
+    "promotions": "Promociones",
+    "home": "Inicio"
   },
   "errors": {
     "required": "Llena este campo por favor.",

@@ -9,6 +9,7 @@ import { MyCompanyComponent } from './my-company/my-company.component';
 import { CompanyRegisterComponent } from './company-register/company-register.component';
 import { RewardsComponent } from './rewards/rewards.component';
 import { RewardComponent } from './reward/reward.component';
+import { CompanyComponent } from './company/company.component';
 
 //Guards
 import { IsPartnerGuard } from '../../guards/partner/is-partner.guard';
@@ -16,9 +17,10 @@ import { IsPartnerGuard } from '../../guards/partner/is-partner.guard';
 const routes: Routes = [
   {
     path: '',
+    component: CompanyComponent,
     children: [
       {
-        path: '',
+        path: 'home',
         component: MyCompanyComponent,
         canActivate: [IsPartnerGuard],
       },
