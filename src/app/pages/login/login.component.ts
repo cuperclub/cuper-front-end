@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { AngularTokenService } from 'angular-token';
 import { MatSnackBar } from '@angular/material';
 
-import { UserLogin } from '../../../models';
-import { UserService } from '../../../services';
+import { UserLogin } from 'src/app/models';
+import { UserService } from 'src/app/services';
 
 @Component({
   selector: 'app-login',

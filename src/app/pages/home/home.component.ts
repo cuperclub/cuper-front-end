@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
-import { User, UserStatus, Employee } from '../../../models';
-import { UserService, UtilsService } from '../../../services';
+import { User, UserStatus, Employee } from '../../models';
+import { UserService, UtilsService } from '../../services';
 
 @Component({
   selector: 'cuper-home',

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './pages/shared';
-import { RegisterComponent } from './pages/shared';
-import { DashboardComponent } from './pages/shared';
-import { HomeComponent } from './pages/shared';
-import { ProfileComponent } from './pages/shared';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { MyCompanyComponent } from './pages/company';
 import { NewRewardCardComponent } from './components/new-reward-card/new-reward-card.component';
 import { RewardsComponent } from './pages/company';
@@ -17,7 +17,7 @@ import { IsntSignedInGuard } from './guards/routes/isnt-signed-in.guard';
 import { IsPartnerGuard } from './guards/partner/is-partner.guard';
 import { IsCashierGuard } from './guards/cashier/is-cashier.guard';
 //admin
-import { AdministrationComponent } from './pages/shared/administration/administration.component';
+import { AdministrationComponent } from './pages/admin/administration/administration.component';
 import {
   CompaniesComponent,
   CustomersComponent

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularTokenService } from 'angular-token';
 import { MatSnackBar } from '@angular/material';
-import { UserRegister } from '../../../models';
-import { UserService } from '../../../services';
+import { UserRegister } from 'src/app/models';
+import { UserService } from 'src/app/services';
 
 @Component({
   selector: 'cuper-register',

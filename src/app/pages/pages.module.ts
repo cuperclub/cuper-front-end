@@ -13,19 +13,19 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Routes, RouterModule } from '@angular/router';
 
 // Pages
-import { LoginComponent } from './shared/login/login.component';
-import { RegisterComponent } from './shared/register/register.component';
-import { HomeComponent } from './shared/home/home.component';
-import { DashboardComponent } from './shared/dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 // Partner
 import { MyCompanyComponent } from './company/my-company/my-company.component';
 import { RewardsComponent } from './company/rewards/rewards.component';
 import { TransactionsComponent } from './employee/transactions/transactions.component';
-import { ProfileComponent } from './shared/profile/profile.component';
+import { ProfileComponent } from './profile/profile.component';
 import { RewardComponent } from './company/reward/reward.component';
 import { CompanyRegisterComponent } from './company/company-register/company-register.component';
 //Admin
-import { AdministrationComponent } from './shared/administration/administration.component';
+import { AdministrationComponent } from './admin/administration/administration.component';
 import { CompaniesComponent } from './admin/companies/companies.component';
 import { CustomersComponent } from './admin/customers/customers.component';
 // Customer
