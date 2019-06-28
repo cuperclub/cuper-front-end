@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
       (resp) => {
         const { body: { data } } = resp;
         this.userService.saveDataOnLocalStorage(data);
-        this.router.navigate(['home/dashboard']);
+        const homeRoute = data.is_admin ? '/admin/companies' : '/home/dashboard'
+        this.router.navigateByUrl(homeRoute);
       },
       ({ error }) => {
         this.message.open(error.errors, '', {

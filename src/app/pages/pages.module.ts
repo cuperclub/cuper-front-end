@@ -24,13 +24,8 @@ import { TransactionsComponent } from './employee/transactions/transactions.comp
 import { ProfileComponent } from './profile/profile.component';
 import { RewardComponent } from './company/reward/reward.component';
 import { CompanyRegisterComponent } from './company/company-register/company-register.component';
-//Admin
-import { AdministrationComponent } from './admin/administration/administration.component';
-import { CompaniesComponent } from './admin/companies/companies.component';
-import { CustomersComponent } from './admin/customers/customers.component';
 // Customer
 import { PromotionsComponent } from './customer/promotions/promotions.component';
-
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -50,10 +45,7 @@ export const ROUTES: Routes = [];
     ProfileComponent,
     RewardComponent,
     CompanyRegisterComponent,
-    AdministrationComponent,
-    CompaniesComponent,
-    CustomersComponent,
-    PromotionsComponent
+    PromotionsComponent,
   ],
   imports: [
     CommonModule,

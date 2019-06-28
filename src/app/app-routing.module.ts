@@ -16,12 +16,6 @@ import { AuthGuard } from './guards/auth/auth.guard';
 import { IsntSignedInGuard } from './guards/routes/isnt-signed-in.guard';
 import { IsPartnerGuard } from './guards/partner/is-partner.guard';
 import { IsCashierGuard } from './guards/cashier/is-cashier.guard';
-//admin
-import { AdministrationComponent } from './pages/admin/administration/administration.component';
-import {
-  CompaniesComponent,
-  CustomersComponent
-} from './pages/admin';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -41,16 +35,7 @@ const routes: Routes = [
       { path: 'rewards/details/:rewardId', component: RewardComponent, canActivate: [IsPartnerGuard] },
       { path: 'transactions', component: TransactionsComponent, canActivate: [IsCashierGuard] },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-      { path: 'promotions', component: PromotionsComponent }
-    ],
-  },
-  {
-    path: 'admin',
-    component: AdministrationComponent,
-    children: [
-      { path: 'companies', component: CompaniesComponent},
-      { path: 'customers', component: CustomersComponent },
-      { path: 'categories', component: CompanyRegisterComponent},
+      { path: 'promotions', component: PromotionsComponent },
     ],
   }
 ];
