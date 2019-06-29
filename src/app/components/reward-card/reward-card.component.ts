@@ -12,6 +12,7 @@ export class RewardCardComponent implements OnInit {
   @Input() promotion: Promotion;
   @Input() office: Office;
   @Input() editReward: Function;
+  @Input() disableEvents: boolean = false;
 
   constructor() { }
 

@@ -1,20 +1,20 @@
 // import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { PromotionsComponent } from './promotions.component';
+// import { RewardDialogComponent } from './reward-dialog.component';
 
-// describe('PromotionsComponent', () => {
-//   let component: PromotionsComponent;
-//   let fixture: ComponentFixture<PromotionsComponent>;
+// describe('RewardDialogComponent', () => {
+//   let component: RewardDialogComponent;
+//   let fixture: ComponentFixture<RewardDialogComponent>;
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       declarations: [ PromotionsComponent ]
+//       declarations: [ RewardDialogComponent ]
 //     })
 //     .compileComponents();
 //   }));
 
 //   beforeEach(() => {
-//     fixture = TestBed.createComponent(PromotionsComponent);
+//     fixture = TestBed.createComponent(RewardDialogComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });

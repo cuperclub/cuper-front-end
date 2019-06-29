@@ -30,4 +30,8 @@ export class PromotionService {
     const url = `${this.apiURL}/api/partner/companies/offices/${officeId}/promotions/${promotionId}`
     return this.httpClient.put<Promotion>(url, promotion);
   }
+
+  public getPublicPromotions() {
+    return this.httpClient.get<Promotion[]>(`${this.apiURL}/api/promotions`);
+  }
 }

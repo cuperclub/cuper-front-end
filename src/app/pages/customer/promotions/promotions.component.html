@@ -1,3 +1,7 @@
-<p>
-  promotions works!
-</p>
+<div class="promotions-container" *ngIf="promotions$ | async as data">
+  <cuper-reward-small-card class="promotion"
+    *ngFor="let promotion of data.promotions"
+    [reward]="promotion"
+    [onClick]="onShowDetails">
+  </cuper-reward-small-card>
+</div>

@@ -42,6 +42,7 @@ import { AvatarFileComponent } from './avatar-file/avatar-file.component';
 import { TableComponent } from './table/table.component';
 import { CellTableComponent } from './table/cell-table/cell-table.component';
 import { DatetimeCellComponent, UserCellComponent, PromotionCellComponent } from './table/partials';
+import { RewardDialogComponent } from './reward-dialog/reward-dialog.component';
 
 const components = [
   FooterComponent,
@@ -80,7 +81,8 @@ const components = [
   CellTableComponent,
   DatetimeCellComponent,
   UserCellComponent,
-  PromotionCellComponent
+  PromotionCellComponent,
+  RewardDialogComponent
 ];
 
 @NgModule({
@@ -96,7 +98,8 @@ const components = [
     RequestCashierComponent,
     DatetimeCellComponent,
     UserCellComponent,
-    PromotionCellComponent
+    PromotionCellComponent,
+    RewardDialogComponent
   ],
   imports: [
     CommonModule,
