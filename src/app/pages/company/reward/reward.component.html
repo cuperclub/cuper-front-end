@@ -10,7 +10,7 @@
       </cuper-reward-card>
       <mat-card class="column-card beneficiaries">
         <div class="title-column">{{ 'reward.beneficiaries' | translate }}</div>
-        <cuper-table-card></cuper-table-card>
+        <cuper-table [columnsDef]="columnsOutputTransaction" [data]="outputTransactions"></cuper-table>
       </mat-card>
     </div>
   </div>

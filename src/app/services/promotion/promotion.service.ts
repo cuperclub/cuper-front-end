@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Promotion } from '../../models';
+import { Promotion, OutputTransaction } from '../../models';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +33,10 @@ export class PromotionService {
 
   public getPublicPromotions() {
     return this.httpClient.get<Promotion[]>(`${this.apiURL}/api/promotions`);
+  }
+
+  public getOutputsTransaction(rewardId: number) {
+    const url = `${this.apiURL}/api/partner/companies/promotions/${rewardId}/transaction_outputs`;
+    return this.httpClient.get<OutputTransaction[]>(url);
   }
 }
