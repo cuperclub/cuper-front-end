@@ -40,18 +40,29 @@ export class CustomersComponent implements OnInit {
         component: RolesCellComponent
       }
     ];
-    this.customerService.getCustomers().subscribe(resp => {
-      this.customers = resp.map(user => {
-        return {
-          user: user,
-          created_at: user.join_at,
-          permisions: {
-            is_admin: user['is_admin'],
-            is_cashier: user['is_cashier'],
-            is_partner: user['is_partner']
-          }
+    this.customerService.getCustomers(null).subscribe(resp => {
+      this.formatData(resp);
+    });
+  }
+
+  formatData(users){
+    this.customers = users.map(user => {
+      return {
+        user: user,
+        created_at: user.join_at,
+        permisions: {
+          is_admin: user['is_admin'],
+          is_cashier: user['is_cashier'],
+          is_partner: user['is_partner']
         }
-      });
+      }
+    });
+  }
+
+
+  filterBy(role) {
+    this.customerService.getCustomers(role).subscribe(resp => {
+      this.formatData(resp);
     });
   }
 }

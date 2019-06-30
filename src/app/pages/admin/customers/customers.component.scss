@@ -1,19 +1,30 @@
 .reward-container {
   padding: 3rem 5% 0 5%;
 
-  .last-rewards {
+  .header {
     display: flex;
-    padding-bottom: 2%;
+    justify-content: space-between;
+    align-items: end;
 
-    .placeholder-container {
-      width: 8rem;
-      height: 6.5rem;
+    .title {
+      font-family: 'Circular-Book';
+      font-size: 20px;
+      margin-bottom: 1.5%;
     }
-  }
 
-  .title {
-    font-family: 'Circular-Book';
-    font-size: 20px;
-    margin-bottom: 1.5%;
+    .filters {
+      display: flex;
+
+      .filter {
+
+        &.middle {
+          padding: 0 5px;
+          margin: 0 5px;
+          border-right: 1px solid black;
+          border-left: 1px solid black;
+          cursor: pointer;
+        }
+      }
+    }
   }
 }

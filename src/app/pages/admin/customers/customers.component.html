@@ -1,8 +1,11 @@
 <div class="reward-container">
-  <div class="title">{{'common.all' | translate}}</div>
-  <!-- <cuper-table-card *ngIf="customers"
-    [items]="customers">
-  </cuper-table-card> -->
+  <div class="header">
+    <div class="title">{{'common.all' | translate}}</div>
+    <div class="filters">
+      <span class="filter" (click)="filterBy('clients')">Clientes</span>
+      <span class="filter middle" (click)="filterBy('partner')">Socios</span>
+      <span class="filter" (click)="filterBy('cashier')">Cajeros</span>
+    </div>
+  </div>
   <cuper-table [columnsDef]="columnsUser" [data]="customers"></cuper-table>
-
 </div>

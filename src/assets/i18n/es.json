@@ -169,7 +169,7 @@
   "admin": {
     "tabs": {
       "companies": "Companias",
-      "customers": "Clientes",
+      "customers": "Usuarios",
       "categories": "Categorias"
     },
     "companies": {

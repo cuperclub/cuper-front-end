@@ -11,8 +11,6 @@ export class RolesCellComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.data);
-
   }
 
 }
