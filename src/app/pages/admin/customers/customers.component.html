@@ -1,6 +1,8 @@
 <div class="reward-container">
   <div class="title">{{'common.all' | translate}}</div>
-  <cuper-table-card *ngIf="customers"
+  <!-- <cuper-table-card *ngIf="customers"
     [items]="customers">
-  </cuper-table-card>
+  </cuper-table-card> -->
+  <cuper-table [columnsDef]="columnsUser" [data]="customers"></cuper-table>
+
 </div>
