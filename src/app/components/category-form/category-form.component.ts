@@ -12,7 +12,7 @@ import { CategoryService } from '../../services';
   styleUrls: ['./category-form.component.scss']
 })
 export class CategoryFormComponent implements OnInit {
-  categoryForm: any = {}
+  categoryForm: Category = {};
 
   constructor(
     private message: MatSnackBar,
@@ -34,37 +34,27 @@ export class CategoryFormComponent implements OnInit {
   private generateForm(): void {
     const defaultOffice: Category = {
       name: '',
-      points_per_dollar: 0
+      points_per_dollar: 1
     };
-
     this.categoryForm = Object.assign(defaultOffice, this.data.category);
-    console.log(this.categoryForm);
-
-    // this.isEditMode = !!this.data.office;
-    // this.officeForm = this.fb.group({
-    //   name: [currentOffice.name, [Validators.required]],
-    //   phone: [currentOffice.phone, [Validators.required]],
-    //   email: [currentOffice.email, [Validators.required, Validators.email]],
-    //   address: [currentOffice.address, [Validators.required]]
-    // });
-    // //init position
-    // if(currentOffice.lat && currentOffice.long) {
-    //   this.officePosition = {
-    //     lat: currentOffice.lat,
-    //     long: currentOffice.long
-    //   };
-    // }
   }
 
   onSubmit(category): void {
-    this.categoryService.updateCategories(category).subscribe(
-      res =>    this.onSuccess(res),
-      error =>  this.onError(error)
-    );
+    debugger
+    if (!!this.data.new){
+      this.categoryService.addCategories(category).subscribe(
+        res =>    this.onSuccess(res, 'common.messages.created'),
+        error =>  this.onError(error)
+      );
+    }else{
+      this.categoryService.updateCategories(category).subscribe(
+        res =>    this.onSuccess(res, 'common.messages.updated'),
+        error =>  this.onError(error)
+      );
+    }
   }
 
-  onSuccess(resp): void {
-    console.log(resp);
+  onSuccess(resp, key): void {
     this.translate.get('common.messages.updated').subscribe((message: string) => {
       this.message.open(message, '', {
         duration: 2000
@@ -74,8 +64,6 @@ export class CategoryFormComponent implements OnInit {
   }
 
   onError(resp): void {
-    console.log(resp);
     let errors = resp.error ? resp.error.errors : {};
   }
-
 }

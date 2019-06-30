@@ -183,7 +183,8 @@
     "categories": {
       "name": "Nombre",
       "points_per_dollar": "Puntos por dolar",
-      "active": "Activo"
+      "active": "Activo",
+      "new": "Nueva Categoria"
     }
   }
 }

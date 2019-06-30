@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
-  categories: Category[];
+  categories: Category[] = [];
   currentIndex: -1;
   loaded: boolean = false;
 
@@ -30,7 +30,7 @@ export class CategoriesComponent implements OnInit {
   editCategory(category, index) {
     this.currentIndex = index
     const dialogRef = this.dialog.open(CategoryFormComponent, {
-      width: '400px',
+      width: '300px',
       data: {
         category: Object.assign({}, category)
       }
@@ -39,6 +39,22 @@ export class CategoriesComponent implements OnInit {
     dialogRef.beforeClosed().subscribe(category => {
       if(category){
         this.categories[this.currentIndex] = category;
+      }
+    });
+  }
+
+  addCategory(){
+    const dialogRef = this.dialog.open(CategoryFormComponent, {
+      width: '300px',
+      data: {
+        category: {},
+        new: true
+      }
+    });
+
+    dialogRef.beforeClosed().subscribe(category => {
+      if(category){
+        this.categories.push(category);
       }
     });
   }
