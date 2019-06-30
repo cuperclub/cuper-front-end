@@ -41,9 +41,14 @@ import { CompanyDialogComponent } from './company-dialog/company-dialog.componen
 import { AvatarFileComponent } from './avatar-file/avatar-file.component';
 import { TableComponent } from './table/table.component';
 import { CellTableComponent } from './table/cell-table/cell-table.component';
-import { DatetimeCellComponent, UserCellComponent, PromotionCellComponent } from './table/partials';
 import { RewardDialogComponent } from './reward-dialog/reward-dialog.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
+import {
+  DatetimeCellComponent,
+  UserCellComponent,
+  PromotionCellComponent,
+  RolesCellComponent
+} from './table/partials';
 
 const components = [
   FooterComponent,
@@ -84,7 +89,8 @@ const components = [
   UserCellComponent,
   PromotionCellComponent,
   RewardDialogComponent,
-  CategoryFormComponent
+  CategoryFormComponent,
+  RolesCellComponent
 ];
 
 @NgModule({
@@ -102,7 +108,8 @@ const components = [
     UserCellComponent,
     PromotionCellComponent,
     RewardDialogComponent,
-    CategoryFormComponent
+    CategoryFormComponent,
+    RolesCellComponent
   ],
   imports: [
     CommonModule,
