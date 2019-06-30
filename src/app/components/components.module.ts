@@ -43,6 +43,7 @@ import { TableComponent } from './table/table.component';
 import { CellTableComponent } from './table/cell-table/cell-table.component';
 import { DatetimeCellComponent, UserCellComponent, PromotionCellComponent } from './table/partials';
 import { RewardDialogComponent } from './reward-dialog/reward-dialog.component';
+import { CategoryFormComponent } from './category-form/category-form.component';
 
 const components = [
   FooterComponent,
@@ -82,7 +83,8 @@ const components = [
   DatetimeCellComponent,
   UserCellComponent,
   PromotionCellComponent,
-  RewardDialogComponent
+  RewardDialogComponent,
+  CategoryFormComponent
 ];
 
 @NgModule({
@@ -99,7 +101,8 @@ const components = [
     DatetimeCellComponent,
     UserCellComponent,
     PromotionCellComponent,
-    RewardDialogComponent
+    RewardDialogComponent,
+    CategoryFormComponent
   ],
   imports: [
     CommonModule,

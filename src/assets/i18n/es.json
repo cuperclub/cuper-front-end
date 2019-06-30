@@ -170,7 +170,7 @@
     "tabs": {
       "companies": "Companias",
       "customers": "Clientes",
-      "categorias": "Categorias"
+      "categories": "Categorias"
     },
     "companies": {
       "request": {
@@ -179,6 +179,11 @@
         "disable": "Deshabilitar",
         "remove": "Eliminar"
       }
+    },
+    "categories": {
+      "name": "Nombre",
+      "points_per_dollar": "Puntos por dolar",
+      "active": "Activo"
     }
   }
 }

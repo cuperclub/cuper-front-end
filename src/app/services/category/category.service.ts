@@ -17,4 +17,8 @@ export class CategoryService {
     return this.httpClient.get<Category[]>(`${this.apiURL}/api/admin/categories`);
   }
 
+  public updateCategories(category){
+    return this.httpClient.put<Category[]>(`${this.apiURL}/api/admin/categories/${category.id}`, category);
+  }
+
 }

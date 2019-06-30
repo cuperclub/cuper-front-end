@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AdminCategoryService } from '../../../services';
 import { Category } from '../../../models';
+import {CategoryFormComponent} from '../../../components/category-form/category-form.component'
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'cuper-categories',
@@ -9,17 +11,35 @@ import { Category } from '../../../models';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
-  categories$: Observable<Category[]>;
+  categories: Category[];
+  currentIndex: -1;
+  loaded: boolean = false;
 
   constructor(
-    private categoryService: AdminCategoryService
+    private categoryService: AdminCategoryService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
-    this.categories$ = this.categoryService.getCayegories();
+    this.categoryService.getCayegories().subscribe(data => {
+      this.categories = data['categories'];
+      this.loaded = true;
+    });
   }
 
-  editCategory(){
+  editCategory(category, index) {
+    this.currentIndex = index
+    const dialogRef = this.dialog.open(CategoryFormComponent, {
+      width: '400px',
+      data: {
+        category: Object.assign({}, category)
+      }
+    });
 
+    dialogRef.beforeClosed().subscribe(category => {
+      if(category){
+        this.categories[this.currentIndex] = category;
+      }
+    });
   }
 }

@@ -1,0 +1,29 @@
+<div class="category-form">
+  <form class="form">
+    <mat-form-field class="field-group">
+      <input matInput
+        [(ngModel)]="categoryForm.name"
+        name="name"
+        placeholder="{{ 'admin.categories.name' | translate }}">
+    </mat-form-field>
+    <mat-form-field class="field-group">
+        <input matInput
+        type="number"
+        [(ngModel)]="categoryForm.points_per_dollar"
+        name="points_per_dollar"
+        placeholder="{{ 'admin.categories.points_per_dollar' | translate }}">
+    </mat-form-field>
+    <br>
+    <mat-checkbox class="status" [ngModelOptions]="{standalone: true}" [(ngModel)]="categoryForm.active">
+      {{ 'admin.categories.active' | translate }}
+    </mat-checkbox>
+    <div class="footer-form">
+      <button mat-flat-button color="primary" (click)="onSubmit(categoryForm)">
+        {{ 'common.ok' | translate }}
+      </button>
+      <button mat-flat-button color="secondary" (click)="onCloseDialog()">
+        {{ 'common.cancel' | translate }}
+      </button>
+    </div>
+  </form>
+</div>

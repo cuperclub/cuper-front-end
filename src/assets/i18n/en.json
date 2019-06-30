@@ -130,5 +130,25 @@
     "transactions": "Transactions",
     "promotions": "Promotions",
     "home": "Home"
+  },
+  "admin": {
+    "tabs": {
+      "companies": "Companies",
+      "customers": "Customers",
+      "categories": "Categories"
+    },
+    "companies": {
+      "request": {
+        "approve": "Approve",
+        "decline": "Decline",
+        "disable": "Disable",
+        "remove": "Remov"
+      }
+    },
+    "categories": {
+      "name": "Name",
+      "points_per_dollar": "Points per dollar",
+      "active": "Active"
+    }
   }
 }
