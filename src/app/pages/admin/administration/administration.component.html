@@ -5,43 +5,6 @@
     </a>
   </div>
   <div class="tabs-header">
-    <div class="status-company" *ngIf="employeeRecords">
-      <div class="menu" [matMenuTriggerFor]="menu">
-        <div *ngIf="currentEmployee" class="employee-container">
-          <div class="account">
-            <div class="company-name">
-              {{currentEmployee.name}}
-            </div>
-            <div class="employee-status" [ngClass]="currentEmployee.status">
-              <mat-icon class="icon">
-                {{getStatusAccount(currentEmployee.status)}}
-              </mat-icon>
-              <span>
-                {{ 'common.status.'+ currentEmployee.status | translate }}</span>
-            </div>
-          </div>
-          <mat-icon>arrow_drop_down</mat-icon>
-        </div>
-        <mat-menu #menu="matMenu">
-          <div mat-menu-item
-            *ngFor="let company of employeeRecords"
-            class="item-wrapper"
-            (click)="onChangeEmployeeAccount(company)">
-            <cuper-avatar [imageSrc]="company.logo_url || getAvatar(company.join_at)" [size]="25"></cuper-avatar>
-            <div class="information">
-              <div class="name">{{ company.name}}</div>
-              <div class="role">{{ company.role}}</div>
-            </div>
-          </div>
-        </mat-menu>
-      </div>
-      <button mat-icon-button
-        class="add-button"
-        matTooltip="{{ 'company.register' | translate }}"
-        (click)="onRegisterCompany()">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
     <div class="menu-container" *ngIf="currentUser">
       <div class="menu" [matMenuTriggerFor]="menu">
         <div class="menu-action">

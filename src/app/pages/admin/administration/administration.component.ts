@@ -11,7 +11,6 @@ import { UserService, UtilsService } from '../../../services';
 })
 export class AdministrationComponent implements OnInit {
   currentUser: User;
-  employeeRecords: Employee [];
   currentEmployee: Employee;
   updatedView: boolean = false
 
@@ -24,7 +23,6 @@ export class AdministrationComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.userService.getDataOnLocalStorage();
-    this.employeeRecords = this.currentUser.companies;
     this.currentEmployee = this.userService.getCurrentCompany();
   }
 
