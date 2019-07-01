@@ -45,3 +45,7 @@
     }
   }
 }
+
+::ng-deep .mat-table{
+  box-shadow: none;
+}

@@ -1,0 +1,27 @@
+<div class="categories-page">
+  <div class="header">
+    <div class="title">{{'common.all' | translate}}</div>
+    <button mat-raised-button color="primary" class="add-button"
+      (click)="addCategory()">{{ 'admin.categories.new' | translate }}
+    </button>
+  </div>
+  <div class="categories-container" *ngIf="loaded">
+    <mat-card class="category" *ngFor="let category of categories; let i = index">
+      <div class="content">
+        <span class="name">{{category.name}}</span>
+        <br>
+        <span class="points">Puntos: {{category.points_per_dollar}}</span>
+        <br>
+        <span class="status" [class.active]="category.active">
+          <div class="status-wrapper">
+            {{ category.active ? 'Activo' : 'Desactivado'}}
+          </div>
+        </span>
+      </div>
+      <button mat-icon-button class="edit-button" (click)="editCategory(category, i)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-card>
+  </div>
+  <cuper-loader class="loader" *ngIf="!categories"></cuper-loader>
+</div>

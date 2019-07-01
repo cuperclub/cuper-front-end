@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
 
 // components
 import { FooterComponent } from './footer/footer.component';
@@ -40,10 +39,17 @@ import { RequestCashierComponent } from './request-cashier/request-cashier.compo
 import { LoaderComponent } from './loader/loader.component';
 import { CompanyDialogComponent } from './company-dialog/company-dialog.component';
 import { AvatarFileComponent } from './avatar-file/avatar-file.component';
-
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
-}
+import { TableComponent } from './table/table.component';
+import { CellTableComponent } from './table/cell-table/cell-table.component';
+import { RewardDialogComponent } from './reward-dialog/reward-dialog.component';
+import { CategoryFormComponent } from './category-form/category-form.component';
+import {
+  DatetimeCellComponent,
+  UserCellComponent,
+  PromotionCellComponent,
+  RolesCellComponent,
+  ActionsCellComponent
+} from './table/partials';
 
 const components = [
   FooterComponent,
@@ -77,7 +83,16 @@ const components = [
   RequestCashierComponent,
   LoaderComponent,
   CompanyDialogComponent,
-  AvatarFileComponent
+  AvatarFileComponent,
+  TableComponent,
+  CellTableComponent,
+  DatetimeCellComponent,
+  UserCellComponent,
+  PromotionCellComponent,
+  RewardDialogComponent,
+  CategoryFormComponent,
+  RolesCellComponent,
+  ActionsCellComponent
 ];
 
 @NgModule({
@@ -90,20 +105,21 @@ const components = [
     InputTransactionFormComponent,
     OutputTransactionFormComponent,
     OfficePreviewComponent,
-    RequestCashierComponent
+    RequestCashierComponent,
+    DatetimeCellComponent,
+    UserCellComponent,
+    PromotionCellComponent,
+    RewardDialogComponent,
+    CategoryFormComponent,
+    RolesCellComponent,
+    ActionsCellComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     FormsModule,
     HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    }),
+    TranslateModule,
     FormsModule,
     ReactiveFormsModule
   ],

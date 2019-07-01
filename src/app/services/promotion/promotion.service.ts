@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Promotion } from '../../models';
-import { UserService} from '../user/user.service'
+import { Promotion, OutputTransaction } from '../../models';
 
 @Injectable({
   providedIn: 'root'
@@ -11,29 +10,33 @@ export class PromotionService {
   apiURL = environment.apiBase;
 
   constructor(
-    private httpClient: HttpClient,
-    private userService: UserService
+    private httpClient: HttpClient
   ) { }
 
   public getMyPromotions(){
-    const companyId = this.userService.getCompanyIdView();
-    return this.httpClient.get<Promotion[]>(`${this.apiURL}/api/partner/companies/${companyId}/promotions`);
+    return this.httpClient.get<Promotion[]>(`${this.apiURL}/api/partner/companies/promotions`);
   }
 
   public getPromotion(rewardId: number){
-    const companyId = this.userService.getCompanyIdView();
-    return this.httpClient.get<Promotion>(`${this.apiURL}/api/partner/companies/${companyId}/promotions/${rewardId}`);
+    return this.httpClient.get<Promotion>(`${this.apiURL}/api/partner/companies/promotions/${rewardId}`);
   }
 
   public createPromotion(promotion: FormData, officeId: number){
-    const companyId = this.userService.getCompanyIdView();
-    const url = `${this.apiURL}/api/partner/companies/${companyId}/offices/${officeId}/promotions`
+    const url = `${this.apiURL}/api/partner/companies/offices/${officeId}/promotions`
     return this.httpClient.post<Promotion>(url, promotion);
   }
 
   public updatePromotion(promotion: FormData, promotionId: number, officeId: number){
-    const companyId = this.userService.getCompanyIdView();
-    const url = `${this.apiURL}/api/partner/companies/${companyId}/offices/${officeId}/promotions/${promotionId}`
+    const url = `${this.apiURL}/api/partner/companies/offices/${officeId}/promotions/${promotionId}`
     return this.httpClient.put<Promotion>(url, promotion);
+  }
+
+  public getPublicPromotions() {
+    return this.httpClient.get<Promotion[]>(`${this.apiURL}/api/promotions`);
+  }
+
+  public getOutputsTransaction(rewardId: number) {
+    const url = `${this.apiURL}/api/partner/companies/promotions/${rewardId}/transaction_outputs`;
+    return this.httpClient.get<OutputTransaction[]>(url);
   }
 }

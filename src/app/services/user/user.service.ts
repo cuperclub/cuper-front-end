@@ -31,6 +31,12 @@ export class UserService {
     return this.httpClient.put<User>(`${this.apiURL}/api/users`, userInput);
   }
 
+  public searchUsers(query) {
+    query= query || '';
+    let params = {params: {query: query}};
+    return this.httpClient.get<User[]>(`${this.apiURL}/api/users/search`, params);
+  }
+
   public getCompanyIdView(){
     const currentUser = this.getDataOnLocalStorage();
     return currentUser.current_company_id;
@@ -40,6 +46,10 @@ export class UserService {
     let currentUser = this.getDataOnLocalStorage();
     currentUser = {...currentUser, ...{current_company_id: id}};
     localStorage.setItem('current_user', JSON.stringify(currentUser));
+  }
+
+  public updateCompanyIdView(id){
+    return this.httpClient.put(`${this.apiURL}/api/users/current_view`, {company_id: id});
   }
 
   public getCurrentCompany(){
@@ -58,6 +68,10 @@ export class UserService {
     const currentCompany =  this.getCurrentCompany();
     const isPartner = currentCompany && (currentCompany.role === 'partner');
     return isPartner;
+  }
+
+  public isCustomer() {
+    return !!this.getCurrentCompany();
   }
 
 }

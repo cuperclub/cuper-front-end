@@ -27,7 +27,9 @@
     "offices": "Sucursales",
     "not_registered_yet": "No se ha registrado aún",
     "company": "Companía",
+    "partners": "Socios",
     "cashiers": "Cajeros",
+    "customers": "Clientes",
     "profile": "Perfil",
     "logout": "Cerrar Sesion",
     "status": {
@@ -158,7 +160,9 @@
     "dashboard": "Dashboard",
     "rewards": "Recompensas",
     "company": "Mi Companía",
-    "transactions": "Transacciones"
+    "transactions": "Transacciones",
+    "promotions": "Promociones",
+    "home": "Inicio"
   },
   "errors": {
     "required": "Llena este campo por favor.",
@@ -167,8 +171,8 @@
   "admin": {
     "tabs": {
       "companies": "Companias",
-      "customers": "Clientes",
-      "categorias": "Categorias"
+      "customers": "Usuarios",
+      "categories": "Categorias"
     },
     "companies": {
       "request": {
@@ -177,6 +181,12 @@
         "disable": "Deshabilitar",
         "remove": "Eliminar"
       }
+    },
+    "categories": {
+      "name": "Nombre",
+      "points_per_dollar": "Puntos por dolar",
+      "active": "Activo",
+      "new": "Nueva Categoria"
     }
   }
 }

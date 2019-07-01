@@ -15,7 +15,9 @@
     "offices": "Offices",
     "not_registered_yet": "Not registered yet",
     "company": "Company",
+    "partners": "Partners",
     "cashiers": "Cashiers",
+    "customers": "Clients",
     "profile": "Profile",
     "logout": "Logout",
     "status": {
@@ -127,6 +129,28 @@
     "dashboard": "Dashboard",
     "rewards": "Rewards",
     "company": "My Company",
-    "transactions": "Transactions"
+    "transactions": "Transactions",
+    "promotions": "Promotions",
+    "home": "Home"
+  },
+  "admin": {
+    "tabs": {
+      "companies": "Companies",
+      "customers": "Customers",
+      "categories": "Categories"
+    },
+    "companies": {
+      "request": {
+        "approve": "Approve",
+        "decline": "Decline",
+        "disable": "Disable",
+        "remove": "Remov"
+      }
+    },
+    "categories": {
+      "name": "Name",
+      "points_per_dollar": "Points per dollar",
+      "active": "Active"
+    }
   }
 }

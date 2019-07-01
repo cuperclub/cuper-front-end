@@ -1,0 +1,13 @@
+<div class="user-content" *ngIf="data.permisions">
+  <mat-chip-list>
+    <mat-chip class="name" *ngIf="data.permisions.is_cashier">
+      Cajero
+    </mat-chip>
+    <mat-chip class="name" *ngIf="data.permisions.is_partner">
+      Socio
+    </mat-chip>
+    <mat-chip class="name" *ngIf="data.permisions.is_admin">
+      Administrador
+    </mat-chip>
+  </mat-chip-list>
+</div>

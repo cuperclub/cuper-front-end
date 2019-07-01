@@ -1,0 +1,17 @@
+@import '../../../../../styles/colors';
+
+.promotion-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .name {
+    font-family: 'Circular-Book';
+  }
+
+  .description {
+    font-size: 12px;
+    padding: 0.25rem 0;
+    color: $gray-dark;
+  }
+}

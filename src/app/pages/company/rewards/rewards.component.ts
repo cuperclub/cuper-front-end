@@ -33,7 +33,7 @@ export class RewardsComponent implements OnInit {
     });
   }
 
-  onNewReward = () => this.router.navigate(['home/rewards/new']);
+  onNewReward = () => this.router.navigateByUrl('home/company/reward/new');
 
-  onEditReward = (reward) => this.router.navigate(['home/rewards/details', reward.id]);
+  onEditReward = (reward) => this.router.navigate(['home/company/reward/details', reward.id]);
 }

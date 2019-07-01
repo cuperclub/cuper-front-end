@@ -1,0 +1,15 @@
+<nav mat-tab-nav-bar>
+  <a mat-tab-link
+    routerLink="home"
+    routerLinkActive #homeRouter="routerLinkActive"
+    [active]="homeRouter.isActive">
+    {{ 'tabs.home' | translate }}
+  </a>
+  <a mat-tab-link
+    routerLink="reward/list"
+    routerLinkActive #rewardRouter="routerLinkActive"
+    [active]="rewardRouter.isActive">
+    {{ 'tabs.rewards' | translate }}
+  </a>
+</nav>
+<router-outlet></router-outlet>

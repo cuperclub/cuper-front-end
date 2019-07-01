@@ -1,19 +1,32 @@
-.reward-container {
+@import "../../../../styles/colors.scss";
+
+.customers-container {
   padding: 3rem 5% 0 5%;
 
-  .last-rewards {
+  .header {
     display: flex;
-    padding-bottom: 2%;
+    justify-content: space-between;
+    align-items: end;
 
-    .placeholder-container {
-      width: 8rem;
-      height: 6.5rem;
+    .title {
+      font-family: 'Circular-Book';
+      font-size: 20px;
+      margin-bottom: 1.5%;
     }
-  }
 
-  .title {
-    font-family: 'Circular-Book';
-    font-size: 20px;
-    margin-bottom: 1.5%;
+    .filters {
+      display: flex;
+
+      .filter {
+        cursor: pointer;
+        margin: 0 5px;
+
+        &.active {
+          font-family: 'Circular-Book';
+          color: $secondary;
+          border-bottom: 1px solid $secondary;
+        }
+      }
+    }
   }
 }

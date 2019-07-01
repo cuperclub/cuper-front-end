@@ -1,0 +1,9 @@
+::ng-deep .reward-card .mat-card {
+  box-shadow: none;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}

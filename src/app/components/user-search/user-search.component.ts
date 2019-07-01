@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { map, startWith } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { AdminCustomerService } from '../../services';
+import { FormControl } from '@angular/forms';
+import { UserService, UtilsService } from '../../services';
 import { User } from '../../models';
 
 export interface ButtonOption {
@@ -20,32 +19,20 @@ export class UserSearchComponent implements OnInit {
   @Input() leftButton: ButtonOption;
   @Output() propagateUserData = new EventEmitter<User>();
 
-  stateCtrl = new FormControl();
-  filteredUsers: Observable<User[]>;
+  users: Observable<User[]>;
   defaultImageProfile: string = '../../../../assets/images/profile-placeholder.png';
   currentUser: User;
-  users: User[] = [];
+
+  userSearchControl = new FormControl();
 
   constructor(
-    private customerService: AdminCustomerService,
-  ) {
-    this.filteredUsers = this.stateCtrl.valueChanges
-      .pipe(
-        startWith(''),
-        map(state => state ? this._filterUsers(state) : this.users.slice())
-      );
-  }
-
-  private _filterUsers(value: string): User[] {
-    const filterValue = value.toLowerCase();
-    if(this.currentUser) this.currentUser = undefined;
-    return this.users.filter(state => state.name.toLowerCase().indexOf(filterValue) === 0);
-  }
+    private userService: UserService,
+    private utilsService: UtilsService,
+  ) { }
 
   ngOnInit() {
-    this.customerService.getCustomers().subscribe(resp => {
-      this.users = resp
-    });
+    this.userSearchControl.valueChanges
+      .subscribe(query => this.users = this.userService.searchUsers(query));
   }
 
   onClickOption(option){
@@ -53,4 +40,5 @@ export class UserSearchComponent implements OnInit {
     this.propagateUserData.emit(this.currentUser);
   }
 
+  getAvatar = this.utilsService.getAvatar;
 }

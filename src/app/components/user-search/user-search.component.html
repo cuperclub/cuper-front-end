@@ -1,11 +1,11 @@
 <mat-card class="user-card">
   <mat-form-field class="input-search">
-    <input matInput placeholder="{{ 'common.user' | translate}}" [matAutocomplete]="auto" [formControl]="stateCtrl">
+    <input matInput placeholder="{{ 'common.user' | translate}}" [matAutocomplete]="auto" [formControl]="userSearchControl">
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option class="item-list" *ngFor="let user of filteredUsers | async" [value]="user.name" (click)="onClickOption(user)">
+      <mat-option class="item-list" *ngFor="let user of users | async" [value]="user.name" (click)="onClickOption(user)">
         <div class="user-search-item">
           <div class="avatar-col">
-            <cuper-avatar [imageSrc]="user.image" [size]="25"></cuper-avatar>
+            <cuper-avatar [imageSrc]="user.image_url || defaultImageProfile" [size]="25"></cuper-avatar>
           </div>
           <div class="content-col">
             <div class="title">{{user.name}}</div>
