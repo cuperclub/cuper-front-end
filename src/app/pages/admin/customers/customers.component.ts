@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminCustomerService } from 'src/app/services';
+import { AdminCustomerService, UserService } from 'src/app/services';
 import { User } from 'src/app/models';
 import { ColumnDefinition } from 'src/app/components/table/table.component';
 import {
@@ -20,7 +20,8 @@ export class CustomersComponent implements OnInit {
   currentFilter: string = 'clients';
 
   constructor(
-    private customerService: AdminCustomerService
+    private customerService: AdminCustomerService,
+    private userService: UserService,
   ) { }
 
   ngOnInit() {
@@ -72,8 +73,10 @@ export class CustomersComponent implements OnInit {
     });
   }
 
-  resetPassword = () => {
+  resetPassword = (rowData) => {
     console.log('enviando emaill...');
+    const userId = rowData.user.id;
+    this.userService.changePassword(userId, 'darwin@example.com', '987654321').subscribe(resp => console.log(resp));
   }
 
   filterBy(role) {
