@@ -27,7 +27,9 @@
     "offices": "Sucursales",
     "not_registered_yet": "No se ha registrado aún",
     "company": "Companía",
+    "partners": "Socios",
     "cashiers": "Cajeros",
+    "customers": "Clientes",
     "profile": "Perfil",
     "logout": "Cerrar Sesion",
     "status": {

@@ -1,4 +1,6 @@
-.reward-container {
+@import "../../../../styles/colors.scss";
+
+.customers-container {
   padding: 3rem 5% 0 5%;
 
   .header {
@@ -16,13 +18,13 @@
       display: flex;
 
       .filter {
+        cursor: pointer;
+        margin: 0 5px;
 
-        &.middle {
-          padding: 0 5px;
-          margin: 0 5px;
-          border-right: 1px solid black;
-          border-left: 1px solid black;
-          cursor: pointer;
+        &.active {
+          font-family: 'Circular-Book';
+          color: $secondary;
+          border-bottom: 1px solid $secondary;
         }
       }
     }

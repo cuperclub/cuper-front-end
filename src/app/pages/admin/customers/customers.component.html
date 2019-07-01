@@ -1,10 +1,22 @@
-<div class="reward-container">
+<div class="customers-container">
   <div class="header">
     <div class="title">{{'common.all' | translate}}</div>
     <div class="filters">
-      <span class="filter" (click)="filterBy('clients')">Clientes</span>
-      <span class="filter middle" (click)="filterBy('partner')">Socios</span>
-      <span class="filter" (click)="filterBy('cashier')">Cajeros</span>
+      <span class="filter"
+        [class.active]="currentFilter === 'clients'"
+        (click)="filterBy('clients')">
+        {{'common.customers' | translate}}
+      </span>
+      <span class="filter"
+        [class.active]="currentFilter === 'partner'"
+        (click)="filterBy('partner')">
+        {{'common.partners' | translate}}
+      </span>
+      <span class="filter"
+        [class.active]="currentFilter === 'cashier'"
+        (click)="filterBy('cashier')">
+        {{'common.cashiers' | translate}}
+      </span>
     </div>
   </div>
   <cuper-table [columnsDef]="columnsUser" [data]="customers"></cuper-table>

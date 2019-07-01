@@ -47,7 +47,8 @@ import {
   DatetimeCellComponent,
   UserCellComponent,
   PromotionCellComponent,
-  RolesCellComponent
+  RolesCellComponent,
+  ActionsCellComponent
 } from './table/partials';
 
 const components = [
@@ -90,7 +91,8 @@ const components = [
   PromotionCellComponent,
   RewardDialogComponent,
   CategoryFormComponent,
-  RolesCellComponent
+  RolesCellComponent,
+  ActionsCellComponent
 ];
 
 @NgModule({
@@ -109,7 +111,8 @@ const components = [
     PromotionCellComponent,
     RewardDialogComponent,
     CategoryFormComponent,
-    RolesCellComponent
+    RolesCellComponent,
+    ActionsCellComponent
   ],
   imports: [
     CommonModule,
