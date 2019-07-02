@@ -16,6 +16,5 @@ export class RewardDialogComponent implements OnInit {
   ) { }
 
   ngOnInit(){
-    console.log(this.data);
   }
 }

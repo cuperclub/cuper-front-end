@@ -137,7 +137,8 @@
     "national_id": "Documento de identidad",
     "email": "Email",
     "passwordNew": "Nueva contraseña",
-    "passwordCurrent": "Contraseña actual"
+    "passwordCurrent": "Contraseña actual",
+    "email_to_notify_change_password": "Escribe el correo a donde enviaras la nueva clave"
   },
   "transactions": {
     "title": "Mis Transacciones",

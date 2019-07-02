@@ -74,4 +74,7 @@ export class UserService {
     return !!this.getCurrentCompany();
   }
 
+  public changePassword(userId, params) {
+    return this.httpClient.put(`${this.apiURL}/api/admin/users/${userId}/update_password`, params);
+  }
 }

@@ -43,6 +43,8 @@ import { TableComponent } from './table/table.component';
 import { CellTableComponent } from './table/cell-table/cell-table.component';
 import { RewardDialogComponent } from './reward-dialog/reward-dialog.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
+import { ChangePasswordDialogComponent } from './change-password-dialog/change-password-dialog.component';
+
 import {
   DatetimeCellComponent,
   UserCellComponent,
@@ -92,7 +94,8 @@ const components = [
   RewardDialogComponent,
   CategoryFormComponent,
   RolesCellComponent,
-  ActionsCellComponent
+  ActionsCellComponent,
+  ChangePasswordDialogComponent
 ];
 
 @NgModule({
@@ -112,7 +115,8 @@ const components = [
     RewardDialogComponent,
     CategoryFormComponent,
     RolesCellComponent,
-    ActionsCellComponent
+    ActionsCellComponent,
+    ChangePasswordDialogComponent
   ],
   imports: [
     CommonModule,

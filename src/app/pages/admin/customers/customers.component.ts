@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { AdminCustomerService } from 'src/app/services';
 import { User } from 'src/app/models';
 import { ColumnDefinition } from 'src/app/components/table/table.component';
@@ -8,6 +9,7 @@ import {
   RolesCellComponent,
   ActionsCellComponent
 } from 'src/app/components/table/partials';
+import { ChangePasswordDialogComponent } from 'src/app/components/change-password-dialog/change-password-dialog.component';
 
 @Component({
   selector: 'cuper-customers',
@@ -20,7 +22,8 @@ export class CustomersComponent implements OnInit {
   currentFilter: string = 'clients';
 
   constructor(
-    private customerService: AdminCustomerService
+    private customerService: AdminCustomerService,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -72,8 +75,14 @@ export class CustomersComponent implements OnInit {
     });
   }
 
-  resetPassword = () => {
-    console.log('enviando emaill...');
+  resetPassword = (rowData) => {
+    this.dialog.open(ChangePasswordDialogComponent, {
+      width: '250px',
+      data: {
+        user: rowData.user,
+        passwordForm: {}
+      }
+    });
   }
 
   filterBy(role) {
