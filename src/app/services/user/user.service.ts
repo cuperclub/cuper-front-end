@@ -74,11 +74,7 @@ export class UserService {
     return !!this.getCurrentCompany();
   }
 
-  public changePassword(userId, emailToNotify, newPassword) {
-    const params = {
-      email: emailToNotify,
-      password: newPassword
-    };
+  public changePassword(userId, params) {
     return this.httpClient.put(`${this.apiURL}/api/admin/users/${userId}/update_password`, params);
   }
 }

@@ -106,7 +106,8 @@
     "national_id": "National Id",
     "email": "Email",
     "passwordNew": "New password",
-    "passwordCurrent": "Current password"
+    "passwordCurrent": "Current password",
+    "email_to_notify_change_password": "Write the email where will send the new password"
   },
   "transactions": {
     "title": "My Transactions",
