@@ -9,18 +9,34 @@
     </cuper-table-card>
     <mat-card class="content-row" *ngIf="companySelected">
       <div class="card-header">
-        <div class="avatar">
-          <cuper-avatar
-          [imageSrc]="companySelected.logo_url"
-          [size]="50">
-          </cuper-avatar>
+        <div class="company">
+          <div class="avatar">
+            <cuper-avatar
+            [imageSrc]="companySelected.logo_url"
+            [size]="50">
+            </cuper-avatar>
+            </div>
+            <div class="text">
+              <div class="name">{{companySelected.business_name}}</div>
+              <div class="slogan">{{companySelected.slogan}}</div>
+              <div class="status {{companySelected.status}}">
+                {{ 'common.status.'+ companySelected.status | translate }}
+              </div>
+            </div>
         </div>
-        <div class="text">
-          <div class="name">{{companySelected.business_name}}</div>
-          <div class="slogan">{{companySelected.slogan}}</div>
-          <div class="status {{companySelected.status}}">
-            {{ 'common.status.'+ companySelected.status | translate }}
-          </div>
+        <div class="options">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item *ngFor="let option of optionsStatus"
+              (click)="option.onClick()"
+              [class.disabled]="option.disabled"
+              class="option">
+              <mat-icon>{{option.icon}}</mat-icon>
+              <span>{{ option.key | translate }}</span>
+            </button>
+          </mat-menu>
         </div>
       </div>
       <div class="card-content">
@@ -47,14 +63,6 @@
             {{ 'company.economic_activity' | translate }}
           </div>
           <div class="card-subtitle">{{companySelected.economic_activity || 'common.not_registered_yet' | translate }}</div>
-        </div>
-        <div class="buttons">
-          <button mat-flat-button
-            color="primary"
-            class="submit-button"
-            (click)="approve()">
-          {{ 'admin.companies.request.approve' | translate}}
-        </button>
         </div>
       </div>
     </mat-card>

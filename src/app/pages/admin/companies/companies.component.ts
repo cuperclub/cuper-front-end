@@ -10,6 +10,7 @@ import { Company } from '../../../models';
 export class CompaniesComponent implements OnInit {
   companies: Company[];
   companySelected: Company = {};
+  optionsStatus: any = [];
 
   constructor(
     private companyService: AdminCompanyService,
@@ -30,18 +31,53 @@ export class CompaniesComponent implements OnInit {
       });
       this.companySelected = resp['companies'][0];
       this.companySelected.logo = this.getAvatar(this.companySelected);
+      this.optionsBuild();
     });
+  }
+
+  optionsBuild () {
+    let currentStatus = this.companySelected['status'];
+    console.log(currentStatus);
+
+    this.optionsStatus = [
+      {
+        key: 'admin.companies.request.approve',
+        icon: 'check_circle',
+        onClick: () => this.changeStatus('approved'),
+        disabled: currentStatus === 'approved'
+      },
+      {
+        key: 'admin.companies.request.disable',
+        icon: 'domain_disabled',
+        onClick: () => this.changeStatus('disabled'),
+        disabled: (currentStatus === 'disabled') || (currentStatus === 'pending')
+      },
+      {
+        key: 'admin.companies.request.decline',
+        icon: 'thumb_down_alt',
+        onClick: () => this.changeStatus('decline'),
+        disabled: (currentStatus === 'decline') || (currentStatus === 'disabled') || (currentStatus === 'approved')
+      },
+      {
+        key: 'admin.companies.request.remove',
+        icon: 'remove_circle',
+        onClick: () => this.changeStatus('remove'),
+        disabled: false
+      },
+    ]
   }
 
 
   selectCompany = (company) => {
     this.companySelected = company.data;
     this.companySelected.logo = this.getAvatar(company);
+    this.optionsBuild();
   };
 
-  approve() {
-    this.companyService.approveCompany(
-      this.companySelected
+  changeStatus(status){
+    this.companyService.changeStatusCompany(
+      this.companySelected,
+      status
     ).subscribe(resp => {
       this.companySelected = resp;
     });

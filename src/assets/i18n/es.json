@@ -177,7 +177,7 @@
     },
     "companies": {
       "request": {
-        "approve": "Aprobar Solicitud",
+        "approve": "Aprobar",
         "decline": "Rechazar Solicitud",
         "disable": "Deshabilitar",
         "remove": "Eliminar"
