@@ -94,7 +94,8 @@
     "register_company": "Registrar mi companía",
     "request_cashier": "Usuario no econtrado, desea enviarle una invitación?",
     "validating": "Su companía sera validada",
-    "category": "Categoria"
+    "category": "Categoria",
+    "feedback": "Feedback"
   },
   "office": {
     "create": "Crear una nueva oficina",
@@ -177,7 +178,7 @@
     },
     "companies": {
       "request": {
-        "approve": "Aprobar Solicitud",
+        "approve": "Aprobar",
         "decline": "Rechazar Solicitud",
         "disable": "Deshabilitar",
         "remove": "Eliminar"
