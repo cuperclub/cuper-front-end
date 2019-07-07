@@ -11,6 +11,7 @@ export class CompaniesComponent implements OnInit {
   companies: Company[];
   companySelected: Company = {};
   optionsStatus: any = [];
+  indexSelected: number = -1;
 
   constructor(
     private companyService: AdminCompanyService,
@@ -20,14 +21,7 @@ export class CompaniesComponent implements OnInit {
   ngOnInit() {
     this.companyService.getCompanies().subscribe(resp => {
       this.companies = resp['companies'].map(company => {
-        return {
-          id: company.id,
-          title: company.business_name,
-          description: `Owner: ${company.legal_representative}`,
-          image: null,
-          number: null,
-          data: company
-        };
+        return this.formatData(company);
       });
       this.companySelected = resp['companies'][0];
       this.companySelected.logo = this.getAvatar(this.companySelected);
@@ -35,9 +29,19 @@ export class CompaniesComponent implements OnInit {
     });
   }
 
+  formatData(company) {
+    return {
+      id: company.id,
+      title: company.business_name,
+      description: `Owner: ${company.legal_representative}`,
+      image: null,
+      number: null,
+      data: company
+    }
+  }
+
   optionsBuild () {
     let currentStatus = this.companySelected['status'];
-    console.log(currentStatus);
 
     this.optionsStatus = [
       {
@@ -58,17 +62,18 @@ export class CompaniesComponent implements OnInit {
         onClick: () => this.changeStatus('decline'),
         disabled: (currentStatus === 'decline') || (currentStatus === 'disabled') || (currentStatus === 'approved')
       },
-      {
-        key: 'admin.companies.request.remove',
-        icon: 'remove_circle',
-        onClick: () => this.changeStatus('remove'),
-        disabled: false
-      },
+      // {
+      //   key: 'admin.companies.request.remove',
+      //   icon: 'remove_circle',
+      //   onClick: () => this.changeStatus('remove'),
+      //   disabled: false
+      // },
     ]
   }
 
 
-  selectCompany = (company) => {
+  selectCompany = (company, index) => {
+    this.indexSelected = index;
     this.companySelected = company.data;
     this.companySelected.logo = this.getAvatar(company);
     this.optionsBuild();
@@ -80,6 +85,7 @@ export class CompaniesComponent implements OnInit {
       status
     ).subscribe(resp => {
       this.companySelected = resp;
+      this.companies[this.indexSelected] = this.formatData(this.companySelected);
     });
   }
 
