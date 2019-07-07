@@ -40,7 +40,6 @@ export class CategoryFormComponent implements OnInit {
   }
 
   onSubmit(category): void {
-    debugger
     if (!!this.data.new){
       this.categoryService.addCategories(category).subscribe(
         res =>    this.onSuccess(res, 'common.messages.created'),

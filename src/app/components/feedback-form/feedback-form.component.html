@@ -1,0 +1,19 @@
+<div class="feedback-form">
+  <form class="form">
+    <mat-form-field class="field-group">
+      <textarea matInput
+        [(ngModel)]="feedbackForm.feedback"
+        name="feedback"
+        placeholder="{{ 'company.feedback' | translate }}">
+      </textarea>
+    </mat-form-field>
+    <div class="footer-form">
+      <button mat-flat-button color="primary" (click)="onSubmit(feedbackForm)">
+        {{ 'common.ok' | translate }}
+      </button>
+      <button mat-flat-button color="secondary" (click)="onCloseDialog()">
+        {{ 'common.cancel' | translate }}
+      </button>
+    </div>
+  </form>
+</div>

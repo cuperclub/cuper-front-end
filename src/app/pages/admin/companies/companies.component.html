@@ -44,26 +44,32 @@
           <div class="card-title">
             {{ 'company.legal_representative' | translate }}
           </div>
-          <div class="card-subtitle">{{companySelected.legal_representative || 'common.not_registered_yet' | translate }}</div>
+          <div class="card-subtitle">{{companySelected.legal_representative}}</div>
         </div>
         <div class="card-item">
           <div class="card-title">
             {{ 'company.ruc' | translate }}
           </div>
-          <div class="card-subtitle">{{companySelected.ruc || 'common.not_registered_yet' | translate }}</div>
+          <div class="card-subtitle">{{companySelected.ruc}}</div>
         </div>
         <div class="card-item">
           <div class="card-title">
             {{ 'company.contributor_type' | translate }}
           </div>
-          <div class="card-subtitle">{{companySelected.contributor_type || 'common.not_registered_yet' | translate }}</div>
+          <div class="card-subtitle">{{companySelected.contributor_type}}</div>
         </div>
         <div class="card-item">
           <div class="card-title">
             {{ 'company.economic_activity' | translate }}
           </div>
-          <div class="card-subtitle">{{companySelected.economic_activity || 'common.not_registered_yet' | translate }}</div>
+          <div class="card-subtitle">{{companySelected.economic_activity}}</div>
         </div>
+        <div class="card-item">
+            <div class="card-title">
+              {{ 'company.feedback' | translate }}
+            </div>
+            <div class="card-subtitle">{{companySelected.feedback}}</div>
+          </div>
       </div>
     </mat-card>
   </div>

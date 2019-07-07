@@ -20,8 +20,8 @@ export class AdminCompanyService {
   }
 
 
-  public changeStatusCompany(company: Company, status): Observable<Company>{
+  public changeStatusCompany(company: Company, status, feedback): Observable<Company>{
     const url = `${this.apiURL}/api/admin/companies/${company.id}/change_status`
-    return this.httpClient.put<Company>(url, {status: status});
+    return this.httpClient.put<Company>(url, {status: status, feedback: feedback});
   }
 }
