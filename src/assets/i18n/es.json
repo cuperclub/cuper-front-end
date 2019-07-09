@@ -189,6 +189,14 @@
       "points_per_dollar": "Puntos por dolar",
       "active": "Activo",
       "new": "Nueva Categoria"
+    },
+    "plans": {
+      "name": "Nombre",
+      "days": "Dias",
+      "active": "Activo",
+      "price": "Precio",
+      "information": "Imformacion Adicional",
+      "new": "Nuevo Plan"
     }
   }
 }

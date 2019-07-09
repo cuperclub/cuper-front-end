@@ -1,3 +1,27 @@
-<p>
-  plans works!
-</p>
+<div class="plans-page">
+  <div class="header">
+    <div class="title">{{'common.all' | translate}}</div>
+    <button mat-raised-button color="primary" class="add-button"
+      (click)="addCategory()">{{ 'admin.plans.new' | translate }}
+    </button>
+  </div>
+  <div class="plans-container" *ngIf="loaded">
+    <mat-card class="plan" *ngFor="let plan of plans; let i = index">
+      <div class="content">
+        <span class="name">{{plan.name}}</span>
+        <br>
+        <span class="points">Precio: {{plan.price}}</span>
+        <br>
+        <span class="status" [class.active]="plan.active">
+          <div class="status-wrapper">
+            {{ plan.active ? 'Activo' : 'Desactivado'}}
+          </div>
+        </span>
+      </div>
+      <button mat-icon-button class="edit-button" (click)="editPlan(plan, i)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-card>
+  </div>
+  <cuper-loader class="loader" *ngIf="!plans"></cuper-loader>
+</div>
