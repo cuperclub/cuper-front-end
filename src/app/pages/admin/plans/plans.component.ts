@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Plan } from '../../../models';
 import { AdminPlanService } from '../../../services';
 import { MatDialog } from '@angular/material/dialog';
-import { CategoryFormComponent } from 'src/app/components/category-form/category-form.component';
+import {PlanFormComponent} from '../../../components/plan-form/plan-form.component'
 
 @Component({
   selector: 'cuper-plans',
@@ -39,7 +39,7 @@ export class PlansComponent implements OnInit {
 
   editPlan(plan, index) {
     this.currentIndex = index
-    const dialogRef = this.dialog.open(CategoryFormComponent, {
+    const dialogRef = this.dialog.open(PlanFormComponent, {
       width: '300px',
       data: {
         plan: Object.assign({}, plan)
@@ -54,7 +54,7 @@ export class PlansComponent implements OnInit {
   }
 
   addPlan(){
-    const dialogRef = this.dialog.open(CategoryFormComponent, {
+    const dialogRef = this.dialog.open(PlanFormComponent, {
       width: '300px',
       data: {
         plan: {},
