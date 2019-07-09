@@ -174,7 +174,8 @@
     "tabs": {
       "companies": "Companias",
       "customers": "Usuarios",
-      "categories": "Categorias"
+      "categories": "Categorias",
+      "plans": "Planes"
     },
     "companies": {
       "request": {

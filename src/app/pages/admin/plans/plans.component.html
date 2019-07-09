@@ -7,27 +7,11 @@
   </div>
   <div class="plans-container" *ngIf="loaded">
     <cuper-card-plan
-      *ngFor="let plan of plans; let i = index"
+      *ngFor="let plan of plansCard; let i = index"
       class="plan-card"
       [option]="plan"
-      (propagatePlanData)="editPlan(plan, i)">
+      (propagatePlanData)="editPlan(i)">
     </cuper-card-plan>
-    <!-- <mat-card class="plan" *ngFor="let plan of plans; let i = index">
-      <div class="content">
-        <span class="name">{{plan.name}}</span>
-        <br>
-        <span class="points">Precio: {{plan.price}}</span>
-        <br>
-        <span class="status" [class.active]="plan.active">
-          <div class="status-wrapper">
-            {{ plan.active ? 'Activo' : 'Desactivado'}}
-          </div>
-        </span>
-      </div>
-      <button mat-icon-button class="edit-button" (click)="editPlan(plan, i)">
-        <mat-icon>edit</mat-icon>
-      </button>
-    </mat-card> -->
   </div>
   <cuper-loader class="loader" *ngIf="!plans"></cuper-loader>
 </div>

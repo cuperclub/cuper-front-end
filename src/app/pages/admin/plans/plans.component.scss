@@ -22,52 +22,8 @@
 
     .plan-card {
 			width: 12rem;
-			height: 6rem;
-    }
-
-    .plan {
-      width: 12rem;
-      height: 3.5rem;
+      height: 6rem;
       margin: 1rem;
-      padding: 0.5rem 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      .content {
-        .name {
-          font-family: 'Lato-Bold';
-        }
-
-        .points {
-          margin: 0.5rem 0;
-        }
-
-        .status {
-          color: $red;
-          display: flex;
-          align-items: baseline;
-
-          &::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin: 0 5px 0 0;
-            background-color: $red;
-          }
-
-          &.active {
-            .status-wrapper {
-              color: $green;
-            }
-
-            &::before {
-              background-color: $green;
-            }
-          }
-        }
-      }
     }
   }
 

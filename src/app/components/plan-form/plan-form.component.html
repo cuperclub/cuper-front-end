@@ -15,6 +15,13 @@
     <mat-form-field class="field-group">
         <input matInput
         type="number"
+        [(ngModel)]="planForm.days"
+        name="days"
+        placeholder="{{ 'admin.plans.days' | translate }}">
+    </mat-form-field>
+    <mat-form-field class="field-group">
+        <input matInput
+        type="number"
         [(ngModel)]="planForm.price"
         name="price"
         placeholder="{{ 'admin.plans.price' | translate }}">

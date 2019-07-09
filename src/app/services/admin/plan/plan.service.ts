@@ -19,7 +19,7 @@ export class AdminPlanService {
   }
 
   public addPlan(plan){
-    return this.httpClient.post<Plan[]>(`${this.apiURL}/api/admin/plan`, plan);
+    return this.httpClient.post<Plan[]>(`${this.apiURL}/api/admin/plans`, plan);
   }
 
   public updatePlan(plan){
