@@ -23,24 +23,9 @@ export class PlansComponent implements OnInit {
   ngOnInit() {
     this.planService.getPlans().subscribe(data => {
       this.plans = data['plans'] || [];
-      this.plansCard = this.formatPlanCardData(this.plans);
+      this.plansCard = this.planService.plansForCard(this.plans);
       this.loaded = true;
     });
-  }
-
-  formatPlanCardData(plans) {
-    return plans.map((plan)=>{
-      return this.dataForCard(plan);
-    });
-  }
-
-  dataForCard(plan){
-    return {
-      time: plan.days + " days",
-      price: plan.price,
-      promotion: plan.information,
-      active: plan.active
-    }
   }
 
   editPlan(index) {
@@ -55,7 +40,7 @@ export class PlansComponent implements OnInit {
     dialogRef.beforeClosed().subscribe(plan => {
       if(plan){
         this.plans[this.currentIndex] = plan;
-        this.plansCard[this.currentIndex] = this.dataForCard(plan);
+        this.plansCard[this.currentIndex] = this.planService.planForCard(plan);
       }
     });
   }
@@ -72,7 +57,7 @@ export class PlansComponent implements OnInit {
     dialogRef.beforeClosed().subscribe(plan => {
       if(plan){
         this.plans.push(plan);
-        this.plansCard.push(this.dataForCard(plan));
+        this.plansCard.push(this.planService.planForCard(plan));
       }
     });
   }

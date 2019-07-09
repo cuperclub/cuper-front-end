@@ -25,4 +25,29 @@ export class AdminPlanService {
   public updatePlan(plan){
     return this.httpClient.put<Plan[]>(`${this.apiURL}/api/admin/plans/${plan.id}`, plan);
   }
+
+  public planForCard(plan){
+    return {
+      time: plan.days + " days",
+      price: plan.price,
+      promotion: plan.information,
+      active: plan.active
+    }
+  }
+
+  public plansForCard(plans){
+    return plans.map((plan)=>{
+      return this.planForCard(plan);
+    });
+  }
+
+  public plansAvailablesForCard(plans){
+    let filterPlans = []
+    plans.forEach((plan)=>{
+      if (plan.active) {
+        filterPlans.push(this.planForCard(plan));
+      }
+    });
+    return filterPlans;
+  }
 }
