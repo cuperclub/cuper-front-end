@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Plan } from '../../../models';
 import { AdminPlanService } from '../../../services';
 import { MatDialog } from '@angular/material/dialog';
+import { CategoryFormComponent } from 'src/app/components/category-form/category-form.component';
 
 @Component({
   selector: 'cuper-plans',
@@ -20,11 +21,51 @@ export class PlansComponent implements OnInit {
 
   ngOnInit() {
     this.planService.getPlans().subscribe(data => {
-      console.log('data: ', data);
-
-      this.plans = data['plans'];
+      const plans = data['plans'] || [];
+      this.plans = this.formatPlanCardData(plans);
       this.loaded = true;
     });
   }
 
+  formatPlanCardData(plans) {
+    return plans.map((plan)=>{
+      return {
+        time: plan.days + " days",
+        price: plan.price,
+        promotion: plan.name
+      }
+    });
+  }
+
+  editPlan(plan, index) {
+    this.currentIndex = index
+    const dialogRef = this.dialog.open(CategoryFormComponent, {
+      width: '300px',
+      data: {
+        plan: Object.assign({}, plan)
+      }
+    });
+
+    dialogRef.beforeClosed().subscribe(plan => {
+      if(plan){
+        this.plans[this.currentIndex] = plan;
+      }
+    });
+  }
+
+  addPlan(){
+    const dialogRef = this.dialog.open(CategoryFormComponent, {
+      width: '300px',
+      data: {
+        plan: {},
+        new: true
+      }
+    });
+
+    dialogRef.beforeClosed().subscribe(plan => {
+      if(plan){
+        this.plans.push(plan);
+      }
+    });
+  }
 }

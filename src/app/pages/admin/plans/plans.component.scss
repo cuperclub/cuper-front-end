@@ -20,6 +20,11 @@
     display: flex;
     flex-wrap: wrap;
 
+    .plan-card {
+			width: 12rem;
+			height: 6rem;
+    }
+
     .plan {
       width: 12rem;
       height: 3.5rem;

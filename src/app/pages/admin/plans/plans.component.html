@@ -6,7 +6,13 @@
     </button>
   </div>
   <div class="plans-container" *ngIf="loaded">
-    <mat-card class="plan" *ngFor="let plan of plans; let i = index">
+    <cuper-card-plan
+      *ngFor="let plan of plans; let i = index"
+      class="plan-card"
+      [option]="plan"
+      (propagatePlanData)="editPlan(plan, i)">
+    </cuper-card-plan>
+    <!-- <mat-card class="plan" *ngFor="let plan of plans; let i = index">
       <div class="content">
         <span class="name">{{plan.name}}</span>
         <br>
@@ -21,7 +27,7 @@
       <button mat-icon-button class="edit-button" (click)="editPlan(plan, i)">
         <mat-icon>edit</mat-icon>
       </button>
-    </mat-card>
+    </mat-card> -->
   </div>
   <cuper-loader class="loader" *ngIf="!plans"></cuper-loader>
 </div>
