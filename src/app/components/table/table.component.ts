@@ -14,6 +14,7 @@ export interface ColumnDefinition {
 export class TableComponent implements OnInit {
   @Input() columnsDef: ColumnDefinition[];
   @Input() data: Array<Object>;
+  @Input() pagniationOptions: any;
   columnsDefinition: string[];
 
   constructor() { }
