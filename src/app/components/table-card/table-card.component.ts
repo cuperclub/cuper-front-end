@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { PaginationDefinition } from '../table/table.component';
 
 interface OptionRow {
   title: string;
@@ -17,6 +18,7 @@ export class TableCardComponent implements OnInit {
   @Input() items: OptionRow[];
   @Input() onClick: Function;
   @Input() indexActive: number = -1;
+  @Input() pagniationOptions: PaginationDefinition;
 
   constructor() {
     this.items = this.items;
