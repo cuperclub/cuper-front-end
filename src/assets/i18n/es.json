@@ -175,7 +175,8 @@
       "companies": "Companias",
       "customers": "Usuarios",
       "categories": "Categorias",
-      "plans": "Planes"
+      "plans": "Planes",
+      "settings": "Configuraciones"
     },
     "companies": {
       "request": {

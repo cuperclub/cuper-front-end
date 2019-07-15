@@ -14,6 +14,7 @@ import { CompaniesComponent } from './companies/companies.component';
 import { CustomersComponent } from './customers/customers.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { PlansComponent } from './plans/plans.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { PlansComponent } from './plans/plans.component';
     CompaniesComponent,
     CustomersComponent,
     CategoriesComponent,
-    PlansComponent
+    PlansComponent,
+    SettingsComponent
   ],
   imports: [
     CommonModule,
