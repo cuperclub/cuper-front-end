@@ -12,3 +12,4 @@ export * from './admin/company/company.service';
 export * from './admin/customer/customer.service';
 export * from './admin/category/category.service';
 export * from './admin/plan/plan.service';
+export * from './admin/setting/setting.service';
