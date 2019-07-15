@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { AdminCustomerService } from 'src/app/services';
 import { User } from 'src/app/models';
-import { ColumnDefinition } from 'src/app/components/table/table.component';
+import { ColumnDefinition, PaginationDefinition } from 'src/app/components/table/table.component';
 import {
   DatetimeCellComponent,
   UserCellComponent,
@@ -19,7 +19,7 @@ import { ChangePasswordDialogComponent } from 'src/app/components/change-passwor
 export class CustomersComponent implements OnInit {
   customers: User[];
   columnsUser: ColumnDefinition[];
-  pagniationOptions: any;
+  pagniationOptions: PaginationDefinition;
   currentFilter: string = 'clients';
 
   constructor(
@@ -50,14 +50,17 @@ export class CustomersComponent implements OnInit {
         component: ActionsCellComponent
       }
     ];
-    this.customerService.getCustomers(1, 5, null).subscribe(resp => {
+    const initPage = 1;
+    const initItemsPerPage = 5;
+    this.customerService.getCustomers(initPage, initItemsPerPage, null).subscribe(resp => {
       this.customers = this.formatData(resp);
+      this.pagniationOptions = {
+        length: resp['meta'].total_count,
+        pageSize: initItemsPerPage,
+        pageSizeOptions: [5, 10, 25, 100],
+        pageEvent
+      };
     });
-    // MatPaginator Inputs
-    const length = 12;
-    const pageSize = 5;
-    const pageSizeOptions: number[] = [5, 10, 25, 100];
-    // MatPaginator Output
     const pageEvent = (paginationData) => {
       const currentPage = paginationData.pageIndex + 1;
       const items_per_page = paginationData.pageSize;
@@ -65,16 +68,10 @@ export class CustomersComponent implements OnInit {
         this.customers = this.formatData(resp);
       });
     };
-    this.pagniationOptions = {
-      length,
-      pageSize,
-      pageSizeOptions,
-      pageEvent
-    };
   }
 
-  formatData(users){
-    return users.map(user => {
+  formatData(data){
+    return data['users'].map(user => {
       return {
         user: user,
         created_at: user.join_at,
@@ -108,6 +105,7 @@ export class CustomersComponent implements OnInit {
     this.currentFilter = role;
     this.customerService.getCustomers(1, 5, role).subscribe(resp => {
       this.customers = this.formatData(resp);
+      this.pagniationOptions.length = resp['meta'].total_count;
     });
   }
 }
