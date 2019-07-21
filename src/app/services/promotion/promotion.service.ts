@@ -13,8 +13,15 @@ export class PromotionService {
     private httpClient: HttpClient
   ) { }
 
-  public getMyPromotions(){
-    return this.httpClient.get<Promotion[]>(`${this.apiURL}/api/partner/companies/promotions`);
+  public getMyPromotions(page?, per_page?){
+    const paginationParams = {
+      params: {
+        page,
+        per_page
+      }
+    };
+    const params = (page && per_page) ? paginationParams : undefined;
+    return this.httpClient.get<Promotion[]>(`${this.apiURL}/api/partner/companies/promotions`, params);
   }
 
   public getPromotion(rewardId: number){

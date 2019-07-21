@@ -1,10 +1,17 @@
-import { Component, OnInit, Input, Type } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 export interface ColumnDefinition {
   label: string;
   displayName: string;
   component?: any;
 };
+
+export interface PaginationDefinition {
+  length: number,
+  pageSize: number,
+  pageSizeOptions: number[],
+  pageEvent: Function
+}
 
 @Component({
   selector: 'cuper-table',
@@ -14,6 +21,7 @@ export interface ColumnDefinition {
 export class TableComponent implements OnInit {
   @Input() columnsDef: ColumnDefinition[];
   @Input() data: Array<Object>;
+  @Input() pagniationOptions: PaginationDefinition;
   columnsDefinition: string[];
 
   constructor() { }

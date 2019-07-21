@@ -1,18 +1,26 @@
 <mat-card class="table-container">
-	<div class="item"
-		*ngFor="let item of items; let i = index;"
-		(click)="onClick(item, i); indexActive = i;"
-		[class.active]="indexActive == i">
-		<div class="avatar-col" *ngIf="item.image">
-			<cuper-avatar [imageSrc]="item.image" [size]="50"></cuper-avatar>
-		</div>
-		<div class="content-col">
-			<div class="title">{{item.title}}</div>
-			<div class="description">{{item.description}}</div>
-		</div>
-		<div class="count-col">
-			<div class="number">{{item.number}}</div>
-			<div class="text">{{item.text}}</div>
-		</div>
-	</div>
+  <div class="table-content">
+    <div class="item"
+      *ngFor="let item of items; let i = index;"
+      (click)="onClick(item, i); indexActive = i;"
+      [class.active]="indexActive == i">
+      <div class="avatar-col" *ngIf="item.image">
+        <cuper-avatar [imageSrc]="item.image" [size]="50"></cuper-avatar>
+      </div>
+      <div class="content-col">
+        <div class="title">{{item.title}}</div>
+        <div class="description">{{item.description}}</div>
+      </div>
+      <div class="count-col">
+        <div class="number">{{item.number}}</div>
+        <div class="text">{{item.text}}</div>
+      </div>
+    </div>
+  </div>
+  <mat-paginator *ngIf="pagniationOptions"
+    [length]="pagniationOptions.length"
+    [pageSize]="pagniationOptions.pageSize"
+    [pageSizeOptions]="pagniationOptions.pageSizeOptions"
+    (page)="pagniationOptions.pageEvent($event)">
+  </mat-paginator>
 </mat-card>

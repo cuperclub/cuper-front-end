@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { AdminCustomerService } from 'src/app/services';
 import { User } from 'src/app/models';
-import { ColumnDefinition } from 'src/app/components/table/table.component';
+import { ColumnDefinition, PaginationDefinition } from 'src/app/components/table/table.component';
 import {
   DatetimeCellComponent,
   UserCellComponent,
@@ -19,6 +19,7 @@ import { ChangePasswordDialogComponent } from 'src/app/components/change-passwor
 export class CustomersComponent implements OnInit {
   customers: User[];
   columnsUser: ColumnDefinition[];
+  pagniationOptions: PaginationDefinition;
   currentFilter: string = 'clients';
 
   constructor(
@@ -49,13 +50,28 @@ export class CustomersComponent implements OnInit {
         component: ActionsCellComponent
       }
     ];
-    this.customerService.getCustomers(null).subscribe(resp => {
-      this.formatData(resp);
+    const initPage = 1;
+    const initItemsPerPage = 5;
+    this.customerService.getCustomers(initPage, initItemsPerPage, null).subscribe(resp => {
+      this.customers = this.formatData(resp);
+      this.pagniationOptions = {
+        length: resp['meta'].total_count,
+        pageSize: initItemsPerPage,
+        pageSizeOptions: [5, 10, 25, 100],
+        pageEvent
+      };
     });
+    const pageEvent = (paginationData) => {
+      const currentPage = paginationData.pageIndex + 1;
+      const items_per_page = paginationData.pageSize;
+      this.customerService.getCustomers(currentPage, items_per_page, null).subscribe(resp => {
+        this.customers = this.formatData(resp);
+      });
+    };
   }
 
-  formatData(users){
-    this.customers = users.map(user => {
+  formatData(data){
+    return data['users'].map(user => {
       return {
         user: user,
         created_at: user.join_at,
@@ -87,8 +103,9 @@ export class CustomersComponent implements OnInit {
 
   filterBy(role) {
     this.currentFilter = role;
-    this.customerService.getCustomers(role).subscribe(resp => {
-      this.formatData(resp);
+    this.customerService.getCustomers(1, 5, role).subscribe(resp => {
+      this.customers = this.formatData(resp);
+      this.pagniationOptions.length = resp['meta'].total_count;
     });
   }
 }
