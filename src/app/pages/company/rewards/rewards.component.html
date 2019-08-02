@@ -16,6 +16,7 @@
   <div class="title">{{'common.all' | translate}}</div>
   <cuper-table-card *ngIf="myRewards"
     [items]="myRewards"
+    [pagniationOptions]="pagniationOptions"
     [onClick]="onEditReward">
   </cuper-table-card>
 </div>

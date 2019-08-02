@@ -13,11 +13,13 @@ export class AdminCustomerService {
     private httpClient: HttpClient
   ) { }
 
-  public getCustomers(role){
+  public getCustomers(page, per_page, role){
     const url = `${this.apiURL}/api/admin/users`;
     const params = {
       params: {
-        role: role
+        role: role,
+        page,
+        per_page
       }
     };
     return this.httpClient.get<User[]>(url, params);

@@ -11,3 +11,10 @@
   <tr mat-header-row *matHeaderRowDef="columnsDefinition"></tr>
   <tr mat-row *matRowDef="let row; columns: columnsDefinition;"></tr>
 </table>
+
+<mat-paginator *ngIf="pagniationOptions"
+  [length]="pagniationOptions.length"
+  [pageSize]="pagniationOptions.pageSize"
+  [pageSizeOptions]="pagniationOptions.pageSizeOptions"
+  (page)="pagniationOptions.pageEvent($event)">
+</mat-paginator>
