@@ -1,4 +1,6 @@
-<mat-card class="card-container" (click)="onClickCard(option)">
+<mat-card class="card-container"
+  (click)="onClickCard(option)"
+  [class.disabled]="!option.active">
   <mat-icon class="icon" *ngIf="isSelected">check_circle</mat-icon>
   <div class="card-content">
     <div class="promo-wrapper">

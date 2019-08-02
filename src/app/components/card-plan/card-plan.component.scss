@@ -6,7 +6,11 @@
 	background: $primary;
 	color: $white;
   cursor: pointer;
-  position: relative;
+	position: relative;
+
+	&.disabled {
+		background: $gray-dark;
+	}
 
   .icon {
     position: absolute;

@@ -174,7 +174,9 @@
     "tabs": {
       "companies": "Companias",
       "customers": "Usuarios",
-      "categories": "Categorias"
+      "categories": "Categorias",
+      "plans": "Planes",
+      "settings": "Configuraciones"
     },
     "companies": {
       "request": {
@@ -189,6 +191,14 @@
       "points_per_dollar": "Puntos por dolar",
       "active": "Activo",
       "new": "Nueva Categoria"
+    },
+    "plans": {
+      "name": "Nombre",
+      "days": "Dias",
+      "active": "Activo",
+      "price": "Precio",
+      "information": "Información Adicional",
+      "new": "Nuevo Plan"
     }
   }
 }
