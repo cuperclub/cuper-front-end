@@ -103,7 +103,7 @@ export class NewRewardCardComponent implements OnInit {
       this.message.open(message, '', {
         duration: 2000
       });
-      this.router.navigate(['home/rewards']);
+      this.router.navigate(['home/company/reward/list']);
     });
   }
 
