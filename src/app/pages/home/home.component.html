@@ -79,6 +79,7 @@
     </a>
     <a routerLink="company/home"
       class="tabs"
+      *ngIf="userService.isCustomer()"
       [class.disabled]="!userService.userIsPartner()"
       routerLinkActive="active">
       <mat-icon>business</mat-icon>
@@ -86,6 +87,7 @@
     </a>
     <a routerLink="transactions"
       class="tabs"
+      *ngIf="userService.isCustomer()"
       [class.disabled]="!userService.userIsCashier()"
       routerLinkActive="active">
       <mat-icon>account_balance_wallet</mat-icon>
@@ -93,7 +95,7 @@
     </a>
     <a routerLink="promotions"
       class="tabs"
-      [class.disabled]="userService.isCustomer()"
+      *ngIf="!userService.isCustomer()"
       routerLinkActive="active">
       <mat-icon>card_giftcard</mat-icon>
       <span>{{ 'tabs.promotions' | translate }}</span>
