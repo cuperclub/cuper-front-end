@@ -147,4 +147,8 @@ export class NewRewardCardComponent implements OnInit {
     return input;
   }
 
+  onChangeTotalRewards = (resp) => {
+    this.reward.total_rewards = resp.checked ? undefined : this.reward.total_rewards;
+  }
+
 }

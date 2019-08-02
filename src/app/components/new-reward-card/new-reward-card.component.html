@@ -43,7 +43,7 @@
         <div class="double-column">
           <mat-form-field class="field-group">
             <input matInput type="number" [(ngModel)]="reward.total_rewards" name="total_rewards"
-              placeholder="{{ 'reward.new.form.totalRewards.label' | translate }}">
+              placeholder="{{ 'reward.new.form.totalRewards.label' | translate }}" [disabled]="reward.unlimited">
             <mat-hint>{{ 'reward.new.form.totalRewards.description' | translate }}</mat-hint>
           </mat-form-field>
           <mat-form-field class="field-group">
@@ -52,7 +52,10 @@
             <mat-hint>{{ 'reward.new.form.pointsRequired.description' | translate }}</mat-hint>
           </mat-form-field>
         </div>
-        <mat-checkbox class="unlimited-reward" [ngModelOptions]="{standalone: true}" [(ngModel)]="reward.unlimited">
+        <mat-checkbox class="unlimited-reward"
+          [ngModelOptions]="{standalone: true}"
+          [(ngModel)]="reward.unlimited"
+          (change)="onChangeTotalRewards($event)">
           {{ 'reward.new.form.unlimited' | translate }}
         </mat-checkbox>
         <div class="dates-container">
