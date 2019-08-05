@@ -1,8 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { AngularTokenService } from 'angular-token';
 import { User } from '../../models';
 import { Observable } from 'rxjs';
+
+interface UserProfile extends User{
+  current_company_id?: number;
+  companies?: Array<any>;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +16,9 @@ import { Observable } from 'rxjs';
 export class UserService {
   apiURL = environment.apiBase;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient,
+    private tokenService: AngularTokenService) { }
 
   public saveDataOnLocalStorage(user: User){
     const currentUser = this.getDataOnLocalStorage(),
@@ -18,9 +26,9 @@ export class UserService {
     localStorage.setItem('current_user', JSON.stringify(updateUser));
   }
 
-  public getDataOnLocalStorage(){
-    const currentUser = localStorage.getItem('current_user');
-    return JSON.parse(currentUser);
+  public getDataOnLocalStorage() {
+    const currentUser: UserProfile = this.tokenService.currentUserData;
+    return currentUser;
   }
 
   public clearDataOnLocalStorage(){
@@ -40,12 +48,6 @@ export class UserService {
   public getCompanyIdView(){
     const currentUser = this.getDataOnLocalStorage();
     return currentUser.current_company_id;
-  }
-
-  public setCompanyIdView(id){
-    let currentUser = this.getDataOnLocalStorage();
-    currentUser = {...currentUser, ...{current_company_id: id}};
-    localStorage.setItem('current_user', JSON.stringify(currentUser));
   }
 
   public updateCompanyIdView(id){

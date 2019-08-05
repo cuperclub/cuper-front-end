@@ -46,7 +46,6 @@ export class AdministrationComponent implements OnInit {
     if (this.currentEmployee.id !== company.id){
       this.currentEmployee = company;
       this.updatedView = true;
-      this.userService.setCompanyIdView(company.id);
       setTimeout(() => { this.updatedView = false }, 1000);
     }
   }

@@ -48,7 +48,6 @@ export class HomeComponent implements OnInit {
       this.userService.updateCompanyIdView(company.id).subscribe(resp =>{
         this.currentEmployee = company;
         this.updatedView = true;
-        this.userService.setCompanyIdView(resp['company_id']);
         setTimeout(() => { this.updatedView = false }, 1000);
       });
     }
