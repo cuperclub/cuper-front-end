@@ -77,7 +77,7 @@ export class CompanyRegisterComponent implements OnInit {
       this.message.open(message, '', {
         duration: 2000
       });
-      const currenUser = this.userService.getDataOnLocalStorage();
+      const currenUser = this.userService.getCurrentUserData();
       const formatCompany = {
         id: company.id,
         join_at: company.join_at,

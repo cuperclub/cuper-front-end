@@ -22,7 +22,7 @@ export class AdministrationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.currentUser = this.userService.getDataOnLocalStorage();
+    this.currentUser = this.userService.getCurrentUserData();
     this.currentEmployee = this.userService.getCurrentCompany();
   }
 

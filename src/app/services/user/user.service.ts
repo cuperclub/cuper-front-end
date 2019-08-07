@@ -20,7 +20,7 @@ export class UserService {
     private httpClient: HttpClient,
     private tokenService: AngularTokenService) { }
 
-  public getDataOnLocalStorage() {
+  public getCurrentUserData() {
     const currentUser: UserProfile = this.tokenService.currentUserData;
     return currentUser;
   }
@@ -36,7 +36,7 @@ export class UserService {
   }
 
   public getCompanyIdView(){
-    const currentUser = this.getDataOnLocalStorage();
+    const currentUser = this.getCurrentUserData();
     return currentUser.current_company_id;
   }
 
@@ -45,7 +45,7 @@ export class UserService {
   }
 
   public getCurrentCompany(){
-    let currentUser = this.getDataOnLocalStorage();
+    let currentUser = this.getCurrentUserData();
     const currentCompany =  currentUser.companies.find(company => company.id == currentUser.current_company_id);
     return currentCompany;
   }
