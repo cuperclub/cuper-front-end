@@ -20,12 +20,6 @@ export class UserService {
     private httpClient: HttpClient,
     private tokenService: AngularTokenService) { }
 
-  public saveDataOnLocalStorage(user: User){
-    const currentUser = this.getDataOnLocalStorage(),
-          updateUser = {...currentUser, ...user};
-    localStorage.setItem('current_user', JSON.stringify(updateUser));
-  }
-
   public getDataOnLocalStorage() {
     const currentUser: UserProfile = this.tokenService.currentUserData;
     return currentUser;
