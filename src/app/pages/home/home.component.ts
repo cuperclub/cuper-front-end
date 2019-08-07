@@ -31,7 +31,6 @@ export class HomeComponent implements OnInit {
   logOut() {
     this.tokenService.signOut().subscribe(resp =>{
       if(resp.success){
-        this.userService.clearDataOnLocalStorage();
         this.router.navigateByUrl('');
       }
     });

@@ -25,10 +25,6 @@ export class UserService {
     return currentUser;
   }
 
-  public clearDataOnLocalStorage(){
-    localStorage.removeItem('current_user');
-  }
-
   public updateMyData(userInput: FormData): Observable<User>{
     return this.httpClient.put<User>(`${this.apiURL}/api/users`, userInput);
   }
