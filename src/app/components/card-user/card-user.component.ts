@@ -67,7 +67,7 @@ export class CardUserComponent implements OnInit {
       this.message.open(message, '', {
         duration: 2000
       });
-      this.saveAndGetUserFromStorage(resp);
+      this.user = resp;
       this.isLodingImage = false;
     });
   }
@@ -77,10 +77,5 @@ export class CardUserComponent implements OnInit {
     this.message.open(errors, '', {
       duration: 2000
     });
-  }
-
-  saveAndGetUserFromStorage(user){
-    this.userService.saveDataOnLocalStorage(user);
-    return this.userService.getDataOnLocalStorage();
   }
 }
