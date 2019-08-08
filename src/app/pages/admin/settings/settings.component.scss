@@ -22,9 +22,12 @@
     flex-direction: column;
 
     .setting {
-	  width: 12rem;
+	    width: 15rem;
+      // margin: 1rem;
+    }
+
+    .plan-selected {
       height: 6rem;
-      margin: 1rem;
     }
   }
 

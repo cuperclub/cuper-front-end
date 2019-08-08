@@ -24,4 +24,8 @@ export class SettingsComponent implements OnInit {
     });
   }
 
+  editSettings() {
+
+  }
+
 }
