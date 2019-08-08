@@ -19,6 +19,6 @@ export class AdminSettingService {
   }
 
   public updateSetting(setting){
-    // return this.httpClient.put<Setting[]>(`${this.apiURL}/api/admin/plans/${plan.id}`, plan);
+    return this.httpClient.put<Setting[]>(`${this.apiURL}/api/admin/app_settings/${setting.id}`, setting);
   }
 }

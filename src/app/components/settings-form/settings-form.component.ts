@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { CardUserComponent } from '../card-user/card-user.component';
 import { MatSnackBar } from '@angular/material';
 import { Setting } from '../../models';
-import { CategoryService } from '../../services';
+import { AdminSettingService } from '../../services';
 
 @Component({
   selector: 'cuper-settings-form',
@@ -18,7 +18,7 @@ export class SettingsFormComponent implements OnInit {
     private message: MatSnackBar,
     private translate: TranslateService,
     public dialogRef: MatDialogRef<CardUserComponent>,
-    private categoryService: CategoryService,
+    private settingService: AdminSettingService,
     @Inject(MAT_DIALOG_DATA) public data
   ) {}
 
@@ -32,14 +32,15 @@ export class SettingsFormComponent implements OnInit {
   }
 
   private generateForm(): void {
-    const defaultOffice: Setting = {
+    const defaultSetting: Setting = {
       points_by_register: 0
     };
-    this.settingForm = Object.assign(defaultOffice, this.data.category);
+    this.settingForm = Object.assign(defaultSetting, this.data.setting);
   }
 
-  onSubmit(category): void {
-    this.categoryService.updateCategories(category).subscribe(
+  onSubmit(setting): void {
+    console.log('setting: ', setting);
+    this.settingService.updateSetting(setting).subscribe(
       res =>    this.onSuccess(res, 'common.messages.updated'),
       error =>  this.onError(error)
     );

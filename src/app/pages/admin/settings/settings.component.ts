@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminSettingService, AdminPlanService } from '../../../services';
+import {SettingsFormComponent} from '../../../components/settings-form/settings-form.component'
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'cuper-settings',
@@ -14,6 +16,7 @@ export class SettingsComponent implements OnInit {
   constructor(
     private settingService: AdminSettingService,
     private planService: AdminPlanService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -25,7 +28,18 @@ export class SettingsComponent implements OnInit {
   }
 
   editSettings() {
+    const dialogRef = this.dialog.open(SettingsFormComponent, {
+      width: '300px',
+      data: {
+        setting: Object.assign({}, this.setting)
+      }
+    });
 
+    dialogRef.beforeClosed().subscribe(setting => {
+      if(setting){
+        // this.categories[this.currentIndex] = category;
+      }
+    });
   }
 
 }

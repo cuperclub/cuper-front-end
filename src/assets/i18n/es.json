@@ -201,7 +201,9 @@
       "new": "Nuevo Plan"
     },
     "settings": {
-      "edit": "Editar Preferencias"
+      "edit": "Editar Preferencias",
+      "points_by_register": "Puntos por registro",
+      "plans": "Seleccione un plan"
     }
   }
 }

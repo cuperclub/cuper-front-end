@@ -46,6 +46,7 @@ import { CategoryFormComponent } from './category-form/category-form.component';
 import { ChangePasswordDialogComponent } from './change-password-dialog/change-password-dialog.component';
 import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
 import { PlanFormComponent } from './plan-form/plan-form.component';
+import { SettingsFormComponent } from './settings-form/settings-form.component';
 
 import {
   DatetimeCellComponent,
@@ -99,7 +100,8 @@ const components = [
   ActionsCellComponent,
   ChangePasswordDialogComponent,
   FeedbackFormComponent,
-  PlanFormComponent
+  PlanFormComponent,
+  SettingsFormComponent
 ];
 
 @NgModule({
@@ -122,7 +124,8 @@ const components = [
     ActionsCellComponent,
     ChangePasswordDialogComponent,
     FeedbackFormComponent,
-    PlanFormComponent
+    PlanFormComponent,
+    SettingsFormComponent
   ],
   imports: [
     CommonModule,

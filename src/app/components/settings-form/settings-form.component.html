@@ -2,21 +2,18 @@
   <form class="form">
     <mat-form-field class="field-group">
       <input matInput
-        [(ngModel)]="settingForm.name"
+        [(ngModel)]="settingForm.points_by_register"
         name="name"
-        placeholder="{{ 'admin.categories.name' | translate }}">
+        placeholder="{{ 'admin.settings.points_by_register' | translate }}">
     </mat-form-field>
     <mat-form-field class="field-group">
-        <input matInput
-        type="number"
-        [(ngModel)]="settingForm.points_per_dollar"
-        name="points_per_dollar"
-        placeholder="{{ 'admin.categories.points_per_dollar' | translate }}">
+      <mat-label> {{ 'admin.settings.plans' | translate }}</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let plan of settingForm.plans" [value]="plan.id">
+          {{plan.name}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
-    <br>
-    <mat-checkbox class="status" [ngModelOptions]="{standalone: true}" [(ngModel)]="settingForm.active">
-      {{ 'admin.categories.active' | translate }}
-    </mat-checkbox>
     <div class="footer-form">
       <button mat-flat-button color="primary" (click)="onSubmit(settingForm)">
         {{ 'common.ok' | translate }}
