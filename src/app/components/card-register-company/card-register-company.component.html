@@ -6,11 +6,16 @@
         {{ 'common.promotion.company_register_tile' | translate }}
       </span>
       <div class="promo-wrapper">
-        <span class="number">3</span>
+        <span class="number">
+          <span class="currency">$</span>
+          <span>
+            {{selectedPlan.price}}
+          </span>
+        </span>
         <div>
-          <span class="time">Meses</span>
+          <span class="time">{{selectedPlan.days}} dias</span>
           <br>
-          <span class="promo">*Gratis</span>
+          <span class="promo">*{{selectedPlan.information}}</span>
         </div>
       </div>
       <button mat-stroked-button color="primary" (click)="registerCompany()">

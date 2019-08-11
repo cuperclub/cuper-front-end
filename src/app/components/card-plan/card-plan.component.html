@@ -3,6 +3,9 @@
   [class.disabled]="!option.active">
   <mat-icon class="icon" *ngIf="isSelected">check_circle</mat-icon>
   <div class="card-content">
+    <span class="name">
+      {{option.name}}
+    </span>
     <div class="promo-wrapper">
       <div class="price">
         <span class="currency">$</span>

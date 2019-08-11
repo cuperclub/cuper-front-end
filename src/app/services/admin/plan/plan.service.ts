@@ -31,7 +31,8 @@ export class AdminPlanService {
       time: plan.days + " days",
       price: plan.price,
       promotion: plan.information,
-      active: plan.active
+      active: plan.active,
+      name: plan.name
     }
   }
 
