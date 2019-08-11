@@ -61,9 +61,9 @@ export class CardCashierComponent implements OnInit {
       data: {}
     });
 
-    dialogRef.beforeClosed().subscribe(currentEmployee => {
-      if(currentEmployee){
-        //TO DO: Add employee into list
+    dialogRef.beforeClosed().subscribe(newEmployee => {
+      if(newEmployee){
+        this.myEmployees.push(newEmployee)
       }
     });
   }
