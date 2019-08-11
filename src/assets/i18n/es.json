@@ -199,6 +199,11 @@
       "price": "Precio",
       "information": "Información Adicional",
       "new": "Nuevo Plan"
+    },
+    "settings": {
+      "edit": "Editar Preferencias",
+      "points_by_register": "Puntos por registro",
+      "plans": "Seleccione un plan"
     }
   }
 }
