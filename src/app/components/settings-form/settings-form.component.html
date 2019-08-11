@@ -8,8 +8,9 @@
     </mat-form-field>
     <mat-form-field class="field-group">
       <mat-label> {{ 'admin.settings.plans' | translate }}</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let plan of settingForm.plans" [value]="plan.id">
+      <mat-select [(value)]="settingForm.plan_selected_id">
+        <mat-option *ngFor="let plan of settingForm.plans"
+          [value]="plan.id">
           {{plan.name}}
         </mat-option>
       </mat-select>

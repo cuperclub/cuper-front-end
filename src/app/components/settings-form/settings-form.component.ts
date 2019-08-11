@@ -39,7 +39,6 @@ export class SettingsFormComponent implements OnInit {
   }
 
   onSubmit(setting): void {
-    console.log('setting: ', setting);
     this.settingService.updateSetting(setting).subscribe(
       res =>    this.onSuccess(res, 'common.messages.updated'),
       error =>  this.onError(error)
@@ -57,5 +56,8 @@ export class SettingsFormComponent implements OnInit {
 
   onError(resp): void {
     let errors = resp.error ? resp.error.errors : {};
+    this.message.open(errors, '', {
+      duration: 2000
+    });
   }
 }

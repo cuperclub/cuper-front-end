@@ -37,7 +37,8 @@ export class SettingsComponent implements OnInit {
 
     dialogRef.beforeClosed().subscribe(setting => {
       if(setting){
-        // this.categories[this.currentIndex] = category;
+        this.setting = setting;
+        this.planSelected = this.planService.planForCard(setting.plan_selected);
       }
     });
   }
