@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AngularTokenService } from 'angular-token';
 import { User } from '../../models';
-import { Observable } from 'rxjs';
+import { Observable, Subscriber } from 'rxjs';
 
 interface UserProfile extends User{
   current_company_id?: number;
@@ -15,14 +15,21 @@ interface UserProfile extends User{
 })
 export class UserService {
   apiURL = environment.apiBase;
+  observerData: Subscriber<any>;
+  userDataEdited: UserProfile;
 
   constructor(
     private httpClient: HttpClient,
     private tokenService: AngularTokenService) { }
 
   public getCurrentUserData() {
-    const currentUser: UserProfile = this.tokenService.currentUserData;
+    const currentUser: UserProfile = {...this.tokenService.currentUserData, ...this.userDataEdited};
+    if(this.observerData) this.observerData.next(currentUser);
     return currentUser;
+  }
+
+  public getObservableUserData() {
+    return new Observable(observer => this.observerData = observer);
   }
 
   public updateMyData(userInput: FormData): Observable<User>{

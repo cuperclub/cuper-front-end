@@ -47,7 +47,7 @@ export class CardUserComponent implements OnInit {
 
     dialogRef.beforeClosed().subscribe(user => {
       if(user){
-        this.user = user;
+        this.updateUserData(user);
       }
     });
   }
@@ -67,7 +67,7 @@ export class CardUserComponent implements OnInit {
       this.message.open(message, '', {
         duration: 2000
       });
-      this.user = resp;
+      this.updateUserData(resp);
       this.isLodingImage = false;
     });
   }
@@ -77,5 +77,11 @@ export class CardUserComponent implements OnInit {
     this.message.open(errors, '', {
       duration: 2000
     });
+  }
+
+  updateUserData = (data) => {
+    this.user = data;
+    this.userService.userDataEdited = data;
+    this.userService.observerData.next(data);
   }
 }

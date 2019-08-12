@@ -3,6 +3,7 @@ import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
 import { User, UserStatus, Employee } from '../../models';
 import { UserService, UtilsService } from '../../services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'cuper-home',
@@ -14,6 +15,7 @@ export class HomeComponent implements OnInit {
   employeeRecords: Employee [];
   currentEmployee: Employee;
   updatedView: boolean = false
+  currentUser$: Observable<User>;
 
   constructor(
     private tokenService: AngularTokenService,
@@ -23,6 +25,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.currentUser$ = this.userService.getObservableUserData();
     this.currentUser = this.userService.getCurrentUserData();
     this.employeeRecords = this.currentUser.companies;
     this.currentEmployee = this.userService.getCurrentCompany();
