@@ -68,7 +68,7 @@
     "available_points": "Puntos Disponibles",
     "promotion": {
       "company_register_tile": "Registra tu negocio y obten",
-      "company_register": "Registrar"
+      "company_register": "Lo Quiero!"
     },
     "buttons": {
       "next": "Siguiente",
@@ -199,6 +199,11 @@
       "price": "Precio",
       "information": "Información Adicional",
       "new": "Nuevo Plan"
+    },
+    "settings": {
+      "edit": "Editar Preferencias",
+      "points_by_register": "Puntos por registro",
+      "plans": "Seleccione un plan"
     }
   }
 }

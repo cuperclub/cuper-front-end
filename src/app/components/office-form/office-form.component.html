@@ -37,6 +37,7 @@
   </div>
 </mat-dialog-content>
 <mat-dialog-actions>
+  <button mat-dialog-close mat-flat-button color="secondary">{{ 'common.cancel' | translate}}</button>
   <button mat-flat-button
     color="primary"
     class="submit-button"
@@ -44,5 +45,4 @@
     (click)="onSubmitOffice()">
     {{ 'common.save' | translate}}
   </button>
-  <button mat-dialog-close mat-flat-button color="secondary">{{ 'common.cancel' | translate}}</button>
 </mat-dialog-actions>

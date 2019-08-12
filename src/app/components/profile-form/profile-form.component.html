@@ -38,11 +38,11 @@
       {{errorsForm.national_id[0]}}
     </mat-error>
     <div class="footer-form">
-      <button mat-flat-button color="primary" (click)="onSubmit(data.user)">
-        {{ 'common.ok' | translate }}
-      </button>
       <button mat-flat-button color="secondary" (click)="onCloseDialog()">
         {{ 'common.cancel' | translate }}
+      </button>
+      <button mat-flat-button color="primary" (click)="onSubmit(data.user)">
+        {{ 'common.ok' | translate }}
       </button>
     </div>
   </form>

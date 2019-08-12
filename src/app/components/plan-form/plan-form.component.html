@@ -31,11 +31,11 @@
       {{ 'admin.plans.active' | translate }}
     </mat-checkbox>
     <div class="footer-form">
-      <button mat-flat-button color="primary" (click)="onSubmit(planForm)">
-        {{ 'common.ok' | translate }}
-      </button>
       <button mat-flat-button color="secondary" (click)="onCloseDialog()">
         {{ 'common.cancel' | translate }}
+      </button>
+      <button mat-flat-button color="primary" (click)="onSubmit(planForm)">
+        {{ 'common.ok' | translate }}
       </button>
     </div>
   </form>

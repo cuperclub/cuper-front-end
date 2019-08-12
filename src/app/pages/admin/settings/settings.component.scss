@@ -22,10 +22,17 @@
     flex-direction: column;
 
     .setting {
-	  width: 12rem;
-      height: 6rem;
-      margin: 1rem;
+	    width: 15rem;
     }
+
+    .plan-selected {
+      height: 6rem;
+    }
+
+    .add-button {
+      width: 100%;
+    }
+
   }
 
   .loader {

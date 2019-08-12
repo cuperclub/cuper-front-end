@@ -41,6 +41,12 @@
 					font-family: 'Lato-Semibold';
 					font-size: 60px;
 					padding-right: 5px;
+					display: flex;
+
+					.currency {
+						font-size: 16px;
+						padding-top: 14px;
+					}
 				}
 
 				.time {
@@ -50,7 +56,7 @@
 
 				.promo {
 					font-family: 'Lato-Semibold';
-					font-size: 14px;
+					font-size: 10px;
 				}
 			}
 
