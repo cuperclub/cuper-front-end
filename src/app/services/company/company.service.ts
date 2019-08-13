@@ -25,4 +25,14 @@ export class CompanyService {
   public registerMyCompany(company: Company): Observable<Company>{
     return this.httpClient.post<Company>(`${this.apiURL}/api/partner/companies`, company);
   }
+
+  public sendInvitationEmployee(email){
+    const params = {
+      params: {
+        email: email
+      }
+    };
+    return this.httpClient.get<Company>(`${this.apiURL}/api/partner/companies/send_invitation_employee`, params);
+    ;
+  }
 }
