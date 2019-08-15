@@ -26,11 +26,16 @@
           <div mat-menu-item
             *ngFor="let company of employeeRecords"
             class="item-wrapper"
-            (click)="onChangeEmployeeAccount(company)">
+            (click)="onChangeEmployeeAccount(company)"
+            [class.disabled]="(company.status === 'pending') && (company.role == 'cashier')">
             <cuper-avatar [imageSrc]="company.logo_url || getAvatar(company.join_at)" [size]="25"></cuper-avatar>
             <div class="information">
               <div class="name">{{ company.name}}</div>
-              <div class="role">{{ company.role}}</div>
+              <div class="role">{{ company.role}} /
+                <span [ngClass]="company.status">
+                  {{ 'common.status.'+ company.status | translate }}
+                </span>
+              </div>
             </div>
           </div>
         </mat-menu>
@@ -53,7 +58,7 @@
         </div>
         <mat-menu #menu="matMenu">
           <div class="user-data">
-            <cuper-avatar [imageSrc]="currentUser.image_url || getAvatar(currentUser.join_at)" size='40'></cuper-avatar>
+            <cuper-avatar [imageSrc]="currentUser.image_url || getAvatar(currentUser.join_at)" size='30'></cuper-avatar>
             <div class="user-info">
               <span class="name">{{currentUser.name || currentUser.username}}</span>
               <span class="email">{{currentUser.email}}</span>

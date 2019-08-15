@@ -123,6 +123,7 @@
     justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid $gray-medium;
+    padding-bottom: 10px;
 
     .user-info {
       display: flex;
@@ -145,6 +146,12 @@
     display: flex;
     align-items: center;
 
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.6;
+      cursor: default;
+    }
+
     .information {
       margin-left: 0.5rem;
       display: flex;
@@ -157,6 +164,18 @@
 
       .role {
         font-size: 8px;
+
+        .approved {
+          color: $green;
+        }
+
+        .disabled {
+          color: $gray-dark;
+        }
+
+        .pending {
+          color: $orange;
+        }
       }
     }
   }
