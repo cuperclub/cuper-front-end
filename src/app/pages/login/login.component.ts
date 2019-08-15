@@ -4,7 +4,6 @@ import { AngularTokenService } from 'angular-token';
 import { MatSnackBar } from '@angular/material';
 
 import { UserLogin } from 'src/app/models';
-import { UserService } from 'src/app/services';
 
 @Component({
   selector: 'app-login',
@@ -21,8 +20,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private tokenService: AngularTokenService,
-    private message: MatSnackBar,
-    private userService: UserService
+    private message: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -35,7 +33,6 @@ export class LoginComponent implements OnInit {
     }).subscribe(
       (resp) => {
         const { body: { data } } = resp;
-        this.userService.saveDataOnLocalStorage(data);
         const homeRoute = data.is_admin ? '/admin/companies' : '/home/dashboard'
         this.router.navigateByUrl(homeRoute);
       },

@@ -3,6 +3,7 @@ import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
 import { User, UserStatus, Employee } from '../../models';
 import { UserService, UtilsService } from '../../services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'cuper-home',
@@ -10,11 +11,10 @@ import { UserService, UtilsService } from '../../services';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  currentUser: User;
-  employeeRecords: Employee [];
   currentEmployee: Employee;
   updatedView: boolean = false;
   notifications: any = [];
+  currentUser$: Observable<User>;
 
   constructor(
     private tokenService: AngularTokenService,
@@ -24,8 +24,8 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.currentUser = this.userService.getDataOnLocalStorage();
-    this.employeeRecords = this.currentUser.companies;
+    this.currentUser$ = this.userService.getObservableUserData();
+    this.userService.getCurrentUserData();
     this.currentEmployee = this.userService.getCurrentCompany();
     this.notifications = this.buildNotifications(this.getPendingRequest());
     console.log('this.notifications: ', this.notifications);
@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit {
   logOut() {
     this.tokenService.signOut().subscribe(resp =>{
       if(resp.success){
-        this.userService.clearDataOnLocalStorage();
         this.router.navigateByUrl('');
       }
     });
@@ -51,7 +50,6 @@ export class HomeComponent implements OnInit {
       this.userService.updateCompanyIdView(company.id).subscribe(resp =>{
         this.currentEmployee = company;
         this.updatedView = true;
-        this.userService.setCompanyIdView(resp['company_id']);
         setTimeout(() => { this.updatedView = false }, 1000);
       });
     }
@@ -75,9 +73,10 @@ export class HomeComponent implements OnInit {
 
 
   getPendingRequest(){
-    return this.currentUser.companies.filter((company)=>{
-      return company.status === 'pending' && company.role === 'cashier'
-    })
+    return [];
+    // return this.currentUser.companies.filter((company)=>{
+    //   return company.status === 'pending' && company.role === 'cashier'
+    // })
   }
 
   buildNotifications(items){

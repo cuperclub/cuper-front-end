@@ -8,10 +8,14 @@ import { CategoriesComponent } from './categories/categories.component';
 import { PlansComponent } from './plans/plans.component';
 import { SettingsComponent } from './settings/settings.component';
 
+//Guards
+import { AuthGuard } from '../../guards/auth/auth.guard';
+
 const routes: Routes = [
   {
     path: 'admin',
     component: AdministrationComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: 'companies', component: CompaniesComponent},
       { path: 'customers', component: CustomersComponent },
