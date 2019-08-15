@@ -33,6 +33,16 @@
     width: 100%;
     padding: 0 0.5rem;
 
+    .user-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .notifications-menu {
+        margin-right: 20px;
+      }
+    }
+
     .status-company {
       display: flex;
       justify-content: center;
@@ -116,7 +126,47 @@
 }
 
 ::ng-deep .mat-menu-content {
-  width: 12rem;
+  min-width: 12rem;
+
+  .notification {
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+
+    .description {
+      // flex-basis: 70%;
+    }
+
+    .actions {
+      // flex-basis: 30%;
+      display: flex;
+      padding: 5px 0;
+
+      .action {
+        background: #f7f7f7;
+        height: 20px;
+        padding: 2px 8px;
+        margin-right: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover{
+          opacity: 0.8;
+        }
+
+        &.primary {
+          background: $primary;
+          color: $white;
+        }
+
+        &.secondary {
+          background: $gray-ligth;
+        }
+      }
+    }
+  }
 
   .user-data {
     display: flex;

@@ -13,7 +13,8 @@ export class HomeComponent implements OnInit {
   currentUser: User;
   employeeRecords: Employee [];
   currentEmployee: Employee;
-  updatedView: boolean = false
+  updatedView: boolean = false;
+  notifications: any = [];
 
   constructor(
     private tokenService: AngularTokenService,
@@ -26,6 +27,8 @@ export class HomeComponent implements OnInit {
     this.currentUser = this.userService.getDataOnLocalStorage();
     this.employeeRecords = this.currentUser.companies;
     this.currentEmployee = this.userService.getCurrentCompany();
+    this.notifications = this.buildNotifications(this.getPendingRequest());
+    console.log('this.notifications: ', this.notifications);
   }
 
   logOut() {
@@ -68,6 +71,37 @@ export class HomeComponent implements OnInit {
         break;
     }
     return iconStatus;
+  }
+
+
+  getPendingRequest(){
+    return this.currentUser.companies.filter((company)=>{
+      return company.status === 'pending' && company.role === 'cashier'
+    })
+  }
+
+  buildNotifications(items){
+    return items.map((item)=>{
+      return {
+        title: `La empresa: ${item.name} quiere registrarte como empleado`,
+        actions: [
+          {
+            title: 'Aceptar',
+            class: 'primary',
+            onClick: () => {
+              console.log('aceptar');
+            }
+          },
+          {
+            title: 'Declinar',
+            class: 'secondary',
+            onClick: () => {
+              console.log('declinar');
+            }
+          },
+        ]
+      }
+    })
   }
 
   getAvatar = this.utilsService.getAvatar;
