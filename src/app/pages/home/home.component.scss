@@ -40,6 +40,25 @@
 
       .notifications-menu {
         margin-right: 20px;
+
+        .menu-action {
+          position: relative;
+          cursor: pointer;
+
+          .count-notifications {
+            border-radius: 50%;
+            background-color: orange;
+            color: $white;
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
       }
     }
 

@@ -51,9 +51,16 @@
       <div class="notifications-menu">
           <div class="menu" [matMenuTriggerFor]="menu">
             <div class="menu-action">
+              <div class="count-notifications"
+                *ngIf="notifications.length">
+                {{notifications.length}}
+              </div>
               <mat-icon>notifications</mat-icon>
             </div>
             <mat-menu #menu="matMenu" class="notifications">
+              <div *ngIf="notifications.length === 0" class="notification">
+                No tienes notificaciones
+              </div>
               <div *ngFor="let notification of notifications" class="notification">
                 <span class="description">
                   {{notification.title}}
