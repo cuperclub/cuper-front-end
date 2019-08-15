@@ -90,7 +90,7 @@ export class CompanyRegisterComponent implements OnInit {
       }else {
         currenUser.companies = [formatCompany];
       }
-      // this.userService.saveDataOnLocalStorage(currenUser);
+      this.userService.observerData.next(currenUser);
       this.router.navigate(['home/dashboard']);
     });
   }

@@ -11,8 +11,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  currentUser: User;
-  employeeRecords: Employee [];
   currentEmployee: Employee;
   updatedView: boolean = false
   currentUser$: Observable<User>;
@@ -26,8 +24,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser$ = this.userService.getObservableUserData();
-    this.currentUser = this.userService.getCurrentUserData();
-    this.employeeRecords = this.currentUser.companies;
+    this.userService.getCurrentUserData();
     this.currentEmployee = this.userService.getCurrentCompany();
   }
 

@@ -4,8 +4,8 @@
       <img class="logo" src="../../../../assets/images/logo-horizontal.svg" alt="cuper-logo" />
     </a>
   </div>
-  <div class="tabs-header">
-    <div class="status-company" *ngIf="employeeRecords">
+  <div class="tabs-header" *ngIf="currentUser$ | async as user">
+    <div class="status-company" *ngIf="user.companies">
       <div class="menu" [matMenuTriggerFor]="menu">
         <div *ngIf="currentEmployee" class="employee-container">
           <div class="account">
@@ -24,7 +24,7 @@
         </div>
         <mat-menu #menu="matMenu">
           <div mat-menu-item
-            *ngFor="let company of employeeRecords"
+            *ngFor="let company of user.companies"
             class="item-wrapper"
             (click)="onChangeEmployeeAccount(company)">
             <cuper-avatar [imageSrc]="company.logo_url || getAvatar(company.join_at)" [size]="25"></cuper-avatar>
@@ -42,7 +42,7 @@
         <mat-icon>add</mat-icon>
       </button>
     </div>
-    <div class="menu-container" *ngIf="currentUser$ | async as user">
+    <div class="menu-container">
       <div class="menu" [matMenuTriggerFor]="menu">
         <div class="menu-action">
           <div class="profile-container">
