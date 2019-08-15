@@ -30,7 +30,7 @@ export class RequestCashierComponent {
         this.dialogRef.close();
       });
     }else{
-      this.employeeService.sendRequestNewEmployee(this.currentUser.id).subscribe(newEmployee => {
+      this.companyService.sendRequestEmployee(this.currentUser.id).subscribe(newEmployee => {
         this.dialogRef.close(newEmployee);
       });
     }
