@@ -22,14 +22,13 @@ export class AdministrationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.currentUser = this.userService.getDataOnLocalStorage();
+    this.currentUser = this.userService.getCurrentUserData();
     this.currentEmployee = this.userService.getCurrentCompany();
   }
 
   logOut() {
     this.tokenService.signOut().subscribe(resp =>{
       if(resp.success){
-        this.userService.clearDataOnLocalStorage();
         this.router.navigateByUrl('');
       }
     });
@@ -46,7 +45,6 @@ export class AdministrationComponent implements OnInit {
     if (this.currentEmployee.id !== company.id){
       this.currentEmployee = company;
       this.updatedView = true;
-      this.userService.setCompanyIdView(company.id);
       setTimeout(() => { this.updatedView = false }, 1000);
     }
   }

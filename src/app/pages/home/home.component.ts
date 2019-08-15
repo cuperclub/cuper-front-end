@@ -3,6 +3,7 @@ import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
 import { User, UserStatus, Employee } from '../../models';
 import { UserService, UtilsService } from '../../services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'cuper-home',
@@ -10,10 +11,9 @@ import { UserService, UtilsService } from '../../services';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  currentUser: User;
-  employeeRecords: Employee [];
   currentEmployee: Employee;
   updatedView: boolean = false
+  currentUser$: Observable<User>;
 
   constructor(
     private tokenService: AngularTokenService,
@@ -23,15 +23,14 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.currentUser = this.userService.getDataOnLocalStorage();
-    this.employeeRecords = this.currentUser.companies;
+    this.currentUser$ = this.userService.getObservableUserData();
+    this.userService.getCurrentUserData();
     this.currentEmployee = this.userService.getCurrentCompany();
   }
 
   logOut() {
     this.tokenService.signOut().subscribe(resp =>{
       if(resp.success){
-        this.userService.clearDataOnLocalStorage();
         this.router.navigateByUrl('');
       }
     });
@@ -48,7 +47,6 @@ export class HomeComponent implements OnInit {
       this.userService.updateCompanyIdView(company.id).subscribe(resp =>{
         this.currentEmployee = company;
         this.updatedView = true;
-        this.userService.setCompanyIdView(resp['company_id']);
         setTimeout(() => { this.updatedView = false }, 1000);
       });
     }
