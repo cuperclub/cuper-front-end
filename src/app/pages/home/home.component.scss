@@ -33,6 +33,35 @@
     width: 100%;
     padding: 0 0.5rem;
 
+    .user-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .notifications-menu {
+        margin-right: 20px;
+
+        .menu-action {
+          position: relative;
+          cursor: pointer;
+
+          .count-notifications {
+            border-radius: 50%;
+            background-color: orange;
+            color: $white;
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+
     .status-company {
       display: flex;
       justify-content: center;
@@ -116,13 +145,62 @@
 }
 
 ::ng-deep .mat-menu-content {
-  width: 12rem;
+  min-width: 12rem;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+
+  .notification {
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+
+
+    &:nth-child(odd) {
+      border-top: 1px solid rgba(0,0,0,.12);
+      border-bottom: 1px solid rgba(0,0,0,.12);
+    }
+
+    &:hover {
+      background: #f7f7f7;
+    }
+
+    .actions {
+      // flex-basis: 30%;
+      display: flex;
+      padding: 5px 0;
+
+      .action {
+        background: #f7f7f7;
+        height: 20px;
+        padding: 2px 8px;
+        margin-right: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover{
+          opacity: 0.8;
+        }
+
+        &.primary {
+          background: $primary;
+          color: $white;
+        }
+
+        &.secondary {
+          background: $gray-ligth;
+        }
+      }
+    }
+  }
 
   .user-data {
     display: flex;
     justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid $gray-medium;
+    padding: 10px 0;
 
     .user-info {
       display: flex;
@@ -145,6 +223,12 @@
     display: flex;
     align-items: center;
 
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.6;
+      cursor: default;
+    }
+
     .information {
       margin-left: 0.5rem;
       display: flex;
@@ -157,6 +241,18 @@
 
       .role {
         font-size: 8px;
+
+        .approved {
+          color: $green;
+        }
+
+        .disabled {
+          color: $gray-dark;
+        }
+
+        .pending {
+          color: $orange;
+        }
       }
     }
   }

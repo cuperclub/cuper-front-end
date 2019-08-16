@@ -28,4 +28,9 @@ export class EmployeeService {
     const url = `${this.apiURL}/api/partner/companies/employees/${employeeId}/update_state`
     return this.httpClient.put<Employee>(url, data);
   }
+
+  public sendRequestNewEmployee(employeeId: number){
+    const url = `${this.apiURL}/api/partner/companies/employees`
+    return this.httpClient.post<Employee>(url, {user_id: employeeId});
+  }
 }

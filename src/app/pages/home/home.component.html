@@ -1,113 +1,125 @@
 <div class="header-container">
-  <div class="logo-container">
-    <a routerLink="/home/dashboard">
-      <img class="logo" src="../../../../assets/images/logo-horizontal.svg" alt="cuper-logo" />
-    </a>
-  </div>
-  <div class="tabs-header" *ngIf="currentUser$ | async as user">
-    <div class="status-company" *ngIf="user.companies">
-      <div class="menu" [matMenuTriggerFor]="menu">
-        <div *ngIf="currentEmployee" class="employee-container">
-          <div class="account">
-            <div class="company-name">
-              {{currentEmployee.name}}
-            </div>
-            <div class="employee-status" [ngClass]="currentEmployee.status">
-              <mat-icon class="icon">
-                {{getStatusAccount(currentEmployee.status)}}
-              </mat-icon>
-              <span>
-                {{ 'common.status.'+ currentEmployee.status | translate }}</span>
-            </div>
-          </div>
-          <mat-icon>arrow_drop_down</mat-icon>
-        </div>
-        <mat-menu #menu="matMenu">
-          <div mat-menu-item
-            *ngFor="let company of user.companies"
-            class="item-wrapper"
-            (click)="onChangeEmployeeAccount(company)">
-            <cuper-avatar [imageSrc]="company.logo_url || getAvatar(company.join_at)" [size]="25"></cuper-avatar>
-            <div class="information">
-              <div class="name">{{ company.name}}</div>
-              <div class="role">{{ company.role}}</div>
-            </div>
-          </div>
-        </mat-menu>
-      </div>
-      <button mat-icon-button
-        class="add-button"
-        matTooltip="{{ 'company.register' | translate }}"
-        (click)="onRegisterCompany()">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
-    <div class="menu-container">
-      <div class="menu" [matMenuTriggerFor]="menu">
-        <div class="menu-action">
-          <div class="profile-container">
-            <cuper-avatar [imageSrc]="user.image_url || getAvatar(user.join_at)" [size]="40"></cuper-avatar>
-            <span class="title" *ngIf="user">{{user.name || user.username}}</span>
-          </div>
-          <mat-icon>arrow_drop_down</mat-icon>
-        </div>
-        <mat-menu #menu="matMenu">
-          <div class="user-data">
-            <cuper-avatar [imageSrc]="user.image_url || getAvatar(user.join_at)" size='40'></cuper-avatar>
-            <div class="user-info">
-              <span class="name">{{user.name || user.username}}</span>
-              <span class="email">{{user.email}}</span>
-            </div>
-          </div>
-          <button mat-menu-item (click)="goToMyProfile()">
-            <span>{{ 'common.profile' | translate }}</span>
-          </button>
-          <button mat-menu-item (click)="logOut()">
-            <span>{{ 'common.logout' | translate }}</span>
-          </button>
-        </mat-menu>
-      </div>
-    </div>
-  </div>
+	<div class="logo-container">
+		<a routerLink="/home/dashboard">
+			<img class="logo" src="../../../../assets/images/logo-horizontal.svg" alt="cuper-logo" />
+		</a>
+	</div>
+	<div class="tabs-header" *ngIf="currentUser$ | async as user">
+		<div class="status-company" *ngIf="user.companies">
+			<div class="menu" [matMenuTriggerFor]="menu">
+				<div *ngIf="currentEmployee" class="employee-container">
+					<div class="account">
+						<div class="company-name">
+							{{currentEmployee.name}}
+						</div>
+						<div class="employee-status" [ngClass]="currentEmployee.status">
+							<mat-icon class="icon">
+								{{getStatusAccount(currentEmployee.status)}}
+							</mat-icon>
+							<span>
+								{{ 'common.status.'+ currentEmployee.status | translate }}</span>
+						</div>
+					</div>
+					<mat-icon>arrow_drop_down</mat-icon>
+				</div>
+				<mat-menu #menu="matMenu">
+					<div mat-menu-item *ngFor="let company of user.companies" class="item-wrapper"
+						(click)="onChangeEmployeeAccount(company)">
+						<cuper-avatar [imageSrc]="company.logo_url || getAvatar(company.join_at)" [size]="25"></cuper-avatar>
+						<div class="information">
+							<div class="name">{{ company.name}}</div>
+							<div class="role">{{ company.role}}</div>
+						</div>
+					</div>
+				</mat-menu>
+			</div>
+			<button mat-icon-button class="add-button" matTooltip="{{ 'company.register' | translate }}"
+				(click)="onRegisterCompany()">
+				<mat-icon>add</mat-icon>
+			</button>
+		</div>
+		<div class="user-menu">
+			<div class="notifications-menu" (click)="getNotifications()">
+				<div class="menu-not" [matMenuTriggerFor]="menuNotification">
+					<div class="menu-action">
+						<div class="count-notifications" *ngIf="user.pending_notifications > 0">
+							{{user.pending_notifications}}
+						</div>
+						<mat-icon>notifications</mat-icon>
+					</div>
+					<mat-menu #menuNotification="matMenu" class="notifications">
+						<div *ngIf="notifications.length === 0" class="notification">
+							No tienes notificaciones
+						</div>
+						<div *ngFor="let notification of notifications" class="notification">
+							<span class="description">
+								{{notification.title}}
+							</span>
+							<div class="actions">
+								<span *ngFor="let action of notification.actions" class="action {{action.class}}"
+									(click)="action.onClick()">
+									{{action.title}}
+								</span>
+							</div>
+						</div>
+					</mat-menu>
+				</div>
+			</div>
+			<div class="menu-container">
+				<div class="menu" [matMenuTriggerFor]="menu">
+					<div class="menu-action">
+						<div class="profile-container">
+							<cuper-avatar [imageSrc]="user.image_url || getAvatar(user.join_at)" [size]="40"></cuper-avatar>
+							<span class="title" *ngIf="user">{{user.name || user.username}}</span>
+						</div>
+						<mat-icon>arrow_drop_down</mat-icon>
+					</div>
+					<mat-menu #menu="matMenu">
+						<div class="user-data">
+							<cuper-avatar [imageSrc]="user.image_url || getAvatar(user.join_at)" size='40'></cuper-avatar>
+							<div class="user-info">
+								<span class="name">{{user.name || user.username}}</span>
+								<span class="email">{{user.email}}</span>
+							</div>
+						</div>
+						<button mat-menu-item (click)="goToMyProfile()">
+							<span>{{ 'common.profile' | translate }}</span>
+						</button>
+						<button mat-menu-item (click)="logOut()">
+							<span>{{ 'common.logout' | translate }}</span>
+						</button>
+					</mat-menu>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div class="main-view">
-  <div class="left-panel" *ngIf="!updatedView">
-    <a routerLink="dashboard" class="tabs" routerLinkActive="active">
-      <mat-icon>view_module</mat-icon>
-      <span>{{ 'tabs.dashboard' | translate }}</span>
-    </a>
-    <a routerLink="company/home"
-      class="tabs"
-      *ngIf="userService.isCustomer()"
-      [class.disabled]="!userService.userIsPartner()"
-      routerLinkActive="active">
-      <mat-icon>business</mat-icon>
-      <span>{{ 'tabs.company' | translate }}</span>
-    </a>
-    <a routerLink="transactions"
-      class="tabs"
-      *ngIf="userService.isCustomer()"
-      [class.disabled]="!userService.userIsCashier()"
-      routerLinkActive="active">
-      <mat-icon>account_balance_wallet</mat-icon>
-      <span>{{ 'tabs.transactions' | translate }}</span>
-    </a>
-    <a routerLink="promotions"
-      class="tabs"
-      *ngIf="!userService.isCustomer()"
-      routerLinkActive="active">
-      <mat-icon>card_giftcard</mat-icon>
-      <span>{{ 'tabs.promotions' | translate }}</span>
-    </a>
-  </div>
-  <div class="render-container">
-    <router-outlet
-      *ngIf="!updatedView">
-    </router-outlet>
-    <cuper-loader
-      class="loader"
-      *ngIf="updatedView">
-    </cuper-loader>
-  </div>
+	<div class="left-panel" *ngIf="!updatedView">
+		<a routerLink="dashboard" class="tabs" routerLinkActive="active">
+			<mat-icon>view_module</mat-icon>
+			<span>{{ 'tabs.dashboard' | translate }}</span>
+		</a>
+		<a routerLink="company/home" class="tabs" *ngIf="userService.isCustomer()"
+			[class.disabled]="!userService.userIsPartner()" routerLinkActive="active">
+			<mat-icon>business</mat-icon>
+			<span>{{ 'tabs.company' | translate }}</span>
+		</a>
+		<a routerLink="transactions" class="tabs" *ngIf="userService.isCustomer()"
+			[class.disabled]="!userService.userIsCashier()" routerLinkActive="active">
+			<mat-icon>account_balance_wallet</mat-icon>
+			<span>{{ 'tabs.transactions' | translate }}</span>
+		</a>
+		<a routerLink="promotions" class="tabs" *ngIf="!userService.isCustomer()" routerLinkActive="active">
+			<mat-icon>card_giftcard</mat-icon>
+			<span>{{ 'tabs.promotions' | translate }}</span>
+		</a>
+	</div>
+	<div class="render-container">
+		<router-outlet *ngIf="!updatedView">
+		</router-outlet>
+		<cuper-loader class="loader" *ngIf="updatedView">
+		</cuper-loader>
+	</div>
 </div>
