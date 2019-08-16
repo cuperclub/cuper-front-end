@@ -68,7 +68,7 @@
     "available_points": "Puntos Disponibles",
     "promotion": {
       "company_register_tile": "Registra tu negocio y obten",
-      "company_register": "Registrar"
+      "company_register": "Lo Quiero!"
     },
     "buttons": {
       "next": "Siguiente",
@@ -174,7 +174,9 @@
     "tabs": {
       "companies": "Companias",
       "customers": "Usuarios",
-      "categories": "Categorias"
+      "categories": "Categorias",
+      "plans": "Planes",
+      "settings": "Configuraciones"
     },
     "companies": {
       "request": {
@@ -189,6 +191,19 @@
       "points_per_dollar": "Puntos por dolar",
       "active": "Activo",
       "new": "Nueva Categoria"
+    },
+    "plans": {
+      "name": "Nombre",
+      "days": "Dias",
+      "active": "Activo",
+      "price": "Precio",
+      "information": "Información Adicional",
+      "new": "Nuevo Plan"
+    },
+    "settings": {
+      "edit": "Editar Preferencias",
+      "points_by_register": "Puntos por registro",
+      "plans": "Seleccione un plan"
     }
   }
 }

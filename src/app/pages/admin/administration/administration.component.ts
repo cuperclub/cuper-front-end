@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
-import { User, UserStatus, Employee } from '../../../models';
+import { User } from '../../../models';
 import { UserService, UtilsService } from '../../../services';
 
 @Component({
@@ -11,7 +11,6 @@ import { UserService, UtilsService } from '../../../services';
 })
 export class AdministrationComponent implements OnInit {
   currentUser: User;
-  currentEmployee: Employee;
   updatedView: boolean = false
 
   constructor(
@@ -22,14 +21,12 @@ export class AdministrationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.currentUser = this.userService.getDataOnLocalStorage();
-    this.currentEmployee = this.userService.getCurrentCompany();
+    this.currentUser = this.userService.getCurrentUserData();
   }
 
   logOut() {
     this.tokenService.signOut().subscribe(resp =>{
       if(resp.success){
-        this.userService.clearDataOnLocalStorage();
         this.router.navigateByUrl('');
       }
     });
@@ -41,29 +38,4 @@ export class AdministrationComponent implements OnInit {
 
   onRegisterCompany = () => this.router.navigate(['home/company/register']);
   getAvatar = this.utilsService.getAvatar;
-
-  onChangeEmployeeAccount (company) {
-    if (this.currentEmployee.id !== company.id){
-      this.currentEmployee = company;
-      this.updatedView = true;
-      this.userService.setCompanyIdView(company.id);
-      setTimeout(() => { this.updatedView = false }, 1000);
-    }
-  }
-
-  getStatusAccount(status) {
-    let iconStatus = '';
-    switch (status) {
-      case UserStatus.APPROVED:
-        iconStatus = 'check_circle_outline';
-        break;
-      case UserStatus.PENDING:
-        iconStatus = 'input';
-        break;
-      case UserStatus.DISABLED:
-        iconStatus = 'domain_disabled';
-        break;
-    }
-    return iconStatus;
-  }
 }

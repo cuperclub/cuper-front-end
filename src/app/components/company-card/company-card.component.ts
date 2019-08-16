@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Company } from '../../models';
 import { CompanyService} from 'src/app/services';
 import { CompanyDialogComponent } from '../company-dialog/company-dialog.component';
-import { UtilsService } from 'src/app/services';
+import { UtilsService, UserService } from 'src/app/services';
 import { TranslateService } from '@ngx-translate/core';
 import { MatSnackBar } from '@angular/material';
 
@@ -26,6 +26,7 @@ export class CompanyCardComponent implements OnInit {
     private utilsService: UtilsService,
     private message: MatSnackBar,
     private translate: TranslateService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -48,6 +49,7 @@ export class CompanyCardComponent implements OnInit {
       if(companyData){
         this.company = companyData;
         this.propagateCompanyData.emit(companyData);
+        this.updateCompanyData(companyData);
       }
     });
   }
@@ -68,6 +70,7 @@ export class CompanyCardComponent implements OnInit {
         duration: 2000
       });
       this.isLodingImage = false;
+      this.updateCompanyData(resp);
     });
   }
 
@@ -76,6 +79,15 @@ export class CompanyCardComponent implements OnInit {
     this.message.open(errors, '', {
       duration: 2000
     });
+  }
+
+
+  updateCompanyData = (companyData) => {
+    const currentUser = this.userService.getCurrentUserData();
+    const currentCompanyId = currentUser.companies.findIndex(company => companyData.id === company.id);
+    currentUser.companies[currentCompanyId].name = companyData.business_name;
+    currentUser.companies[currentCompanyId].logo_url = companyData.logo_url;
+    this.userService.observerData.next(currentUser);
   }
 
 }

@@ -19,5 +19,9 @@
       </span>
     </div>
   </div>
-  <cuper-table [columnsDef]="columnsUser" [data]="customers"></cuper-table>
+  <cuper-table
+    [columnsDef]="columnsUser"
+    [data]="customers"
+    [pagniationOptions]="pagniationOptions">
+  </cuper-table>
 </div>

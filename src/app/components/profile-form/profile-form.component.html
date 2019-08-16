@@ -2,7 +2,7 @@
   <form class="form">
     <div class="avatar-container">
       <cuper-avatar-file
-        [file]="data.user.image"
+        [file]="data.user.image_url"
         (propagateFile)="onListenerFile($event)"
         [size]="80">
       </cuper-avatar-file>
@@ -38,11 +38,11 @@
       {{errorsForm.national_id[0]}}
     </mat-error>
     <div class="footer-form">
-      <button mat-flat-button color="primary" (click)="onSubmit(data.user)">
-        {{ 'common.ok' | translate }}
-      </button>
       <button mat-flat-button color="secondary" (click)="onCloseDialog()">
         {{ 'common.cancel' | translate }}
+      </button>
+      <button mat-flat-button color="primary" (click)="onSubmit(data.user)">
+        {{ 'common.ok' | translate }}
       </button>
     </div>
   </form>

@@ -25,8 +25,11 @@ interface FileOptions {
   styleUrls: ['./new-reward-card.component.scss']
 })
 export class NewRewardCardComponent implements OnInit {
+  currentDate: Date = new Date();
   reward: Promotion = {
-    unlimited: false
+    unlimited: false,
+    start_at: this.currentDate,
+    end_at: this.currentDate
   };
   myCompany: Company;
   myOffices: OptionSquare[] = [];
@@ -103,7 +106,7 @@ export class NewRewardCardComponent implements OnInit {
       this.message.open(message, '', {
         duration: 2000
       });
-      this.router.navigate(['home/rewards']);
+      this.router.navigate(['home/company/reward/list']);
     });
   }
 
@@ -145,6 +148,14 @@ export class NewRewardCardComponent implements OnInit {
     input.append('end_at', reward.end_at);
     if(this.uploadFile) input.append('image', this.uploadFile.file);
     return input;
+  }
+
+  onChangeTotalRewards = (resp) => {
+    this.reward.total_rewards = resp.checked ? undefined : this.reward.total_rewards;
+  }
+
+  onChangeStartTime = (startTime) => {
+    this.reward.end_at = (this.reward.end_at.valueOf() < startTime.value.valueOf()) ? startTime.value : this.reward.end_at;
   }
 
 }

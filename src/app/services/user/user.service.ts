@@ -1,30 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { User } from '../../models';
-import { Observable } from 'rxjs';
+import { AngularTokenService } from 'angular-token';
+import { User, Notification } from '../../models';
+import { Observable, Subscriber } from 'rxjs';
+
+interface UserProfile extends User{
+  current_company_id?: number;
+  companies?: Array<any>;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   apiURL = environment.apiBase;
+  observerData: Subscriber<any>;
+  userDataEdited: UserProfile;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient,
+    private tokenService: AngularTokenService) { }
 
-  public saveDataOnLocalStorage(user: User){
-    const currentUser = this.getDataOnLocalStorage(),
-          updateUser = {...currentUser, ...user};
-    localStorage.setItem('current_user', JSON.stringify(updateUser));
+  public getCurrentUserData() {
+    const currentUser: UserProfile = {...this.tokenService.currentUserData, ...this.userDataEdited};
+    if(this.observerData) this.observerData.next(currentUser);
+    return currentUser;
   }
 
-  public getDataOnLocalStorage(){
-    const currentUser = localStorage.getItem('current_user');
-    return JSON.parse(currentUser);
-  }
-
-  public clearDataOnLocalStorage(){
-    localStorage.removeItem('current_user');
+  public getObservableUserData() {
+    return new Observable(observer => this.observerData = observer);
   }
 
   public updateMyData(userInput: FormData): Observable<User>{
@@ -38,14 +43,8 @@ export class UserService {
   }
 
   public getCompanyIdView(){
-    const currentUser = this.getDataOnLocalStorage();
+    const currentUser = this.getCurrentUserData();
     return currentUser.current_company_id;
-  }
-
-  public setCompanyIdView(id){
-    let currentUser = this.getDataOnLocalStorage();
-    currentUser = {...currentUser, ...{current_company_id: id}};
-    localStorage.setItem('current_user', JSON.stringify(currentUser));
   }
 
   public updateCompanyIdView(id){
@@ -53,7 +52,7 @@ export class UserService {
   }
 
   public getCurrentCompany(){
-    let currentUser = this.getDataOnLocalStorage();
+    let currentUser = this.getCurrentUserData();
     const currentCompany =  currentUser.companies.find(company => company.id == currentUser.current_company_id);
     return currentCompany;
   }
@@ -77,4 +76,17 @@ export class UserService {
   public changePassword(userId, params) {
     return this.httpClient.put(`${this.apiURL}/api/admin/users/${userId}/update_password`, params);
   }
+
+  public getNotifications() {
+    return this.httpClient.get<User[]>(`${this.apiURL}/api/notifications`);
+  }
+
+  public answerNotifications(notificationId, params) {
+    return this.httpClient.put<Notification[]>(`${this.apiURL}/api/notifications/${notificationId}/answer_request_employee`, params);
+  }
+
+  public readNotifications() {
+    return this.httpClient.post(`${this.apiURL}/api/notifications/read_pending_notifications`, {});
+  }
+
 }

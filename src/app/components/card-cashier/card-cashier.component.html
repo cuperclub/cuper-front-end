@@ -10,7 +10,7 @@
     <div class="cashiers" *ngIf="myEmployees as cashiers">
       <div class="cashier" *ngFor="let cashier of cashiers">
         <div class="avatar-container">
-          <cuper-avatar [imageSrc]="cashier.user.image_url" [size]="60"></cuper-avatar>
+          <cuper-avatar [imageSrc]="cashier.user.image_url || getAvatar(cashier.user.join_at)" [size]="40"></cuper-avatar>
         </div>
         <div class="cashier-data">
           <span class="name">{{cashier.user.name}}</span>
@@ -21,6 +21,7 @@
         </div>
         <button mat-flat-button
                 color="primary"
+                *ngIf="cashier.status !== 'pending'"
                 [ngClass]="cashier.status"
                 (click)="onDisabledCashier(cashier)">
                 {{ getButtonName(cashier.status) | translate }}

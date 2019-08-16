@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { CompanyService, UserService } from '../../../services'
+import { CompanyService, UserService, AdminPlanService } from '../../../services'
 import { OptionPlan } from '../../../components/card-plan/card-plan.component';
 import { MatSnackBar } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
@@ -26,6 +26,7 @@ export class CompanyRegisterComponent implements OnInit {
     private message: MatSnackBar,
     private translate: TranslateService,
     private userService: UserService,
+    private planService: AdminPlanService
   ) {}
 
   ngOnInit() {
@@ -38,31 +39,17 @@ export class CompanyRegisterComponent implements OnInit {
       economic_activity: [''],
       category_id: ['', Validators.required]
     });
-    this.plans = [
-      {
-        price: 0,
-        time: '3 meses',
-        promotion: 'Gratis'
-      },
-      {
-        price: 4.99,
-        time: 'mensual'
-      },
-      {
-        price: 19.99,
-        time: '6 meses',
-        promotion: 'Ahorra $20'
-      },
-      {
-        price: 30,
-        time: 'anual',
-        promotion: 'Ahorra $30'
-      }
-    ];
+
+    this.planService.getPlans().subscribe(data => {
+      const plans = data['plans'] || [];
+      this.plans = this.planService.plansAvailablesForCard(plans);
+    });
+
     const defaultPlan = {
       price: 0,
       time: '',
     };
+
     this.planSelected = this.isUserNew ? this.plans[0] : defaultPlan;
     this.planFormGroup = this._formBuilder.group({
       selectPlan: [this.planSelected.time, Validators.required]
@@ -90,7 +77,7 @@ export class CompanyRegisterComponent implements OnInit {
       this.message.open(message, '', {
         duration: 2000
       });
-      const currenUser = this.userService.getDataOnLocalStorage();
+      const currenUser = this.userService.getCurrentUserData();
       const formatCompany = {
         id: company.id,
         join_at: company.join_at,
@@ -103,7 +90,7 @@ export class CompanyRegisterComponent implements OnInit {
       }else {
         currenUser.companies = [formatCompany];
       }
-      this.userService.saveDataOnLocalStorage(currenUser);
+      this.userService.observerData.next(currenUser);
       this.router.navigate(['home/dashboard']);
     });
   }

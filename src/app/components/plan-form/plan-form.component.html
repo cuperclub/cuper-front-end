@@ -1,0 +1,42 @@
+<div class="plan-form">
+  <form class="form">
+    <mat-form-field class="field-group">
+      <input matInput
+        [(ngModel)]="planForm.name"
+        name="name"
+        placeholder="{{ 'admin.plans.name' | translate }}">
+    </mat-form-field>
+    <mat-form-field class="field-group">
+      <input matInput
+        [(ngModel)]="planForm.information"
+        name="information"
+        placeholder="{{ 'admin.plans.information' | translate }}">
+    </mat-form-field>
+    <mat-form-field class="field-group">
+        <input matInput
+        type="number"
+        [(ngModel)]="planForm.days"
+        name="days"
+        placeholder="{{ 'admin.plans.days' | translate }}">
+    </mat-form-field>
+    <mat-form-field class="field-group">
+        <input matInput
+        type="number"
+        [(ngModel)]="planForm.price"
+        name="price"
+        placeholder="{{ 'admin.plans.price' | translate }}">
+    </mat-form-field>
+    <br>
+    <mat-checkbox class="status" [ngModelOptions]="{standalone: true}" [(ngModel)]="planForm.active">
+      {{ 'admin.plans.active' | translate }}
+    </mat-checkbox>
+    <div class="footer-form">
+      <button mat-flat-button color="secondary" (click)="onCloseDialog()">
+        {{ 'common.cancel' | translate }}
+      </button>
+      <button mat-flat-button color="primary" (click)="onSubmit(planForm)">
+        {{ 'common.ok' | translate }}
+      </button>
+    </div>
+  </form>
+</div>

@@ -5,15 +5,23 @@ import { AdministrationComponent } from './administration/administration.compone
 import { CompaniesComponent } from './companies/companies.component';
 import { CustomersComponent } from './customers/customers.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { PlansComponent } from './plans/plans.component';
+import { SettingsComponent } from './settings/settings.component';
+
+//Guards
+import { AuthGuard } from '../../guards/auth/auth.guard';
 
 const routes: Routes = [
   {
     path: 'admin',
     component: AdministrationComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: 'companies', component: CompaniesComponent},
       { path: 'customers', component: CustomersComponent },
       { path: 'categories', component: CategoriesComponent},
+      { path: 'plans', component: PlansComponent},
+      { path: 'settings', component: SettingsComponent},
     ],
   }
 ];

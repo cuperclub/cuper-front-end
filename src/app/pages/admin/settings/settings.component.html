@@ -1,0 +1,25 @@
+<div class="settings-page">
+  <div class="header">
+    <div class="title">Configuraciones del sistema</div>
+  </div>
+  <div class="settings-container" *ngIf="loaded">
+    <mat-card class="setting">
+      <h4>Puntos por Registro</h4>
+      <p>{{setting.points_by_register}}</p>
+      <div class="plan-selected" *ngIf="planSelected">
+        <h4>Plan promocional elegido</h4>
+        <cuper-card-plan
+          class="plan-card"
+          [option]="planSelected">
+        </cuper-card-plan>
+      </div>
+      <br>
+      <br>
+      <br>
+      <button mat-raised-button color="primary" class="add-button"
+        (click)="editSettings()">{{ 'admin.settings.edit' | translate }}
+      </button>
+    </mat-card>
+  </div>
+  <cuper-loader class="loader" *ngIf="!loaded"></cuper-loader>
+</div>

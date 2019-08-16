@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CardCashierComponent } from '../../components/card-cashier/card-cashier.component';
 import { User } from '../../models';
+import { EmployeeService, CompanyService } from 'src/app/services';
 
 @Component({
   selector: 'cuper-request-cashier',
@@ -13,6 +14,8 @@ export class RequestCashierComponent {
   currentUser: User;
 
   constructor(
+    private employeeService: EmployeeService,
+    private companyService: CompanyService,
     private dialogRef: MatDialogRef<CardCashierComponent>,
     @Inject(MAT_DIALOG_DATA) public data
   ) { }
@@ -22,6 +25,14 @@ export class RequestCashierComponent {
   }
 
   onSendInvitation() {
-    this.dialogRef.close({});
+    if (this.emailInvitation){
+      this.companyService.sendInvitationEmployee(this.emailInvitation).subscribe(data => {
+        this.dialogRef.close();
+      });
+    }else{
+      this.companyService.sendRequestEmployee(this.currentUser.id).subscribe(data => {
+        this.dialogRef.close();
+      });
+    }
   }
 }

@@ -34,7 +34,7 @@
 
     .cashier {
       display: flex;
-      padding: 0.5rem 0.5rem;
+      padding: 0.5rem 1rem;
       justify-content: space-between;
       align-items: center;
       position: relative;
@@ -73,7 +73,7 @@
         justify-content: center;
         align-items: center;
         width: 50px;
-        padding: 0.1rem 1rem;
+        padding-right: 1rem;
       }
 
       .cashier-data {

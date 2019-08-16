@@ -6,3 +6,6 @@ export * from './promotion';
 export * from './category';
 export * from './input-transaction';
 export * from './output-transaction';
+export * from './plan';
+export * from './setting';
+export * from './notification';

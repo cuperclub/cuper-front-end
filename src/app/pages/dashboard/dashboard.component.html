@@ -7,6 +7,7 @@
   <cuper-card-points class="card" [user]="currentUser"></cuper-card-points>
   <cuper-card-register-company
     class="card"
+    [selectedPlan]="currentUser.plan_promotion"
     *ngIf="!currentUser.is_partner">
   </cuper-card-register-company>
 </div>

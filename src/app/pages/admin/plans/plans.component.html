@@ -1,0 +1,17 @@
+<div class="plans-page">
+  <div class="header">
+    <div class="title">{{'common.all' | translate}}</div>
+    <button mat-raised-button color="primary" class="add-button"
+      (click)="addPlan()">{{ 'admin.plans.new' | translate }}
+    </button>
+  </div>
+  <div class="plans-container" *ngIf="loaded">
+    <cuper-card-plan
+      *ngFor="let plan of plansCard; let i = index"
+      class="plan-card"
+      [option]="plan"
+      (propagatePlanData)="editPlan(i)">
+    </cuper-card-plan>
+  </div>
+  <cuper-loader class="loader" *ngIf="!plans"></cuper-loader>
+</div>

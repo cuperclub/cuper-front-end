@@ -7,11 +7,11 @@
 </div>
 <cuper-company-form [companyFormGroup]="companyFormGroup"></cuper-company-form>
 <mat-dialog-actions>
+  <button mat-dialog-close mat-flat-button color="secondary">{{ 'common.cancel' | translate}}</button>
   <button mat-flat-button
     color="primary"
     class="submit-button"
     (click)="onSubmitCompany()">
     {{ 'common.ok' | translate}}
   </button>
-  <button mat-dialog-close mat-flat-button color="secondary">{{ 'common.cancel' | translate}}</button>
 </mat-dialog-actions>

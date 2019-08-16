@@ -140,7 +140,8 @@
     "tabs": {
       "companies": "Companies",
       "customers": "Customers",
-      "categories": "Categories"
+      "categories": "Categories",
+      "plans": "Plans"
     },
     "companies": {
       "request": {
@@ -154,6 +155,14 @@
       "name": "Name",
       "points_per_dollar": "Points per dollar",
       "active": "Active"
+    },
+    "plans": {
+      "name": "Name",
+      "days": "Days",
+      "active": "Active",
+      "price": "Price",
+      "information": "Information",
+      "new": "New Plan"
     }
   }
 }

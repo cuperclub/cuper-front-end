@@ -34,8 +34,7 @@ export class RegisterComponent implements OnInit {
       passwordConfirmation: this.user.password,
       name: this.user.name
     }).subscribe(
-      (resp) => {
-        this.userService.saveDataOnLocalStorage(resp.data);
+      () => {
         this.router.navigate(['home/dashboard']);
       },
       ({ error }) => {

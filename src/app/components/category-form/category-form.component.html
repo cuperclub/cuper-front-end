@@ -18,11 +18,11 @@
       {{ 'admin.categories.active' | translate }}
     </mat-checkbox>
     <div class="footer-form">
-      <button mat-flat-button color="primary" (click)="onSubmit(categoryForm)">
-        {{ 'common.ok' | translate }}
-      </button>
       <button mat-flat-button color="secondary" (click)="onCloseDialog()">
         {{ 'common.cancel' | translate }}
+      </button>
+      <button mat-flat-button color="primary" (click)="onSubmit(categoryForm)">
+        {{ 'common.ok' | translate }}
       </button>
     </div>
   </form>

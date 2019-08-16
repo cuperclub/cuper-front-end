@@ -43,7 +43,7 @@
         <div class="double-column">
           <mat-form-field class="field-group">
             <input matInput type="number" [(ngModel)]="reward.total_rewards" name="total_rewards"
-              placeholder="{{ 'reward.new.form.totalRewards.label' | translate }}">
+              placeholder="{{ 'reward.new.form.totalRewards.label' | translate }}" [disabled]="reward.unlimited">
             <mat-hint>{{ 'reward.new.form.totalRewards.description' | translate }}</mat-hint>
           </mat-form-field>
           <mat-form-field class="field-group">
@@ -52,7 +52,10 @@
             <mat-hint>{{ 'reward.new.form.pointsRequired.description' | translate }}</mat-hint>
           </mat-form-field>
         </div>
-        <mat-checkbox class="unlimited-reward" [ngModelOptions]="{standalone: true}" [(ngModel)]="reward.unlimited">
+        <mat-checkbox class="unlimited-reward"
+          [ngModelOptions]="{standalone: true}"
+          [(ngModel)]="reward.unlimited"
+          (change)="onChangeTotalRewards($event)">
           {{ 'reward.new.form.unlimited' | translate }}
         </mat-checkbox>
         <div class="dates-container">
@@ -60,13 +63,15 @@
           <div class="double-column">
             <mat-form-field class="field-group">
               <input matInput [matDatepicker]="picker" [(ngModel)]="reward.start_at" name="start_at"
-                placeholder="{{ 'reward.new.form.start_at' | translate }}">
+                placeholder="{{ 'reward.new.form.start_at' | translate }}" [disabled]="isEditRoute"
+                [min]="currentDate" (dateChange)="onChangeStartTime($event)">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             <mat-form-field class="field-group">
               <input matInput [matDatepicker]="picker1" [(ngModel)]="reward.end_at" name="end_at"
-                placeholder="{{ 'reward.new.form.end_at' | translate }}">
+                placeholder="{{ 'reward.new.form.end_at' | translate }}" [disabled]="isEditRoute"
+                [min]="reward.start_at">
               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
               <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>

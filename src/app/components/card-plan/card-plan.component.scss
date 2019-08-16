@@ -6,7 +6,11 @@
 	background: $primary;
 	color: $white;
   cursor: pointer;
-  position: relative;
+	position: relative;
+
+	&.disabled {
+		background: $gray-dark;
+	}
 
   .icon {
     position: absolute;
@@ -21,6 +25,14 @@
     align-items: center;
     height: 100%;
 		position: relative;
+
+		.name {
+			font-family: 'Lato-Regular';
+			font-size: 10px;
+			left: 10px;
+			top: 10px;
+			position: absolute;
+		}
 
 		.promo-wrapper {
 			display: flex;

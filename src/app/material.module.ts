@@ -19,7 +19,8 @@ import {
   MatStepperModule,
   MatSelectModule,
   MatTableModule,
-  MatChipsModule
+  MatChipsModule,
+  MatPaginatorModule
 } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
@@ -47,7 +48,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatStepperModule,
     MatSelectModule,
     MatTableModule,
-    MatChipsModule
+    MatChipsModule,
+    MatPaginatorModule
   ]
 })
 export class MaterialModule { }

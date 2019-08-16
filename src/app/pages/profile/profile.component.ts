@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.currentUser = this.userService.getDataOnLocalStorage();
+    this.currentUser = this.userService.getCurrentUserData();
   }
 
 }

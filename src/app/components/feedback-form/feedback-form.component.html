@@ -8,11 +8,11 @@
       </textarea>
     </mat-form-field>
     <div class="footer-form">
-      <button mat-flat-button color="primary" (click)="onSubmit(feedbackForm)">
-        {{ 'common.ok' | translate }}
-      </button>
       <button mat-flat-button color="secondary" (click)="onCloseDialog()">
         {{ 'common.cancel' | translate }}
+      </button>
+      <button mat-flat-button color="primary" (click)="onSubmit(feedbackForm)">
+        {{ 'common.ok' | translate }}
       </button>
     </div>
   </form>

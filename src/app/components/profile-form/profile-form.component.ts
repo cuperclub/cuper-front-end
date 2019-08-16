@@ -55,19 +55,13 @@ export class ProfileFormComponent implements OnInit {
           this.message.open(message, '', {
             duration: 2000
           });
-          const user = this.saveAndGetUserFromStorage(resp);
-          this.dialogRef.close(user);
+          this.dialogRef.close(resp);
         });
       },
       ({ error }) => {
         this.errorsForm = error;
       }
     );
-  }
-
-  saveAndGetUserFromStorage(user){
-    this.userService.saveDataOnLocalStorage(user);
-    return this.userService.getDataOnLocalStorage();
   }
 
   onListenerFile = (uploadFile) => this.uploadFile = uploadFile;
