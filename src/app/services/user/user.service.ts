@@ -76,4 +76,8 @@ export class UserService {
   public changePassword(userId, params) {
     return this.httpClient.put(`${this.apiURL}/api/admin/users/${userId}/update_password`, params);
   }
+
+  public getNotifications() {
+    return this.httpClient.get<User[]>(`${this.apiURL}/api/users/my_notifications`);
+  }
 }

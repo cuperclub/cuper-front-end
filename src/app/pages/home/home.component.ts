@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
-import { User, UserStatus, Employee } from '../../models';
+import { User, UserStatus, Employee, Notification } from '../../models';
 import { UserService, UtilsService } from '../../services';
 import { Observable } from 'rxjs';
 
@@ -13,7 +13,8 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
   currentEmployee: Employee;
   updatedView: boolean = false;
-  notifications: any = [];
+  loadNotifications: boolean = false;
+  notifications: Array<Notification> = [];
   currentUser$: Observable<User>;
 
   constructor(
@@ -27,8 +28,6 @@ export class HomeComponent implements OnInit {
     this.currentUser$ = this.userService.getObservableUserData();
     this.userService.getCurrentUserData();
     this.currentEmployee = this.userService.getCurrentCompany();
-    this.notifications = this.buildNotifications(this.getPendingRequest());
-    console.log('this.notifications: ', this.notifications);
   }
 
   logOut() {
@@ -71,18 +70,19 @@ export class HomeComponent implements OnInit {
     return iconStatus;
   }
 
-
-  getPendingRequest(){
-    return [];
-    // return this.currentUser.companies.filter((company)=>{
-    //   return company.status === 'pending' && company.role === 'cashier'
-    // })
+  getNotifications() {
+    if (!this.loadNotifications){
+      this.userService.getNotifications().subscribe((data) => {
+        this.notifications = this.buildNotifications(data);
+        this.loadNotifications = true;
+      });
+    }
   }
 
-  buildNotifications(items){
-    return items.map((item)=>{
+  buildNotifications(notifications){
+    return notifications.map((notification)=>{
       return {
-        title: `La empresa: ${item.name} quiere registrarte como empleado`,
+        title: notification.message,
         actions: [
           {
             title: 'Aceptar',

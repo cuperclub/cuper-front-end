@@ -39,11 +39,11 @@
 			</button>
 		</div>
 		<div class="user-menu">
-			<div class="notifications-menu">
+			<div class="notifications-menu" (click)="getNotifications()">
 				<div class="menu-not" [matMenuTriggerFor]="menuNotification">
 					<div class="menu-action">
-						<div class="count-notifications" *ngIf="notifications.length">
-							{{notifications.length}}
+						<div class="count-notifications" *ngIf="user.pending_notifications > 0">
+							{{user.pending_notifications}}
 						</div>
 						<mat-icon>notifications</mat-icon>
 					</div>
