@@ -24,6 +24,10 @@ export class CardCashierComponent implements OnInit {
       action: UserStatus.APPROVED,
       translation: 'common.actions.enable'
     },
+    declined: {
+      ction: UserStatus.APPROVED,
+      translation: 'common.actions.enable'
+    }
   };
 
   constructor(

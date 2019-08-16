@@ -80,22 +80,22 @@ export class HomeComponent implements OnInit {
   }
 
   buildNotifications(notifications){
-    return notifications.map((notification)=> {
+    return notifications.map((notification) => {
       let actions = null;
-      if (notification.kind === 'request_employee') {
+      if (notification.kind === 'request_employee' && notification.status === 'pending') {
         actions = [
           {
             title: 'Aceptar',
             class: 'primary',
             onClick: () => {
-              console.log('aceptar');
+              this.acceptRequestEmployee(notification.id);
             }
           },
           {
             title: 'Declinar',
             class: 'secondary',
             onClick: () => {
-              console.log('declinar');
+              this.declinedRequestEmployee(notification.id);
             }
           },
         ]
@@ -107,5 +107,16 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  acceptRequestEmployee(id) {
+    this.userService.answerNotifications(id, {status: 'approved'}).subscribe((notification) => {
+      console.log('notification: ', notification);
+    });
+  }
+
+  declinedRequestEmployee(id) {
+    this.userService.answerNotifications(id, {status: 'declined'}).subscribe((notification) => {
+      console.log('notification: ', notification);
+    });
+  }
   getAvatar = this.utilsService.getAvatar;
 }

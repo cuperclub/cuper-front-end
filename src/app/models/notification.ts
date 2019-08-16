@@ -4,4 +4,5 @@ export interface Notification {
   status: string;
   from_user_id: number;
   to_user_id: number;
+  created_at: number;
 }
