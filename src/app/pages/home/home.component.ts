@@ -80,10 +80,10 @@ export class HomeComponent implements OnInit {
   }
 
   buildNotifications(notifications){
-    return notifications.map((notification)=>{
-      return {
-        title: notification.message,
-        actions: [
+    return notifications.map((notification)=> {
+      let actions = null;
+      if (notification.kind === 'request_employee') {
+        actions = [
           {
             title: 'Aceptar',
             class: 'primary',
@@ -99,6 +99,10 @@ export class HomeComponent implements OnInit {
             }
           },
         ]
+      }
+      return {
+        title: notification.message,
+        actions: actions
       }
     })
   }

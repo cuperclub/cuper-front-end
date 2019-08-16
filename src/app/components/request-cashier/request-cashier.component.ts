@@ -26,12 +26,12 @@ export class RequestCashierComponent {
 
   onSendInvitation() {
     if (this.emailInvitation){
-      this.companyService.sendInvitationEmployee(this.emailInvitation).subscribe(status => {
+      this.companyService.sendInvitationEmployee(this.emailInvitation).subscribe(data => {
         this.dialogRef.close();
       });
     }else{
-      this.companyService.sendRequestEmployee(this.currentUser.id).subscribe(newEmployee => {
-        this.dialogRef.close(newEmployee);
+      this.companyService.sendRequestEmployee(this.currentUser.id).subscribe(data => {
+        this.dialogRef.close();
       });
     }
   }
