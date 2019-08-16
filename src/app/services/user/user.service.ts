@@ -10,6 +10,10 @@ interface UserProfile extends User{
   companies?: Array<any>;
 }
 
+export interface UserTokenData extends User {
+  is_admin?: boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -67,6 +71,21 @@ export class UserService {
     const currentCompany =  this.getCurrentCompany();
     const isPartner = currentCompany && (currentCompany.role === 'partner');
     return isPartner;
+  }
+
+  public userIsAdmin() {
+    const currentUser: UserTokenData = this.getCurrentUserData();
+    return currentUser.is_admin;
+  }
+
+  public validateToken() {
+    let promise: Promise<any> = new Promise((resolve, reject) => {
+      this.tokenService.validateToken().subscribe(
+        (resp) =>  resolve(resp['data']),
+        () =>  reject(false)
+      )
+    });
+    return promise;
   }
 
   public isCustomer() {

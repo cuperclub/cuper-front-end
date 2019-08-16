@@ -11,6 +11,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 //Guards
 import { AuthGuard } from './guards/auth/auth.guard';
 import { IsntSignedInGuard } from './guards/routes/isnt-signed-in.guard';
+import { AdminGuard } from './guards/admin/admin.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -39,6 +40,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canActivate: [AdminGuard],
     loadChildren: './pages/admin/admin.module#AdminModule'
   },
 ];
