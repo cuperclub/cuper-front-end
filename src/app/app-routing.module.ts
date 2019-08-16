@@ -36,7 +36,11 @@ const routes: Routes = [
         loadChildren: './pages/employee/employee.module#EmployeeModule'
       }
     ],
-  }
+  },
+  {
+    path: 'admin',
+    loadChildren: './pages/admin/admin.module#AdminModule'
+  },
 ];
 
 @NgModule({
