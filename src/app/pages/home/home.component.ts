@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
-import { User, UserStatus, Employee } from '../../models';
+import { User, UserStatus, Employee, Notification } from '../../models';
 import { UserService, UtilsService } from '../../services';
 import { Observable } from 'rxjs';
 
@@ -12,7 +12,9 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   currentEmployee: Employee;
-  updatedView: boolean = false
+  updatedView: boolean = false;
+  loadNotifications: boolean = false;
+  notifications: Array<Notification> = [];
   currentUser$: Observable<User>;
 
   constructor(
@@ -68,5 +70,64 @@ export class HomeComponent implements OnInit {
     return iconStatus;
   }
 
+  getNotifications() {
+    const current_user = this.userService.getCurrentUserData();
+    if (!this.loadNotifications){
+      if (current_user.pending_notifications > 0){
+        this.userService.readNotifications().subscribe(()=>{
+          this.getMyNotifications();
+        })
+      }else{
+        this.getMyNotifications();
+      }
+    }
+  }
+
+  getMyNotifications () {
+    this.userService.getNotifications().subscribe((data) => {
+      this.notifications = this.buildNotifications(data);
+      this.loadNotifications = true;
+    });
+  }
+
+  buildNotifications(notifications){
+    return notifications.map((notification) => {
+      let actions = null;
+      if (notification.kind === 'request_employee' && notification.status === 'pending') {
+        actions = [
+          {
+            title: 'Aceptar',
+            class: 'primary',
+            onClick: () => {
+              this.acceptRequestEmployee(notification.id);
+            }
+          },
+          {
+            title: 'Declinar',
+            class: 'secondary',
+            onClick: () => {
+              this.declinedRequestEmployee(notification.id);
+            }
+          },
+        ]
+      }
+      return {
+        title: notification.message,
+        actions: actions
+      }
+    })
+  }
+
+  acceptRequestEmployee(id) {
+    this.userService.answerNotifications(id, {status: 'approved'}).subscribe((notification) => {
+      console.log('notification: ', notification);
+    });
+  }
+
+  declinedRequestEmployee(id) {
+    this.userService.answerNotifications(id, {status: 'declined'}).subscribe((notification) => {
+      console.log('notification: ', notification);
+    });
+  }
   getAvatar = this.utilsService.getAvatar;
 }

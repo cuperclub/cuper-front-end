@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Employee, UserStatus } from '../../models';
-import { EmployeeService } from 'src/app/services';
+import { EmployeeService, UtilsService } from 'src/app/services';
 import { RequestCashierComponent } from '../request-cashier/request-cashier.component';
 
 @Component({
@@ -24,16 +24,23 @@ export class CardCashierComponent implements OnInit {
       action: UserStatus.APPROVED,
       translation: 'common.actions.enable'
     },
+    declined: {
+      action: UserStatus.APPROVED,
+      translation: 'common.actions.enable'
+    }
   };
 
   constructor(
     private dialog: MatDialog,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private utilsService: UtilsService
   ) { }
 
   ngOnInit() {
     this.employeeService.getMyEmployees().subscribe((data) => this.myEmployees = data['employees']);
   }
+
+  getAvatar = this.utilsService.getAvatar;
 
   onDisabledCashier(cashier: Employee) {
     const statusData = {
@@ -61,9 +68,9 @@ export class CardCashierComponent implements OnInit {
       data: {}
     });
 
-    dialogRef.beforeClosed().subscribe(currentEmployee => {
-      if(currentEmployee){
-        //TO DO: Add employee into list
+    dialogRef.beforeClosed().subscribe(newEmployee => {
+      if(newEmployee){
+        this.myEmployees.push(newEmployee)
       }
     });
   }

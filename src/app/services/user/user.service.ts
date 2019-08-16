@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AngularTokenService } from 'angular-token';
-import { User } from '../../models';
+import { User, Notification } from '../../models';
 import { Observable, Subscriber } from 'rxjs';
 
 interface UserProfile extends User{
@@ -76,4 +76,17 @@ export class UserService {
   public changePassword(userId, params) {
     return this.httpClient.put(`${this.apiURL}/api/admin/users/${userId}/update_password`, params);
   }
+
+  public getNotifications() {
+    return this.httpClient.get<User[]>(`${this.apiURL}/api/notifications`);
+  }
+
+  public answerNotifications(notificationId, params) {
+    return this.httpClient.put<Notification[]>(`${this.apiURL}/api/notifications/${notificationId}/answer_request_employee`, params);
+  }
+
+  public readNotifications() {
+    return this.httpClient.post(`${this.apiURL}/api/notifications/read_pending_notifications`, {});
+  }
+
 }
