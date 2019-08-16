@@ -20,6 +20,7 @@ export interface User {
   points?: number;
   join_at?: Date;
   companies?: Array<any>;
+  pending_notifications?: number;
 }
 
 export enum UserStatus {

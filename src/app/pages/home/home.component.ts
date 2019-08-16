@@ -71,12 +71,23 @@ export class HomeComponent implements OnInit {
   }
 
   getNotifications() {
+    const current_user = this.userService.getCurrentUserData();
     if (!this.loadNotifications){
-      this.userService.getNotifications().subscribe((data) => {
-        this.notifications = this.buildNotifications(data);
-        this.loadNotifications = true;
-      });
+      if (current_user.pending_notifications > 0){
+        this.userService.readNotifications().subscribe(()=>{
+          this.getMyNotifications();
+        })
+      }else{
+        this.getMyNotifications();
+      }
     }
+  }
+
+  getMyNotifications () {
+    this.userService.getNotifications().subscribe((data) => {
+      this.notifications = this.buildNotifications(data);
+      this.loadNotifications = true;
+    });
   }
 
   buildNotifications(notifications){

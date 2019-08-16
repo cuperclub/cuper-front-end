@@ -84,4 +84,9 @@ export class UserService {
   public answerNotifications(notificationId, params) {
     return this.httpClient.put<Notification[]>(`${this.apiURL}/api/notifications/${notificationId}/answer_request_employee`, params);
   }
+
+  public readNotifications() {
+    return this.httpClient.post(`${this.apiURL}/api/notifications/read_pending_notifications`, {});
+  }
+
 }
