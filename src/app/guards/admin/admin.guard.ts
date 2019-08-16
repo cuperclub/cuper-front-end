@@ -18,10 +18,10 @@ export class AdminGuard implements CanActivate {
     const userSignedIn = this.tokenService.userSignedIn();
     if(userSignedIn) {
       if(this.tokenService.currentUserData) {
-        return this.redirect(this.tokenService.currentUserData);;
+        return this.redirect(this.tokenService.currentUserData);
       } else {
         return this.userService.validateToken().then((userData) => {
-          return this.redirect(userData);;
+          return this.redirect(userData);
         }).catch(() => false);
       }
     } else {
