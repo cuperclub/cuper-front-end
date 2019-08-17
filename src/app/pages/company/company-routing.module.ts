@@ -12,21 +12,24 @@ import { RewardComponent } from './reward/reward.component';
 import { CompanyComponent } from './company/company.component';
 
 //Guards
-import { IsPartnerGuard } from '../../guards/partner/is-partner.guard';
+import { PartnerGuard } from '../../guards/partner/partner.guard';
+import { AuthGuard } from '../../guards/auth/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: CompanyComponent,
+    canActivate: [PartnerGuard],
     children: [
       {
         path: 'home',
         component: MyCompanyComponent,
-        canActivate: [IsPartnerGuard],
+        canActivate: [PartnerGuard],
       },
       {
         path: 'register',
-        component: CompanyRegisterComponent
+        component: CompanyRegisterComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'reward',
@@ -34,22 +37,22 @@ const routes: Routes = [
           {
             path: 'list',
             component: RewardsComponent,
-            canActivate: [IsPartnerGuard]
+            canActivate: [PartnerGuard]
           },
           {
             path: 'new',
             component: NewRewardCardComponent,
-            canActivate: [IsPartnerGuard]
+            canActivate: [PartnerGuard]
           },
           {
             path: 'edit/:rewardId',
             component: NewRewardCardComponent,
-            canActivate: [IsPartnerGuard]
+            canActivate: [PartnerGuard]
           },
           {
             path: 'details/:rewardId',
             component: RewardComponent,
-            canActivate: [IsPartnerGuard]
+            canActivate: [PartnerGuard]
           }
         ]
       }
