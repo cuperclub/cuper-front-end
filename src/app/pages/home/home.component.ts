@@ -129,5 +129,12 @@ export class HomeComponent implements OnInit {
       console.log('notification: ', notification);
     });
   }
+
+  isCompanyAproved() {
+    const allowedRol = this.userService.userIsCashier();
+    const isCompanyAproverd =  this.currentEmployee.status === UserStatus.APPROVED;
+    return allowedRol && isCompanyAproverd;
+  }
+
   getAvatar = this.utilsService.getAvatar;
 }

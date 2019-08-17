@@ -107,7 +107,7 @@
 			<span>{{ 'tabs.company' | translate }}</span>
 		</a>
 		<a routerLink="transactions" class="tabs" *ngIf="userService.isCustomer()"
-			[class.disabled]="!userService.userIsCashier()" routerLinkActive="active">
+			[class.disabled]="!isCompanyAproved()" routerLinkActive="active">
 			<mat-icon>account_balance_wallet</mat-icon>
 			<span>{{ 'tabs.transactions' | translate }}</span>
 		</a>
