@@ -80,6 +80,7 @@ export class CompanyRegisterComponent implements OnInit {
       });
       const currentUser = this.userService.getCurrentUserData();
       currentUser.is_partner = true;
+      currentUser.current_company_id = company.id;
       const formatCompany = {
         id: company.id,
         join_at: company.join_at,
@@ -94,7 +95,7 @@ export class CompanyRegisterComponent implements OnInit {
       }
       this.userService.observerData.next(currentUser);
       this.userService.userDataEdited = currentUser;
-      this.router.navigate(['home/dashboard']);
+      this.router.navigate(['home']);
     });
   }
 

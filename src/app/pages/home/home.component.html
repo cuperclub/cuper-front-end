@@ -7,7 +7,7 @@
 	<div class="tabs-header" *ngIf="currentUser$ | async as user">
 		<div class="status-company" *ngIf="user.companies">
 			<div class="menu" [matMenuTriggerFor]="menu">
-				<div *ngIf="currentEmployee" class="employee-container">
+				<div *ngIf="userService.getCurrentCompany() as currentEmployee" class="employee-container">
 					<div class="account">
 						<div class="company-name">
 							{{currentEmployee.name}}
