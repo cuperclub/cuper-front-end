@@ -55,7 +55,7 @@
 							<span class="description">
 								{{notification.title}}
 							</span>
-							<div class="actions">
+							<div class="actions" *ngIf="notification.status === 'pending'">
 								<span *ngFor="let action of notification.actions" class="action {{action.class}}"
 									(click)="action.onClick()">
 									{{action.title}}
