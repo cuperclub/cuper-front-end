@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   updatedView: boolean = false;
   loadNotifications: boolean = false;
   notifications: Array<Notification> = [];
+  totalPendingNotifications: number = 0;
   currentUser$: Observable<User>;
 
   constructor(
@@ -28,6 +29,9 @@ export class HomeComponent implements OnInit {
     this.currentUser$ = this.userService.getObservableUserData();
     this.userService.getCurrentUserData();
     this.currentEmployee = this.userService.getCurrentCompany();
+    //initial notifications
+    const current_user = this.userService.getCurrentUserData();
+    this.totalPendingNotifications = current_user.pending_notifications;
   }
 
   logOut() {
@@ -74,7 +78,8 @@ export class HomeComponent implements OnInit {
     const current_user = this.userService.getCurrentUserData();
     if (!this.loadNotifications){
       if (current_user.pending_notifications > 0){
-        this.userService.readNotifications().subscribe(()=>{
+        this.userService.readNotifications().subscribe((resp)=>{
+          this.totalPendingNotifications = this.totalPendingNotifications > 0 ? this.totalPendingNotifications - resp['total'] : this.totalPendingNotifications;
           this.getMyNotifications();
         })
       }else{
@@ -113,21 +118,34 @@ export class HomeComponent implements OnInit {
       }
       return {
         title: notification.message,
-        actions: actions
+        actions: actions,
+        id: notification.id,
+        status: notification.status
       }
     })
   }
 
   acceptRequestEmployee(id) {
-    this.userService.answerNotifications(id, {status: 'approved'}).subscribe((notification) => {
-      console.log('notification: ', notification);
+    this.userService.answerNotifications(id, {status: 'approved'}).subscribe((resp) => {
+      this.updateArrayNotifications(resp);
     });
   }
 
   declinedRequestEmployee(id) {
-    this.userService.answerNotifications(id, {status: 'declined'}).subscribe((notification) => {
-      console.log('notification: ', notification);
+    this.userService.answerNotifications(id, {status: 'declined'}).subscribe((resp) => {
+      this.updateArrayNotifications(resp);
     });
   }
+
+  findIndexNotification(id){
+    return this.notifications.findIndex(notification => notification.id === id );
+  }
+
+  updateArrayNotifications(resp){
+    let updateNotification = resp['notification'] || {};
+    this.notifications[this.findIndexNotification(updateNotification.id)].status = updateNotification.status;
+    this.totalPendingNotifications = this.totalPendingNotifications > 0 ? this.totalPendingNotifications - 1 : this.totalPendingNotifications;
+  }
+
   getAvatar = this.utilsService.getAvatar;
 }
