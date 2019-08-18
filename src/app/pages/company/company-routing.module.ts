@@ -19,6 +19,7 @@ const routes: Routes = [
     path: '',
     component: CompanyComponent,
     children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       {
         path: 'home',
         component: MyCompanyComponent,

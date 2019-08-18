@@ -91,7 +91,7 @@ export class TransactionsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(resp => {
       if(resp) {
-        this.inputTransactions.push(resp);
+        this.inputTransactions = [...[resp], ...this.inputTransactions];
       }
     });
   }
@@ -106,7 +106,7 @@ export class TransactionsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(resp => {
       if(resp) {
-        this.outputTransactions.push(resp);
+        this.outputTransactions = [...[resp], ...this.outputTransactions];
       }
     });
   }

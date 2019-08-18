@@ -8,6 +8,7 @@ import { Observable, Subscriber } from 'rxjs';
 interface UserProfile extends User{
   current_company_id?: number;
   companies?: Array<any>;
+  is_partner?: boolean;
 }
 
 @Injectable({
