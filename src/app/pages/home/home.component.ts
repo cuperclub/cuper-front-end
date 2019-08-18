@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.currentUser$ = this.userService.getObservableUserData();
     this.userService.getCurrentUserData();
-    this.currentEmployee = this.userService.getCurrentCompany();
     //initial notifications
     const current_user = this.userService.getCurrentUserData();
     this.totalPendingNotifications = current_user.pending_notifications;
