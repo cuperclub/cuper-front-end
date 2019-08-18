@@ -12,6 +12,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
 //Guards
 import { AuthGuard } from './guards/auth/auth.guard';
 import { IsntSignedInGuard } from './guards/routes/isnt-signed-in.guard';
+import { AdminGuard } from './guards/admin/admin.guard';
+import { PartnerGuard } from './guards/partner/partner.guard';
+import { CashierGuard } from './guards/cashier/cashier.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -23,22 +26,31 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuard],
     children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
       {
         path: 'company',
+        canActivate: [PartnerGuard],
         loadChildren: './pages/company/company.module#CompanyModule'
       },
       {
         path: 'promotions',
+        canActivate: [AuthGuard],
         loadChildren: './pages/customer/customer.module#CustomerModule'
       },
       {
         path: 'transactions',
+        canActivate: [CashierGuard],
         loadChildren: './pages/employee/employee.module#EmployeeModule'
       }
     ],
-  }
+  },
+  {
+    path: 'admin',
+    canActivate: [AdminGuard],
+    loadChildren: './pages/admin/admin.module#AdminModule'
+  },
 ];
 
 @NgModule({

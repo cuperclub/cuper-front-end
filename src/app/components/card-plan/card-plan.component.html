@@ -1,23 +1,23 @@
 <mat-card class="card-container"
   (click)="onClickCard(option)"
-  [class.disabled]="!option.active">
+  [class.disabled]="!option?.active">
   <mat-icon class="icon" *ngIf="isSelected">check_circle</mat-icon>
   <div class="card-content">
     <span class="name">
-      {{option.name}}
+      {{option?.name}}
     </span>
     <div class="promo-wrapper">
       <div class="price">
         <span class="currency">$</span>
-        <span class="number">{{option.price}}</span>
+        <span class="number">{{option?.price}}</span>
       </div>
       <div class="information">
-        <span class="time">/ {{option.time}}</span>
+        <span class="time">/ {{option?.time}}</span>
       </div>
     </div>
     <span class="promo"
-      *ngIf="option.promotion">
-      *{{option.promotion}}
+      *ngIf="option?.promotion">
+      *{{option?.promotion}}
     </span>
   </div>
 </mat-card>

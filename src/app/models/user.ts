@@ -27,4 +27,5 @@ export enum UserStatus {
   APPROVED = 'approved',
   PENDING = 'pending',
   DISABLED = 'disabled',
+  DECLINED = 'declined',
 }

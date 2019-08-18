@@ -40,19 +40,20 @@ export class CompanyRegisterComponent implements OnInit {
       category_id: ['', Validators.required]
     });
 
+    this.isUserNew = this.userService.getCurrentUserData().companies.length === 0;
+
     this.planService.getPlans().subscribe(data => {
       const plans = data['plans'] || [];
+      const defaultPlan = {
+        price: 0,
+        time: '',
+      };
       this.plans = this.planService.plansAvailablesForCard(plans);
+      this.planSelected = this.isUserNew ? this.plans[0] : defaultPlan;
     });
 
-    const defaultPlan = {
-      price: 0,
-      time: '',
-    };
-
-    this.planSelected = this.isUserNew ? this.plans[0] : defaultPlan;
     this.planFormGroup = this._formBuilder.group({
-      selectPlan: [this.planSelected.time, Validators.required]
+      selectPlan: [this.planSelected ? this.planSelected.time : 0, Validators.required]
     });
   }
 
@@ -77,21 +78,24 @@ export class CompanyRegisterComponent implements OnInit {
       this.message.open(message, '', {
         duration: 2000
       });
-      const currenUser = this.userService.getCurrentUserData();
+      const currentUser = this.userService.getCurrentUserData();
+      currentUser.is_partner = true;
+      currentUser.current_company_id = company.id;
       const formatCompany = {
         id: company.id,
         join_at: company.join_at,
         name: company.business_name,
         role: 'partner',
         status: 'pending'
-      }
-      if(currenUser.companies) {
-        currenUser.companies.push(formatCompany);
+      };
+      if(currentUser.companies) {
+        currentUser.companies.push(formatCompany);
       }else {
-        currenUser.companies = [formatCompany];
+        currentUser.companies = [formatCompany];
       }
-      this.userService.observerData.next(currenUser);
-      this.router.navigate(['home/dashboard']);
+      this.userService.observerData.next(currentUser);
+      this.userService.userDataEdited = currentUser;
+      this.router.navigate(['home']);
     });
   }
 

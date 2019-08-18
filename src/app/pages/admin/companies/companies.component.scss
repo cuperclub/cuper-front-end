@@ -50,11 +50,15 @@
         }
 
         &.disabled {
-          background-color: $red;
+          background-color: $gray-dark;
         }
 
         &.pending {
           background-color: $celeste;
+        }
+
+        &.declined {
+          background-color: $red;
         }
       }
 

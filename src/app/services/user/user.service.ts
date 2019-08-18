@@ -8,6 +8,11 @@ import { Observable, Subscriber } from 'rxjs';
 interface UserProfile extends User{
   current_company_id?: number;
   companies?: Array<any>;
+  is_partner?: boolean;
+}
+
+export interface UserTokenData extends User {
+  is_admin?: boolean;
 }
 
 @Injectable({
@@ -67,6 +72,21 @@ export class UserService {
     const currentCompany =  this.getCurrentCompany();
     const isPartner = currentCompany && (currentCompany.role === 'partner');
     return isPartner;
+  }
+
+  public userIsAdmin() {
+    const currentUser: UserTokenData = this.getCurrentUserData();
+    return currentUser.is_admin;
+  }
+
+  public validateToken() {
+    let promise: Promise<any> = new Promise((resolve, reject) => {
+      this.tokenService.validateToken().subscribe(
+        (resp) =>  resolve(resp['data']),
+        () =>  reject(false)
+      )
+    });
+    return promise;
   }
 
   public isCustomer() {

@@ -16,6 +16,7 @@ export class AuthGuard implements CanActivate {
       let isAuthenticated = this.tokenService.userSignedIn();
       if(!isAuthenticated){
         this.router.navigateByUrl('');
+        return false;
       }
       const hasUserData = this.tokenService.currentUserData ? true : this.validateToken();
       return hasUserData;

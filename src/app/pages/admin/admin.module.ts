@@ -5,6 +5,8 @@ import { MaterialModule } from '../../material.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ComponentsModule } from '../../components/components.module';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -29,10 +31,12 @@ import { SettingsComponent } from './settings/settings.component';
   imports: [
     CommonModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     ComponentsModule,
     AdminRoutingModule,
     HttpClientModule,
-    TranslateModule
+    TranslateModule.forChild(),
   ]
 })
 export class AdminModule { }
