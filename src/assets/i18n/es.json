@@ -21,6 +21,14 @@
     "forgot_password": "Olvidaste tu contraseña?",
     "already_account": "Ya tengo una cuenta"
   },
+  "recover_password": {
+    "title": "Recuperar Contraseña",
+    "form": {
+      "email": "Correo electrónico"
+    },
+    "recover": "Recuperar",
+    "already_account": "Ya tengo una cuenta"
+  },
   "common": {
     "update_data": "Actualizar Datos",
     "update_password": "Actualizar Clave",
