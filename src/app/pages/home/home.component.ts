@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
-import { User, UserStatus, Employee, Notification } from '../../models';
+import { User, UserStatus, Notification } from '../../models';
 import { UserService, UtilsService } from '../../services';
 import { Observable } from 'rxjs';
 
@@ -11,7 +11,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  currentEmployee: Employee;
   updatedView: boolean = false;
   loadNotifications: boolean = false;
   notifications: Array<Notification> = [];
@@ -49,9 +48,10 @@ export class HomeComponent implements OnInit {
   onRegisterCompany = () => this.router.navigate(['home/company/register']);
 
   onChangeEmployeeAccount (company) {
-    if (this.currentEmployee.id !== company.id){
+    let currentEmployee = this.userService.getCurrentCompany();
+    if (currentEmployee.id !== company.id){
       this.userService.updateCompanyIdView(company.id).subscribe(resp =>{
-        this.currentEmployee = company;
+        currentEmployee = company;
         this.updatedView = true;
         setTimeout(() => { this.updatedView = false }, 1000);
       });
@@ -145,6 +145,13 @@ export class HomeComponent implements OnInit {
     let updateNotification = resp['notification'] || {};
     this.notifications[this.findIndexNotification(updateNotification.id)].status = updateNotification.status;
     this.totalPendingNotifications = this.totalPendingNotifications > 0 ? this.totalPendingNotifications - 1 : this.totalPendingNotifications;
+  }
+
+  isCompanyAproved() {
+    const currentEmployee = this.userService.getCurrentCompany();
+    const allowedRol = this.userService.userIsCashier();
+    const isCompanyAproverd =  currentEmployee.status === UserStatus.APPROVED;
+    return allowedRol && isCompanyAproverd;
   }
 
   getAvatar = this.utilsService.getAvatar;
