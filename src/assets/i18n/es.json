@@ -35,7 +35,8 @@
     "status": {
       "approved": "Aprobado",
       "pending": "Pendiente",
-      "disabled": "Deshabilitado"
+      "disabled": "Deshabilitado",
+      "declined": "Rechazado"
     },
     "actions": {
       "enable": "Activar",
