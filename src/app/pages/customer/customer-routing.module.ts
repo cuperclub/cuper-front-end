@@ -4,8 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 //Pages
 import { PromotionsComponent } from './promotions/promotions.component';
 
+//Guards
+import { AuthGuard } from '../../guards/auth/auth.guard';
+
 const routes: Routes = [
-  { path: '', component: PromotionsComponent },
+  { path: '', component: PromotionsComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

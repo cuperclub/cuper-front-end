@@ -9,19 +9,19 @@ import { PlansComponent } from './plans/plans.component';
 import { SettingsComponent } from './settings/settings.component';
 
 //Guards
-import { AuthGuard } from '../../guards/auth/auth.guard';
+import { AdminGuard } from '../../guards/admin/admin.guard';
 
 const routes: Routes = [
   {
-    path: 'admin',
+    path: '',
     component: AdministrationComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AdminGuard],
     children: [
-      { path: 'companies', component: CompaniesComponent},
-      { path: 'customers', component: CustomersComponent },
-      { path: 'categories', component: CategoriesComponent},
-      { path: 'plans', component: PlansComponent},
-      { path: 'settings', component: SettingsComponent},
+      { path: 'companies', component: CompaniesComponent, canActivate: [AdminGuard]},
+      { path: 'customers', component: CustomersComponent, canActivate: [AdminGuard]},
+      { path: 'categories', component: CategoriesComponent, canActivate: [AdminGuard]},
+      { path: 'plans', component: PlansComponent, canActivate: [AdminGuard]},
+      { path: 'settings', component: SettingsComponent, canActivate: [AdminGuard]},
     ],
   }
 ];
