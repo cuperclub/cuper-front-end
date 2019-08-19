@@ -5,7 +5,7 @@
       <mat-option class="item-list" *ngFor="let user of users | async" [value]="user.name" (click)="onClickOption(user)">
         <div class="user-search-item">
           <div class="avatar-col">
-            <cuper-avatar [imageSrc]="user.image_url || defaultImageProfile" [size]="25"></cuper-avatar>
+            <cuper-avatar [imageSrc]="user.image_url || getAvatar(user.join_at) || defaultImageProfile" [size]="30"></cuper-avatar>
           </div>
           <div class="content-col">
             <div class="title">{{user.name}}</div>
@@ -19,10 +19,10 @@
     <div class="user-preview-card">
       <div class="container">
         <cuper-avatar *ngIf="!currentUser" [imageSrc]="defaultImageProfile" [size]="60"></cuper-avatar>
-        <cuper-avatar *ngIf="currentUser" [imageSrc]="currentUser.image" [size]="60"></cuper-avatar>
+        <cuper-avatar *ngIf="currentUser" [imageSrc]="currentUser.image_url || getAvatar(currentUser.join_at)" [size]="60"></cuper-avatar>
         <div class="name" *ngIf="currentUser">{{currentUser.name}}</div>
         <div class="name" *ngIf="!currentUser">{{'common.names' | translate}}</div>
-        <div class="national_id" *ngIf="currentUser">{{currentUser.national_id}}</div>
+        <div class="national_id" *ngIf="currentUser">{{currentUser.national_id || currentUser.email}}</div>
         <div class="national_id" *ngIf="!currentUser">{{'common.national_id' | translate}}</div>
       </div>
       <div class="footer">

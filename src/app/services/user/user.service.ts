@@ -102,7 +102,7 @@ export class UserService {
   }
 
   public answerNotifications(notificationId, params) {
-    return this.httpClient.put<Notification[]>(`${this.apiURL}/api/notifications/${notificationId}/answer_request_employee`, params);
+    return this.httpClient.put(`${this.apiURL}/api/notifications/${notificationId}/answer_request_employee`, params);
   }
 
   public readNotifications() {

@@ -5,4 +5,5 @@ export interface Notification {
   from_user_id: number;
   to_user_id: number;
   created_at: number;
+  id: number;
 }
