@@ -36,6 +36,6 @@ export class AdministrationComponent implements OnInit {
     this.router.navigate(['home/profile']);
   }
 
-  onRegisterCompany = () => this.router.navigate(['home/company/register']);
+  onRegisterCompany = () => this.router.navigate(['home/register_company']);
   getAvatar = this.utilsService.getAvatar;
 }

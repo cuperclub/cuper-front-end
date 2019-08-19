@@ -22,12 +22,12 @@
         align-items: center;
 
         .name {
-          font-family: 'Circular-Book';
+          // font-family: 'Circular-Book';
           font-size: 25px;
         }
 
         .national_id {
-          font-family: 'Lato Regular';
+          // font-family: 'Lato Regular';
           font-size: 16px;
           color: $gray-dark;
         }
@@ -57,6 +57,10 @@
   .avatar-col {
     flex-basis: 10%;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
   }
 
   .content-col {

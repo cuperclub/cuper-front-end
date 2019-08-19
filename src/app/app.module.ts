@@ -23,6 +23,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
+import { CompanyRegisterComponent } from './pages/company-register/company-register.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -37,6 +38,7 @@ export function createTranslateLoader(http: HttpClient) {
     DashboardComponent,
     ProfileComponent,
     RecoverPasswordComponent,
+    CompanyRegisterComponent,
   ],
   imports: [
     BrowserModule,

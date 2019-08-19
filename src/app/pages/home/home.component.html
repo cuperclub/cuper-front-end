@@ -42,8 +42,8 @@
 			<div class="notifications-menu" (click)="getNotifications()">
 				<div class="menu-not" [matMenuTriggerFor]="menuNotification">
 					<div class="menu-action">
-						<div class="count-notifications" *ngIf="user.pending_notifications > 0">
-							{{user.pending_notifications}}
+						<div class="count-notifications" *ngIf="totalPendingNotifications > 0">
+							{{totalPendingNotifications}}
 						</div>
 						<mat-icon>notifications</mat-icon>
 					</div>
@@ -55,7 +55,7 @@
 							<span class="description">
 								{{notification.title}}
 							</span>
-							<div class="actions">
+							<div class="actions" *ngIf="notification.status === 'pending'">
 								<span *ngFor="let action of notification.actions" class="action {{action.class}}"
 									(click)="action.onClick()">
 									{{action.title}}

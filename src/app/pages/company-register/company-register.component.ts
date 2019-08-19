@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { CompanyService, UserService, AdminPlanService } from '../../../services'
-import { OptionPlan } from '../../../components/card-plan/card-plan.component';
+import { CompanyService, UserService, AdminPlanService } from '../../services'
+import { OptionPlan } from '../../components/card-plan/card-plan.component';
 import { MatSnackBar } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 

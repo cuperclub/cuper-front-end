@@ -6,14 +6,12 @@ import { NewRewardCardComponent } from '../../components/new-reward-card/new-rew
 
 //Pages
 import { MyCompanyComponent } from './my-company/my-company.component';
-import { CompanyRegisterComponent } from './company-register/company-register.component';
 import { RewardsComponent } from './rewards/rewards.component';
 import { RewardComponent } from './reward/reward.component';
 import { CompanyComponent } from './company/company.component';
 
 //Guards
 import { PartnerGuard } from '../../guards/partner/partner.guard';
-import { AuthGuard } from '../../guards/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -26,11 +24,6 @@ const routes: Routes = [
         path: 'home',
         component: MyCompanyComponent,
         canActivate: [PartnerGuard],
-      },
-      {
-        path: 'register',
-        component: CompanyRegisterComponent,
-        canActivate: [AuthGuard],
       },
       {
         path: 'reward',

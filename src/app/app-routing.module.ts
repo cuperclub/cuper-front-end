@@ -8,6 +8,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { CompanyRegisterComponent } from './pages/company-register/company-register.component';
 
 //Guards
 import { AuthGuard } from './guards/auth/auth.guard';
@@ -29,6 +30,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+      { path: 'register_company', component: CompanyRegisterComponent, canActivate: [AuthGuard] },
       {
         path: 'company',
         canActivate: [PartnerGuard],
