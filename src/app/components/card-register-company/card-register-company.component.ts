@@ -14,6 +14,6 @@ export class CardRegisterCompanyComponent {
     private router: Router
   ) { }
 
-  registerCompany = () => this.router.navigate(['home/company/register']);
+  registerCompany = () => this.router.navigate(['home/register_company']);
 
 }

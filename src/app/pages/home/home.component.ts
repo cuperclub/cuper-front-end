@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['home/profile']);
   }
 
-  onRegisterCompany = () => this.router.navigate(['home/company/register']);
+  onRegisterCompany = () => this.router.navigate(['home/register_company']);
 
   onChangeEmployeeAccount (company) {
     let currentEmployee = this.userService.getCurrentCompany();
