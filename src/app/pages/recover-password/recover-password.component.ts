@@ -18,14 +18,12 @@ export class RecoverPasswordComponent {
 
   recoverPassword() {
     this.tokenService.resetPassword({
-      login: this.user_email,
+      login: this.user_email
     }).subscribe(
       (resp) => {
-        debugger
         this.router.navigateByUrl('login');
       },
       ({ error }) => {
-        debugger
         this.message.open(error.errors, '', {
           duration: 2000
         });
