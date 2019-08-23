@@ -223,9 +223,10 @@
     display: flex;
     align-items: center;
 
-    &.disabled {
+    &.active {
       pointer-events: none;
-      opacity: 0.6;
+      background-color: $primary;
+      color: white;
       cursor: default;
     }
 

@@ -6,8 +6,8 @@
 	</div>
 	<div class="tabs-header" *ngIf="currentUser$ | async as user">
 		<div class="status-company" *ngIf="user.companies">
-			<div class="menu" [matMenuTriggerFor]="menu">
-				<div *ngIf="userService.getCurrentCompany() as currentEmployee" class="employee-container">
+			<div class="menu" [matMenuTriggerFor]="menu" *ngIf="userService.getCurrentCompany() as currentEmployee">
+				<div class="employee-container">
 					<div class="account">
 						<div class="company-name">
 							{{currentEmployee.name}}
@@ -24,11 +24,15 @@
 				</div>
 				<mat-menu #menu="matMenu">
 					<div mat-menu-item *ngFor="let company of user.companies" class="item-wrapper"
-						(click)="onChangeEmployeeAccount(company)">
+            (click)="onChangeEmployeeAccount(company)"
+            [class.active]="company.id === currentEmployee.id">
 						<cuper-avatar [imageSrc]="company.logo_url || getAvatar(company.join_at)" [size]="25"></cuper-avatar>
 						<div class="information">
 							<div class="name">{{ company.name}}</div>
-							<div class="role">{{ company.role}}</div>
+							<div class="role">{{ company.role}}/
+                <span [ngClass]="company.status">
+                  {{ 'common.status.'+ company.status | translate }}
+                </span></div>
 						</div>
 					</div>
 				</mat-menu>
