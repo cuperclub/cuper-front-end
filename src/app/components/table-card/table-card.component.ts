@@ -19,6 +19,7 @@ export class TableCardComponent implements OnInit {
   @Input() onClick: Function;
   @Input() indexActive: number = -1;
   @Input() pagniationOptions: PaginationDefinition;
+  defaultImage = '../../../../assets/images/background-reward.png';
 
   constructor() {
     this.items = this.items;

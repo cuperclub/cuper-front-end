@@ -219,6 +219,20 @@
     "rewards": {
       "title": "No has registrado ninguna recompensa",
       "tip": "Puedes crear una recompensa haciendo click en la parte superior"
+    },
+    "beneficiaries": {
+      "title": "Aqui se listaran los clientes",
+      "tip": "que canjeen esta promoción"
+    },
+    "transactions" : {
+      "input": {
+        "title": "No se han registrado transacciones de entrada",
+        "tip": "Estas se listaran aqui"
+      },
+      "output": {
+        "title": "No se han registrado transacciones de salida",
+        "tip": "Estas se listaran aqui"
+      }
     }
   }
 }
