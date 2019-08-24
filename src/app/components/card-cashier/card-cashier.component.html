@@ -28,8 +28,9 @@
         </button>
       </div>
     </div>
-    <div class="emptyState" *ngIf="!myEmployees">
-      Empty state
+    <div class="empty-state" *ngIf="myEmployees && myEmployees.length === 0">
+      <span class="title">{{ 'empty-state.cashiers.title' | translate }}</span>
+      <span class="tip">{{ 'empty-state.cashiers.tip' | translate }}</span>
     </div>
   </div>
 </mat-card>
