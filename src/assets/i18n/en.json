@@ -164,6 +164,39 @@
       "price": "Price",
       "information": "Information",
       "new": "New Plan"
+    },
+    "settings": {
+      "edit": "Edit Preferences",
+      "points_by_register": "Points by register",
+      "plans": "Select a plan"
+    }
+  },
+  "empty-state": {
+    "offices": {
+      "title": "You have not registered any office",
+      "tip": "You can add one clicking on the top"
+    },
+    "cashiers": {
+      "title": "You have not registered any employee",
+      "tip": "You can send an invitation clicking on the top"
+    },
+    "rewards": {
+      "title": "You have not registered any reward",
+      "tip": "You can create a reward clicking on the top"
+    },
+    "beneficiaries": {
+      "title": "Here the clients that redeem",
+      "tip": "this promotion will be listed"
+    },
+    "transactions" : {
+      "input": {
+        "title": "No incoming transactions have been recorded",
+        "tip": "They'll be shown here"
+      },
+      "output": {
+        "title": "No outbound transactions have been recorded",
+        "tip": "They'll be shown here"
+      }
     }
   }
 }
