@@ -10,7 +10,14 @@
       </cuper-reward-card>
       <mat-card class="column-card beneficiaries">
         <div class="title-column">{{ 'reward.beneficiaries' | translate }}</div>
-        <cuper-table [columnsDef]="columnsOutputTransaction" [data]="outputTransactions"></cuper-table>
+        <div class="empty-state" *ngIf="outputTransactions && !outputTransactions.length">
+          <span class="title">{{ 'empty-state.beneficiaries.title' | translate }}</span>
+          <span class="tip">{{ 'empty-state.beneficiaries.tip' | translate }}</span>
+        </div>
+        <cuper-table *ngIf="outputTransactions && outputTransactions.length"
+          [columnsDef]="columnsOutputTransaction"
+          [data]="outputTransactions">
+        </cuper-table>
       </mat-card>
     </div>
   </div>

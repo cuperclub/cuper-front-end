@@ -206,5 +206,33 @@
       "points_by_register": "Puntos por registro",
       "plans": "Seleccione un plan"
     }
+  },
+  "empty-state": {
+    "offices": {
+      "title": "No has registrado ninguna sucursal",
+      "tip": "Puedes crear una haciendo click en la parte superior"
+    },
+    "cashiers": {
+      "title": "No has registrado ninguna empleado",
+      "tip": "Puedes enviar una solicitud haciendo click en la parte superior"
+    },
+    "rewards": {
+      "title": "No has registrado ninguna recompensa",
+      "tip": "Puedes crear una recompensa haciendo click en la parte superior"
+    },
+    "beneficiaries": {
+      "title": "Aqui se listaran los clientes",
+      "tip": "que canjeen esta promoción"
+    },
+    "transactions" : {
+      "input": {
+        "title": "No se han registrado transacciones de entrada",
+        "tip": "Estas se listaran aqui"
+      },
+      "output": {
+        "title": "No se han registrado transacciones de salida",
+        "tip": "Estas se listaran aqui"
+      }
+    }
   }
 }
