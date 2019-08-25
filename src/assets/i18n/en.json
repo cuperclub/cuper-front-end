@@ -198,5 +198,11 @@
         "tip": "They'll be shown here"
       }
     }
+  },
+  "modals": {
+    "feedback": {
+      "feedback": "Feedback",
+      "status": "Change to status: "
+    }
   }
 }

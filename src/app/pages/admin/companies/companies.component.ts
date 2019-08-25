@@ -74,7 +74,7 @@ export class CompaniesComponent implements OnInit {
       data: {
         status: status,
         feedback: '',
-        company: this.companySelected
+        entity: this.companySelected
       }
     });
 

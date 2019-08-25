@@ -234,5 +234,11 @@
         "tip": "Estas se listaran aqui"
       }
     }
+  },
+  "modals": {
+    "feedback": {
+      "feedback": "Razon",
+      "status": "Cambiar a status: "
+    }
   }
 }
