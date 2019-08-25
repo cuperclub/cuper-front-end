@@ -1,10 +1,11 @@
 <div class="feedback-form">
   <form class="form">
+    <h3>{{'modals.feedback.status' | translate}} {{ 'common.status.'+ feedbackForm.status | translate }}</h3>
     <mat-form-field class="field-group">
       <textarea matInput
         [(ngModel)]="feedbackForm.feedback"
         name="feedback"
-        placeholder="{{ 'company.feedback' | translate }}">
+        placeholder="{{ 'modals.feedback.feedback' | translate }}">
       </textarea>
     </mat-form-field>
     <div class="footer-form">

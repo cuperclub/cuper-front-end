@@ -6,6 +6,7 @@ import { Employee } from '../../models';
 interface StatusData {
   status: string;
   feedback: string;
+  id: string;
 };
 
 @Injectable({
@@ -23,9 +24,8 @@ export class EmployeeService {
     return this.httpClient.get<Employee[]>(url);
   }
 
-
-  public updateStatusEmployee(employeeId: number, data: StatusData){
-    const url = `${this.apiURL}/api/partner/companies/employees/${employeeId}/update_state`
+  public updateStatusEmployee(data: StatusData){
+    const url = `${this.apiURL}/api/partner/companies/employees/${data.id}/update_state`
     return this.httpClient.put<Employee>(url, data);
   }
 
