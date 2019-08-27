@@ -59,18 +59,16 @@ export class NewRewardCardComponent implements OnInit {
         };
       });
     });
-    this.route.paramMap.subscribe(params => {
-      const rewardId = parseInt(params.get('rewardId'));
-      if(rewardId){
-        this.isEditRoute = true;
-        this.promotionService.getPromotion(rewardId).subscribe(reward => {
-          this.reward = reward;
-          this.officeSelected = this.myOffices.find(office => office.id === reward.office.id);
-        });
-      }else {
-        this.officeSelected = {};
-      }
-    });
+    const rewardId = parseInt(this.route.snapshot.paramMap.get('rewardId'));
+    if(rewardId){
+      this.isEditRoute = true;
+      this.promotionService.getPromotion(rewardId).subscribe(reward => {
+        this.reward = reward;
+        this.officeSelected = this.myOffices.find(office => office.id === reward.office.id);
+      });
+    }else {
+      this.officeSelected = {};
+    }
   }
 
   onSubmitReward() {
