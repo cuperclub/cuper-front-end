@@ -5,4 +5,7 @@
   <div *ngIf="control.errors.email">
     {{ 'errors.email' | translate }}
   </div>
+  <div *ngIf="control.errors.backendError">
+    {{ control.errors.backendError }}
+  </div>
 </div>

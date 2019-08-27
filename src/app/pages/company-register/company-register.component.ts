@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { CompanyService, UserService, AdminPlanService } from '../../services'
 import { OptionPlan } from '../../components/card-plan/card-plan.component';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatStepper } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -53,7 +53,7 @@ export class CompanyRegisterComponent implements OnInit {
     });
 
     this.planFormGroup = this._formBuilder.group({
-      selectPlan: [this.planSelected ? this.planSelected.time : 0, Validators.required]
+      selectPlan: ['', Validators.required]
     });
   }
 
@@ -66,10 +66,10 @@ export class CompanyRegisterComponent implements OnInit {
 
   isSelectedPlan = (plan) => plan === this.planSelected;
 
-  onSubmitCompany() {
+  onSubmitCompany(stepper: MatStepper) {
     this.companyService.registerMyCompany(this.companyFormGroup.value).subscribe(
       (resp) => this.onSuccess('company.validating', resp),
-      error =>  this.onError(error)
+      error =>  this.onError(error, stepper)
     );
   }
 
@@ -99,9 +99,10 @@ export class CompanyRegisterComponent implements OnInit {
     });
   }
 
-  onError(resp): void {
-    this.message.open(resp.errors, '', {
-      duration: 2000
-    });
+  onError(resp, stepper): void {
+    for (let key in resp.error) {
+      this.companyFormGroup.controls[key].setErrors({'backendError': resp.error[key]});
+    }
+    stepper.previous();
   }
 }
