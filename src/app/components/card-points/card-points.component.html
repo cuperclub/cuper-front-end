@@ -2,5 +2,8 @@
   <div class="card-content">
     <span class="points">{{user.points}} pts.</span>
     <span class="description">{{ 'common.available_points' | translate }}</span>
+    <button mat-stroked-button color="primary" (click)="getTransactions()">
+      Mis Trasacciones
+    </button>
   </div>
 </mat-card>

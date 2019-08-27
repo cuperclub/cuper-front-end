@@ -47,13 +47,15 @@ import { ChangePasswordDialogComponent } from './change-password-dialog/change-p
 import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
 import { PlanFormComponent } from './plan-form/plan-form.component';
 import { SettingsFormComponent } from './settings-form/settings-form.component';
+import { UserTransactionsComponent } from './user-transactions/user-transactions.component';
 
 import {
   DatetimeCellComponent,
   UserCellComponent,
   PromotionCellComponent,
   RolesCellComponent,
-  ActionsCellComponent
+  ActionsCellComponent,
+  TransactionTypeCellComponent
 } from './table/partials';
 
 const components = [
@@ -101,7 +103,9 @@ const components = [
   ChangePasswordDialogComponent,
   FeedbackFormComponent,
   PlanFormComponent,
-  SettingsFormComponent
+  SettingsFormComponent,
+  UserTransactionsComponent,
+  TransactionTypeCellComponent
 ];
 
 @NgModule({
@@ -125,7 +129,9 @@ const components = [
     ChangePasswordDialogComponent,
     FeedbackFormComponent,
     PlanFormComponent,
-    SettingsFormComponent
+    SettingsFormComponent,
+    UserTransactionsComponent,
+    TransactionTypeCellComponent
   ],
   imports: [
     CommonModule,

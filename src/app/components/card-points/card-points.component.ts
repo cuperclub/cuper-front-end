@@ -14,4 +14,8 @@ export class CardPointsComponent implements OnInit {
   ngOnInit() {
   }
 
+  getTransactions() {
+    console.log('My Transactions');
+  }
+
 }
