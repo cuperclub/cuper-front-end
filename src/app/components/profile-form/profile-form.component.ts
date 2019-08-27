@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { CardUserComponent } from '../card-user/card-user.component';
 import { MatSnackBar } from '@angular/material';
-
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService, UtilsService } from 'src/app/services';
 import { User } from '../../models';
 
@@ -22,10 +22,11 @@ interface DataOptions {
   styleUrls: ['./profile-form.component.scss']
 })
 export class ProfileFormComponent implements OnInit {
-  errorsForm: any = {};
+  profileForm: FormGroup;
   uploadFile: FileOptions;
 
   constructor(
+    private fb: FormBuilder,
     private userService: UserService,
     private utilsService: UtilsService,
     private message: MatSnackBar,
@@ -36,13 +37,25 @@ export class ProfileFormComponent implements OnInit {
 
   ngOnInit() {
     this.data.user.image = this.data.user.image || this.utilsService.getAvatar(this.data.user.join_at);
+    const defaultUser: User = {
+      name: '',
+      email: '',
+      national_id: ''
+    };
+    const currentUser = Object.assign(defaultUser, this.data.user);
+    this.profileForm = this.fb.group({
+      name: [currentUser.name, [Validators.required]],
+      email: [currentUser.email, [Validators.required]],
+      national_id: [currentUser.national_id, [Validators.required]]
+    });
   }
 
   onCloseDialog(): void {
     this.dialogRef.close();
   }
 
-  onSubmit(user): void {
+  onSubmit(): void {
+    const user = this.profileForm.value;
     let input = new FormData();
     input.append('name', user.name);
     input.append('email', user.email);
@@ -59,7 +72,9 @@ export class ProfileFormComponent implements OnInit {
         });
       },
       ({ error }) => {
-        this.errorsForm = error;
+        for (let key in error) {
+          this.profileForm.controls[key].setErrors({'backendError': error[key]});
+        }
       }
     );
   }
