@@ -52,7 +52,8 @@
     "national_id": "National Id",
     "messages": {
       "created": "Created successfully",
-      "updated": "Updated successfully"
+      "updated": "Updated successfully",
+      "sent": "Sent successfully"
     },
     "available_points": "Available Points"
   },
