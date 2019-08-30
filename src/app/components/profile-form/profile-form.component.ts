@@ -46,7 +46,7 @@ export class ProfileFormComponent implements OnInit {
     this.profileForm = this.fb.group({
       name: [currentUser.name, [Validators.required]],
       email: [currentUser.email, [Validators.required]],
-      national_id: [currentUser.national_id, [Validators.required]]
+      national_id: [currentUser.national_id, []]
     });
   }
 
@@ -59,7 +59,7 @@ export class ProfileFormComponent implements OnInit {
     let input = new FormData();
     input.append('name', user.name);
     input.append('email', user.email);
-    input.append('national_id', user.national_id);
+    input.append('national_id', user.national_id ? user.national_id : '');
     if(this.uploadFile) input.append('image', this.uploadFile.file);
 
     this.userService.updateMyData(input).subscribe(
