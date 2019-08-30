@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ColumnDefinition } from '../table/table.component';
-import { UserCellComponent, DatetimeCellComponent, TransactionTypeCellComponent } from '../table/partials';
+import { DatetimeCellComponent } from '../table/partials';
+import { UserService } from 'src/app/services';
 
 @Component({
   selector: 'cuper-user-transactions',
@@ -11,9 +12,17 @@ export class UserTransactionsComponent implements OnInit {
   transactions: Array<any>;
   columnsTransaction: ColumnDefinition[];
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.myTransactions().subscribe(transactions => {
+      var allTransactions = [...transactions['transaction_inputs'], ...transactions['transaction_outputs']]
+      allTransactions.sort(function(a, b) {
+          return a.created_at - b.created_at;
+      });
+      this.transactions = this.formatDataForTable(allTransactions);
+    });
+
     this.columnsTransaction = [
       {
         label: 'company',
@@ -30,13 +39,16 @@ export class UserTransactionsComponent implements OnInit {
       }
 
     ];
+  }
 
-    this.transactions = [
-      { company: 'Company 1', user: { name: 'Lenin Capa.', email: 'lenin@example.com' }, points: '+ 10', created_at: "1566938014703", kind: 'input' },
-      { company: 'Company 2', user: { name: 'Lenin Capa 1.', email: 'lenin@example.com' }, points: '- 140', created_at: "1566938014703", kind: 'output' },
-      { company: 'Company 3', user: { name: 'Lenin Capa 3.', email: 'lenin@example.com' }, points: '+ 20', created_at: "1566938014703", kind: 'input' },
-      { company: 'Company 4', user: { name: 'Lenin Capa 3.', email: 'lenin@example.com' }, points: '+ 2000', created_at: "1566938014703", kind: 'input' },
-    ]
+  formatDataForTable (transactions) {
+    return transactions.map((transaction) => {
+      return {
+        company: transaction.company,
+        points: transaction.kind === 'TransactionInput' ? `+ ${transaction.points}` : `- ${transaction.points}`,
+        created_at: transaction.created_at
+      }
+    });
   }
 
 }
