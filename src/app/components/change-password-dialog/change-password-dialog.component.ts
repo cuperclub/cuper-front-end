@@ -13,7 +13,6 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class ChangePasswordDialogComponent implements OnInit{
   passwordFormGroup: FormGroup;
-  errorsForm: any = {};
 
   constructor(
     private userService: UserService,
@@ -54,10 +53,9 @@ export class ChangePasswordDialogComponent implements OnInit{
   }
 
   onError = (resp) => {
-    this.errorsForm = resp.error;
-    this.message.open(resp.errors, '', {
-      duration: 2000
-    });
+    for (let key in resp.error) {
+      this.passwordFormGroup.controls[key].setErrors({'backendError': resp.error[key]});
+    }
   }
 
 }

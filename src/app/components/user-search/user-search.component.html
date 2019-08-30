@@ -26,18 +26,17 @@
         <div class="national_id" *ngIf="!currentUser">{{'common.national_id' | translate}}</div>
       </div>
       <div class="footer">
-        <div></div>
-        <button mat-flat-button *ngIf="rightButton"
-          color="primary"
-          (click)="rightButton.action()"
-          [disabled]="!currentUser">
-          {{ rightButton.label | translate }}
-        </button>
         <button mat-flat-button *ngIf="leftButton"
           color="accent"
           (click)="leftButton.action()"
           [disabled]="!currentUser">
           {{ leftButton.label | translate }}
+        </button>
+        <button mat-flat-button *ngIf="rightButton"
+          color="primary"
+          (click)="rightButton.action()"
+          [disabled]="!currentUser">
+          {{ rightButton.label | translate }}
         </button>
       </div>
     </div>

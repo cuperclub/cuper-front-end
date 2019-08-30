@@ -64,7 +64,8 @@
     "national_id": "Cédula",
     "messages": {
       "created": "Creado correctamente",
-      "updated": "Actualizado correctamente"
+      "updated": "Actualizado correctamente",
+      "sent": "Enviado correctamente"
     },
     "available_points": "Puntos Disponibles",
     "promotion": {
@@ -113,6 +114,7 @@
     "create": "Crear nueva recompensa",
     "preview": "Detalles Promoción",
     "beneficiaries": "Beneficiarios de esta promoción",
+    "office_required": "Por favor seleccione una oficina",
     "new": {
       "form": {
         "title": "Describe tu promoción",

@@ -1,5 +1,5 @@
 <div class="user-form">
-  <form class="form">
+  <form class="form" [formGroup]="profileForm">
     <div class="avatar-container">
       <cuper-avatar-file
         [file]="data.user.image_url"
@@ -8,40 +8,31 @@
       </cuper-avatar-file>
     </div>
     <mat-form-field class="field-group">
-      <input matInput
-        [(ngModel)]="data.user.name"
-        name="name"
-        placeholder="{{ 'user.name' | translate }}"
-        required>
+      <input matInput formControlName="name" placeholder="{{ 'user.name' | translate }}">
+      <mat-error>
+        <cuper-control-messages [control]="profileForm.get('name')">
+        </cuper-control-messages>
+      </mat-error>
     </mat-form-field>
-    <mat-error *ngIf="errorsForm.name">
-      {{errorsForm.name[0]}}
-    </mat-error>
     <mat-form-field class="field-group">
-      <input matInput
-        [(ngModel)]="data.user.email"
-        name="email"
-        placeholder="{{ 'user.email' | translate }}"
-        required>
+      <input matInput formControlName="email" placeholder="{{ 'user.email' | translate }}">
+      <mat-error>
+        <cuper-control-messages [control]="profileForm.get('email')">
+        </cuper-control-messages>
+      </mat-error>
     </mat-form-field>
-    <mat-error *ngIf="errorsForm.email">
-      {{errorsForm.email[0]}}
-    </mat-error>
     <mat-form-field class="field-group">
-      <input matInput
-        [(ngModel)]="data.user.national_id"
-        name="national_id"
-        placeholder="{{ 'user.national_id' | translate }}"
-        required>
+      <input matInput formControlName="national_id" placeholder="{{ 'user.national_id' | translate }}">
+      <mat-error>
+        <cuper-control-messages [control]="profileForm.get('national_id')">
+        </cuper-control-messages>
+      </mat-error>
     </mat-form-field>
-    <mat-error *ngIf="errorsForm.national_id">
-      {{errorsForm.national_id[0]}}
-    </mat-error>
     <div class="footer-form">
       <button mat-flat-button color="secondary" (click)="onCloseDialog()">
         {{ 'common.cancel' | translate }}
       </button>
-      <button mat-flat-button color="primary" (click)="onSubmit(data.user)">
+      <button mat-flat-button color="primary" (click)="onSubmit()">
         {{ 'common.ok' | translate }}
       </button>
     </div>
