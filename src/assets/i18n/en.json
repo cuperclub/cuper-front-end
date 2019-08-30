@@ -71,7 +71,6 @@
     "validating": "your company will be validate",
     "category": "Category",
     "feedback": "Feedback"
-
   },
   "office": {
     "create": "Create a new office"
@@ -84,6 +83,7 @@
     "create": "Create new reward",
     "preview": "Reward Details",
     "beneficiaries": "beneficiaries of this reward",
+    "office_required": "Please select an office",
     "new": {
       "form": {
         "title": "What's the name of your campaign?",
