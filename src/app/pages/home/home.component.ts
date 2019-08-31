@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
 import { User, UserStatus, Notification } from '../../models';
-import { UserService, UtilsService } from '../../services';
+import { UserService, UtilsService, PusherService } from '../../services';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private utilsService: UtilsService,
+    private pusherService: PusherService
   ) {}
 
   ngOnInit() {
@@ -30,6 +31,10 @@ export class HomeComponent implements OnInit {
     //initial notifications
     const current_user = this.userService.getCurrentUserData();
     this.totalPendingNotifications = current_user.pending_notifications;
+    this.pusherService.channel.bind('my-event', data => {
+      //recibed notification data
+      console.log(data)
+    });
   }
 
   logOut() {
