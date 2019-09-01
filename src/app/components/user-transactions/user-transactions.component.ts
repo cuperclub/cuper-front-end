@@ -12,6 +12,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class UserTransactionsComponent implements OnInit {
   transactions: Array<any>;
   columnsTransaction: ColumnDefinition[];
+  loaded: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -22,9 +23,10 @@ export class UserTransactionsComponent implements OnInit {
     this.userService.myTransactions().subscribe(transactions => {
       var allTransactions = [...transactions['transaction_inputs'], ...transactions['transaction_outputs']]
       allTransactions.sort(function(a, b) {
-          return a.created_at - b.created_at;
+        return a.created_at - b.created_at;
       });
       this.transactions = this.formatDataForTable(allTransactions);
+      this.loaded = true;
     });
 
     this.columnsTransaction = [

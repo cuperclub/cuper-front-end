@@ -10,6 +10,7 @@
       <span class="tip">{{ 'empty-state.transactions.user.tip' | translate }}</span>
     </div>
   </div>
+  <cuper-loader class="loader" *ngIf="!loaded"></cuper-loader>
   <div class="actions">
     <button mat-flat-button color="secondary" (click)="onCloseDialog()">
       {{ 'common.cancel' | translate }}
