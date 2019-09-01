@@ -224,13 +224,17 @@
       "title": "Aqui se listaran los clientes",
       "tip": "que canjeen esta promoción"
     },
-    "transactions" : {
+    "transactions": {
       "input": {
         "title": "No se han registrado transacciones de entrada",
         "tip": "Estas se listaran aqui"
       },
       "output": {
         "title": "No se han registrado transacciones de salida",
+        "tip": "Estas se listaran aqui"
+      },
+      "user": {
+        "title": "No se ha registrado ninguna transacción ",
         "tip": "Estas se listaran aqui"
       }
     }

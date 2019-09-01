@@ -196,6 +196,10 @@
       "output": {
         "title": "No outbound transactions have been recorded",
         "tip": "They'll be shown here"
+      },
+      "user": {
+        "title": "No se ha registrado ninguna transacción ",
+        "tip": "Estas se listaran aqui"
       }
     }
   },

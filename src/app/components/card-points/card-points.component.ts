@@ -17,7 +17,7 @@ export class CardPointsComponent implements OnInit {
   }
 
   getTransactions() {
-    const dialogRef = this.dialog.open(UserTransactionsComponent, {
+    this.dialog.open(UserTransactionsComponent, {
       width: '500px',
       data: {}
     });
