@@ -54,8 +54,7 @@ import {
   UserCellComponent,
   PromotionCellComponent,
   RolesCellComponent,
-  ActionsCellComponent,
-  TransactionTypeCellComponent
+  ActionsCellComponent
 } from './table/partials';
 
 const components = [
@@ -104,8 +103,7 @@ const components = [
   FeedbackFormComponent,
   PlanFormComponent,
   SettingsFormComponent,
-  UserTransactionsComponent,
-  TransactionTypeCellComponent
+  UserTransactionsComponent
 ];
 
 @NgModule({
@@ -130,8 +128,7 @@ const components = [
     FeedbackFormComponent,
     PlanFormComponent,
     SettingsFormComponent,
-    UserTransactionsComponent,
-    TransactionTypeCellComponent
+    UserTransactionsComponent
   ],
   imports: [
     CommonModule,
