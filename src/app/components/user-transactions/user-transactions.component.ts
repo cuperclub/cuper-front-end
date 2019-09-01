@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ColumnDefinition } from '../table/table.component';
 import { DatetimeCellComponent } from '../table/partials';
 import { UserService } from 'src/app/services';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'cuper-user-transactions',
@@ -12,7 +13,10 @@ export class UserTransactionsComponent implements OnInit {
   transactions: Array<any>;
   columnsTransaction: ColumnDefinition[];
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    public dialogRef: MatDialogRef<any>,
+    @Inject(MAT_DIALOG_DATA) public data) { }
 
   ngOnInit() {
     this.userService.myTransactions().subscribe(transactions => {
@@ -26,7 +30,7 @@ export class UserTransactionsComponent implements OnInit {
     this.columnsTransaction = [
       {
         label: 'company',
-        displayName: 'Company',
+        displayName: 'Compania',
       },
       {
         label: 'points',
@@ -51,4 +55,7 @@ export class UserTransactionsComponent implements OnInit {
     });
   }
 
+  onCloseDialog(): void {
+    this.dialogRef.close();
+  }
 }

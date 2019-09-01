@@ -1,12 +1,18 @@
 <div class="transactions-container">
+  <h3>{{ 'transactions.title' | translate }}</h3>
   <cuper-table *ngIf="transactions && transactions.length"
     [columnsDef]="columnsTransaction"
     [data]="transactions">
   </cuper-table>
-  <!-- <div *ngIf="transactions && !transactions.length"> -->
+  <div *ngIf="transactions && !transactions.length">
     <div class="empty-state">
       <span class="title">{{ 'empty-state.transactions.input.title' | translate }}</span>
       <span class="tip">{{ 'empty-state.transactions.input.tip' | translate }}</span>
     </div>
-  <!-- </div> -->
+  </div>
+  <div class="actions">
+    <button mat-flat-button color="secondary" (click)="onCloseDialog()">
+      {{ 'common.cancel' | translate }}
+    </button>
+  </div>
 </div>

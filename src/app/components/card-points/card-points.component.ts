@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../models';
+import { UserTransactionsComponent } from '../user-transactions/user-transactions.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'cuper-card-points',
@@ -9,13 +11,15 @@ import { User } from '../../models';
 export class CardPointsComponent implements OnInit {
   @Input() user: User;
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
   getTransactions() {
-    console.log('My Transactions');
+    const dialogRef = this.dialog.open(UserTransactionsComponent, {
+      width: '500px',
+      data: {}
+    });
   }
-
 }

@@ -1,0 +1,9 @@
+.transactions-container {
+  ::ng-deep table {
+    box-shadow: none;
+  }
+  .actions {
+    text-align: end;
+    margin-top: 10px;
+  }
+}
