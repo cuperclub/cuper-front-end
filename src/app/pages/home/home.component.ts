@@ -3,6 +3,7 @@ import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
 import { User, UserStatus, Notification } from '../../models';
 import { UserService, UtilsService, PusherService } from '../../services';
+import { MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -22,7 +23,8 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private utilsService: UtilsService,
-    private pusherService: PusherService
+    private pusherService: PusherService,
+    private message: MatSnackBar,
   ) {}
 
   ngOnInit() {
@@ -31,9 +33,16 @@ export class HomeComponent implements OnInit {
     //initial notifications
     const current_user = this.userService.getCurrentUserData();
     this.totalPendingNotifications = current_user.pending_notifications;
-    this.pusherService.channel.bind('my-event', data => {
-      //recibed notification data
-      console.log(data)
+    const eventNotification = 'new-notification';
+    this.pusherService.channel.bind(eventNotification, data => {
+      const message = data.message;
+      this.message.open(message, 'Ok', {
+        duration: 5000,
+        verticalPosition: 'top'
+      });
+      this.totalPendingNotifications = this.totalPendingNotifications + 1;
+      current_user.pending_notifications = current_user.pending_notifications + 1;
+      this.userService.userDataEdited = current_user;
     });
   }
 

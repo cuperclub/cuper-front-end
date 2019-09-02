@@ -15,6 +15,7 @@ export class PusherService {
       cluster: environment.pusher_cluster,
       encrypted: true
     });
-    this.channel = this.pusher.subscribe('my-channel');
+    const channelName = 'usernotifications.general'
+    this.channel = this.pusher.subscribe(channelName);
   }
 }
