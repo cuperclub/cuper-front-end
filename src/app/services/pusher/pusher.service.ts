@@ -10,12 +10,11 @@ export class PusherService {
   pusher: any;
   channel: any;
 
-  constructor() {
+  constructor(channelName: string) {
     this.pusher = new Pusher(environment.pusher_key, {
       cluster: environment.pusher_cluster,
       encrypted: true
     });
-    const channelName = 'usernotifications.general'
     this.channel = this.pusher.subscribe(channelName);
   }
 }

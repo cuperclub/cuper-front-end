@@ -23,18 +23,18 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private utilsService: UtilsService,
-    private pusherService: PusherService,
     private message: MatSnackBar,
   ) {}
 
   ngOnInit() {
     this.currentUser$ = this.userService.getObservableUserData();
-    this.userService.getCurrentUserData();
     //initial notifications
     const current_user = this.userService.getCurrentUserData();
     this.totalPendingNotifications = current_user.pending_notifications;
+    const channelName = `usernotifications.${current_user.id}`;
     const eventNotification = 'new-notification';
-    this.pusherService.channel.bind(eventNotification, data => {
+    const pusherService = new PusherService(channelName);
+    pusherService.channel.bind(eventNotification, data => {
       const message = data.message;
       this.message.open(message, 'Ok', {
         duration: 5000,
