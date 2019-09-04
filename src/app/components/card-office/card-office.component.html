@@ -17,8 +17,9 @@
         </div>
       </li>
     </ul>
-    <div class="emptyState" *ngIf="offices && offices.length === 0">
-      Empty state
+    <div class="empty-state" *ngIf="offices && offices.length === 0">
+      <span class="title">{{ 'empty-state.offices.title' | translate }}</span>
+      <span class="tip">{{ 'empty-state.offices.tip' | translate }}</span>
     </div>
     <cuper-loader
       class="loader"

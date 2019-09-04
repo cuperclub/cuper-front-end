@@ -98,9 +98,9 @@ export class OfficeFormComponent implements OnInit {
   }
 
   onError(resp): void {
-    this.message.open(resp.errors, '', {
-      duration: 2000
-    });
+    for (let key in resp.error) {
+      this.officeForm.controls[key].setErrors({'backendError': resp.error[key]});
+    }
   }
 
   onListerMapPosition(coordinates) {

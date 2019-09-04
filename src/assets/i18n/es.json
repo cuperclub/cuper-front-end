@@ -72,7 +72,8 @@
     "national_id": "Cédula",
     "messages": {
       "created": "Creado correctamente",
-      "updated": "Actualizado correctamente"
+      "updated": "Actualizado correctamente",
+      "sent": "Enviado correctamente"
     },
     "available_points": "Puntos Disponibles",
     "promotion": {
@@ -121,6 +122,7 @@
     "create": "Crear nueva recompensa",
     "preview": "Detalles Promoción",
     "beneficiaries": "Beneficiarios de esta promoción",
+    "office_required": "Por favor seleccione una oficina",
     "new": {
       "form": {
         "title": "Describe tu promoción",
@@ -213,6 +215,44 @@
       "edit": "Editar Preferencias",
       "points_by_register": "Puntos por registro",
       "plans": "Seleccione un plan"
+    }
+  },
+  "empty-state": {
+    "offices": {
+      "title": "No has registrado ninguna sucursal",
+      "tip": "Puedes crear una haciendo click en la parte superior"
+    },
+    "cashiers": {
+      "title": "No has registrado ninguna empleado",
+      "tip": "Puedes enviar una solicitud haciendo click en la parte superior"
+    },
+    "rewards": {
+      "title": "No has registrado ninguna recompensa",
+      "tip": "Puedes crear una recompensa haciendo click en la parte superior"
+    },
+    "beneficiaries": {
+      "title": "Aqui se listaran los clientes",
+      "tip": "que canjeen esta promoción"
+    },
+    "transactions": {
+      "input": {
+        "title": "No se han registrado transacciones de entrada",
+        "tip": "Estas se listaran aqui"
+      },
+      "output": {
+        "title": "No se han registrado transacciones de salida",
+        "tip": "Estas se listaran aqui"
+      },
+      "user": {
+        "title": "No se ha registrado ninguna transacción ",
+        "tip": "Estas se listaran aqui"
+      }
+    }
+  },
+  "modals": {
+    "feedback": {
+      "feedback": "Razon",
+      "status": "Cambiar a status: "
     }
   }
 }

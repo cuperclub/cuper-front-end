@@ -34,16 +34,13 @@ export class RewardComponent implements OnInit {
         component: DatetimeCellComponent
       }
     ];
-
-    this.route.paramMap.subscribe(params => {
-      const rewardId = parseInt(params.get('rewardId'));
-      if(rewardId){
-        this.promotionService.getPromotion(rewardId).subscribe(reward => {
-          this.reward = reward;
-        });
-        this.promotionService.getOutputsTransaction(rewardId).subscribe(resp => this.outputTransactions = resp['transaction_outputs']);
-      }
-    });
+    const rewardId = parseInt(this.route.snapshot.paramMap.get('rewardId'));
+    if(rewardId){
+      this.promotionService.getPromotion(rewardId).subscribe(reward => {
+        this.reward = reward;
+      });
+      this.promotionService.getOutputsTransaction(rewardId).subscribe(resp => this.outputTransactions = resp['transaction_outputs']);
+    }
   }
 
   onEditReward = () => this.router.navigate(['home/company/reward/edit/', this.reward.id]);

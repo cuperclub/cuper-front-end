@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
 import { User, UserStatus, Notification } from '../../models';
-import { UserService, UtilsService } from '../../services';
+import { UserService, UtilsService, PusherService } from '../../services';
+import { MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -22,14 +23,27 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private utilsService: UtilsService,
+    private message: MatSnackBar,
   ) {}
 
   ngOnInit() {
     this.currentUser$ = this.userService.getObservableUserData();
-    this.userService.getCurrentUserData();
     //initial notifications
     const current_user = this.userService.getCurrentUserData();
     this.totalPendingNotifications = current_user.pending_notifications;
+    const channelName = `usernotifications.${current_user.id}`;
+    const eventNotification = 'new-notification';
+    const pusherService = new PusherService(channelName);
+    pusherService.channel.bind(eventNotification, data => {
+      const message = data.message;
+      this.message.open(message, 'Ok', {
+        duration: 5000,
+        verticalPosition: 'top'
+      });
+      this.totalPendingNotifications = this.totalPendingNotifications + 1;
+      current_user.pending_notifications = current_user.pending_notifications + 1;
+      this.userService.userDataEdited = current_user;
+    });
   }
 
   logOut() {
@@ -47,10 +61,13 @@ export class HomeComponent implements OnInit {
   onRegisterCompany = () => this.router.navigate(['home/register_company']);
 
   onChangeEmployeeAccount (company) {
-    let currentEmployee = this.userService.getCurrentCompany();
+    const currentEmployee = this.userService.getCurrentCompany();
     if (currentEmployee.id !== company.id){
-      this.userService.updateCompanyIdView(company.id).subscribe(resp =>{
-        currentEmployee = company;
+      this.userService.updateCompanyIdView(company.id).subscribe(() =>{
+        const currentUser = this.userService.getCurrentUserData();
+        currentUser.current_company_id = company.id;
+        this.userService.observerData.next(currentUser);
+        this.userService.userDataEdited = currentUser;
         this.updatedView = true;
         setTimeout(() => { this.updatedView = false }, 1000);
       });

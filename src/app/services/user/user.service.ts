@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AngularTokenService } from 'angular-token';
-import { User, Notification } from '../../models';
+import { User, InputTransaction } from '../../models';
 import { Observable, Subscriber } from 'rxjs';
 
 interface UserProfile extends User{
@@ -107,6 +107,10 @@ export class UserService {
 
   public readNotifications() {
     return this.httpClient.post(`${this.apiURL}/api/notifications/read_pending_notifications`, {});
+  }
+
+  public myTransactions() {
+    return this.httpClient.get<any[]>(`${this.apiURL}/api/users/my_transactions`);
   }
 
 }
