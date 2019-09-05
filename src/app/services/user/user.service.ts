@@ -113,4 +113,20 @@ export class UserService {
     return this.httpClient.get<any[]>(`${this.apiURL}/api/users/my_transactions`);
   }
 
+  public recoverMyPassword(email: string) {
+    const params = {
+      email,
+      redirect_url: 'http://localhost:4200/reset_password'
+    };
+    return this.httpClient.post(`${this.apiURL}/auth/password`, params);
+  }
+
+  public resetMyPassword(passwords) {
+    const params = {
+      password: passwords.password,
+      password_confirmation: passwords.password_confirmation
+    };
+    return this.httpClient.put(`${this.apiURL}/auth/password`,params);
+  }
+
 }

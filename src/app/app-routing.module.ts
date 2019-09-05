@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 //Pages
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, pathMatch: 'full', canActivate: [IsntSignedInGuard] },
   { path: 'register', component: RegisterComponent, pathMatch: 'full', canActivate: [IsntSignedInGuard] },
   { path: 'recover_password', component: RecoverPasswordComponent, pathMatch: 'full', canActivate: [IsntSignedInGuard] },
+  { path: 'reset_password', component: ResetPasswordComponent, pathMatch: 'full', canActivate: [IsntSignedInGuard] },
   {
     path: 'home',
     component: HomeComponent,

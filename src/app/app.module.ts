@@ -22,6 +22,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 import { CompanyRegisterComponent } from './pages/company-register/company-register.component';
 
@@ -39,6 +40,7 @@ export function createTranslateLoader(http: HttpClient) {
     ProfileComponent,
     RecoverPasswordComponent,
     CompanyRegisterComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,

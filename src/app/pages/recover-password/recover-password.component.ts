@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { AngularTokenService } from 'angular-token';
+import { UserService } from 'src/app/services';
 
 @Component({
   selector: 'cuper-recover-password',
@@ -13,14 +13,15 @@ export class RecoverPasswordComponent {
 
   constructor(
     private router: Router,
-    private tokenService: AngularTokenService,
+    private userService: UserService,
     private message: MatSnackBar) { }
 
   recoverPassword() {
-    this.tokenService.resetPassword({
-      login: this.user_email
-    }).subscribe(
+    this.userService.recoverMyPassword(this.user_email).subscribe(
       (resp) => {
+        this.message.open(resp['message'], '', {
+          duration: 2000
+        });
         this.router.navigateByUrl('login');
       },
       ({ error }) => {
