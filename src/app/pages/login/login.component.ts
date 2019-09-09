@@ -43,4 +43,13 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
+  loginWithFacebook() {
+    this.tokenService.signInOAuth(
+      'facebook'
+      ).subscribe(
+        res =>      console.log(res),
+        error =>    console.log(error)
+      );
+  }
 }

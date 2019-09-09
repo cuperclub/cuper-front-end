@@ -58,6 +58,10 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     AngularTokenModule.forRoot({
       apiBase: environment.apiBase,
+      oAuthPaths: {
+        facebook: 'auth/facebook'
+      },
+      oAuthWindowType: 'newWindow'
     })
   ],
   providers: [
