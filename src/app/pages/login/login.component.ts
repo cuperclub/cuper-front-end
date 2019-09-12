@@ -33,14 +33,9 @@ export class LoginComponent implements OnInit {
     }).subscribe(
       (resp) => {
         const { body: { data } } = resp;
-        const homeRoute = data.is_admin ? '/admin/companies' : '/home/dashboard'
-        this.router.navigateByUrl(homeRoute);
+        this.onSuccess(data);
       },
-      ({ error }) => {
-        this.message.open(error.errors, '', {
-          duration: 2000
-        });
-      }
+      error =>  this.onError(error)
     );
   }
 
@@ -48,8 +43,19 @@ export class LoginComponent implements OnInit {
     this.tokenService.signInOAuth(
       'facebook'
       ).subscribe(
-        res =>      console.log(res),
-        error =>    console.log(error)
+        res =>    this.onSuccess(res),
+        error =>  this.onError(error)
       );
+  }
+
+  onSuccess(data): void {
+    const homeRoute = data.is_admin ? '/admin/companies' : '/home/dashboard'
+    this.router.navigateByUrl(homeRoute);
+  }
+
+  onError(error): void {
+    this.message.open(error.errors, '', {
+      duration: 2000
+    });
   }
 }
