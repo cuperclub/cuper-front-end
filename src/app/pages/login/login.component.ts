@@ -41,7 +41,16 @@ export class LoginComponent implements OnInit {
 
   loginWithFacebook() {
     this.tokenService.signInOAuth(
-      'facebook'
+      'facebook',
+      ).subscribe(
+        res =>    this.onSuccess(res),
+        error =>  this.onError(error)
+      );
+  }
+
+  loginWithGoogle() {
+    this.tokenService.signInOAuth(
+      'google_oauth2',
       ).subscribe(
         res =>    this.onSuccess(res),
         error =>  this.onError(error)
