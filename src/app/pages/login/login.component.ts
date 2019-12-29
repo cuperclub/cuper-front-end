@@ -33,14 +33,38 @@ export class LoginComponent implements OnInit {
     }).subscribe(
       (resp) => {
         const { body: { data } } = resp;
-        const homeRoute = data.is_admin ? '/admin/companies' : '/home/dashboard'
-        this.router.navigateByUrl(homeRoute);
+        this.onSuccess(data);
       },
-      ({ error }) => {
-        this.message.open(error.errors, '', {
-          duration: 2000
-        });
-      }
+      error =>  this.onError(error)
     );
+  }
+
+  loginWithFacebook() {
+    this.tokenService.signInOAuth(
+      'facebook',
+      ).subscribe(
+        res =>    this.onSuccess(res),
+        error =>  this.onError(error)
+      );
+  }
+
+  loginWithGoogle() {
+    this.tokenService.signInOAuth(
+      'google_oauth2',
+      ).subscribe(
+        res =>    this.onSuccess(res),
+        error =>  this.onError(error)
+      );
+  }
+
+  onSuccess(data): void {
+    const homeRoute = data.is_admin ? '/admin/companies' : '/home/dashboard'
+    this.router.navigateByUrl(homeRoute);
+  }
+
+  onError(error): void {
+    this.message.open(error.errors, '', {
+      duration: 2000
+    });
   }
 }

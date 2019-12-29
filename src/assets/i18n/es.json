@@ -8,7 +8,9 @@
     "signin": "Iniciar sesión",
     "forgot_password": "Olvidaste tu contraseña?",
     "create_account": "¿Aún no tienes cuenta?",
-    "register": "Regístrate"
+    "register": "Regístrate",
+    "login-facebook": "Iniciar Sesión con Facebook",
+    "login-google": "Iniciar Sesión con Google"
   },
   "register": {
     "title": "Registro",
@@ -19,7 +21,9 @@
     },
     "create": "Crear cuenta",
     "forgot_password": "Olvidaste tu contraseña?",
-    "already_account": "Ya tengo una cuenta"
+    "already_account": "Ya tengo una cuenta",
+    "register-facebook": "Regístrate con Facebook",
+    "register-google": "Regístrate con Google"
   },
   "recover_password": {
     "title": "Recuperar Contraseña",

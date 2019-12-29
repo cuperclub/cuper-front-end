@@ -14,3 +14,28 @@
     padding-top: 5px;
   }
 }
+
+.btn-social-network {
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.34);
+  background-color: white;
+  border-radius: 4px;
+  padding: 8px 16px;
+  // max-width: 212px;
+  margin-top: 10px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: black;
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .logo {
+      padding-right: 8px;
+    }
+  }
+}
