@@ -33,12 +33,18 @@
           {{ 'login.register' | translate }}
         </a>
       </div>
-      <button (click)="loginWithFacebook()">
-        LOGIN FACEBOOK
-      </button>
-      <button (click)="loginWithGoogle()">
-        LOGIN GOOGLE
-      </button>
+      <div class="btn-social-network" (click)="loginWithFacebook()">
+        <div class="btn-container">
+          <img class="logo" src="../../../../assets/images/facebook-logo.svg" width="16px" />
+          {{ 'login.login-facebook' | translate }}
+        </div>
+      </div>
+      <div class="btn-social-network" (click)="loginWithGoogle()">
+        <div class="btn-container">
+          <img class="logo" src="../../../../assets/images/google-logo.svg" width="16px" />
+          {{ 'login.login-google' | translate }}
+        </div>
+      </div>
     </div>
   </div>
 </div>
