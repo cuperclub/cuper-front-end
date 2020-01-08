@@ -1,8 +1,13 @@
-<cuper-user-search
-  [rightButton]="rightButton"
-  [leftButton]="leftButton"
-  (propagateUserData)="onListerUserSearch($event)">
-</cuper-user-search>
+<div class="request-cashier-panel">
+  <cuper-user-search
+    [rightButton]="rightButton"
+    [leftButton]="leftButton"
+    (propagateUserData)="onListerUserSearch($event)">
+  </cuper-user-search>
+  <button mat-icon-button class="close-button" (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 <!-- <div class="panel-invitation" *ngIf="!currentUser">
   <div class="label">{{ 'company.request_cashier' | translate }}</div>
   <mat-form-field class="field-group">
