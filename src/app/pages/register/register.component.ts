@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AngularTokenService } from 'angular-token';
 import { MatSnackBar } from '@angular/material';
 import { UserRegister } from 'src/app/models';
-import { UserService } from 'src/app/services';
 
 @Component({
   selector: 'cuper-register',
@@ -20,8 +19,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private tokenService: AngularTokenService,
-    private message: MatSnackBar,
-    private userService: UserService
+    private message: MatSnackBar
   ) { }
 
   ngOnInit() {
