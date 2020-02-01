@@ -47,4 +47,32 @@ export class RegisterComponent implements OnInit {
     );
   }
 
+  loginWithFacebook() {
+    this.tokenService.signInOAuth(
+      'facebook',
+      ).subscribe(
+        () =>    this.onSuccess(),
+        error =>  this.onError(error)
+      );
+  }
+
+  loginWithGoogle() {
+    this.tokenService.signInOAuth(
+      'google_oauth2',
+      ).subscribe(
+        () =>    this.onSuccess(),
+        error =>  this.onError(error)
+      );
+  }
+
+  onSuccess(): void {
+    this.router.navigateByUrl('/home/dashboard');
+  }
+
+  onError(error): void {
+    this.message.open(error.errors, '', {
+      duration: 2000
+    });
+  }
+
 }
