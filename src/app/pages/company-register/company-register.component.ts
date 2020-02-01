@@ -18,6 +18,7 @@ export class CompanyRegisterComponent implements OnInit {
   plans: OptionPlan [];
   planSelected: OptionPlan;
   isUserNew: boolean = false;
+  loaded: boolean = false;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -43,17 +44,18 @@ export class CompanyRegisterComponent implements OnInit {
     this.isUserNew = this.userService.getCurrentUserData().companies.length === 0;
 
     this.planService.getPlans().subscribe(data => {
-      const plans = data['plans'] || [];
       const defaultPlan = {
         price: 0,
         time: '',
       };
+      const plans = data['plans'] || [];
+      const promotional_plan = data['promotional_plan'] || defaultPlan;
       this.plans = this.planService.plansAvailablesForCard(plans);
-      this.planSelected = this.isUserNew ? this.plans[0] : defaultPlan;
-    });
-
-    this.planFormGroup = this._formBuilder.group({
-      selectPlan: ['', Validators.required]
+      this.planSelected = this.planService.planForCard(promotional_plan);
+      this.planFormGroup = this._formBuilder.group({
+        selectPlan: [this.planSelected.time, Validators.required]
+      });
+      this.loaded = true;
     });
   }
 

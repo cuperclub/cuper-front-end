@@ -20,7 +20,9 @@
 		}
 
 		.form-container {
-			max-width: 40rem;
+      max-width: 40vw;
+      min-width: 30vw;
+      min-height: 20vh;
 
 			.plans-container {
 				display: flex;
