@@ -22,8 +22,9 @@
     "create": "Crear cuenta",
     "forgot_password": "Olvidaste tu contraseña?",
     "already_account": "Ya tengo una cuenta",
-    "register-facebook": "Regístrate con Facebook",
-    "register-google": "Regístrate con Google"
+    "login-facebook": "Continuar con Facebook",
+    "login-google": "Continuar con Google",
+    "condition": "O bien"
   },
   "recover_password": {
     "title": "Recuperar Contraseña",

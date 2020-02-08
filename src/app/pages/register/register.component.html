@@ -36,16 +36,21 @@
           {{ 'register.already_account' | translate }}
         </a>
       </div>
+      <div class="divider">
+        <div class="line"></div>
+        <span class="label">{{ 'register.condition' | translate }}</span>
+        <div class="line"></div>
+      </div>
       <div class="btn-social-network" (click)="loginWithFacebook()">
         <div class="btn-container">
           <img class="logo" src="../../../../assets/images/facebook-logo.svg" width="16px" />
-          {{ 'register.register-facebook' | translate }}
+          {{ 'register.login-facebook' | translate }}
         </div>
       </div>
       <div class="btn-social-network" (click)="loginWithGoogle()">
         <div class="btn-container">
           <img class="logo" src="../../../../assets/images/google-logo.svg" width="16px" />
-          {{ 'register.register-google' | translate }}
+          {{ 'register.login-google' | translate }}
         </div>
       </div>
     </div>
