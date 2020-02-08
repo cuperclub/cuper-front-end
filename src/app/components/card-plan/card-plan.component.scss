@@ -10,13 +10,14 @@
 
 	&.disabled {
 		background: $gray-dark;
-	}
+  }
 
   .icon {
     position: absolute;
-    right: 0px;
-    top: 0;
+    right: 3px;
+    top: 5px;
     color: $orange;
+    font-size: 20px;
   }
 
   .card-content {
@@ -25,6 +26,10 @@
     align-items: center;
     height: 100%;
 		position: relative;
+
+    &:hover {
+      background: rgba(0,0,0,0.2);
+    }
 
 		.name {
 			font-family: 'Lato-Regular';
