@@ -9,7 +9,7 @@
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="columnsDefinition"></tr>
-  <tr mat-row *matRowDef="let row; columns: columnsDefinition;"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnsDefinition; let element;" [ngClass]="element.class"></tr>
 </table>
 
 <mat-paginator *ngIf="pagniationOptions"

@@ -23,7 +23,7 @@ export class UserTransactionsComponent implements OnInit {
     this.userService.myTransactions().subscribe(transactions => {
       var allTransactions = [...transactions['transaction_inputs'], ...transactions['transaction_outputs']]
       allTransactions.sort(function(a, b) {
-        return a.created_at - b.created_at;
+        return b.created_at - a.created_at;
       });
       this.transactions = this.formatDataForTable(allTransactions);
       this.loaded = true;
@@ -52,7 +52,8 @@ export class UserTransactionsComponent implements OnInit {
       return {
         company: transaction.company,
         points: transaction.kind === 'TransactionInput' ? `+ ${transaction.points}` : `- ${transaction.points}`,
-        created_at: transaction.created_at
+        created_at: transaction.created_at,
+        class: transaction.kind === 'TransactionInput' ? 'input' : 'output'
       }
     });
   }
