@@ -6,6 +6,7 @@ import { PromotionService } from 'src/app/services';
 import { OutputTransactionService } from '../../services';
 import { MatSnackBar } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
+import { UtilsService } from 'src/app/services';
 
 @Component({
   selector: 'cuper-output-transaction-form',
@@ -22,6 +23,7 @@ export class OutputTransactionFormComponent implements OnInit {
     private transactionService: OutputTransactionService,
     private message: MatSnackBar,
     private translate: TranslateService,
+    private utilsService: UtilsService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
@@ -54,7 +56,8 @@ export class OutputTransactionFormComponent implements OnInit {
   }
 
   onError(resp): void {
-    this.message.open(resp.errors, '', {
+    const errors = resp.error ? this.utilsService.formatErrorsAsObject(resp.error) : resp.errors;
+    this.message.open(errors, '', {
       duration: 2000
     });
   }
