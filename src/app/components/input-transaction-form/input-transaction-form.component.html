@@ -5,6 +5,7 @@
         class="input-box"
         [(ngModel)]="data.invoice.cost"
         name="invoice_cost"
+        min=1
         placeholder="{{ 'transactions.input_form.cost.label' | translate }}"
         type="number">
       <mat-hint>{{ 'transactions.input_form.cost.description' | translate }}</mat-hint>

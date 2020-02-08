@@ -42,9 +42,20 @@ export class InputTransactionFormComponent {
   }
 
   onError(resp): void {
-    this.message.open(resp.errors, '', {
+    const errors = resp.error ? this.formatError(resp.error) : resp.errors;
+    this.message.open(errors, '', {
       duration: 2000
     });
+  }
+
+  formatError(error: {}) {
+    let errors = [];
+    const keys = Object.keys(error);
+    keys.forEach((key)=>{
+      let msg = `${key}: ${error[key].join(' ,')}`;
+      errors.push(msg);
+    });
+    return errors;
   }
 
 }
