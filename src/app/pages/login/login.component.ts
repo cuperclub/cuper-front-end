@@ -62,8 +62,9 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl(homeRoute);
   }
 
-  onError(error): void {
-    this.message.open(error.errors, '', {
+  onError(resp): void {
+    const errors = resp.error && resp.error.errors ? resp.error.errors : [];
+    this.message.open(errors, '', {
       duration: 2000
     });
   }
