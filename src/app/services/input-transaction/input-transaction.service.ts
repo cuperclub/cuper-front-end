@@ -17,7 +17,14 @@ export class InputTransactionService {
     return this.httpClient.post<InputTransaction>(`${this.apiURL}/api/transaction_inputs`, transaction);
   }
 
-  public getAll() {
-    return this.httpClient.get<InputTransaction[]>(`${this.apiURL}/api/transaction_inputs`);
+  public getAll(page?, per_page?) {
+    const paginationParams = {
+      params: {
+        page,
+        per_page
+      }
+    };
+    const params = (page && per_page) ? paginationParams : undefined;
+    return this.httpClient.get<InputTransaction[]>(`${this.apiURL}/api/transaction_inputs`, params);
   }
 }

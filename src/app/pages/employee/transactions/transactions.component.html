@@ -8,6 +8,12 @@
   <mat-tab-group>
     <mat-tab label="{{ 'transactions.tabs.input' | translate }}">
       <cuper-table [columnsDef]="columnsInputTransaction" [data]="inputTransactions"></cuper-table>
+      <mat-paginator *ngIf="pagniationOptionsInputTransactions"
+        [length]="pagniationOptionsInputTransactions.length"
+        [pageSize]="pagniationOptionsInputTransactions.pageSize"
+        [pageSizeOptions]="pagniationOptionsInputTransactions.pageSizeOptions"
+        (page)="pagniationOptionsInputTransactions.pageEvent($event)">
+      </mat-paginator>
       <mat-card *ngIf="inputTransactions && !inputTransactions.length">
         <div class="empty-state">
           <span class="title">{{ 'empty-state.transactions.input.title' | translate }}</span>
@@ -17,6 +23,12 @@
     </mat-tab>
     <mat-tab label="{{ 'transactions.tabs.output' | translate }}">
       <cuper-table [columnsDef]="columnsOutputTransaction" [data]="outputTransactions"></cuper-table>
+      <mat-paginator *ngIf="pagniationOptionsOutputTransactions"
+        [length]="pagniationOptionsOutputTransactions.length"
+        [pageSize]="pagniationOptionsOutputTransactions.pageSize"
+        [pageSizeOptions]="pagniationOptionsOutputTransactions.pageSizeOptions"
+        (page)="pagniationOptionsOutputTransactions.pageEvent($event)">
+      </mat-paginator>
       <mat-card *ngIf="outputTransactions && !outputTransactions.length">
         <div class="empty-state">
           <span class="title">{{ 'empty-state.transactions.output.title' | translate }}</span>
