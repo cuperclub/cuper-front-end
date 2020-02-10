@@ -4,6 +4,12 @@
     [columnsDef]="columnsTransaction"
     [data]="transactions">
   </cuper-table>
+  <mat-paginator *ngIf="paginationOptions"
+    [length]="paginationOptions.length"
+    [pageSize]="paginationOptions.pageSize"
+    [pageSizeOptions]="paginationOptions.pageSizeOptions"
+    (page)="paginationOptions.pageEvent($event)">
+  </mat-paginator>
   <div *ngIf="transactions && !transactions.length">
     <div class="empty-state">
       <span class="title">{{ 'empty-state.transactions.user.title' | translate }}</span>

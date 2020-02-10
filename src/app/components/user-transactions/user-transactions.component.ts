@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ColumnDefinition } from '../table/table.component';
+import { ColumnDefinition, PaginationDefinition } from '../table/table.component';
 import { DatetimeCellComponent } from '../table/partials';
 import { UserService } from 'src/app/services';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -13,6 +13,7 @@ export class UserTransactionsComponent implements OnInit {
   transactions: Array<any>;
   columnsTransaction: ColumnDefinition[];
   loaded: boolean = false;
+  paginationOptions: PaginationDefinition;
 
   constructor(
     private userService: UserService,
@@ -20,14 +21,25 @@ export class UserTransactionsComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data) { }
 
   ngOnInit() {
-    this.userService.myTransactions().subscribe(transactions => {
-      var allTransactions = [...transactions['transaction_inputs'], ...transactions['transaction_outputs']]
-      allTransactions.sort(function(a, b) {
-        return b.created_at - a.created_at;
-      });
-      this.transactions = this.formatDataForTable(allTransactions);
+    const initPage = 1;
+    const initItemsPerPage = 5;
+    this.userService.myTransactions(initPage, initItemsPerPage).subscribe(resp => {
+      this.transactions = this.formatDataForTable(resp['transactions']);
       this.loaded = true;
+      this.paginationOptions = {
+        length: resp['meta'].total_count,
+        pageSize: initItemsPerPage,
+        pageSizeOptions: [5, 10, 25, 100],
+        pageEvent: pageEvent
+      };
     });
+    const pageEvent = (paginationData) => {
+      const currentPage = paginationData.pageIndex + 1;
+      const items_per_page = paginationData.pageSize;
+      this.userService.myTransactions(currentPage, items_per_page).subscribe(resp => {
+        this.transactions = this.formatDataForTable(resp['transactions']);
+      });
+    };
 
     this.columnsTransaction = [
       {

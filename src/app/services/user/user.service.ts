@@ -109,8 +109,15 @@ export class UserService {
     return this.httpClient.post(`${this.apiURL}/api/notifications/read_pending_notifications`, {});
   }
 
-  public myTransactions() {
-    return this.httpClient.get<any[]>(`${this.apiURL}/api/users/my_transactions`);
+  public myTransactions(page?, per_page?) {
+    const paginationParams = {
+      params: {
+        page,
+        per_page
+      }
+    };
+    const params = (page && per_page) ? paginationParams : undefined;
+    return this.httpClient.get<any[]>(`${this.apiURL}/api/users/my_transactions`, params);
   }
 
   public recoverMyPassword(email: string) {
