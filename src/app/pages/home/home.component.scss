@@ -149,10 +149,17 @@
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 
+  .notifications-container {
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
   .notification {
     padding: 5px 10px;
     display: flex;
     flex-direction: column;
+    height: 30px;
 
 
     &:nth-child(odd) {

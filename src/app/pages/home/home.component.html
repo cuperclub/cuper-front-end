@@ -54,18 +54,22 @@
 					<mat-menu #menuNotification="matMenu" class="notifications">
 						<div *ngIf="notifications.length === 0" class="notification">
 							No tienes notificaciones
-						</div>
-						<div *ngFor="let notification of notifications" class="notification">
-							<span class="description">
-								{{notification.title}}
-							</span>
-							<div class="actions" *ngIf="notification.status === 'pending'">
-								<span *ngFor="let action of notification.actions" class="action {{action.class}}"
-									(click)="action.onClick()">
-									{{action.title}}
-								</span>
-							</div>
-						</div>
+            </div>
+            <div class="notifications-container" infinite-scroll [infiniteScrollDistance]="2"
+              [infiniteScrollThrottle]="500" (scrolled)="onScrollNotificationsDown()" [scrollWindow]="false"
+              [infiniteScrollDisabled]="disabledInfiniteScroll">
+              <div *ngFor="let notification of notifications" class="notification">
+                <span class="description">
+                  {{notification.title}}
+                </span>
+                <div class="actions" *ngIf="notification.status === 'pending'">
+                  <span *ngFor="let action of notification.actions" class="action {{action.class}}"
+                    (click)="action.onClick()">
+                    {{action.title}}
+                  </span>
+                </div>
+              </div>
+            </div>
 					</mat-menu>
 				</div>
 			</div>

@@ -17,6 +17,9 @@ export class HomeComponent implements OnInit {
   notifications: Array<Notification> = [];
   totalPendingNotifications: number = 0;
   currentUser$: Observable<User>;
+  currentPage = 1;
+  initItemsPerPage = 5;
+  disabledInfiniteScroll = false;
 
   constructor(
     private tokenService: AngularTokenService,
@@ -92,6 +95,8 @@ export class HomeComponent implements OnInit {
 
   getNotifications() {
     const current_user = this.userService.getCurrentUserData();
+    this.currentPage = 1;
+    this.initItemsPerPage = 5;
     if (!this.loadNotifications){
       if (current_user.pending_notifications > 0){
         this.userService.readNotifications().subscribe((resp)=>{
@@ -105,9 +110,18 @@ export class HomeComponent implements OnInit {
   }
 
   getMyNotifications () {
-    this.userService.getNotifications().subscribe((data) => {
-      this.notifications = this.buildNotifications(data);
+    this.userService.getNotifications(this.currentPage, this.initItemsPerPage).subscribe((data) => {
+      this.notifications = this.buildNotifications(data['notifications']);
       this.loadNotifications = true;
+    });
+  }
+
+  onScrollNotificationsDown () {
+    this.currentPage += 1;
+    this.userService.getNotifications(this.currentPage, this.initItemsPerPage).subscribe((data) => {
+      const newNotifications = this.buildNotifications(data['notifications']);
+      this.notifications = this.notifications.concat(newNotifications);
+      this.disabledInfiniteScroll = this.notifications.length === data['meta']['total_count'];
     });
   }
 

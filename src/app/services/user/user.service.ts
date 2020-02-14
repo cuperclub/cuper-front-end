@@ -97,8 +97,15 @@ export class UserService {
     return this.httpClient.put(`${this.apiURL}/api/admin/users/${userId}/update_password`, params);
   }
 
-  public getNotifications() {
-    return this.httpClient.get<User[]>(`${this.apiURL}/api/notifications`);
+  public getNotifications(page?, per_page?) {
+    const paginationParams = {
+      params: {
+        page,
+        per_page
+      }
+    };
+    const params = (page && per_page) ? paginationParams : undefined;
+    return this.httpClient.get<User[]>(`${this.apiURL}/api/notifications`, params);
   }
 
   public answerNotifications(notificationId, params) {
