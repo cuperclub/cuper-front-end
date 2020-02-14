@@ -45,7 +45,7 @@ export class ProfileFormComponent implements OnInit {
     const currentUser = Object.assign(defaultUser, this.data.user);
     this.profileForm = this.fb.group({
       name: [currentUser.name, [Validators.required]],
-      email: [{value: currentUser.email, disabled: currentUser.provider !== 'email'}, [Validators.required]],
+      email: [currentUser.email, [Validators.required]],
       national_id: [currentUser.national_id, []]
     });
   }
