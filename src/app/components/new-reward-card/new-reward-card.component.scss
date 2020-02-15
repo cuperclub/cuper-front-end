@@ -15,6 +15,12 @@
 				font-size: 20px;
 				font-family: 'Circular-Medium';
       }
+
+      .buttons-container {
+        .mat-secondary {
+          margin: 0 10px;
+        }
+      }
     }
 
     .panel-card {

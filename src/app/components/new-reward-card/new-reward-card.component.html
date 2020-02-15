@@ -2,9 +2,14 @@
   <div class="view">
     <div class="header-card">
       <span class="title">{{ 'common.new_reward' | translate }}</span>
-      <button mat-flat-button color="primary" type="submit">
-        {{ (isEditRoute ? 'common.update_data' : 'common.save')  | translate }}
-      </button>
+      <div class="buttons-container">
+        <button mat-raised-button color="secondary" type="button" (click)="onRedirectPage()">
+          {{ 'common.cancel' | translate }}
+        </button>
+        <button mat-flat-button color="primary" type="submit">
+          {{ (isEditRoute ? 'common.update_data' : 'common.save')  | translate }}
+        </button>
+      </div>
     </div>
     <div class="panel-card">
       <mat-card class="column-card">

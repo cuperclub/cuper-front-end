@@ -116,6 +116,15 @@ export class NewRewardCardComponent implements OnInit {
     }
   }
 
+  onRedirectPage() {
+    const rewardId = parseInt(this.route.snapshot.paramMap.get('rewardId'));
+    if(this.isEditRoute){
+      this.router.navigate(['home/company/reward/details/', rewardId])
+    } else {
+      this.router.navigate(['home/company/reward/list']);
+    }
+  }
+
   saveReward() {
     const inputPromotion = this.getPromotionFormData(this.rewardFormGroup.value);
     this.promotionService.createPromotion(inputPromotion, this.officeSelected.id)
@@ -142,7 +151,7 @@ export class NewRewardCardComponent implements OnInit {
       this.message.open(message, '', {
         duration: 2000
       });
-      this.router.navigate(['home/company/reward/list']);
+      this.onRedirectPage();
     });
   }
 
