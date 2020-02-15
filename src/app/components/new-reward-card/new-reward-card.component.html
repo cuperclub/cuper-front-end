@@ -16,7 +16,7 @@
         <div class="preview-container">
           <span class="label">{{ 'common.preview' | translate }}</span>
           <cuper-preview-reward *ngIf="myCompany" class="reward"
-            [file]="reward?.image"
+            [file]="reward?.image_url"
             [companyAvatar]="myCompany?.logo_url"
             [companyName]="myCompany?.business_name"
             [promotionTitle]="reward?.title"

@@ -42,6 +42,7 @@ export class NewRewardCardComponent implements OnInit {
   officeSelected: OptionSquare;
   uploadFile: FileOptions;
   rewardFormGroup: FormGroup;
+  reward;
 
   constructor(
     private router: Router,
@@ -80,6 +81,7 @@ export class NewRewardCardComponent implements OnInit {
     if(rewardId){
       this.isEditRoute = true;
       this.promotionService.getPromotion(rewardId).subscribe(reward => {
+        this.reward = reward;
         this.officeSelected = this.myOffices.find(office => office.id === reward.office.id);
         reward.start_at = new Date(reward.start_at);
         reward.end_at = new Date(reward.end_at);
