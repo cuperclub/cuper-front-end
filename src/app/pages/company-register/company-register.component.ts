@@ -69,7 +69,7 @@ export class CompanyRegisterComponent implements OnInit {
   isSelectedPlan = (plan) => plan === this.planSelected;
 
   onSubmitCompany(stepper: MatStepper) {
-    this.companyService.registerMyCompany(this.companyFormGroup.value).subscribe(
+    this.companyService.registerMyCompany(this.companyFormGroup.value, this.planSelected.id).subscribe(
       (resp) => this.onSuccess('company.validating', resp),
       error =>  this.onError(error, stepper)
     );
