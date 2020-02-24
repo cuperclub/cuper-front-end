@@ -97,7 +97,9 @@
     "buttons": {
       "next": "Siguiente",
       "back": "Regresar"
-    }
+    },
+    "view_as_admin": "Cambiar a Admin",
+    "view_as_partner": "Cambiar a Partner"
   },
   "company": {
     "billing_info": "Datos de facturación",

@@ -25,6 +25,9 @@
           <button mat-menu-item (click)="goToMyProfile()">
             <span>{{ 'common.profile' | translate }}</span>
           </button>
+          <a mat-menu-item  routerLink="/home/company/home" *ngIf="currentUser.is_admin">
+            <span>{{ 'common.view_as_partner' | translate }}</span>
+          </a>
           <button mat-menu-item (click)="logOut()">
             <span>{{ 'common.logout' | translate }}</span>
           </button>

@@ -55,7 +55,17 @@
       "updated": "Updated successfully",
       "sent": "Sent successfully"
     },
-    "available_points": "Available Points"
+    "promotion": {
+      "company_register_tile": "Register your business and get",
+      "company_register": "I want it!"
+    },
+    "buttons": {
+      "next": "Next",
+      "back": "Back"
+    },
+    "available_points": "Available Points",
+    "view_as_admin": "Switch to Admin",
+    "view_as_partner": "Switch to Partner"
   },
   "company": {
     "billing_info": "Billing Info",

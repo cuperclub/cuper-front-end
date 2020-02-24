@@ -92,7 +92,10 @@
 						</div>
 						<button mat-menu-item (click)="goToMyProfile()">
 							<span>{{ 'common.profile' | translate }}</span>
-						</button>
+            </button>
+            <a mat-menu-item  routerLink="/admin/companies" *ngIf="user.is_admin">
+              <span>{{ 'common.view_as_admin' | translate }}</span>
+            </a>
 						<button mat-menu-item (click)="logOut()">
 							<span>{{ 'common.logout' | translate }}</span>
 						</button>
