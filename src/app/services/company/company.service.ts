@@ -39,6 +39,6 @@ export class CompanyService {
     const user = {
       user_id: userId
     };
-    return this.httpClient.post<Company>(`${this.apiURL}/api/partner/companies/request_employee`, user);
+    return this.httpClient.post(`${this.apiURL}/api/partner/companies/request_employee`, user);
   }
 }

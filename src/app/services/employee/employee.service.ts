@@ -24,6 +24,11 @@ export class EmployeeService {
     return this.httpClient.get<Employee[]>(url);
   }
 
+  public getPendingRequestEmployees(){
+    const url = `${this.apiURL}/api/partner/companies/pending_requests_employee`
+    return this.httpClient.get(url);
+  }
+
   public updateStatusEmployee(data: StatusData){
     const url = `${this.apiURL}/api/partner/companies/employees/${data.id}/update_state`
     return this.httpClient.put<Employee>(url, data);

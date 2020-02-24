@@ -12,6 +12,7 @@ import { FeedbackFormComponent } from '../feedback-form/feedback-form.component'
 })
 export class CardCashierComponent implements OnInit {
   myEmployees: Employee[];
+  requestsEmployees: any;
   mappingStatus = {
     approved: {
       action: UserStatus.DISABLED,
@@ -39,6 +40,7 @@ export class CardCashierComponent implements OnInit {
 
   ngOnInit() {
     this.employeeService.getMyEmployees().subscribe((data) => this.myEmployees = data['employees']);
+    this.employeeService.getPendingRequestEmployees().subscribe((data) => this.requestsEmployees = data);
   }
 
   getAvatar = this.utilsService.getAvatar;
@@ -58,9 +60,9 @@ export class CardCashierComponent implements OnInit {
       data: {}
     });
 
-    dialogRef.beforeClosed().subscribe(newEmployee => {
-      if(newEmployee){
-        this.myEmployees.push(newEmployee)
+    dialogRef.beforeClosed().subscribe(request => {
+      if(request){
+        this.requestsEmployees = [request].concat(this.requestsEmployees);
       }
     });
   }

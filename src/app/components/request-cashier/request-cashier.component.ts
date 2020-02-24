@@ -6,6 +6,7 @@ import { CompanyService } from 'src/app/services';
 import { ButtonOption } from '../../components/user-search/user-search.component';
 import { TranslateService } from '@ngx-translate/core';
 import { MatSnackBar } from '@angular/material';
+import { UtilsService } from 'src/app/services';
 
 @Component({
   selector: 'cuper-request-cashier',
@@ -23,6 +24,7 @@ export class RequestCashierComponent implements OnInit{
     private dialogRef: MatDialogRef<CardCashierComponent>,
     private translate: TranslateService,
     private message: MatSnackBar,
+    private utilsService: UtilsService,
     @Inject(MAT_DIALOG_DATA) public data
   ) { }
 
@@ -47,12 +49,17 @@ export class RequestCashierComponent implements OnInit{
         this.dialogRef.close();
       });
     } else {
-      this.companyService.sendRequestEmployee(this.currentUser.id).subscribe(() => {
+      this.companyService.sendRequestEmployee(this.currentUser.id).subscribe((data) => {
         this.translate.get('common.messages.sent').subscribe((message: string) => {
           this.message.open(message, '', {
             duration: 2000
           });
-          this.dialogRef.close();
+          this.dialogRef.close(data);
+        });
+      }, (resp) => {
+        const errors = resp.error ? this.utilsService.formatErrorsAsObject(resp.error) : resp.errors;
+        this.message.open(errors, '', {
+          duration: 2000
         });
       });
     }

@@ -7,30 +7,49 @@
   </div>
   <mat-divider></mat-divider>
   <div class="card-content">
-    <div class="cashiers" *ngIf="myEmployees as cashiers">
-      <div class="cashier" *ngFor="let cashier of cashiers">
-        <div class="avatar-container">
-          <cuper-avatar [imageSrc]="cashier.user.image_url || getAvatar(cashier.user.join_at)" [size]="40"></cuper-avatar>
-        </div>
-        <div class="cashier-data">
-          <span class="name">{{cashier.user.name}}</span>
-          <span class="email">{{cashier.user.email}}</span>
-          <div class="status" [ngClass]="cashier.status">
-            {{ getStatusLabel(cashier.status) | translate }}
-        </div>
-        </div>
-        <button mat-flat-button
-                color="primary"
-                *ngIf="cashier.status !== 'pending'"
-                [ngClass]="cashier.status"
+    <mat-tab-group>
+      <mat-tab label="Empleados">
+        <ng-template matTabContent>
+          <div class="cashiers" *ngIf="myEmployees as cashiers">
+            <div class="cashier" *ngFor="let cashier of cashiers">
+              <div class="avatar-container">
+                <cuper-avatar [imageSrc]="cashier.user.image_url || getAvatar(cashier.user.join_at)" [size]="40">
+                </cuper-avatar>
+              </div>
+              <div class="cashier-data">
+                <span class="name">{{cashier.user.name}}</span>
+                <span class="email">{{cashier.user.email}}</span>
+                <div class="status" [ngClass]="cashier.status">
+                  {{ getStatusLabel(cashier.status) | translate }}
+                </div>
+              </div>
+              <button mat-flat-button color="primary" *ngIf="cashier.status !== 'pending'" [ngClass]="cashier.status"
                 (click)="onDisabledCashier(cashier)">
                 {{ getButtonName(cashier.status) | translate }}
-        </button>
-      </div>
-    </div>
-    <div class="empty-state" *ngIf="myEmployees && myEmployees.length === 0">
-      <span class="title">{{ 'empty-state.cashiers.title' | translate }}</span>
-      <span class="tip">{{ 'empty-state.cashiers.tip' | translate }}</span>
-    </div>
+              </button>
+            </div>
+          </div>
+          <div class="empty-state" *ngIf="myEmployees && myEmployees.length === 0">
+            <span class="title">{{ 'empty-state.cashiers.title' | translate }}</span>
+            <span class="tip">{{ 'empty-state.cashiers.tip' | translate }}</span>
+          </div>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Solicitudes">
+        <ng-template matTabContent>
+          <div class="cashiers" *ngIf="requestsEmployees as requests">
+            <div class="cashier" *ngFor="let request of requests">
+              <div class="avatar-container">
+                <cuper-avatar [imageSrc]="request.user.image_url" [size]="40"></cuper-avatar>
+              </div>
+              <div class="cashier-data">
+                <span class="name">{{request.user.name}}</span>
+                <span class="email">{{request.user.email}}</span>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
   </div>
 </mat-card>

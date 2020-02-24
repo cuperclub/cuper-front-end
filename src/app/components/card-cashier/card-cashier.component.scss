@@ -29,8 +29,7 @@
   .cashiers {
     padding: 0;
     margin: 0;
-    max-height: 100%;
-    overflow: scroll;
+    max-height: 180px;
 
     .cashier {
       display: flex;
