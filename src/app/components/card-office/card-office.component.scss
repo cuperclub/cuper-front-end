@@ -49,30 +49,44 @@
       border-bottom: 1px solid $mercury;
       cursor: pointer;
 
-      &:last-child {
-        border-bottom: none;
-      }
+      // &:last-child {
+      //   border-bottom: none;
+      // }
 
       &:hover {
         background-color: $labaster;
       }
 
-      .avatar {
-        width: 2.5rem;
-        height: 2.5rem;
-      }
+      .basic-information {
+        width: 90%;
+        display: flex;
+        align-items: center;
 
-      .information {
-        margin-left: 1rem;
-
-        .text {
-          font-family: 'Circular-Book';
+        .avatar {
+          width: 2.5rem;
+          height: 2.5rem;
         }
 
-        .name {
-          font-size: 12px;
-          padding: 0.25rem 0;
-          color: $gray-dark;
+        .information {
+          margin-left: 1rem;
+
+          .text {
+            font-family: 'Circular-Book';
+          }
+
+          .name {
+            font-size: 12px;
+            padding: 0.25rem 0;
+            color: $gray-dark;
+          }
+        }
+      }
+
+      .location {
+        width: 10%;
+
+        .icon {
+          color: $gray-base;
         }
       }
     }

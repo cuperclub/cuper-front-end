@@ -15,9 +15,9 @@ $padding-row: 0.5rem;
 		border-bottom: 1px solid $mercury;
 		height: $item-height;
 
-		&:last-child {
-      border-bottom: none;
-    }
+		// &:last-child {
+    //   border-bottom: none;
+    // }
 
     &:hover {
       background-color: $labaster;

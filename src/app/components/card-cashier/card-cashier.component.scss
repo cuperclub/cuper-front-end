@@ -39,9 +39,9 @@
       position: relative;
       border-bottom: 1px solid $mercury;
 
-      &:last-child {
-        border-bottom: none;
-      }
+      // &:last-child {
+      //   border-bottom: none;
+      // }
 
       &:hover {
         background-color: $labaster;

@@ -9,11 +9,17 @@
   <div class="card-content">
     <ul class="offices" *ngIf="offices">
       <li class="office" *ngFor="let office of offices" (click)="onSelectOffice(office)">
-        <img class="avatar" src="../../../assets/images/shop.svg"/>
-        <div class="information">
-          <span class="text">{{office.address}}</span>
-          <br>
-          <span class="name">{{office.name}}</span>
+        <div class="basic-information">
+          <img class="avatar" src="../../../assets/images/shop.svg"/>
+          <div class="information">
+            <span class="text">{{office.address}}</span>
+            <br>
+            <span class="name">{{office.name}}</span>
+          </div>
+        </div>
+        <div class="location">
+          <mat-icon class="icon" *ngIf="office.lat">location_on</mat-icon>
+          <mat-icon class="icon" *ngIf="!office.lat">location_off</mat-icon>
         </div>
       </li>
     </ul>
