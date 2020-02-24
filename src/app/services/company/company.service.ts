@@ -22,8 +22,9 @@ export class CompanyService {
     return this.httpClient.put<Company>(`${this.apiURL}/api/partner/companies`, companyInput);
   }
 
-  public registerMyCompany(company: Company): Observable<Company>{
-    return this.httpClient.post<Company>(`${this.apiURL}/api/partner/companies`, company);
+  public registerMyCompany(company: Company, planId: number): Observable<Company>{
+    const params = Object.assign(company, {plan_id: planId});
+    return this.httpClient.post<Company>(`${this.apiURL}/api/partner/companies`, params);
   }
 
   public sendInvitationEmployee(email){

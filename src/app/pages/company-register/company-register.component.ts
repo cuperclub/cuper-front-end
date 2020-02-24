@@ -47,13 +47,14 @@ export class CompanyRegisterComponent implements OnInit {
       const defaultPlan = {
         price: 0,
         time: '',
+        id: null
       };
       const plans = data['plans'] || [];
       const promotional_plan = data['promotional_plan'] || defaultPlan;
       this.plans = this.planService.plansAvailablesForCard(plans);
       this.planSelected = this.planService.planForCard(promotional_plan);
       this.planFormGroup = this._formBuilder.group({
-        selectPlan: [this.planSelected.time, Validators.required]
+        id: [this.planSelected.id, Validators.required]
       });
       this.loaded = true;
     });
@@ -62,14 +63,14 @@ export class CompanyRegisterComponent implements OnInit {
   onListenerPlan(plan) {
     this.planSelected = plan;
     this.planFormGroup = this._formBuilder.group({
-      selectPlan: [this.planSelected.time, Validators.required]
+      id: [this.planSelected.id, Validators.required]
     });
   }
 
   isSelectedPlan = (plan) => plan === this.planSelected;
 
   onSubmitCompany(stepper: MatStepper) {
-    this.companyService.registerMyCompany(this.companyFormGroup.value).subscribe(
+    this.companyService.registerMyCompany(this.companyFormGroup.value, this.planFormGroup.value.id).subscribe(
       (resp) => this.onSuccess('company.validating', resp),
       error =>  this.onError(error, stepper)
     );

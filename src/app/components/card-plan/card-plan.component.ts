@@ -4,6 +4,7 @@ export interface OptionPlan {
   price: number
   time: string
   promotion?: string
+  id: number
 }
 
 @Component({

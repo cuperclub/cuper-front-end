@@ -8,7 +8,7 @@
         <mat-step [stepControl]="planFormGroup">
           <form [formGroup]="planFormGroup">
             <ng-template matStepLabel>{{ 'company.register_form.step-1' | translate }}</ng-template>
-            <input matInput class="select-plan" formControlName="selectPlan">
+            <input matInput class="select-plan" formControlName="id">
             <div class="plans-container">
               <cuper-card-plan
                 *ngFor="let plan of plans"
