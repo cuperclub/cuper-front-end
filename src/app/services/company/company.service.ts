@@ -23,7 +23,7 @@ export class CompanyService {
   }
 
   public registerMyCompany(company: Company, planId: number): Observable<Company>{
-    const params = Object.assign(company, {plan_id: planId});
+    const params = Object.assign(company, { plan_id: planId });
     return this.httpClient.post<Company>(`${this.apiURL}/api/partner/companies`, params);
   }
 
