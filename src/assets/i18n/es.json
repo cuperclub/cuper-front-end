@@ -8,7 +8,9 @@
     "signin": "Iniciar sesión",
     "forgot_password": "Olvidaste tu contraseña?",
     "create_account": "¿Aún no tienes cuenta?",
-    "register": "Regístrate"
+    "register": "Regístrate",
+    "login-facebook": "Iniciar Sesión con Facebook",
+    "login-google": "Iniciar Sesión con Google"
   },
   "register": {
     "title": "Registro",
@@ -19,6 +21,26 @@
     },
     "create": "Crear cuenta",
     "forgot_password": "Olvidaste tu contraseña?",
+    "already_account": "Ya tengo una cuenta",
+    "login-facebook": "Continuar con Facebook",
+    "login-google": "Continuar con Google",
+    "condition": "O bien"
+  },
+  "recover_password": {
+    "title": "Recuperar Contraseña",
+    "form": {
+      "email": "Correo electrónico"
+    },
+    "recover": "Recuperar",
+    "already_account": "Ya tengo una cuenta"
+  },
+  "reset_password": {
+    "title": "Cambiar Contraseña",
+    "form": {
+      "password": "Contraseña nueva",
+      "password_confirmation": "Confirma tu contraseña"
+    },
+    "change": "Cambiar",
     "already_account": "Ya tengo una cuenta"
   },
   "common": {
@@ -35,7 +57,8 @@
     "status": {
       "approved": "Aprobado",
       "pending": "Pendiente",
-      "disabled": "Deshabilitado"
+      "disabled": "Deshabilitado",
+      "declined": "Rechazado"
     },
     "actions": {
       "enable": "Activar",
@@ -63,7 +86,8 @@
     "national_id": "Cédula",
     "messages": {
       "created": "Creado correctamente",
-      "updated": "Actualizado correctamente"
+      "updated": "Actualizado correctamente",
+      "sent": "Enviado correctamente"
     },
     "available_points": "Puntos Disponibles",
     "promotion": {
@@ -73,7 +97,9 @@
     "buttons": {
       "next": "Siguiente",
       "back": "Regresar"
-    }
+    },
+    "view_as_admin": "Cambiar a Admin",
+    "view_as_partner": "Cambiar a Partner"
   },
   "company": {
     "billing_info": "Datos de facturación",
@@ -112,6 +138,7 @@
     "create": "Crear nueva recompensa",
     "preview": "Detalles Promoción",
     "beneficiaries": "Beneficiarios de esta promoción",
+    "office_required": "Por favor seleccione una oficina",
     "new": {
       "form": {
         "title": "Describe tu promoción",
@@ -204,6 +231,44 @@
       "edit": "Editar Preferencias",
       "points_by_register": "Puntos por registro",
       "plans": "Seleccione un plan"
+    }
+  },
+  "empty-state": {
+    "offices": {
+      "title": "No has registrado ninguna sucursal",
+      "tip": "Puedes crear una haciendo click en la parte superior"
+    },
+    "cashiers": {
+      "title": "No has registrado ninguna empleado",
+      "tip": "Puedes enviar una solicitud haciendo click en la parte superior"
+    },
+    "rewards": {
+      "title": "No has registrado ninguna recompensa",
+      "tip": "Puedes crear una recompensa haciendo click en la parte superior"
+    },
+    "beneficiaries": {
+      "title": "Aqui se listaran los clientes",
+      "tip": "que canjeen esta promoción"
+    },
+    "transactions": {
+      "input": {
+        "title": "No se han registrado transacciones de entrada",
+        "tip": "Estas se listaran aqui"
+      },
+      "output": {
+        "title": "No se han registrado transacciones de salida",
+        "tip": "Estas se listaran aqui"
+      },
+      "user": {
+        "title": "No se ha registrado ninguna transacción ",
+        "tip": "Estas se listaran aqui"
+      }
+    }
+  },
+  "modals": {
+    "feedback": {
+      "feedback": "Razon",
+      "status": "Cambiar a status: "
     }
   }
 }

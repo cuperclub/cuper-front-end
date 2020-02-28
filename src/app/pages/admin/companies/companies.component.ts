@@ -62,8 +62,8 @@ export class CompaniesComponent implements OnInit {
       {
         key: 'admin.companies.request.decline',
         icon: 'thumb_down_alt',
-        onClick: () => this.sendFeedback('decline'),
-        disabled: (currentStatus === 'decline') || (currentStatus === 'disabled') || (currentStatus === 'approved')
+        onClick: () => this.sendFeedback('declined'),
+        disabled: (currentStatus === 'declined') || (currentStatus === 'disabled') || (currentStatus === 'approved')
       }
     ]
   }
@@ -74,7 +74,7 @@ export class CompaniesComponent implements OnInit {
       data: {
         status: status,
         feedback: '',
-        company: this.companySelected
+        entity: this.companySelected
       }
     });
 

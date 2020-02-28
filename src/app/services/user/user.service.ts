@@ -2,12 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AngularTokenService } from 'angular-token';
-import { User, Notification } from '../../models';
+import { User, InputTransaction } from '../../models';
 import { Observable, Subscriber } from 'rxjs';
 
 interface UserProfile extends User{
   current_company_id?: number;
   companies?: Array<any>;
+  is_partner?: boolean;
+}
+
+export interface UserTokenData extends User {
+  is_admin?: boolean;
 }
 
 @Injectable({
@@ -69,6 +74,21 @@ export class UserService {
     return isPartner;
   }
 
+  public userIsAdmin() {
+    const currentUser: UserTokenData = this.getCurrentUserData();
+    return currentUser.is_admin;
+  }
+
+  public validateToken() {
+    let promise: Promise<any> = new Promise((resolve, reject) => {
+      this.tokenService.validateToken().subscribe(
+        (resp) =>  resolve(resp['data']),
+        () =>  reject(false)
+      )
+    });
+    return promise;
+  }
+
   public isCustomer() {
     return !!this.getCurrentCompany();
   }
@@ -77,16 +97,50 @@ export class UserService {
     return this.httpClient.put(`${this.apiURL}/api/admin/users/${userId}/update_password`, params);
   }
 
-  public getNotifications() {
-    return this.httpClient.get<User[]>(`${this.apiURL}/api/notifications`);
+  public getNotifications(page?, per_page?) {
+    const paginationParams = {
+      params: {
+        page,
+        per_page
+      }
+    };
+    const params = (page && per_page) ? paginationParams : undefined;
+    return this.httpClient.get<User[]>(`${this.apiURL}/api/notifications`, params);
   }
 
   public answerNotifications(notificationId, params) {
-    return this.httpClient.put<Notification[]>(`${this.apiURL}/api/notifications/${notificationId}/answer_request_employee`, params);
+    return this.httpClient.put(`${this.apiURL}/api/notifications/${notificationId}/answer_request_employee`, params);
   }
 
   public readNotifications() {
     return this.httpClient.post(`${this.apiURL}/api/notifications/read_pending_notifications`, {});
+  }
+
+  public myTransactions(page?, per_page?) {
+    const paginationParams = {
+      params: {
+        page,
+        per_page
+      }
+    };
+    const params = (page && per_page) ? paginationParams : undefined;
+    return this.httpClient.get<any[]>(`${this.apiURL}/api/users/my_transactions`, params);
+  }
+
+  public recoverMyPassword(email: string) {
+    const params = {
+      email,
+      redirect_url: 'http://localhost:4200/reset_password'
+    };
+    return this.httpClient.post(`${this.apiURL}/auth/password`, params);
+  }
+
+  public resetMyPassword(passwords) {
+    const params = {
+      password: passwords.password,
+      password_confirmation: passwords.password_confirmation
+    };
+    return this.httpClient.put(`${this.apiURL}/auth/password`,params);
   }
 
 }

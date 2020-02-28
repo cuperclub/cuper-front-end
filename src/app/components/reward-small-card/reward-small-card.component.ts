@@ -18,7 +18,7 @@ export class RewardSmallCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.imageSrc = this.reward.image || this.defaultImage;
+    this.imageSrc = this.reward.image || this.reward.image_url || this.defaultImage;
     this.text = this.reward.title || '';
   }
 

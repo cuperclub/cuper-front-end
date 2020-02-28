@@ -22,3 +22,13 @@ mat-dialog-actions {
 .submit-button {
   margin-left: 1rem;
 }
+
+.request-cashier-panel {
+  position: relative;
+
+  .close-button {
+    position: absolute;
+    top: -25px;
+    right: -25px;
+  }
+}

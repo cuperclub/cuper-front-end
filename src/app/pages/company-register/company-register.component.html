@@ -4,17 +4,17 @@
       <span class="title">{{ 'company.register_company' | translate }}</span>
     </div>
     <mat-card class="form-container">
-      <mat-horizontal-stepper [linear]="true" #stepper>
+      <mat-horizontal-stepper *ngIf="loaded" [linear]="true" #stepper>
         <mat-step [stepControl]="planFormGroup">
           <form [formGroup]="planFormGroup">
             <ng-template matStepLabel>{{ 'company.register_form.step-1' | translate }}</ng-template>
-            <input matInput class="select-plan" formControlName="selectPlan">
+            <input matInput class="select-plan" formControlName="id">
             <div class="plans-container">
               <cuper-card-plan
                 *ngFor="let plan of plans"
                 class="plan"
                 [option]="plan"
-                [isSelected]="isSelectedPlan(plan)"
+                [isSelected]="plan.id === planSelected.id"
                 (propagatePlanData)="onListenerPlan($event)">
               </cuper-card-plan>
             </div>
@@ -59,12 +59,13 @@
               <mat-icon>navigate_before</mat-icon>
               {{ 'common.buttons.back' | translate }}
             </button>
-            <button mat-button (click)="onSubmitCompany()">
+            <button mat-button (click)="onSubmitCompany(stepper)">
               {{ 'common.ok' | translate }}
             </button>
           </div>
         </mat-step>
       </mat-horizontal-stepper>
+      <cuper-loader class="loader" *ngIf="!loaded"></cuper-loader>
     </mat-card>
   </div>
 </div>

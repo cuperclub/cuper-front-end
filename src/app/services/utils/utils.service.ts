@@ -14,4 +14,15 @@ export class UtilsService {
     const path = routeBase + `${lastNumber}.png`;
     return path;
   }
+
+  public formatErrorsAsObject(error: {}) {
+    let errors = [];
+    const keys = Object.keys(error);
+    keys.forEach((key)=>{
+      // let msg = `${key}: ${error[key].join(' ,')}`;
+      let msg = error[key].join(' ,');
+      errors.push(msg);
+    });
+    return errors;
+  }
 }

@@ -4,6 +4,7 @@ import { CompanyCardComponent } from '../company-card/company-card.component';
 import { InputTransactionService } from '../../services';
 import { MatSnackBar } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
+import { UtilsService } from 'src/app/services';
 
 @Component({
   selector: 'cuper-input-transaction-form',
@@ -16,6 +17,7 @@ export class InputTransactionFormComponent {
     private transactionService: InputTransactionService,
     private message: MatSnackBar,
     private translate: TranslateService,
+    private utilsService: UtilsService,
     public dialogRef: MatDialogRef<CompanyCardComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
@@ -42,9 +44,9 @@ export class InputTransactionFormComponent {
   }
 
   onError(resp): void {
-    this.message.open(resp.errors, '', {
+    const errors = resp.error ? this.utilsService.formatErrorsAsObject(resp.error) : resp.errors;
+    this.message.open(errors, '', {
       duration: 2000
     });
   }
-
 }

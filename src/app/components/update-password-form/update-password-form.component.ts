@@ -1,14 +1,14 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { CardUserComponent } from '../card-user/card-user.component';
 import { MatSnackBar } from '@angular/material';
 import { AngularTokenService } from 'angular-token';
-
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 interface Password {
-  passwordNew: string;
-  passwordCurrent: string;
+  password: string;
+  current_password: string;
 }
 
 @Component({
@@ -16,12 +16,12 @@ interface Password {
   templateUrl: './update-password-form.component.html',
   styleUrls: ['./update-password-form.component.scss']
 })
-export class UpdatePasswordFormComponent {
-  passwordForm: any = {}
-  errorsForm: any = {};
+export class UpdatePasswordFormComponent implements OnInit{
+  passwordForm: FormGroup;
   showPassword: any = {new: false, current: false};
 
   constructor(
+    private fb: FormBuilder,
     private message: MatSnackBar,
     private tokenService: AngularTokenService,
     private translate: TranslateService,
@@ -29,15 +29,22 @@ export class UpdatePasswordFormComponent {
     @Inject(MAT_DIALOG_DATA) public password: Password
   ) {}
 
+  ngOnInit() {
+    this.passwordForm = this.fb.group({
+      current_password: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+    });
+  }
+
   onCloseDialog(): void {
     this.dialogRef.close();
   }
 
-  onSubmit(password): void {
+  onSubmit(): void {
     this.tokenService.updatePassword({
-      password: password.passwordNew,
-      passwordConfirmation: password.passwordNew,
-      passwordCurrent: password.passwordCurrent,
+      password: this.passwordForm.value.password,
+      passwordConfirmation: this.passwordForm.value.password,
+      passwordCurrent: this.passwordForm.value.current_password,
     }).subscribe(
       res =>    this.onSuccess(res),
       error =>  this.onError(error)
@@ -54,8 +61,10 @@ export class UpdatePasswordFormComponent {
   }
 
   onError(resp): void {
-    let errors = resp.error ? resp.error.errors : {};
-    this.errorsForm = errors
+    delete resp.error.errors['full_messages']
+    for (let key in resp.error.errors) {
+      this.passwordForm.controls[key].setErrors({'backendError': resp.error.errors[key]});
+    }
   }
 
   toggleShowPassword(field) {

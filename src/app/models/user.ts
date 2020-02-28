@@ -21,10 +21,12 @@ export interface User {
   join_at?: Date;
   companies?: Array<any>;
   pending_notifications?: number;
+  provider?: string;
 }
 
 export enum UserStatus {
   APPROVED = 'approved',
   PENDING = 'pending',
   DISABLED = 'disabled',
+  DECLINED = 'declined',
 }

@@ -15,6 +15,12 @@
 				font-size: 20px;
 				font-family: 'Circular-Medium';
       }
+
+      .buttons-container {
+        .mat-secondary {
+          margin: 0 10px;
+        }
+      }
     }
 
     .panel-card {
@@ -52,6 +58,11 @@
 
           .field-group {
             width: 45%;
+
+            &.disabled {
+              pointer-events: none;
+              color: rgba(0, 0, 0, 0.54);
+            }
           }
         }
 

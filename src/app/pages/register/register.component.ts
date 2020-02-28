@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AngularTokenService } from 'angular-token';
 import { MatSnackBar } from '@angular/material';
 import { UserRegister } from 'src/app/models';
-import { UserService } from 'src/app/services';
 
 @Component({
   selector: 'cuper-register',
@@ -20,8 +19,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private tokenService: AngularTokenService,
-    private message: MatSnackBar,
-    private userService: UserService
+    private message: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -45,6 +43,34 @@ export class RegisterComponent implements OnInit {
         });
       }
     );
+  }
+
+  loginWithFacebook() {
+    this.tokenService.signInOAuth(
+      'facebook',
+      ).subscribe(
+        () =>    this.onSuccess(),
+        error =>  this.onError(error)
+      );
+  }
+
+  loginWithGoogle() {
+    this.tokenService.signInOAuth(
+      'google_oauth2',
+      ).subscribe(
+        () =>    this.onSuccess(),
+        error =>  this.onError(error)
+      );
+  }
+
+  onSuccess(): void {
+    this.router.navigateByUrl('/home/dashboard');
+  }
+
+  onError(error): void {
+    this.message.open(error.errors, '', {
+      duration: 2000
+    });
   }
 
 }

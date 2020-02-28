@@ -23,7 +23,8 @@
     "status": {
       "approved": "Approved",
       "pending": "Pending",
-      "disabled": "Disabled"
+      "disabled": "Disabled",
+      "declined": "Declined"
     },
     "actions": {
       "enable": "Enabled",
@@ -51,9 +52,20 @@
     "national_id": "National Id",
     "messages": {
       "created": "Created successfully",
-      "updated": "Updated successfully"
+      "updated": "Updated successfully",
+      "sent": "Sent successfully"
     },
-    "available_points": "Available Points"
+    "promotion": {
+      "company_register_tile": "Register your business and get",
+      "company_register": "I want it!"
+    },
+    "buttons": {
+      "next": "Next",
+      "back": "Back"
+    },
+    "available_points": "Available Points",
+    "view_as_admin": "Switch to Admin",
+    "view_as_partner": "Switch to Partner"
   },
   "company": {
     "billing_info": "Billing Info",
@@ -69,7 +81,6 @@
     "validating": "your company will be validate",
     "category": "Category",
     "feedback": "Feedback"
-
   },
   "office": {
     "create": "Create a new office"
@@ -82,6 +93,7 @@
     "create": "Create new reward",
     "preview": "Reward Details",
     "beneficiaries": "beneficiaries of this reward",
+    "office_required": "Please select an office",
     "new": {
       "form": {
         "title": "What's the name of your campaign?",
@@ -163,6 +175,49 @@
       "price": "Price",
       "information": "Information",
       "new": "New Plan"
+    },
+    "settings": {
+      "edit": "Edit Preferences",
+      "points_by_register": "Points by register",
+      "plans": "Select a plan"
+    }
+  },
+  "empty-state": {
+    "offices": {
+      "title": "You have not registered any office",
+      "tip": "You can add one clicking on the top"
+    },
+    "cashiers": {
+      "title": "You have not registered any employee",
+      "tip": "You can send an invitation clicking on the top"
+    },
+    "rewards": {
+      "title": "You have not registered any reward",
+      "tip": "You can create a reward clicking on the top"
+    },
+    "beneficiaries": {
+      "title": "Here the clients that redeem",
+      "tip": "this promotion will be listed"
+    },
+    "transactions" : {
+      "input": {
+        "title": "No incoming transactions have been recorded",
+        "tip": "They'll be shown here"
+      },
+      "output": {
+        "title": "No outbound transactions have been recorded",
+        "tip": "They'll be shown here"
+      },
+      "user": {
+        "title": "No se ha registrado ninguna transacción ",
+        "tip": "Estas se listaran aqui"
+      }
+    }
+  },
+  "modals": {
+    "feedback": {
+      "feedback": "Feedback",
+      "status": "Change to status: "
     }
   }
 }

@@ -6,8 +6,8 @@
 	</div>
 	<div class="tabs-header" *ngIf="currentUser$ | async as user">
 		<div class="status-company" *ngIf="user.companies">
-			<div class="menu" [matMenuTriggerFor]="menu">
-				<div *ngIf="currentEmployee" class="employee-container">
+			<div class="menu" [matMenuTriggerFor]="menu" *ngIf="userService.getCurrentCompany() as currentEmployee">
+				<div class="employee-container">
 					<div class="account">
 						<div class="company-name">
 							{{currentEmployee.name}}
@@ -24,11 +24,15 @@
 				</div>
 				<mat-menu #menu="matMenu">
 					<div mat-menu-item *ngFor="let company of user.companies" class="item-wrapper"
-						(click)="onChangeEmployeeAccount(company)">
+            (click)="onChangeEmployeeAccount(company)"
+            [class.active]="company.id === currentEmployee.id">
 						<cuper-avatar [imageSrc]="company.logo_url || getAvatar(company.join_at)" [size]="25"></cuper-avatar>
 						<div class="information">
 							<div class="name">{{ company.name}}</div>
-							<div class="role">{{ company.role}}</div>
+							<div class="role">{{ company.role}}/
+                <span [ngClass]="company.status">
+                  {{ 'common.status.'+ company.status | translate }}
+                </span></div>
 						</div>
 					</div>
 				</mat-menu>
@@ -42,26 +46,30 @@
 			<div class="notifications-menu" (click)="getNotifications()">
 				<div class="menu-not" [matMenuTriggerFor]="menuNotification">
 					<div class="menu-action">
-						<div class="count-notifications" *ngIf="user.pending_notifications > 0">
-							{{user.pending_notifications}}
+						<div class="count-notifications" *ngIf="totalPendingNotifications > 0">
+							{{totalPendingNotifications}}
 						</div>
 						<mat-icon>notifications</mat-icon>
 					</div>
 					<mat-menu #menuNotification="matMenu" class="notifications">
 						<div *ngIf="notifications.length === 0" class="notification">
 							No tienes notificaciones
-						</div>
-						<div *ngFor="let notification of notifications" class="notification">
-							<span class="description">
-								{{notification.title}}
-							</span>
-							<div class="actions">
-								<span *ngFor="let action of notification.actions" class="action {{action.class}}"
-									(click)="action.onClick()">
-									{{action.title}}
-								</span>
-							</div>
-						</div>
+            </div>
+            <div class="notifications-container" infinite-scroll [infiniteScrollDistance]="2"
+              [infiniteScrollThrottle]="500" (scrolled)="onScrollNotificationsDown()" [scrollWindow]="false"
+              [infiniteScrollDisabled]="disabledInfiniteScroll">
+              <div *ngFor="let notification of notifications" class="notification">
+                <span class="description">
+                  {{notification.title}}
+                </span>
+                <div class="actions" *ngIf="notification.status === 'pending'">
+                  <span *ngFor="let action of notification.actions" class="action {{action.class}}"
+                    (click)="action.onClick()">
+                    {{action.title}}
+                  </span>
+                </div>
+              </div>
+            </div>
 					</mat-menu>
 				</div>
 			</div>
@@ -84,7 +92,10 @@
 						</div>
 						<button mat-menu-item (click)="goToMyProfile()">
 							<span>{{ 'common.profile' | translate }}</span>
-						</button>
+            </button>
+            <a mat-menu-item  routerLink="/admin/companies" *ngIf="user.is_admin">
+              <span>{{ 'common.view_as_admin' | translate }}</span>
+            </a>
 						<button mat-menu-item (click)="logOut()">
 							<span>{{ 'common.logout' | translate }}</span>
 						</button>
@@ -107,7 +118,7 @@
 			<span>{{ 'tabs.company' | translate }}</span>
 		</a>
 		<a routerLink="transactions" class="tabs" *ngIf="userService.isCustomer()"
-			[class.disabled]="!userService.userIsCashier()" routerLinkActive="active">
+			[class.disabled]="!isCompanyAproved()" routerLinkActive="active">
 			<mat-icon>account_balance_wallet</mat-icon>
 			<span>{{ 'tabs.transactions' | translate }}</span>
 		</a>

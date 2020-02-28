@@ -28,11 +28,12 @@ export class AdminPlanService {
 
   public planForCard(plan){
     return {
-      time: plan.days + " days",
+      time: plan.days ? plan.days + " days" : null,
       price: plan.price,
       promotion: plan.information,
       active: plan.active,
-      name: plan.name
+      name: plan.name,
+      id: plan.id
     }
   }
 

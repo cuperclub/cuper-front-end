@@ -1,0 +1,39 @@
+@import "../../../styles/colors.scss";
+
+.transactions-container {
+  ::ng-deep table {
+    box-shadow: none;
+
+    .input {
+      td:nth-child(2) {
+        color: $green;
+      }
+
+      td:nth-child(3) {
+        color: $gray-dark;
+      }
+    }
+
+    .output {
+      td:nth-child(2) {
+        color: $red;
+      }
+
+      td:nth-child(3) {
+        color: $gray-dark;
+      }
+    }
+  }
+
+  .actions {
+    text-align: end;
+    margin-top: 10px;
+  }
+
+  .loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

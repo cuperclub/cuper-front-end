@@ -86,7 +86,9 @@ export class CompanyCardComponent implements OnInit {
     const currentUser = this.userService.getCurrentUserData();
     const currentCompanyId = currentUser.companies.findIndex(company => companyData.id === company.id);
     currentUser.companies[currentCompanyId].name = companyData.business_name;
-    currentUser.companies[currentCompanyId].logo_url = companyData.logo_url;
+    currentUser.companies[currentCompanyId].logo_url = companyData.logo_url || this.utilsService.getAvatar(this.company.join_at);
+    this.company = companyData;
+    this.company.logo_url = this.company.logo_url || this.utilsService.getAvatar(this.company.join_at);
     this.userService.observerData.next(currentUser);
   }
 

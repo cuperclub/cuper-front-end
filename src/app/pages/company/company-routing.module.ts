@@ -6,27 +6,24 @@ import { NewRewardCardComponent } from '../../components/new-reward-card/new-rew
 
 //Pages
 import { MyCompanyComponent } from './my-company/my-company.component';
-import { CompanyRegisterComponent } from './company-register/company-register.component';
 import { RewardsComponent } from './rewards/rewards.component';
 import { RewardComponent } from './reward/reward.component';
 import { CompanyComponent } from './company/company.component';
 
 //Guards
-import { IsPartnerGuard } from '../../guards/partner/is-partner.guard';
+import { PartnerGuard } from '../../guards/partner/partner.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: CompanyComponent,
+    canActivate: [PartnerGuard],
     children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       {
         path: 'home',
         component: MyCompanyComponent,
-        canActivate: [IsPartnerGuard],
-      },
-      {
-        path: 'register',
-        component: CompanyRegisterComponent
+        canActivate: [PartnerGuard],
       },
       {
         path: 'reward',
@@ -34,22 +31,22 @@ const routes: Routes = [
           {
             path: 'list',
             component: RewardsComponent,
-            canActivate: [IsPartnerGuard]
+            canActivate: [PartnerGuard]
           },
           {
             path: 'new',
             component: NewRewardCardComponent,
-            canActivate: [IsPartnerGuard]
+            canActivate: [PartnerGuard]
           },
           {
             path: 'edit/:rewardId',
             component: NewRewardCardComponent,
-            canActivate: [IsPartnerGuard]
+            canActivate: [PartnerGuard]
           },
           {
             path: 'details/:rewardId',
             component: RewardComponent,
-            canActivate: [IsPartnerGuard]
+            canActivate: [PartnerGuard]
           }
         ]
       }

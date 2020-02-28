@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material';
 import { Employee, UserStatus } from '../../models';
 import { EmployeeService, UtilsService } from 'src/app/services';
 import { RequestCashierComponent } from '../request-cashier/request-cashier.component';
+import { FeedbackFormComponent } from '../feedback-form/feedback-form.component';
 
 @Component({
   selector: 'cuper-card-cashier',
@@ -11,6 +12,7 @@ import { RequestCashierComponent } from '../request-cashier/request-cashier.comp
 })
 export class CardCashierComponent implements OnInit {
   myEmployees: Employee[];
+  requestsEmployees: any;
   mappingStatus = {
     approved: {
       action: UserStatus.DISABLED,
@@ -38,20 +40,10 @@ export class CardCashierComponent implements OnInit {
 
   ngOnInit() {
     this.employeeService.getMyEmployees().subscribe((data) => this.myEmployees = data['employees']);
+    this.employeeService.getPendingRequestEmployees().subscribe((data) => this.requestsEmployees = data);
   }
 
   getAvatar = this.utilsService.getAvatar;
-
-  onDisabledCashier(cashier: Employee) {
-    const statusData = {
-      status: this.mappingStatus[cashier.status].action,
-      feedback: ''
-    };
-    this.employeeService.updateStatusEmployee(cashier.id, statusData).subscribe(currentEmployee => {
-      const indexEmployee = this.myEmployees.findIndex(employee => employee.id === currentEmployee.id);
-      this.myEmployees[indexEmployee] = currentEmployee;
-    });
-  }
 
   getStatusLabel(status){
     return `common.status.${status}`;
@@ -68,9 +60,28 @@ export class CardCashierComponent implements OnInit {
       data: {}
     });
 
-    dialogRef.beforeClosed().subscribe(newEmployee => {
-      if(newEmployee){
-        this.myEmployees.push(newEmployee)
+    dialogRef.beforeClosed().subscribe(request => {
+      if(request){
+        this.requestsEmployees = [request].concat(this.requestsEmployees);
+      }
+    });
+  }
+
+  onDisabledCashier(cashier: Employee){
+    const dialogRef = this.dialog.open(FeedbackFormComponent, {
+      width: '300px',
+      data: {
+        status: this.mappingStatus[cashier.status].action,
+        feedback: '',
+        from: 'cashier',
+        id: cashier.id
+      }
+    });
+
+    dialogRef.beforeClosed().subscribe(cashier => {
+      if(cashier){
+        const indexEmployee = this.myEmployees.findIndex(employee => employee.id === cashier.id);
+        this.myEmployees[indexEmployee] = cashier;
       }
     });
   }

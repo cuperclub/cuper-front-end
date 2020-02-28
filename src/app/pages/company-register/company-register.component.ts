@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { CompanyService, UserService, AdminPlanService } from '../../../services'
-import { OptionPlan } from '../../../components/card-plan/card-plan.component';
-import { MatSnackBar } from '@angular/material';
+import { CompanyService, UserService, AdminPlanService } from '../../services'
+import { OptionPlan } from '../../components/card-plan/card-plan.component';
+import { MatSnackBar, MatStepper } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -18,6 +18,7 @@ export class CompanyRegisterComponent implements OnInit {
   plans: OptionPlan [];
   planSelected: OptionPlan;
   isUserNew: boolean = false;
+  loaded: boolean = false;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -40,35 +41,38 @@ export class CompanyRegisterComponent implements OnInit {
       category_id: ['', Validators.required]
     });
 
+    this.isUserNew = this.userService.getCurrentUserData().companies.length === 0;
+
     this.planService.getPlans().subscribe(data => {
+      const defaultPlan = {
+        price: 0,
+        time: '',
+        id: null
+      };
       const plans = data['plans'] || [];
+      const promotional_plan = data['promotional_plan'] || defaultPlan;
       this.plans = this.planService.plansAvailablesForCard(plans);
-    });
-
-    const defaultPlan = {
-      price: 0,
-      time: '',
-    };
-
-    this.planSelected = this.isUserNew ? this.plans[0] : defaultPlan;
-    this.planFormGroup = this._formBuilder.group({
-      selectPlan: [this.planSelected.time, Validators.required]
+      this.planSelected = this.planService.planForCard(promotional_plan);
+      this.planFormGroup = this._formBuilder.group({
+        id: [this.planSelected.id, Validators.required]
+      });
+      this.loaded = true;
     });
   }
 
   onListenerPlan(plan) {
     this.planSelected = plan;
     this.planFormGroup = this._formBuilder.group({
-      selectPlan: [this.planSelected.time, Validators.required]
+      id: [this.planSelected.id, Validators.required]
     });
   }
 
   isSelectedPlan = (plan) => plan === this.planSelected;
 
-  onSubmitCompany() {
-    this.companyService.registerMyCompany(this.companyFormGroup.value).subscribe(
+  onSubmitCompany(stepper: MatStepper) {
+    this.companyService.registerMyCompany(this.companyFormGroup.value, this.planFormGroup.value.id).subscribe(
       (resp) => this.onSuccess('company.validating', resp),
-      error =>  this.onError(error)
+      error =>  this.onError(error, stepper)
     );
   }
 
@@ -77,27 +81,31 @@ export class CompanyRegisterComponent implements OnInit {
       this.message.open(message, '', {
         duration: 2000
       });
-      const currenUser = this.userService.getCurrentUserData();
+      const currentUser = this.userService.getCurrentUserData();
+      currentUser.is_partner = true;
+      currentUser.current_company_id = company.id;
       const formatCompany = {
         id: company.id,
         join_at: company.join_at,
         name: company.business_name,
         role: 'partner',
         status: 'pending'
-      }
-      if(currenUser.companies) {
-        currenUser.companies.push(formatCompany);
+      };
+      if(currentUser.companies) {
+        currentUser.companies.push(formatCompany);
       }else {
-        currenUser.companies = [formatCompany];
+        currentUser.companies = [formatCompany];
       }
-      this.userService.observerData.next(currenUser);
-      this.router.navigate(['home/dashboard']);
+      this.userService.observerData.next(currentUser);
+      this.userService.userDataEdited = currentUser;
+      this.router.navigate(['home']);
     });
   }
 
-  onError(resp): void {
-    this.message.open(resp.errors, '', {
-      duration: 2000
-    });
+  onError(resp, stepper): void {
+    for (let key in resp.error) {
+      this.companyFormGroup.controls[key].setErrors({'backendError': resp.error[key]});
+    }
+    stepper.previous();
   }
 }

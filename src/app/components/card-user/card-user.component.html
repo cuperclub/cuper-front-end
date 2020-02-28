@@ -8,7 +8,9 @@
         <mat-icon>edit</mat-icon>
         <span>{{ 'common.update_data' | translate }}</span>
       </button>
-      <button mat-menu-item (click)="onUpdatePassword()">
+      <button mat-menu-item
+        *ngIf="user && user.provider === 'email'"
+        (click)="onUpdatePassword()">
         <mat-icon>vpn_key</mat-icon>
         <span>{{ 'common.update_password' | translate }}</span>
       </button>

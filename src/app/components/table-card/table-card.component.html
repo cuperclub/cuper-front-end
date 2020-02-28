@@ -4,8 +4,8 @@
       *ngFor="let item of items; let i = index;"
       (click)="onClick(item, i); indexActive = i;"
       [class.active]="indexActive == i">
-      <div class="avatar-col" *ngIf="item.image">
-        <cuper-avatar [imageSrc]="item.image" [size]="50"></cuper-avatar>
+      <div class="avatar-col">
+        <cuper-avatar [imageSrc]="item.image || defaultImage" [size]="50"></cuper-avatar>
       </div>
       <div class="content-col">
         <div class="title">{{item.title}}</div>
