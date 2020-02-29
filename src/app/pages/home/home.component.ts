@@ -34,8 +34,6 @@ export class HomeComponent implements OnInit {
     this.currentUser$ = this.userService.getObservableUserData();
     //initial notifications
     const current_user = this.userService.getCurrentUserData();
-    const currentCompany = this.userService.getCurrentCompany();
-    this.showHelper = currentCompany.status == UserStatus.PENDING;
     this.totalPendingNotifications = current_user.pending_notifications;
     const channelName = `usernotifications.${current_user.id}`;
     const eventNotification = 'new-notification';
@@ -50,6 +48,7 @@ export class HomeComponent implements OnInit {
       current_user.pending_notifications = current_user.pending_notifications + 1;
       this.userService.userDataEdited = current_user;
     });
+    this.validateShowHelper();
   }
 
   logOut() {
@@ -67,6 +66,7 @@ export class HomeComponent implements OnInit {
   onRegisterCompany = () => this.router.navigate(['home/register_company']);
 
   onChangeEmployeeAccount (company) {
+    this.showHelper = false;
     const currentEmployee = this.userService.getCurrentCompany();
     if (currentEmployee.id !== company.id){
       this.userService.updateCompanyIdView(company.id).subscribe(() =>{
@@ -75,7 +75,10 @@ export class HomeComponent implements OnInit {
         this.userService.observerData.next(currentUser);
         this.userService.userDataEdited = currentUser;
         this.updatedView = true;
-        setTimeout(() => { this.updatedView = false }, 1000);
+        setTimeout(() => {
+          this.updatedView = false;
+          this.validateShowHelper();
+        }, 1000);
       });
     }
   }
@@ -185,6 +188,11 @@ export class HomeComponent implements OnInit {
     const allowedRol = this.userService.userIsCashier();
     const isCompanyAproverd =  currentEmployee.status === UserStatus.APPROVED;
     return allowedRol && isCompanyAproverd;
+  }
+
+  validateShowHelper() {
+    const currentCompany = this.userService.getCurrentCompany();
+    this.showHelper = currentCompany.status == UserStatus.PENDING;
   }
 
   getAvatar = this.utilsService.getAvatar;
