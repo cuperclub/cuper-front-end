@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   currentPage = 1;
   initItemsPerPage = 5;
   disabledInfiniteScroll = false;
+  showHelper = false;
 
   constructor(
     private tokenService: AngularTokenService,
@@ -33,6 +34,8 @@ export class HomeComponent implements OnInit {
     this.currentUser$ = this.userService.getObservableUserData();
     //initial notifications
     const current_user = this.userService.getCurrentUserData();
+    const currentCompany = this.userService.getCurrentCompany();
+    this.showHelper = currentCompany.status == UserStatus.PENDING;
     this.totalPendingNotifications = current_user.pending_notifications;
     const channelName = `usernotifications.${current_user.id}`;
     const eventNotification = 'new-notification';
