@@ -191,7 +191,7 @@ export class HomeComponent implements OnInit {
   }
 
   validateShowHelper() {
-    const currentCompany = this.userService.getCurrentCompany();
+    const currentCompany = this.userService.getCurrentCompany() || {};
     this.showHelper = currentCompany.status == UserStatus.PENDING;
   }
 
