@@ -48,6 +48,7 @@ import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
 import { PlanFormComponent } from './plan-form/plan-form.component';
 import { SettingsFormComponent } from './settings-form/settings-form.component';
 import { UserTransactionsComponent } from './user-transactions/user-transactions.component';
+import { CardCompanyPlanComponent } from './card-company-plan/card-company-plan.component';
 
 import {
   DatetimeCellComponent,
@@ -103,7 +104,8 @@ const components = [
   FeedbackFormComponent,
   PlanFormComponent,
   SettingsFormComponent,
-  UserTransactionsComponent
+  UserTransactionsComponent,
+  CardCompanyPlanComponent
 ];
 
 @NgModule({
