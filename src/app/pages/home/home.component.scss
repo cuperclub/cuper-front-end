@@ -98,6 +98,10 @@
               color: $orange;
             }
 
+            &.expired {
+              color: $red;
+            }
+
             .icon {
               font-size: 12px;
               width: 0.6rem;
@@ -232,8 +236,8 @@
 
     &.active {
       pointer-events: none;
-      background-color: $primary;
-      color: white;
+      background-color: $mercury;
+      color: $dark;
       cursor: default;
     }
 
@@ -260,6 +264,10 @@
 
         .pending {
           color: $orange;
+        }
+
+        .expired {
+          color: $red;
         }
       }
     }
