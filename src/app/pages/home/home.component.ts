@@ -21,7 +21,28 @@ export class HomeComponent implements OnInit {
   initItemsPerPage = 5;
   disabledInfiniteScroll = false;
   showHelper = false;
+  messageProps = {
+    approved: {
+      key: null,
+      class: null
+    },
+    pending: {
+      key: 'common.messages.pending_validation',
+      class: 'blue'
+    },
+    almost_expired: {
+      key: 'common.messages.almost_expired_plan',
+      class: 'orange'
+    },
+    expired: {
+      key: 'common.messages.expired_plan',
+      class: 'red'
+    }
+  };
+  messageProp: any = {};
   helperMessage = '';
+  days = 7;
+  daysInMiliseconds = this.days * 86400000;
 
   constructor(
     private tokenService: AngularTokenService,
@@ -72,7 +93,6 @@ export class HomeComponent implements OnInit {
     const currentEmployee = this.userService.getCurrentCompany();
     if (currentEmployee.id !== company.id){
       this.userService.updateCompanyIdView(company.id).subscribe(() =>{
-        console.log('dddd');
         const currentUser = this.userService.getCurrentUserData();
         currentUser.current_company_id = company.id;
         this.userService.observerData.next(currentUser);
@@ -197,15 +217,11 @@ export class HomeComponent implements OnInit {
 
   validateShowHelper() {
     const currentCompany = this.userService.getCurrentCompany() || {};
-    const messageKey = {
-      'pending': 'common.messages.pending_validation',
-      'expired': 'common.messages.expired_plan',
-      'al_expired': 'common.messages.almost_expired_plan'
-    };
-    const key = messageKey[currentCompany.status];
-    this.showHelper = !!key;
+    const preAlertExpired = currentCompany.expired_plan_date - Date.now() <= this.daysInMiliseconds;
+    this.messageProp = preAlertExpired ? this.messageProps.almost_expired : this.messageProps[currentCompany.status];
+    this.showHelper = !!this.messageProp.key;
     if (this.showHelper) {
-      this.translate.get(key).subscribe((message: string) => {
+      this.translate.get(this.messageProp.key).subscribe((message: string) => {
         this.helperMessage = message;
       });
     }
