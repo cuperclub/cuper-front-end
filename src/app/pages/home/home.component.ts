@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
       class: null
     },
     pending: {
-      key: 'common.messages.pending_validation',
+      key: 'common.messages.pending_register',
       class: 'blue'
     },
     almost_expired: {
@@ -36,6 +36,10 @@ export class HomeComponent implements OnInit {
     },
     expired: {
       key: 'common.messages.expired_plan',
+      class: 'red'
+    },
+    declined: {
+      key: 'common.messages.declined_register',
       class: 'red'
     }
   };
@@ -117,8 +121,12 @@ export class HomeComponent implements OnInit {
         break;
       case UserStatus.DISABLED:
         iconStatus = 'domain_disabled';
+        break;
       case UserStatus.EXPIRED:
         iconStatus = 'history';
+        break;
+      case UserStatus.DECLINED:
+        iconStatus = 'warning';
         break;
     }
     return iconStatus;

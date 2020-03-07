@@ -47,7 +47,7 @@
 
           .count-notifications {
             border-radius: 50%;
-            background-color: orange;
+            background-color: $orange;
             color: $white;
             position: absolute;
             top: -8px;
@@ -96,6 +96,10 @@
 
             &.pending {
               color: $orange;
+            }
+
+            &.declined {
+              color: $red;
             }
 
             &.expired {
@@ -267,6 +271,10 @@
         }
 
         .expired {
+          color: $red;
+        }
+
+        .declined {
           color: $red;
         }
       }
