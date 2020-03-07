@@ -24,7 +24,8 @@
       "approved": "Approved",
       "pending": "Pending",
       "disabled": "Disabled",
-      "declined": "Declined"
+      "declined": "Declined",
+      "expired": "Expired"
     },
     "actions": {
       "enable": "Enabled",

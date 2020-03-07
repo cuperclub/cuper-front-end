@@ -58,7 +58,8 @@
       "approved": "Aprobado",
       "pending": "Pendiente",
       "disabled": "Deshabilitado",
-      "declined": "Rechazado"
+      "declined": "Rechazado",
+      "expired": "Expirado"
     },
     "actions": {
       "enable": "Activar",

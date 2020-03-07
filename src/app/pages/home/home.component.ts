@@ -97,6 +97,8 @@ export class HomeComponent implements OnInit {
         break;
       case UserStatus.DISABLED:
         iconStatus = 'domain_disabled';
+      case UserStatus.EXPIRED:
+        iconStatus = 'history';
         break;
     }
     return iconStatus;
