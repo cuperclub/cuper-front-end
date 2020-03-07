@@ -53,7 +53,10 @@
     "messages": {
       "created": "Created successfully",
       "updated": "Updated successfully",
-      "sent": "Sent successfully"
+      "sent": "Sent successfully",
+      "pending_validation": "You can create promotions, register companies and office, while we apprroved your information",
+      "expired_plan": "Your plan is expired, all your promotions will be unpublished until you renew your plan",
+      "almost_expired_plan": "Your plan is about to expire, renew it with time"
     },
     "promotion": {
       "company_register_tile": "Register your business and get",
