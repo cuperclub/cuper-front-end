@@ -89,10 +89,12 @@
       "created": "Creado correctamente",
       "updated": "Actualizado correctamente",
       "sent": "Enviado correctamente",
-      "pending_register": "Puedes crear promociones, registrar sucursales, mientras validamos tus datos",
-      "declined_register": "No hemos podido validar tu cuenta, te hemos enviado un correo con mas información",
-      "expired_plan": "Tu plan a expirado, todas tus promociones no seran publicadas hasta renovar tu plan",
-      "almost_expired_plan": "Tu plan esta a punto de expirar, renuevalo con tiempo"
+      "almost_expired_plan": "Tu plan esta a punto de expirar, renuevalo con tiempo",
+      "company": {
+        "pending": "Puedes crear promociones, registrar sucursales, mientras validamos tus datos",
+        "expired": "Tu plan a expirado, todas tus promociones no seran publicadas hasta renovar tu plan",
+        "declined": "No hemos podido validar tu cuenta, te hemos enviado un correo con mas información"
+      }
     },
     "available_points": "Puntos Disponibles",
     "promotion": {

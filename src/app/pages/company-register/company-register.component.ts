@@ -5,6 +5,7 @@ import { CompanyService, UserService, AdminPlanService } from '../../services'
 import { OptionPlan } from '../../components/card-plan/card-plan.component';
 import { MatSnackBar, MatStepper } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
+import { UserStatus, EmployeeRol } from 'src/app/models';
 
 @Component({
   selector: 'cuper-company-register',
@@ -88,9 +89,10 @@ export class CompanyRegisterComponent implements OnInit {
         id: company.id,
         join_at: company.join_at,
         name: company.business_name,
-        role: 'partner',
-        status: 'pending'
+        role: EmployeeRol.PARTNER,
+        status: UserStatus.PENDING
       };
+      currentUser.current_employee = formatCompany;
       if(currentUser.companies) {
         currentUser.companies.push(formatCompany);
       }else {

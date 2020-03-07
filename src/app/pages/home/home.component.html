@@ -6,7 +6,7 @@
 	</div>
 	<div class="tabs-header" *ngIf="currentUser$ | async as user">
 		<div class="status-company" *ngIf="user.companies">
-			<div class="menu" [matMenuTriggerFor]="menu" *ngIf="userService.getCurrentCompany() as currentEmployee">
+			<div class="menu" [matMenuTriggerFor]="menu" *ngIf="user.current_employee as currentEmployee">
 				<div class="employee-container">
 					<div class="account">
 						<div class="company-name">
@@ -102,7 +102,16 @@
 					</mat-menu>
 				</div>
 			</div>
-		</div>
+    </div>
+    <div *ngIf="user.current_employee"
+      class="helper-notification"
+      [ngClass]="{
+        'red': user.current_employee.status === 'expired',
+        'blue': user.current_employee.status === 'pending',
+        'orange': user.current_employee.status === 'almost_expired'
+      }">
+      {{ 'common.messages.company.'+ user.current_employee.status | translate }}
+    </div>
 	</div>
 </div>
 
@@ -132,10 +141,5 @@
 		</router-outlet>
 		<cuper-loader class="loader" *ngIf="updatedView">
 		</cuper-loader>
-  </div>
-  <div class="helper-notification"
-    [ngClass]="messageProp.class"
-    *ngIf="showHelper">
-    {{ helperMessage }}
   </div>
 </div>

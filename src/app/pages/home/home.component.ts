@@ -5,7 +5,7 @@ import { User, UserStatus, Notification } from '../../models';
 import { UserService, UtilsService, PusherService } from '../../services';
 import { MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'cuper-home',
   templateUrl: './home.component.html',
@@ -20,41 +20,13 @@ export class HomeComponent implements OnInit {
   currentPage = 1;
   initItemsPerPage = 5;
   disabledInfiniteScroll = false;
-  showHelper = false;
-  messageProps = {
-    approved: {
-      key: null,
-      class: null
-    },
-    pending: {
-      key: 'common.messages.pending_register',
-      class: 'blue'
-    },
-    almost_expired: {
-      key: 'common.messages.almost_expired_plan',
-      class: 'orange'
-    },
-    expired: {
-      key: 'common.messages.expired_plan',
-      class: 'red'
-    },
-    declined: {
-      key: 'common.messages.declined_register',
-      class: 'red'
-    }
-  };
-  messageProp: any = {};
-  helperMessage = '';
-  days = 7;
-  daysInMiliseconds = this.days * 86400000;
 
   constructor(
     private tokenService: AngularTokenService,
     private router: Router,
     private userService: UserService,
     private utilsService: UtilsService,
-    private message: MatSnackBar,
-    private translate: TranslateService
+    private message: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -75,7 +47,6 @@ export class HomeComponent implements OnInit {
       current_user.pending_notifications = current_user.pending_notifications + 1;
       this.userService.userDataEdited = current_user;
     });
-    this.validateShowHelper();
   }
 
   logOut() {
@@ -93,19 +64,16 @@ export class HomeComponent implements OnInit {
   onRegisterCompany = () => this.router.navigate(['home/register_company']);
 
   onChangeEmployeeAccount (company) {
-    this.showHelper = false;
+    this.updatedView = true;
     const currentEmployee = this.userService.getCurrentCompany();
     if (currentEmployee.id !== company.id){
       this.userService.updateCompanyIdView(company.id).subscribe(() =>{
         const currentUser = this.userService.getCurrentUserData();
         currentUser.current_company_id = company.id;
+        currentUser.current_employee = company;
         this.userService.observerData.next(currentUser);
         this.userService.userDataEdited = currentUser;
-        this.updatedView = true;
-        setTimeout(() => {
-          this.updatedView = false;
-          this.validateShowHelper();
-        }, 1000);
+        this.updatedView = false;
       });
     }
   }
@@ -221,18 +189,6 @@ export class HomeComponent implements OnInit {
     const allowedRol = this.userService.userIsCashier();
     const isCompanyAproverd =  currentEmployee.status === UserStatus.APPROVED;
     return allowedRol && isCompanyAproverd;
-  }
-
-  validateShowHelper() {
-    const currentCompany = this.userService.getCurrentCompany() || {};
-    const preAlertExpired = currentCompany.expired_plan_date ? currentCompany.expired_plan_date - Date.now() <= this.daysInMiliseconds : false;
-    this.messageProp = preAlertExpired ? this.messageProps.almost_expired : this.messageProps[currentCompany.status];
-    this.showHelper = !!this.messageProp.key;
-    if (this.showHelper) {
-      this.translate.get(this.messageProp.key).subscribe((message: string) => {
-        this.helperMessage = message;
-      });
-    }
   }
 
   getAvatar = this.utilsService.getAvatar;
