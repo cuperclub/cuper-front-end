@@ -217,7 +217,7 @@ export class HomeComponent implements OnInit {
 
   validateShowHelper() {
     const currentCompany = this.userService.getCurrentCompany() || {};
-    const preAlertExpired = currentCompany.expired_plan_date - Date.now() <= this.daysInMiliseconds;
+    const preAlertExpired = currentCompany.expired_plan_date ? currentCompany.expired_plan_date - Date.now() <= this.daysInMiliseconds : false;
     this.messageProp = preAlertExpired ? this.messageProps.almost_expired : this.messageProps[currentCompany.status];
     this.showHelper = !!this.messageProp.key;
     if (this.showHelper) {
