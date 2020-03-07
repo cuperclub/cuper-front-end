@@ -29,4 +29,5 @@ export enum UserStatus {
   PENDING = 'pending',
   DISABLED = 'disabled',
   DECLINED = 'declined',
+  EXPIRED = 'expired'
 }
