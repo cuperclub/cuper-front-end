@@ -11,6 +11,7 @@ export class DashboardComponent implements OnInit {
 
   currentUser: User;
   plan: any;
+  expiredPlanDate: number;
 
   constructor(private userService: UserService) { }
 
@@ -20,5 +21,6 @@ export class DashboardComponent implements OnInit {
 
   onListerCompanyData(company){
     this.plan = company.plan;
+    this.expiredPlanDate = company.expired_plan_date;
   }
 }
