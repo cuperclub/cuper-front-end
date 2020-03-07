@@ -103,14 +103,17 @@
 				</div>
 			</div>
     </div>
-    <div *ngIf="user.current_employee"
+    <div *ngIf="user.current_employee && (user.current_employee.status !== 'approved')"
       class="helper-notification"
       [ngClass]="{
         'red': user.current_employee.status === 'expired' || user.current_employee.status === 'declined',
-        'blue': user.current_employee.status === 'pending',
-        'orange': user.current_employee.status === 'almost_expired'
+        'blue': user.current_employee.status === 'pending'
       }">
       {{ 'common.messages.company.'+ user.current_employee.status | translate }}
+    </div>
+    <div *ngIf="user.current_employee && (user.current_employee?.status === 'approved') && user.current_employee?.almost_expired"
+      class="helper-notification orange">
+      {{ 'common.messages.almost_expired_plan' | translate }}
     </div>
 	</div>
 </div>
