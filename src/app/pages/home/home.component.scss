@@ -321,7 +321,6 @@
   }
 
   .helper-notification {
-    background-color: $blue;
     color: white;
     position: fixed;
     bottom: 10px;
@@ -330,5 +329,17 @@
     height: auto;
     padding: 10px;
     border-radius: 10px;
+
+    &.blue {
+      background-color: $blue;
+    }
+
+    &.red {
+      background-color: $red;
+    }
+
+    &.orange {
+      background-color: $orange;
+    }
   }
 }

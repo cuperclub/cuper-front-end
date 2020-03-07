@@ -29,7 +29,7 @@
 						<cuper-avatar [imageSrc]="company.logo_url || getAvatar(company.join_at)" [size]="25"></cuper-avatar>
 						<div class="information">
 							<div class="name">{{ company.name}}</div>
-							<div class="role">{{ company.role}}/
+							<div class="role">{{ company.role}} /
                 <span [ngClass]="company.status">
                   {{ 'common.status.'+ company.status | translate }}
                 </span></div>
@@ -133,7 +133,9 @@
 		<cuper-loader class="loader" *ngIf="updatedView">
 		</cuper-loader>
   </div>
-  <div class="helper-notification" *ngIf="showHelper">
+  <div class="helper-notification"
+    [ngClass]="messageProp.class"
+    *ngIf="showHelper">
     {{ helperMessage }}
   </div>
 </div>
