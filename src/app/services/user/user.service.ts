@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AngularTokenService } from 'angular-token';
-import { User, InputTransaction } from '../../models';
+import { User, Employee, Company } from '../../models';
 import { Observable, Subscriber } from 'rxjs';
 
 interface UserProfile extends User{
   current_company_id?: number;
   companies?: Array<any>;
   is_partner?: boolean;
+  current_employee?: any;
 }
 
 export interface UserTokenData extends User {
@@ -29,6 +30,7 @@ export class UserService {
 
   public getCurrentUserData() {
     const currentUser: UserProfile = {...this.tokenService.currentUserData, ...this.userDataEdited};
+    currentUser.current_employee = currentUser.companies.find(company => company.id == currentUser.current_company_id);
     if(this.observerData) this.observerData.next(currentUser);
     return currentUser;
   }
@@ -47,19 +49,13 @@ export class UserService {
     return this.httpClient.get<User[]>(`${this.apiURL}/api/users/search`, params);
   }
 
-  public getCompanyIdView(){
-    const currentUser = this.getCurrentUserData();
-    return currentUser.current_company_id;
-  }
-
   public updateCompanyIdView(id){
     return this.httpClient.put(`${this.apiURL}/api/users/current_view`, {company_id: id});
   }
 
   public getCurrentCompany(){
     let currentUser = this.getCurrentUserData();
-    const currentCompany =  currentUser.companies.find(company => company.id == currentUser.current_company_id);
-    return currentCompany;
+    return currentUser.current_employee;
   }
 
   public userIsCashier(){

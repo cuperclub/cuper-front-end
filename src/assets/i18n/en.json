@@ -55,10 +55,12 @@
       "created": "Created successfully",
       "updated": "Updated successfully",
       "sent": "Sent successfully",
-      "pending_register": "You can create promotions, register companies and office, while we apprroved your information",
-      "declined_register": "We couldn't validate your account, we sent you an email",
-      "expired_plan": "Your plan is expired, all your promotions will be unpublished until you renew your plan",
-      "almost_expired_plan": "Your plan is about to expire, renew it with time"
+      "almost_expired_plan": "Your plan is about to expire, renew it with time",
+      "company": {
+        "pending": "You can create promotions, register companies and office, while we apprroved your information",
+        "declined": "We couldn't validate your account, we sent you an email",
+        "expired": "Your plan is expired, all your promotions will be unpublished until you renew your plan"
+      }
     },
     "promotion": {
       "company_register_tile": "Register your business and get",
