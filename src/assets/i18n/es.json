@@ -99,7 +99,9 @@
       "back": "Regresar"
     },
     "view_as_admin": "Cambiar a Admin",
-    "view_as_partner": "Cambiar a Partner"
+    "view_as_partner": "Cambiar a Partner",
+    "plan_selected": "Plan Seleccionado",
+    "expired_at": "Vence en:"
   },
   "company": {
     "billing_info": "Datos de facturación",
