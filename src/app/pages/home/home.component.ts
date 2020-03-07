@@ -73,7 +73,9 @@ export class HomeComponent implements OnInit {
         currentUser.current_employee = company;
         this.userService.observerData.next(currentUser);
         this.userService.userDataEdited = currentUser;
-        this.updatedView = false;
+        setTimeout(() => {
+          this.updatedView = false;
+        }, 1000);
       });
     }
   }
@@ -187,8 +189,8 @@ export class HomeComponent implements OnInit {
   isCompanyAproved() {
     const currentEmployee = this.userService.getCurrentCompany();
     const allowedRol = this.userService.userIsCashier();
-    const isCompanyAproverd =  currentEmployee.status === UserStatus.APPROVED;
-    return allowedRol && isCompanyAproverd;
+    const isCompanyAproved =  currentEmployee.status === UserStatus.APPROVED;
+    return allowedRol && isCompanyAproved;
   }
 
   getAvatar = this.utilsService.getAvatar;
