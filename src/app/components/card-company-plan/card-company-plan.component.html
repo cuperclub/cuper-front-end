@@ -5,8 +5,8 @@
       <div class="plan-name">{{plan?.name}}</div>
       <div class="plan-info">{{plan?.days}} dias / ${{plan?.price}}</div>
     </div>
-    <div class="expired">
-      {{ 'common.expired_at' | translate }} Mar 1, 2020
+    <div class="expired" *ngIf="expiredDate">
+      {{ 'common.expired_at' | translate }} {{expiredDate | date: 'MMM d, y, h:mm a'}}
     </div>
   </div>
 </mat-card>
