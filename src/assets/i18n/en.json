@@ -65,7 +65,9 @@
     },
     "available_points": "Available Points",
     "view_as_admin": "Switch to Admin",
-    "view_as_partner": "Switch to Partner"
+    "view_as_partner": "Switch to Partner",
+    "plan_selected": "Plan Selected",
+    "expired_at": "Expired at:"
   },
   "company": {
     "billing_info": "Billing Info",
