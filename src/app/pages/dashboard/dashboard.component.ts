@@ -10,6 +10,7 @@ import { UserService } from '../../services';
 export class DashboardComponent implements OnInit {
 
   currentUser: User;
+  plan: any;
 
   constructor(private userService: UserService) { }
 
@@ -17,4 +18,7 @@ export class DashboardComponent implements OnInit {
     this.currentUser = this.userService.getCurrentUserData();
   }
 
+  onListerCompanyData(company){
+    this.plan = company.plan;
+  }
 }

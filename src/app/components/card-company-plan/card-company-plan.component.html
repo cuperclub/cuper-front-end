@@ -1,3 +1,13 @@
-<p>
-  card-company-plan works!
-</p>
+<mat-card class="card-container">
+  <div class="card-content">
+    <h3 class="label">Plan Seleccionado</h3>
+    <div class="description">
+      <div class="plan-name">{{plan?.name}}</div>
+      <div class="plan-info">{{plan?.days}} dias / ${{plan?.price}}</div>
+    </div>
+    <div class="expired">
+      Vence el:  Mar 1, 2020
+    </div>
+  </div>
+</mat-card>
+

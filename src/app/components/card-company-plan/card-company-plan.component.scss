@@ -1,0 +1,44 @@
+@import "../../../styles/colors.scss";
+
+.card-container {
+  padding: 0;
+	margin: 0;
+
+  .card-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h3 {
+      padding: 0 0 0 1rem;
+    }
+
+    .points {
+			font-size: 35px;
+			font-family: 'Circular-Bold'
+    }
+
+    .description {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-style: 'Lato-Semibold';
+
+      .plan-name {
+        font-size: 20px;
+      }
+
+      .plan-info {
+        color: $gray-dark;
+        padding-top: 5px;
+      }
+    }
+
+    .expired {
+      padding-bottom: 30px;
+      text-align: center;
+    }
+  }
+}

@@ -2,8 +2,14 @@
   <cuper-card-user class="card" [user]="currentUser"></cuper-card-user>
   <cuper-company-card class="card"
     *ngIf="currentUser.is_partner"
-    [disableEvents]="currentUser && currentUser.is_cashier">
+    [disableEvents]="currentUser && currentUser.is_cashier"
+    (propagateCompanyData)="onListerCompanyData($event)">
   </cuper-company-card>
+  <cuper-card-company-plan
+    class="card"
+    *ngIf="currentUser.is_partner && plan"
+    [plan]="plan">
+  </cuper-card-company-plan>
   <cuper-card-points class="card" [user]="currentUser"></cuper-card-points>
   <cuper-card-register-company
     class="card"
