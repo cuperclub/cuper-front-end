@@ -31,6 +31,8 @@ export class UserService {
   public getCurrentUserData() {
     const currentUser: UserProfile = {...this.tokenService.currentUserData, ...this.userDataEdited};
     currentUser.current_employee = currentUser.companies.find(company => company.id == currentUser.current_company_id);
+    const almostFinishPlan = this.isAlmostToFinishPlan(currentUser.current_employee);
+    currentUser.current_employee.status = almostFinishPlan ? 'almost_expired' : currentUser.current_employee.status;
     if(this.observerData) this.observerData.next(currentUser);
     return currentUser;
   }
@@ -139,4 +141,11 @@ export class UserService {
     return this.httpClient.put(`${this.apiURL}/auth/password`,params);
   }
 
+  public isAlmostToFinishPlan(company) {
+    const days = 7;
+    const daysInMiliseconds = days * 86400000;
+    const currentCompany = company || {};
+    const almostFinish = currentCompany.expired_plan_date ? currentCompany.expired_plan_date - Date.now() <= daysInMiliseconds : false;
+    return almostFinish;
+  }
 }
