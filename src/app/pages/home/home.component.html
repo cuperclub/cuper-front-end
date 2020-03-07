@@ -103,7 +103,7 @@
 				</div>
 			</div>
     </div>
-    <div *ngIf="user.current_employee && (user.current_employee.status !== 'approved')"
+    <div *ngIf="!!user.current_employee && (user.current_employee.status !== 'approved') && !updatedView"
       class="helper-notification"
       [ngClass]="{
         'red': user.current_employee.status === 'expired' || user.current_employee.status === 'declined',
@@ -111,7 +111,7 @@
       }">
       {{ 'common.messages.company.'+ user.current_employee.status | translate }}
     </div>
-    <div *ngIf="user.current_employee && (user.current_employee?.status === 'approved') && user.current_employee?.almost_expired"
+    <div *ngIf="!!user.current_employee && (user.current_employee?.status === 'approved') && user.current_employee?.almost_expired && updatedView"
       class="helper-notification orange">
       {{ 'common.messages.almost_expired_plan' | translate }}
     </div>
