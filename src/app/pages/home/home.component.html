@@ -106,7 +106,7 @@
     <div *ngIf="user.current_employee"
       class="helper-notification"
       [ngClass]="{
-        'red': user.current_employee.status === 'expired',
+        'red': user.current_employee.status === 'expired' || user.current_employee.status === 'declined',
         'blue': user.current_employee.status === 'pending',
         'orange': user.current_employee.status === 'almost_expired'
       }">
