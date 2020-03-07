@@ -5,7 +5,7 @@ import { User, UserStatus, Notification } from '../../models';
 import { UserService, UtilsService, PusherService } from '../../services';
 import { MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
-
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'cuper-home',
   templateUrl: './home.component.html',
@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   initItemsPerPage = 5;
   disabledInfiniteScroll = false;
   showHelper = false;
+  helperMessage = '';
 
   constructor(
     private tokenService: AngularTokenService,
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit {
     private userService: UserService,
     private utilsService: UtilsService,
     private message: MatSnackBar,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
@@ -70,6 +72,7 @@ export class HomeComponent implements OnInit {
     const currentEmployee = this.userService.getCurrentCompany();
     if (currentEmployee.id !== company.id){
       this.userService.updateCompanyIdView(company.id).subscribe(() =>{
+        console.log('dddd');
         const currentUser = this.userService.getCurrentUserData();
         currentUser.current_company_id = company.id;
         this.userService.observerData.next(currentUser);
@@ -192,7 +195,18 @@ export class HomeComponent implements OnInit {
 
   validateShowHelper() {
     const currentCompany = this.userService.getCurrentCompany() || {};
-    this.showHelper = currentCompany.status == UserStatus.PENDING;
+    const messageKey = {
+      'pending': 'common.messages.pending_validation',
+      'expired': 'common.messages.expired_plan',
+      'al_expired': 'common.messages.almost_expired_plan'
+    };
+    const key = messageKey[currentCompany.status];
+    this.showHelper = !!key;
+    if (this.showHelper) {
+      this.translate.get(key).subscribe((message: string) => {
+        this.helperMessage = message;
+      });
+    }
   }
 
   getAvatar = this.utilsService.getAvatar;
