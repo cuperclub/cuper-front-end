@@ -1,0 +1,56 @@
+.switch-account {
+  width: 15rem;
+
+  .accounts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .fadeOutRight {
+      animation: fadeOutRight 1s ease-in-out;
+    }
+
+    .fadeOutLeft {
+      animation: fadeOutLeft 1s ease-in-out;
+    }
+  }
+
+  .description {
+    text-align: center;
+    padding-top: 1rem;
+
+    .load-text {
+
+    }
+
+    .target-account {
+      font-weight: bold;
+      padding-top: 1rem;
+      font-size: 16px;
+    }
+  }
+}
+
+
+@keyframes fadeOutLeft {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.2;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+
+@keyframes fadeOutRight {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.2;
+    transform: translate3d(100%, 0, 0);
+  }
+}

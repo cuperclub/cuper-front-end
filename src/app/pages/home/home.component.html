@@ -141,8 +141,12 @@
 	</div>
 	<div class="render-container">
 		<router-outlet *ngIf="!updatedView">
-		</router-outlet>
-		<cuper-loader class="loader" *ngIf="updatedView">
-		</cuper-loader>
+    </router-outlet>
+    <cuper-switch-account
+      [firstAccount] = "initialCompany"
+      [secondAccount] = "finalCompany"
+      class="loader switch"
+      *ngIf="updatedView">
+    </cuper-switch-account>
   </div>
 </div>

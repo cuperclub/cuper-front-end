@@ -49,6 +49,7 @@ import { PlanFormComponent } from './plan-form/plan-form.component';
 import { SettingsFormComponent } from './settings-form/settings-form.component';
 import { UserTransactionsComponent } from './user-transactions/user-transactions.component';
 import { CardCompanyPlanComponent } from './card-company-plan/card-company-plan.component';
+import { SwitchAccountComponent } from './switch-account/switch-account.component';
 
 import {
   DatetimeCellComponent,
@@ -105,7 +106,8 @@ const components = [
   PlanFormComponent,
   SettingsFormComponent,
   UserTransactionsComponent,
-  CardCompanyPlanComponent
+  CardCompanyPlanComponent,
+  SwitchAccountComponent
 ];
 
 @NgModule({
