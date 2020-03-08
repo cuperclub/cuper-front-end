@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
   currentPage = 1;
   initItemsPerPage = 5;
   disabledInfiniteScroll = false;
+  initialCompany = {};
+  finalCompany = {};
 
   constructor(
     private tokenService: AngularTokenService,
@@ -67,6 +69,8 @@ export class HomeComponent implements OnInit {
     this.updatedView = true;
     const currentEmployee = this.userService.getCurrentCompany();
     if (currentEmployee.id !== company.id){
+      this.initialCompany = currentEmployee;
+      this.finalCompany = company;
       this.userService.updateCompanyIdView(company.id).subscribe(() =>{
         const currentUser = this.userService.getCurrentUserData();
         currentUser.current_company_id = company.id;
