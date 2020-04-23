@@ -26,6 +26,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 import { CompanyRegisterComponent } from './pages/company-register/company-register.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { RootStoreModule } from './root-store';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -70,7 +71,8 @@ export function createTranslateLoader(http: HttpClient) {
       },
       oAuthWindowType: 'newWindow'
     }),
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    RootStoreModule
   ],
   providers: [
     {
