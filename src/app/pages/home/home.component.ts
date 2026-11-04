@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularTokenService } from 'angular-token';
+import { AuthService, UserService, UtilsService, PusherService } from '../../services';
 import { Router } from '@angular/router';
 import { User, UserStatus, Notification } from '../../models';
-import { UserService, UtilsService, PusherService } from '../../services';
 import { MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
 
@@ -22,7 +21,7 @@ export class HomeComponent implements OnInit {
   disabledInfiniteScroll = false;
 
   constructor(
-    private tokenService: AngularTokenService,
+    private authService: AuthService,
     private router: Router,
     private userService: UserService,
     private utilsService: UtilsService,
@@ -50,7 +49,7 @@ export class HomeComponent implements OnInit {
   }
 
   logOut() {
-    this.tokenService.signOut().subscribe(resp =>{
+    this.authService.signOut().subscribe(resp =>{
       if(resp.success){
         this.router.navigateByUrl('');
       }

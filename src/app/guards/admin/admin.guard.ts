@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { UserService, UserTokenData } from '../../services';
-import { AngularTokenService } from 'angular-token';
+import { AuthService, UserService, UserTokenData } from '../../services';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +9,15 @@ export class AdminGuard implements CanActivate {
 
   constructor(
     private router: Router,
-    private tokenService: AngularTokenService,
+    private authService: AuthService,
     private userService: UserService
   ) { }
 
   canActivate(): boolean | Promise<boolean> {
-    const userSignedIn = this.tokenService.userSignedIn();
+    const userSignedIn = this.authService.userSignedIn();
     if(userSignedIn) {
-      if(this.tokenService.currentUserData) {
-        return this.redirect(this.tokenService.currentUserData);
+      if(this.authService.currentUserData) {
+        return this.redirect(this.authService.currentUserData);
       } else {
         return this.userService.validateToken().then((userData) => {
           return this.redirect(userData);

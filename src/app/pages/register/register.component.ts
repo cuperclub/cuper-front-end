@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularTokenService } from 'angular-token';
+import { AuthService } from 'src/app/services';
 import { MatSnackBar } from '@angular/material';
 import { UserRegister } from 'src/app/models';
 
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private tokenService: AngularTokenService,
+    private authService: AuthService,
     private message: MatSnackBar
   ) { }
 
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.tokenService.registerAccount({
+    this.authService.registerAccount({
       login: this.user.email,
       password: this.user.password,
       passwordConfirmation: this.user.password,
@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
   }
 
   loginWithFacebook() {
-    this.tokenService.signInOAuth(
+    this.authService.signInOAuth(
       'facebook',
       ).subscribe(
         () =>    this.onSuccess(),
@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
   }
 
   loginWithGoogle() {
-    this.tokenService.signInOAuth(
+    this.authService.signInOAuth(
       'google_oauth2',
       ).subscribe(
         () =>    this.onSuccess(),

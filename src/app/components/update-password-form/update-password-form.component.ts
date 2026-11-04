@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { CardUserComponent } from '../card-user/card-user.component';
 import { MatSnackBar } from '@angular/material';
-import { AngularTokenService } from 'angular-token';
+import { AuthService } from '../../services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 interface Password {
@@ -23,7 +23,7 @@ export class UpdatePasswordFormComponent implements OnInit{
   constructor(
     private fb: FormBuilder,
     private message: MatSnackBar,
-    private tokenService: AngularTokenService,
+    private authService: AuthService,
     private translate: TranslateService,
     public dialogRef: MatDialogRef<CardUserComponent>,
     @Inject(MAT_DIALOG_DATA) public password: Password
@@ -41,7 +41,7 @@ export class UpdatePasswordFormComponent implements OnInit{
   }
 
   onSubmit(): void {
-    this.tokenService.updatePassword({
+    this.authService.updatePassword({
       password: this.passwordForm.value.password,
       passwordConfirmation: this.passwordForm.value.password,
       passwordCurrent: this.passwordForm.value.current_password,

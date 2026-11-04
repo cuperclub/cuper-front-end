@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularTokenService } from 'angular-token';
 import { Router } from '@angular/router';
 import { User } from '../../../models';
-import { UserService, UtilsService } from '../../../services';
+import { UserService, UtilsService, AuthService } from '../../../services';
 
 @Component({
   selector: 'cuper-administration',
@@ -14,7 +13,7 @@ export class AdministrationComponent implements OnInit {
   updatedView: boolean = false
 
   constructor(
-    private tokenService: AngularTokenService,
+    private authService: AuthService,
     private router: Router,
     private userService: UserService,
     private utilsService: UtilsService,
@@ -25,7 +24,7 @@ export class AdministrationComponent implements OnInit {
   }
 
   logOut() {
-    this.tokenService.signOut().subscribe(resp =>{
+    this.authService.signOut().subscribe(resp =>{
       if(resp.success){
         this.router.navigateByUrl('');
       }

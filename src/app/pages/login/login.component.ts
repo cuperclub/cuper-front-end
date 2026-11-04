@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularTokenService } from 'angular-token';
+import { AuthService } from 'src/app/services';
 import { MatSnackBar } from '@angular/material';
 
 import { UserLogin } from 'src/app/models';
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private tokenService: AngularTokenService,
+    private authService: AuthService,
     private message: MatSnackBar
   ) { }
 
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.tokenService.signIn({
+    this.authService.signIn({
       login: this.user.email,
       password: this.user.password
     }).subscribe(
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithFacebook() {
-    this.tokenService.signInOAuth(
+    this.authService.signInOAuth(
       'facebook',
       ).subscribe(
         res =>    this.onSuccess(res),
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithGoogle() {
-    this.tokenService.signInOAuth(
+    this.authService.signInOAuth(
       'google_oauth2',
       ).subscribe(
         res =>    this.onSuccess(res),

@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import 'hammerjs';
-import { AngularTokenModule } from 'angular-token';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,7 +12,7 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { ComponentsModule } from './components/components.module';
 import { AdminModule } from './pages/admin/admin.module';
-import { environment } from '../environments/environment';
+import { AuthInterceptor } from './services/auth/auth.interceptor';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 
 // Pages
@@ -61,18 +60,14 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    AngularTokenModule.forRoot({
-      apiBase: environment.apiBase,
-      oAuthBase:  environment.apiBase,
-      oAuthPaths: {
-        facebook: 'auth/facebook',
-        google_oauth2: 'auth/google_oauth2'
-      },
-      oAuthWindowType: 'newWindow'
-    }),
     InfiniteScrollModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     {
       provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {
         disableClose: true,
