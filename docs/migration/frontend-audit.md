@@ -13,6 +13,10 @@ Validación de esta iteración:
 
 Límites: OAuth social no se probó, y la app no define ruta `oauth_callback` (ausencia preexistente; el adaptador conserva esa URL para no alterar el flujo). Recuperación/reset de contraseña y cambio de contraseña no se ejercitaron en navegador en esta iteración. Production sigue bloqueado por `environment.prod.ts` incompleto. La base test continúa sin crear y RSpec no se ejecutó.
 
+Validación adicional por rol contra cuentas del seed: cajero (`/home/transactions` con `GET /api/transaction_inputs` y `/api/transaction_outputs` 200), partner (`/home/company/home` con endpoints de partner; se observaron 202/201 en GET, comportamiento del backend ya documentado) y admin (login redirige a `/admin/companies` y `AdminGuard` lo permite). Un cliente autenticado que abre `/admin/companies` es redirigido a `/home/dashboard`, confirmando el camino negativo del guard. Consola sin errores en estos recorridos. En la sesión de automatización, tras navegar a caja el canal de puntero del navegador dejó de entregar eventos; el envío del formulario se realizó con `form.requestSubmit()` y las peticiones/handlers de Angular respondieron normal. No se interpreta como defecto de la aplicación y no se cambió código por ello.
+
+Nota: `LoginComponent` sigue dependiendo de `data.is_admin` de la respuesta de Rails para elegir `/admin/companies`; no se alteró esa regla de negocio.
+
 ## Estado local vigente tras seed autorizado (2026-11-04)
 
 El usuario autorizó expresamente ejecutar el seed porque la base local estaba vacía. Se confirmó que la base development no existía, se creó **solo** `cuperclub-backend_development` en 127.0.0.1:5432 y se cargó el schema de `feat/backend-modernization` (`7a3b9db`). Después se ejecutó el seed original mediante `Rails.application.load_seed` dentro de una transacción, con guardas de entorno/host/base y validación de resultados. Correos desactivados solo en el proceso de seed. No se crearon ni modificaron otras bases.
