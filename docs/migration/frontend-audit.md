@@ -1,5 +1,18 @@
 # Auditoría frontend Cuper
 
+## Iteración 2 — adaptador de autenticación propio (2026-11-04)
+
+Se sustituyó `angular-token@7.0.1` por una fachada `AuthService` + `AuthInterceptor` construida sobre `HttpClient`, preservando el contrato observado: mismos paths (`auth/sign_in`, `auth/sign_out`, `auth/validate_token`, `auth`, `auth/password`), mismos cinco headers (`access-token`, `client`, `expiry`, `token-type`, `uid`), mismas claves de `localStorage` y las mismas URLs de OAuth (`auth/facebook`, `auth/google_oauth2`, callback `origin/oauth_callback`, ventana nueva con postMessage). No se cambió almacenamiento, backend, contrato ni configuración de entornos.
+
+Consumidores migrados: `UserService`, guards `AuthGuard`/`AdminGuard`/`CashierGuard`/`PartnerGuard`/`IsntSignedInGuard`, `LoginComponent`, `RegisterComponent`, `HomeComponent`, `AdministrationComponent` y `UpdatePasswordFormComponent`. `package.json` y `package-lock.json` dejaron de declarar `angular-token` (9 líneas eliminadas) usando npm 6 en el toolchain Node 10; no se regeneró el lock con npm moderno.
+
+Validación de esta iteración:
+- Build development en toolchain aislado: exit 0, antes y después de retirar la dependencia.
+- Suite existente: 8/8, exit 0, antes y después de retirar la dependencia.
+- Navegador (Playwright MCP, desktop 1280 y móvil 390×844) contra Rails `feat/backend-modernization`: sesión previa creada por `angular-token` siguió válida tras el cambio (compatibilidad de almacenamiento); logout limpió sesión y volvió a `/login`; login nuevo contra `POST /auth/sign_in` 200; recarga de `/home/dashboard` ejecutó `GET /auth/validate_token` 200 y mantuvo sesión. Consola sin errores.
+
+Límites: OAuth social no se probó, y la app no define ruta `oauth_callback` (ausencia preexistente; el adaptador conserva esa URL para no alterar el flujo). Recuperación/reset de contraseña y cambio de contraseña no se ejercitaron en navegador en esta iteración. Production sigue bloqueado por `environment.prod.ts` incompleto. La base test continúa sin crear y RSpec no se ejecutó.
+
 ## Estado local vigente tras seed autorizado (2026-11-04)
 
 El usuario autorizó expresamente ejecutar el seed porque la base local estaba vacía. Se confirmó que la base development no existía, se creó **solo** `cuperclub-backend_development` en 127.0.0.1:5432 y se cargó el schema de `feat/backend-modernization` (`7a3b9db`). Después se ejecutó el seed original mediante `Rails.application.load_seed` dentro de una transacción, con guardas de entorno/host/base y validación de resultados. Correos desactivados solo en el proceso de seed. No se crearon ni modificaron otras bases.

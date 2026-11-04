@@ -28,7 +28,7 @@ Fuentes: [tabla de compatibilidad Angular](https://angular.dev/reference/version
 | `@angular/cdk` | 7.3.7 | 22.2.5 | Material | Mantener alineado con Material |
 | `@ngx-translate/core` | 11.0.1 | 18.1.0 | Usado globalmente; peer requiere Angular >=18/RxJS >=7 en actual | Actualizar junto con loader; comprobar traducciones tardías zoneless |
 | `@ngx-translate/http-loader` | 4.0.0 | 18.1.0 | Traducciones HTTP | Actualizar junto con core; comprobar URL de assets |
-| `angular-token` | 7.0.1 | 7.0.1 | Deprecated/no longer supported; peers Angular 7; auth/OAuth/storage/interceptor | Sustituir por adaptador Angular/RxJS del contrato Rails; no crear auth propia |
+| `angular-token` | 7.0.1 | retirado (2026-11-04) | Deprecated/no longer supported; peers Angular 7; auth/OAuth/storage/interceptor | Sustituido por `AuthService`/`AuthInterceptor` internos que preservan el protocolo Rails; no es auth propia de servidor ni criptografía |
 | `core-js` | 2.6.11 | 3.51.0 | imports legacy en polyfills | Eliminar solo imports no requeridos por matriz de navegadores |
 | `express` | 4.17.1 | 5.3.0 | Solo server estático `server.js`; Express 4 tiene advisories | Sacar del destino si hosting estático; si continúa temporalmente, actualizar tras validar hosting |
 | `hammerjs` | 2.0.8 | 2.0.8 | Import global; no release reciente | Retirar cuando Material moderno no lo requiera; revisar gestos |

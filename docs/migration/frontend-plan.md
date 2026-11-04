@@ -14,6 +14,8 @@
 
 **Checkpoint posterior, seed autorizado:** creada únicamente la base development local nueva, cargado schema y seed original bajo transacción/guardas, sin correos salientes. Registros esperados y contraseñas de cuatro cuentas verificadas. Rails en localhost:3000 y frontend temporal en localhost:4200; login cliente y recarga con validate_token 200 comprobados mediante navegador, consola sin errores. No se creó base test ni se ejecutó RSpec/caja/OAuth. El baseline privado está parcialmente validado, no aprobado por completo. El estado anterior de bases inexistentes queda como historial.
 
+**Iteración 2 (2026-11-04):** `angular-token` fue reemplazado por `AuthService` + `AuthInterceptor` propios, preservando paths, headers, claves de `localStorage` y URLs OAuth. Todos los consumidores y guards migrados; dependencia retirada de `package.json`/lock con npm 6. Build development exit 0 y tests 8/8 antes y después de retirar la dependencia. Navegador: sesión heredada de `angular-token` válida, logout/login/recarga con validate_token 200 en desktop y móvil, consola sin errores. OAuth, reset/cambio de contraseña y production siguen pendientes de validación.
+
 **Revisión documental:** 2026-11-04, contrastada con documentación oficial mediante Context7. Los parches citados corresponden a la consulta npm del 2026-10-30: no son un lock de implementación ni una certificación del último parche disponible hoy. Reverificar versiones y peers antes de cada PR.
 
 ## Principios de ejecución
@@ -119,11 +121,11 @@ Secuencia de major: 7→8→9→10→11→12→13→14→15→16→17→18→19�
 **Pasos:**
 - [ ] Confirmar con Rails headers, rutas auth, OAuth callbacks, errores y CORS.
 - [ ] Contrastar contra `feat/backend-modernization`: CORS local explícito, reset admin mediante instrucciones Devise y errores de autorización que pueden responder 401. No tratar indiscriminadamente un 401 de permisos como sesión expirada.
-- [ ] Crear fachada AuthService/adaptador usando Angular HttpClient/RxJS compatible con versión actual.
-- [ ] Preservar token storage y headers legacy hasta acordar migración; no implementar criptografía/token propio.
-- [ ] Replicar sign in/up/out/validate/change/reset/OAuth.
+- [x] Crear fachada AuthService/adaptador usando Angular HttpClient/RxJS compatible con versión actual.
+- [x] Preservar token storage y headers legacy hasta acordar migración; no implementar criptografía/token propio.
+- [x] Replicar sign in/up/out/validate/change/reset/OAuth.
 - [ ] Validar origen y ventana en callback; manejar cierre/timeout; no exponer tokens a logs.
-- [ ] Migrar guards/consumidores gradualmente y retirar `angular-token` cuando no haya imports.
+- [x] Migrar guards/consumidores gradualmente y retirar `angular-token` cuando no haya imports.
 - [ ] Corregir redirect de password reset y environments con plataforma/deploy.
 
 **Riesgos:** invalidar sesiones, refresh/rotación de headers, popup bloqueado, cambios en correo de reset.
