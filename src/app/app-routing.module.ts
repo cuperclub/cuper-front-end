@@ -36,24 +36,24 @@ const routes: Routes = [
       {
         path: 'company',
         canActivate: [PartnerGuard],
-        loadChildren: './pages/company/company.module#CompanyModule'
+        loadChildren: () => import('./pages/company/company.module').then(m => m.CompanyModule)
       },
       {
         path: 'promotions',
         canActivate: [AuthGuard],
-        loadChildren: './pages/customer/customer.module#CustomerModule'
+        loadChildren: () => import('./pages/customer/customer.module').then(m => m.CustomerModule)
       },
       {
         path: 'transactions',
         canActivate: [CashierGuard],
-        loadChildren: './pages/employee/employee.module#EmployeeModule'
+        loadChildren: () => import('./pages/employee/employee.module').then(m => m.EmployeeModule)
       }
     ],
   },
   {
     path: 'admin',
     canActivate: [AdminGuard],
-    loadChildren: './pages/admin/admin.module#AdminModule'
+    loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
   },
 ];
 

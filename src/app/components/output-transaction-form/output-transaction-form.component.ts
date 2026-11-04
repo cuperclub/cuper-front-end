@@ -4,7 +4,7 @@ import { CompanyCardComponent } from '../company-card/company-card.component';
 import { Promotion } from 'src/app/models';
 import { PromotionService } from 'src/app/services';
 import { OutputTransactionService } from '../../services';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { UtilsService } from 'src/app/services';
 

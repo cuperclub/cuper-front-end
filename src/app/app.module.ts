@@ -13,7 +13,7 @@ import { MaterialModule } from './material.module';
 import { ComponentsModule } from './components/components.module';
 import { AdminModule } from './pages/admin/admin.module';
 import { AuthInterceptor } from './services/auth/auth.interceptor';
-import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 // Pages
 import { LoginComponent } from './pages/login/login.component';

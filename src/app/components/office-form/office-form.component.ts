@@ -4,7 +4,7 @@ import { CardOfficeComponent } from '../../components/card-office/card-office.co
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Office } from '../../models';
 import { OfficeService } from '../../services';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 
 interface point {

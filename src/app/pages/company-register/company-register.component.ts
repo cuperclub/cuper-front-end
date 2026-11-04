@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { CompanyService, UserService, AdminPlanService } from '../../services'
 import { OptionPlan } from '../../components/card-plan/card-plan.component';
-import { MatSnackBar, MatStepper } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatStepper } from '@angular/material/stepper';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

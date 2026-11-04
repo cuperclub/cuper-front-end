@@ -5,7 +5,7 @@ import { User } from '../../models';
 import { CompanyService } from 'src/app/services';
 import { ButtonOption } from '../../components/user-search/user-search.component';
 import { TranslateService } from '@ngx-translate/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UtilsService } from 'src/app/services';
 
 @Component({

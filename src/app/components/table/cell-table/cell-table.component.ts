@@ -18,7 +18,7 @@ import {
 export class CellTableComponent implements OnDestroy, AfterContentInit {
   @Input() data: Object;
   @Input() type: Type<Component>;
-  @ViewChild('content', {read: ViewContainerRef}) content;
+  @ViewChild('content', { read: ViewContainerRef, static: true }) content;
   componentRef: ComponentRef<Component>;
 
   constructor(
