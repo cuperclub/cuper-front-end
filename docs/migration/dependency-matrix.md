@@ -1,5 +1,7 @@
 # Matriz de dependencias
 
+**Checkpoint Angular 9 (2026-11-04/05):** framework 9.1.13, CLI/build 9.1.15, Material/CDK 9.2.4, TypeScript 3.8.3, RxJS 6.6.7, Zone.js 0.10.3; HammerJS retirado por schematic oficial. Ivy/AOT, build, tests 8/8 y navegador aprobados. Este checkpoint reemplaza al de Angular 8 como estado vigente.
+
 **Checkpoint instalado/verificado (2026-11-04):** Angular 8.2.14, CLI 8.3.29, Material/CDK 8.2.3, TypeScript 3.5.3, RxJS 6.6.7 y Zone.js 0.9.1 (`e438225`). Las tablas inferiores conservan el inventario inicial Angular 7 como referencia histórica; no describen ya el lockfile vigente. Build, tests 8/8 y navegador aprobados para el salto a Angular 8.
 
 Versiones `actual` corresponden al lockfile, no a una instalación local. “Versión vigente” consultada en npm el 2026-10-30; revisar de nuevo antes de ejecutar cada salto. Compatibilidad del paquete no equivale a pruebas propias de compatibilidad zoneless.

@@ -1,5 +1,16 @@
 # Auditoría frontend Cuper
 
+## Iteración 4 — Angular 9 (2026-11-04/05)
+
+Framework 9.1.13, CLI/build 9.1.15, Material/CDK 9.2.4, TypeScript 3.8.3, Zone.js 0.10.3. Migraciones oficiales de core/CLI/Material ejecutadas en copia aislada con Node 10/npm 6; lockfile v1 conservado. CLI 8 intentaba descargar el CLI vigente incompatible con Node 10: se instaló explícitamente CLI/build 9 y se ejecutaron sus migraciones `--migrate-only --from=8.3.29 --to=9.1.15`, antes de actualizar Material. No se forzaron peers incompatibles.
+
+Ivy y AOT habilitados. Se completaron tipos usados por plantillas (User, Category, OptionPlan y filas de tabla), preservando incluso el campo legacy `permisions`. El schematic retiró HammerJS sin consumidores. El navegador detectó una emisión durante render: `getCurrentUserData()` notificaba al observable en cada lectura, incluidas las de plantillas. Ahora la lectura es pura y el observable entrega su valor inicial al suscribirse; las emisiones explícitas de edición/cambio de empresa permanecen.
+
+- Build development final (Ivy/AOT, salida dentro de contenedor): exit 0; solo tres warnings SCSS existentes.
+- Tests existentes finales en PhantomJS: 8/8, exit 0. No se añadieron ni eliminaron pruebas.
+- Playwright MCP después de la corrección: cero errores y warnings de consola. Sesión heredada y recarga válidas, logout limpia las cinco claves, login por botón válido, escritorio y 390×844. Cajero: ambos endpoints de transacciones 200; partner: empresas 202, sucursales/empleados 201 y solicitudes 200; admin accede a empresas (201), cliente redirigido fuera de admin. Las respuestas se esperaron antes de cambiar de rol para distinguir cancelaciones por navegación de errores API.
+- Production/OAuth/correos siguen pendientes por los límites anteriores. Backend y seeds sin cambios. Próximo salto: Angular 10.
+
 ## Iteración 3 — Angular 8 (2026-11-04)
 
 Completada en `e438225`: framework 8.2.14, CLI 8.3.29, Material/CDK 8.2.3, TypeScript 3.5.3 y RxJS 6.6.7. Migraciones oficiales: lazy loading con imports dinámicos, imports secundarios de Material, `ViewChild.static`, browserslist en raíz y configuración TypeScript/TSLint. Lockfile v1 conservado con npm 6/Node 10.

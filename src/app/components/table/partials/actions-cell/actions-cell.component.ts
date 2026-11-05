@@ -12,7 +12,7 @@ export interface ActionDefinition {
   styleUrls: ['./actions-cell.component.scss']
 })
 export class ActionsCellComponent implements OnInit {
-  @Input() data: Object;
+  @Input() data: { actions?: ActionDefinition[] };
   @Input() options: ActionDefinition [];
 
   constructor() { }

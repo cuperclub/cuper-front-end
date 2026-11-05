@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./roles-cell.component.scss']
 })
 export class RolesCellComponent implements OnInit {
-  @Input() data: Object;
+  @Input() data: { permisions?: { is_cashier?: boolean; is_partner?: boolean; is_admin?: boolean } };
 
   constructor() { }
 

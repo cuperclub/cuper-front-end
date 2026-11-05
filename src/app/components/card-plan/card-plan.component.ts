@@ -1,6 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 export interface OptionPlan {
+  active?: boolean;
+  name?: string;
   price: number
   time: string
   promotion?: string

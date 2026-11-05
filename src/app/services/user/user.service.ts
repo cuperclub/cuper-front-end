@@ -29,12 +29,17 @@ export class UserService {
 
   public getCurrentUserData() {
     const currentUser: UserProfile = {...this.authService.currentUserData, ...this.userDataEdited};
-    if(this.observerData) this.observerData.next(currentUser);
     return currentUser;
   }
 
   public getObservableUserData() {
-    return new Observable(observer => this.observerData = observer);
+    return new Observable<UserProfile>(observer => {
+      this.observerData = observer;
+      observer.next(this.getCurrentUserData());
+      return () => {
+        if (this.observerData === observer) this.observerData = null;
+      };
+    });
   }
 
   public updateMyData(userInput: FormData): Observable<User>{

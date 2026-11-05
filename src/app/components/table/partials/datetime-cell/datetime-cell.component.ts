@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./datetime-cell.component.scss']
 })
 export class DatetimeCellComponent implements OnInit {
-  @Input() data: Object;
+  @Input() data: { created_at?: string | Date };
 
   constructor() { }
 

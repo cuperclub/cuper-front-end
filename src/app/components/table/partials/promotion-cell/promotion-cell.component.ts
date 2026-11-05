@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./promotion-cell.component.scss']
 })
 export class PromotionCellComponent implements OnInit {
-  @Input() data: Object;
+  @Input() data: { promotion?: { title?: string; terms?: string } };
 
   constructor() { }
 

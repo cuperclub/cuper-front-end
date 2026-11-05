@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./user-cell.component.scss']
 })
 export class UserCellComponent implements OnInit {
-  @Input() data: Object;
+  @Input() data: { user?: { name?: string; email?: string } };
 
   constructor() { }
 
