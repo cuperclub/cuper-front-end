@@ -140,6 +140,8 @@ Secuencia de major: 7→8→9→10→11→12→13→14→15→16→17→18→19�
 
 ## Fase 3 — Angular 7→15 y Material
 
+**Checkpoint Angular 8 (2026-11-04):** completado en `e438225`, con build development exit 0, tests existentes 8/8 y navegador desktop/móvil contra Rails (login/logout/recarga y cuatro roles). Se conserva lockfile v1 y toolchain aislado Node 10/npm 6. PhantomJS requiere target ES5 en specs; build diferencial se emite dentro del contenedor para evitar EACCES del bind mount macOS. Continúa Angular 9 como siguiente iteración independiente.
+
 **Objetivo:** atravesar upgrades legacy y preparar standalone/Ivy sin refactor visual masivo.
 
 **Dependencias:** Fase 1 y auth desacoplada.

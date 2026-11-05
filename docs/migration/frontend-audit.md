@@ -1,5 +1,16 @@
 # Auditoría frontend Cuper
 
+## Iteración 3 — Angular 8 (2026-11-04)
+
+Completada en `e438225`: framework 8.2.14, CLI 8.3.29, Material/CDK 8.2.3, TypeScript 3.5.3 y RxJS 6.6.7. Migraciones oficiales: lazy loading con imports dinámicos, imports secundarios de Material, `ViewChild.static`, browserslist en raíz y configuración TypeScript/TSLint. Lockfile v1 conservado con npm 6/Node 10.
+
+- Build development final: exit 0, incluyendo bundles diferenciales ES2015/ES5. Salida dentro del contenedor (`/tmp/ng8-dist`) para evitar EACCES al copiar bundles ES5 de caché al bind mount macOS.
+- Tests existentes: 8/8, exit 0. Se conserva PhantomJS temporalmente con target ES5 solo para specs; TableCard y PlaceholderCard importan únicamente los módulos Material necesarios, evitando timeouts sin retirar pruebas.
+- Playwright MCP contra Rails: sesión heredada, logout/login y recarga válidos; desktop 1280×800 y móvil 390×844. Cajero accede a transacciones (ambos endpoints 200), partner a empresa (202/201 existentes), admin a empresas y cliente rechazado por AdminGuard. Cero errores de consola; warnings del dev server por SCSS existentes.
+- Servidor recreado y caché temporal de node_modules eliminada tras actualizar dependencias; no se modificó código para solventar la caché. Reiniciar el navegador resolvió inicialmente el canal de puntero; se volvió a usar requestSubmit al reproducirse el fallo de automatización.
+
+Production, OAuth y flujos de correo siguen pendientes por los límites ya documentados. Próximo salto: Angular 9, en un commit separado y con build/tests/navegador.
+
 ## Iteración 2 — adaptador de autenticación propio (2026-11-04)
 
 Se sustituyó `angular-token@7.0.1` por una fachada `AuthService` + `AuthInterceptor` construida sobre `HttpClient`, preservando el contrato observado: mismos paths (`auth/sign_in`, `auth/sign_out`, `auth/validate_token`, `auth`, `auth/password`), mismos cinco headers (`access-token`, `client`, `expiry`, `token-type`, `uid`), mismas claves de `localStorage` y las mismas URLs de OAuth (`auth/facebook`, `auth/google_oauth2`, callback `origin/oauth_callback`, ventana nueva con postMessage). No se cambió almacenamiento, backend, contrato ni configuración de entornos.

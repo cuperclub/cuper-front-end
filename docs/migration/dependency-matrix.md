@@ -1,5 +1,7 @@
 # Matriz de dependencias
 
+**Checkpoint instalado/verificado (2026-11-04):** Angular 8.2.14, CLI 8.3.29, Material/CDK 8.2.3, TypeScript 3.5.3, RxJS 6.6.7 y Zone.js 0.9.1 (`e438225`). Las tablas inferiores conservan el inventario inicial Angular 7 como referencia histórica; no describen ya el lockfile vigente. Build, tests 8/8 y navegador aprobados para el salto a Angular 8.
+
 Versiones `actual` corresponden al lockfile, no a una instalación local. “Versión vigente” consultada en npm el 2026-10-30; revisar de nuevo antes de ejecutar cada salto. Compatibilidad del paquete no equivale a pruebas propias de compatibilidad zoneless.
 
 Revisión de estrategia mediante Context7: 2026-11-04. No se renovó la consulta npm en esta revisión; las versiones de tablas siguen siendo una fotografía fechada, no un lock autorizado para instalar.
