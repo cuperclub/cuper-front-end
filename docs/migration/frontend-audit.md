@@ -1,5 +1,16 @@
 # Auditoría frontend Cuper
 
+## Iteración 5 — Angular 10 (2026-11-05)
+
+Framework 10.2.5, CLI/build 10.2.4, Material/CDK 10.2.7 y TypeScript 4.0.8 mediante migraciones oficiales, conservando Ivy/AOT, Node 10.16/npm 6 y lockfile v1. CLI renombró browserslist a `.browserslistrc`, actualizó helpers tslib y herramientas de tests/TSLint, y cambió module a es2020. No hubo cambios de lógica de aplicación ni de contrato Rails.
+
+La primera migración se detuvo porque `tslint.json` tenía una coma final no aceptada por el lector AST del schematic. Se eliminó esa coma y se ejecutaron explícitamente las migraciones CLI/core desde las versiones 9.1 anteriores; después se actualizaron Material/CDK. Se conserva el harness e2e legacy, no ejecutado; los schematics advierten que buscan `e2e/tsconfig.json`, mientras el proyecto conserva `e2e/tsconfig.e2e.json`.
+
+- Build development con bundles diferenciales ES2015/ES5: exit 0, salida `/tmp/ng10-dist` dentro del contenedor. Tres warnings SCSS preexistentes, sin errores.
+- Tests existentes: 8/8, exit 0. La primera ejecución concurrente esperó el lock ngcc y PhantomJS reintentó tras timeout de captura; una segunda ejecución aislada pasó sin ese timeout. No se añadieron ni eliminaron specs.
+- Playwright MCP en 1280×800 y 390×844: sesión heredada válida, recarga con validate_token 200, logout limpia las cinco claves y login por botón correcto. Cajero: transacciones entrada/salida 200; partner: empresas 202, sucursales/empleados 201, solicitudes 200; admin: empresas 201. Cliente redirigido fuera de admin. Cero errores de consola; warnings solo del dev server por los tres SCSS existentes.
+- Production, OAuth y flujos de correo siguen pendientes por los límites documentados. Backend y seeds sin cambios. Siguiente salto: Angular 11.
+
 ## Iteración 4 — Angular 9 (2026-11-04/05)
 
 Framework 9.1.13, CLI/build 9.1.15, Material/CDK 9.2.4, TypeScript 3.8.3, Zone.js 0.10.3. Migraciones oficiales de core/CLI/Material ejecutadas en copia aislada con Node 10/npm 6; lockfile v1 conservado. CLI 8 intentaba descargar el CLI vigente incompatible con Node 10: se instaló explícitamente CLI/build 9 y se ejecutaron sus migraciones `--migrate-only --from=8.3.29 --to=9.1.15`, antes de actualizar Material. No se forzaron peers incompatibles.

@@ -140,6 +140,8 @@ Secuencia de major: 7→8→9→10→11→12→13→14→15→16→17→18→19�
 
 ## Fase 3 — Angular 7→15 y Material
 
+**Checkpoint Angular 10 (2026-11-05):** framework 10.2.5, CLI 10.2.4 y Material/CDK 10.2.7. Migraciones oficiales completadas; build exit 0, tests existentes 8/8 y navegador desktop/móvil con cuatro roles sin errores de consola. Sin cambios del contrato Rails. Continúa Angular 11 en una iteración y commit independientes.
+
 **Checkpoint Angular 9 (2026-11-04/05):** Ivy/AOT habilitados y migraciones oficiales completadas. Build exit 0, tests 8/8, navegador desktop/móvil y cuatro roles sin errores de consola. Se corrigieron tipos incompletos y una emisión de UserService durante render, sin modificar API/auth Rails. Siguiente iteración: Angular 10.
 
 **Checkpoint Angular 8 (2026-11-04):** completado en `e438225`, con build development exit 0, tests existentes 8/8 y navegador desktop/móvil contra Rails (login/logout/recarga y cuatro roles). Se conserva lockfile v1 y toolchain aislado Node 10/npm 6. PhantomJS requiere target ES5 en specs; build diferencial se emite dentro del contenedor para evitar EACCES del bind mount macOS. Continúa Angular 9 como siguiente iteración independiente.

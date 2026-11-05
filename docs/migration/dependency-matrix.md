@@ -1,5 +1,7 @@
 # Matriz de dependencias
 
+**Checkpoint Angular 10 (2026-11-05):** framework 10.2.5, CLI/build 10.2.4, Material/CDK 10.2.7, TypeScript 4.0.8, tslib 2.9.1, RxJS 6.6.7 y Zone.js 0.10.3. Lockfile v1 conservado; build, tests 8/8 y navegador aprobados. Reemplaza los checkpoints inferiores como estado vigente; las tablas de inventario Angular 7 siguen siendo históricas.
+
 **Checkpoint Angular 9 (2026-11-04/05):** framework 9.1.13, CLI/build 9.1.15, Material/CDK 9.2.4, TypeScript 3.8.3, RxJS 6.6.7, Zone.js 0.10.3; HammerJS retirado por schematic oficial. Ivy/AOT, build, tests 8/8 y navegador aprobados. Este checkpoint reemplaza al de Angular 8 como estado vigente.
 
 **Checkpoint instalado/verificado (2026-11-04):** Angular 8.2.14, CLI 8.3.29, Material/CDK 8.2.3, TypeScript 3.5.3, RxJS 6.6.7 y Zone.js 0.9.1 (`e438225`). Las tablas inferiores conservan el inventario inicial Angular 7 como referencia histórica; no describen ya el lockfile vigente. Build, tests 8/8 y navegador aprobados para el salto a Angular 8.
