@@ -140,7 +140,9 @@ Secuencia de major: 7→8→9→10→11→12→13→14→15→16→17→18→19�
 
 ## Fase 3 — Angular 7→15 y Material
 
-**Checkpoint Angular 15 (2026-11-09):** framework 15.2.10, CLI 15.2.11 y Material/CDK 15.2.9. Migración oficial optó por componentes Material legacy para conservar apariencia; tema adaptado a la API de mapa de v15. Build exit 0, tests existentes 8/8 y navegador desktop/móvil con cuatro roles. Se documenta deuda preexistente de layout móvil por anchos fijos y el error esperado de Mapbox sin token. Próxima iteración: Angular 16, retirando ngcc y actualizando bibliotecas View Engine antes de abandonar Material legacy.
+**Checkpoint Angular 15 (2026-11-09):** framework 15.2.10, CLI 15.2.11 y Material/CDK 15.2.9. Migración oficial optó por componentes Material legacy para conservar apariencia; tema adaptado a la API de mapa de v15. Build exit 0, tests existentes 8/8 y navegador desktop/móvil con cuatro roles. Se documenta deuda preexistente de layout móvil por anchos fijos y el error esperado de Mapbox sin token. En el siguiente salto, Angular 16, se retiró ngcc y actualizaron bibliotecas View Engine; véase checkpoint superior.
+
+**Checkpoint Angular 16 (2026-11-09):** framework 16.2.12, CLI 16.2.16, Material/CDK 16.2.14. Node 22.23.2/npm 10.9.8 y lockfile v3 (Angular admite Node >=18.10); Jasmine actualizado para resolver peers npm 10. `ngx-translate` core/http-loader y `ngx-infinite-scroll` actualizados a peers Ivy/Angular 16; build sin ngcc, suite 8/8 y navegador con cuatro roles. Próximo: Angular 17, revisar cuidadosamente el retiro de Material legacy y mantener apariencia.
 
 **Checkpoint Angular 14 (2026-11-09):** framework 14.3.0, CLI 14.2.13 y Material/CDK 14.2.7. Migraciones oficiales de formularios Untyped y target ES2020 para preservar compatibilidad. Build exit 0, tests existentes 8/8 y navegador desktop/móvil con cuatro roles sin errores de consola. Mapbox por variable de entorno preservado; CommonJS y otras deprecaciones siguen documentados. Próxima iteración: Angular 15, prestando atención a la transición Material/MDC.
 

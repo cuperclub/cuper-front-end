@@ -1,5 +1,16 @@
 # Auditoría frontend Cuper
 
+## Iteración 11 — Angular 16 (2026-11-09)
+
+Framework 16.2.12, CLI/build 16.2.16, Material/CDK 16.2.14 y TypeScript 5.1.6. Toolchain Node 22.23.2/npm 10.9.8 (Angular 16 admite Node >=18.10) y lockfile v3. npm detectó que el reporter de Karma requiere Jasmine >=3.8 (estaba fijado 3.6); se actualizan Jasmine 4.6, types 4.3.6 y karma-jasmine 5.1, sin `--force`/`--legacy-peer-deps`. Zone.js 0.13.3. RxJS 6.6.7 se conserva.
+
+Se actualizan `@ngx-translate/core` a 15.0.0 y `@ngx-translate/http-loader` a 8.0.0 (compatibles con Angular >=16), además de `ngx-infinite-scroll` a 16.0.0 (peer Angular 16). Se mantiene el API NgModule actual, sin adelantar standalone/proveedores nuevos. La instalación limpia npm 10 y el build Ivy/AOT terminan sin ngcc/View Engine. Migraciones oficiales CLI/core eliminan resoluciones/interfases deprecated de guards, preservando lógica de autorización; Material 16 no requiere cambios y mantiene imports legacy.
+
+- Build development: exit 0, salida `/tmp/ng16-dist`; no se ejecuta ngcc. Avisos conservados: Browserslist `kaios 2.5`/`op_mini all` sin ES5, Sass division legacy del Loader, autoprefixer `align-items: end` y Mapbox CommonJS.
+- Suite existente: 8/8 en Chrome/Karma, `test_exit=0`. No se añadieron ni borraron specs. Se mantiene configuración de captura externa de Docker.
+- Playwright MCP: desktop 1280×800, login/logout, recarga validate_token 200 y cinco claves eliminadas. Cajero: entradas/salidas 200; partner: empresa 202, oficinas/empleados 201 y solicitudes 200; admin empresas 201. Cliente redirigido desde admin. Sin errores de consola de aplicación. A 390×844 el dashboard mantiene desbordamiento horizontal preexistente por anchos fijos; no modificado en upgrade framework.
+- Production/OAuth/correos, mapa con token real, lint legacy y harness e2e siguen pendientes. API Rails y datos no se modificaron. Próximo: Angular 17; abordar legacy Material y migraciones asociadas de forma separada y explícita.
+
 ## Iteración 10 — Angular 15 (2026-11-09)
 
 Framework 15.2.10, CLI/build 15.2.11, Material/CDK 15.2.9 y TypeScript 4.9.5 mediante migraciones oficiales. Se conservan RxJS 6.6.7, Zone.js 0.11.8, Node 14.21.3/npm 6 y lockfile v1. CLI retiró `require.context` de `src/test.ts` (el builder descubre specs), subió el target a ES2022 con `useDefineForClassFields: false`, eliminó `relativeLinkResolution` y migró `RouterLinkWithHref`. No se tocó autenticación, contrato Rails ni lógica de negocio.
@@ -20,7 +31,7 @@ Cambios oficiales: formularios existentes migrados a `UntypedFormBuilder`/`Untyp
 - Build development Ivy/AOT: exit 0, salida `/tmp/ng14-dist`. Advertencias: divisiones Sass legacy del Loader, bibliotecas View Engine procesadas por ngcc y Mapbox CommonJS (optimization bailout); no se ocultan.
 - Suite existente 8/8 en Chrome capturado por Karma, `test_exit=0`, usando el mecanismo de Angular 12. No se añaden ni eliminan tests. Se elimina el target ES5 transitorio mediante la migración oficial.
 - Playwright MCP: 1280×800 y 390×844; sesión heredada, login por botón, logout limpia las cinco claves y recarga validate_token 200. Cajero: transacciones entrada/salida 200; partner: empresas 202, sucursales/empleados 201 y solicitudes 200; admin: empresas 201. Cliente redirigido fuera de admin. Cero errores de consola; warning del dev server por Mapbox CommonJS.
-- Production/OAuth/correos, mapas con token real, lint legacy y harness e2e siguen pendientes. Backend y seeds sin cambios. Angular/Rails se apagan al concluir. Siguiente salto: Angular 15; planificar MDC antes de retirar compatibilidad legacy de Material.
+- Production/OAuth/correos, mapas con token real, lint legacy y harness e2e siguen pendientes. Backend y seeds sin cambios. Angular/Rails se apagan al concluir. Siguiente salto: Angular 16; planificar MDC antes de retirar compatibilidad legacy de Material.
 
 ## Iteración 8 — Angular 13 (2026-11-09)
 
