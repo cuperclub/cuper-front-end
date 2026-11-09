@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { Company, Category } from '../../models';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 import { CategoryService } from '../../services';
 import { Observable } from 'rxjs';
 
@@ -10,13 +10,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./company-form.component.scss']
 })
 export class CompanyFormComponent implements OnInit{
-  @Input() companyFormGroup: FormGroup;
+  @Input() companyFormGroup: UntypedFormGroup;
   @Output() propagateFormCompany = new EventEmitter<any>();
 
   categories$: Observable<Category[]>;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private categoryService: CategoryService
   ) {}
 

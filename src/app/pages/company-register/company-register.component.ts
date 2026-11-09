@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import { CompanyService, UserService, AdminPlanService } from '../../services'
 import { OptionPlan } from '../../components/card-plan/card-plan.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -13,8 +13,8 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./company-register.component.scss']
 })
 export class CompanyRegisterComponent implements OnInit {
-  planFormGroup: FormGroup;
-  companyFormGroup: FormGroup;
+  planFormGroup: UntypedFormGroup;
+  companyFormGroup: UntypedFormGroup;
 
   plans: OptionPlan [];
   planSelected: OptionPlan;
@@ -22,7 +22,7 @@ export class CompanyRegisterComponent implements OnInit {
   loaded: boolean = false;
 
   constructor(
-    private _formBuilder: FormBuilder,
+    private _formBuilder: UntypedFormBuilder,
     private router: Router,
     private companyService: CompanyService,
     private message: MatSnackBar,

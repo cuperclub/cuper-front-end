@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, Validators, UntypedFormBuilder } from '@angular/forms';
 import { UserService } from 'src/app/services';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -10,12 +10,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
-  passwordForm: FormGroup;
+  passwordForm: UntypedFormGroup;
   showPassword: any = {password: false, password_confirmation: false};
   queryParams: any;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private userService: UserService,
     private message: MatSnackBar,
     private router: Router,

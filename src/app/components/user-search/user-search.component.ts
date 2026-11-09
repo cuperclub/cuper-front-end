@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { UserService, UtilsService } from '../../services';
 import { User } from '../../models';
 
@@ -23,7 +23,7 @@ export class UserSearchComponent implements OnInit {
   defaultImageProfile: string = '../../../../assets/images/profile-placeholder.png';
   currentUser: User;
 
-  userSearchControl = new FormControl();
+  userSearchControl = new UntypedFormControl();
 
   constructor(
     private userService: UserService,

@@ -1,5 +1,16 @@
 # Auditoría frontend Cuper
 
+## Iteración 9 — Angular 14 (2026-11-09)
+
+Framework 14.3.0, CLI/build 14.2.13 y Material/CDK 14.2.7. Se conservan TypeScript 4.6.4, RxJS 6.6.7, Zone.js 0.11.8, Node 14.21.3/npm 6 y lockfile v1. El CLI anterior no pudo ejecutar el primer schematic (`tree.readText`); reejecutar migraciones CLI/core con CLI 14 instalado, `--migrate-only` desde las versiones 13 anteriores, las completó sin parches de dependencias ni peers forzados.
+
+Cambios oficiales: formularios existentes migrados a `UntypedFormBuilder`/`UntypedFormGroup`/`UntypedFormControl` para preservar comportamiento, target ES2020 en app y specs, retirada de defaultProject y rangos Angular con prefijo `^`. No se inicia standalone ni se cambian reglas de negocio/API Rails. Mapbox continúa usando la variable de entorno y archivo generado ignorado.
+
+- Build development Ivy/AOT: exit 0, salida `/tmp/ng14-dist`. Advertencias: divisiones Sass legacy del Loader, bibliotecas View Engine procesadas por ngcc y Mapbox CommonJS (optimization bailout); no se ocultan.
+- Suite existente 8/8 en Chrome capturado por Karma, `test_exit=0`, usando el mecanismo de Angular 12. No se añaden ni eliminan tests. Se elimina el target ES5 transitorio mediante la migración oficial.
+- Playwright MCP: 1280×800 y 390×844; sesión heredada, login por botón, logout limpia las cinco claves y recarga validate_token 200. Cajero: transacciones entrada/salida 200; partner: empresas 202, sucursales/empleados 201 y solicitudes 200; admin: empresas 201. Cliente redirigido fuera de admin. Cero errores de consola; warning del dev server por Mapbox CommonJS.
+- Production/OAuth/correos, mapas con token real, lint legacy y harness e2e siguen pendientes. Backend y seeds sin cambios. Angular/Rails se apagan al concluir. Siguiente salto: Angular 15; planificar MDC antes de retirar compatibilidad legacy de Material.
+
 ## Iteración 8 — Angular 13 (2026-11-09)
 
 Framework 13.4.0, CLI/build 13.3.11, Material/CDK 13.3.9 y TypeScript 4.6.4 mediante migraciones oficiales. Se conservan Node 14.21.3/npm 6, RxJS 6.6.7, Zone.js 0.11.8 y lockfile v1. CLI 12 instaló las versiones pero no pudo resolver `././schematics/migrations.json` de core; reejecutar `ng update @angular/core --migrate-only --from=12.2.17 --to=13.4.0` con el CLI 13 instalado completó las migraciones, sin parchear dependencias ni forzar peers.

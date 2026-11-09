@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { CompanyService } from '../../services';
 import { Company } from '../../models';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 
 interface FileOptions {
   file?: File;
@@ -18,7 +18,7 @@ interface FileOptions {
   styleUrls: ['./company-dialog.component.scss']
 })
 export class CompanyDialogComponent implements OnInit {
-  companyFormGroup: FormGroup;
+  companyFormGroup: UntypedFormGroup;
   uploadFile: FileOptions;
 
   constructor(
@@ -27,7 +27,7 @@ export class CompanyDialogComponent implements OnInit {
     private companyService: CompanyService,
     private message: MatSnackBar,
     private translate: TranslateService,
-    private _formBuilder: FormBuilder,
+    private _formBuilder: UntypedFormBuilder,
   ) {}
 
   ngOnInit() {

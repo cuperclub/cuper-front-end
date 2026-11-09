@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { CardUserComponent } from '../card-user/card-user.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { UserService, UtilsService } from 'src/app/services';
 import { User } from '../../models';
 
@@ -22,11 +22,11 @@ interface DataOptions {
   styleUrls: ['./profile-form.component.scss']
 })
 export class ProfileFormComponent implements OnInit {
-  profileForm: FormGroup;
+  profileForm: UntypedFormGroup;
   uploadFile: FileOptions;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private userService: UserService,
     private utilsService: UtilsService,
     private message: MatSnackBar,

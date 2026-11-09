@@ -140,6 +140,8 @@ Secuencia de major: 7→8→9→10→11→12→13→14→15→16→17→18→19�
 
 ## Fase 3 — Angular 7→15 y Material
 
+**Checkpoint Angular 14 (2026-11-09):** framework 14.3.0, CLI 14.2.13 y Material/CDK 14.2.7. Migraciones oficiales de formularios Untyped y target ES2020 para preservar compatibilidad. Build exit 0, tests existentes 8/8 y navegador desktop/móvil con cuatro roles sin errores de consola. Mapbox por variable de entorno preservado; CommonJS y otras deprecaciones siguen documentados. Próxima iteración: Angular 15, prestando atención a la transición Material/MDC.
+
 **Checkpoint Angular 13 (2026-11-09):** framework 13.4.0, CLI 13.3.11, Material/CDK 13.3.9 y TypeScript 4.6.4. Build exit 0, tests 8/8 en Chrome/Karma y navegador desktop/móvil con cuatro roles, sin errores/warnings de consola. Migraciones oficiales de IE/entryComponents/TestBed aplicadas; contrato Rails intacto. Builder TSLint retirado por CLI; script conserva invocación directa, lint legacy falla y requiere futura migración ESLint. Próxima iteración independiente: Angular 14.
 
 **Checkpoint Angular 12 (2026-11-09):** framework 12.2.17, CLI 12.2.18, Material/CDK 12.2.13, TypeScript 4.3.5 y toolchain Node 14.21.3/npm 6. Build exit 0 y navegador desktop/móvil con cuatro roles sin errores de consola. Los mismos ocho tests pasan en Chrome/Karma; PhantomJS ya no ejecuta los specs de este build. Se mantiene suite y dependencia legacy, con ChromeHeadless por defecto y captura externa opcional para Docker. Migraciones oficiales de tema Sass/Zone/Webpack, contrato Rails intacto. Continúa Angular 13 en un commit independiente.

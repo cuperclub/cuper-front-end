@@ -4,7 +4,7 @@ import { CustomersComponent } from 'src/app/pages/admin/customers/customers.comp
 import { UserService } from '../../services';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'cuper-change-password-dialog',
@@ -12,14 +12,14 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   styleUrls: ['./change-password-dialog.component.scss']
 })
 export class ChangePasswordDialogComponent implements OnInit{
-  passwordFormGroup: FormGroup;
+  passwordFormGroup: UntypedFormGroup;
 
   constructor(
     private userService: UserService,
     private message: MatSnackBar,
     private translate: TranslateService,
     public dialogRef: MatDialogRef<CustomersComponent>,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 

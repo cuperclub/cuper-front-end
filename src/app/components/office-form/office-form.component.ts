@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { CardOfficeComponent } from '../../components/card-office/card-office.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Office } from '../../models';
@@ -18,12 +18,12 @@ interface point {
   styleUrls: ['./office-form.component.scss']
 })
 export class OfficeFormComponent implements OnInit {
-  officeForm: FormGroup;
+  officeForm: UntypedFormGroup;
   officePosition: point;
   isEditMode: boolean = false;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private dialogRef: MatDialogRef<CardOfficeComponent>,
     private officeService: OfficeService,
     private message: MatSnackBar,

@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { CardUserComponent } from '../card-user/card-user.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 
 interface Password {
   password: string;
@@ -17,11 +17,11 @@ interface Password {
   styleUrls: ['./update-password-form.component.scss']
 })
 export class UpdatePasswordFormComponent implements OnInit{
-  passwordForm: FormGroup;
+  passwordForm: UntypedFormGroup;
   showPassword: any = {new: false, current: false};
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private message: MatSnackBar,
     private authService: AuthService,
     private translate: TranslateService,

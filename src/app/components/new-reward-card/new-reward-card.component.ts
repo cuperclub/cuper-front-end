@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { OfficeFormComponent } from '../office-form/office-form.component';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 interface OptionSquare {
   id?: number,
@@ -41,7 +41,7 @@ export class NewRewardCardComponent implements OnInit {
   isEditRoute: boolean = false;
   officeSelected: OptionSquare;
   uploadFile: FileOptions;
-  rewardFormGroup: FormGroup;
+  rewardFormGroup: UntypedFormGroup;
   reward;
 
   constructor(
@@ -53,7 +53,7 @@ export class NewRewardCardComponent implements OnInit {
     private message: MatSnackBar,
     private translate: TranslateService,
     private dialog: MatDialog,
-    private _formBuilder: FormBuilder,
+    private _formBuilder: UntypedFormBuilder,
   ) { }
 
   ngOnInit() {
