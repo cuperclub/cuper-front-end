@@ -1,5 +1,17 @@
 # Auditoría frontend Cuper
 
+## Iteración 8 — Angular 13 (2026-11-09)
+
+Framework 13.4.0, CLI/build 13.3.11, Material/CDK 13.3.9 y TypeScript 4.6.4 mediante migraciones oficiales. Se conservan Node 14.21.3/npm 6, RxJS 6.6.7, Zone.js 0.11.8 y lockfile v1. CLI 12 instaló las versiones pero no pudo resolver `././schematics/migrations.json` de core; reejecutar `ng update @angular/core --migrate-only --from=12.2.17 --to=13.4.0` con el CLI 13 instalado completó las migraciones, sin parchear dependencias ni forzar peers.
+
+Cambios oficiales: retirada de polyfills exclusivos de IE, `entryComponents` innecesarios y targets del builder TSLint eliminado; imports Sass Material sin `~`; TestBed conserva teardown legacy explícito. Se añadió `.angular/cache` al gitignore (el schematic no encontró el gitignore en la copia aislada). No se cambió autenticación ni contrato Rails.
+
+- Build development Ivy/AOT: exit 0, `/tmp/ng13-dist`. Ya no produce bundles diferenciales ES5. Sass advierte divisiones legacy del Loader; ngcc advierte bibliotecas View Engine (`ngx-translate`/infinite-scroll) que deberán actualizarse antes de Angular 16.
+- Tests existentes: 8/8 en Chrome capturado externamente por Karma, `test_exit=0`. Se mantiene el mecanismo documentado en Angular 12 y no se añaden/eliminan specs. Desconexión de captura al cerrar Karma después de completar los tests, sin fallo de salida.
+- Playwright MCP: 1280×800 y 390×844. Sesión heredada válida, recarga validate_token 200, logout limpia cinco claves, login por botón correcto. Cajero: transacciones entrada/salida 200; partner: empresas 202, sucursales/empleados 201 y solicitudes 200; admin: empresas 201. Cliente redirigido fuera de admin. Cero errores y warnings de consola de aplicación.
+- Lint adicional: `npm run lint` invoca TSLint directamente para no depender del builder retirado; exit 2 por infracciones legacy y excepción de la regla `deprecation` con TypeScript 4.6. No se deshabilitaron reglas ni se hizo un reformateo masivo. Migración a ESLint pendiente, no considerar lint aprobado. Harness e2e conservado, no ejecutado.
+- Production/OAuth/correos siguen pendientes. Backend y seeds sin cambios; Angular/Rails se apagan al concluir. Se solicita push de los commits independientes de Angular 11/12/13. Siguiente salto: Angular 14.
+
 ## Iteración 7 — Angular 12 (2026-11-09)
 
 Framework 12.2.17, CLI/build 12.2.18, Material/CDK 12.2.13, TypeScript 4.3.5 y Zone.js 0.11.8. Toolchain aislado actualizado a Node 14.21.3/npm 6; `engines.node` refleja ese escalón transitorio (no es el runtime destino). Lockfile v1 conservado. Migraciones oficiales: Webpack 5, defaults de build explícitos preservando development, imports públicos Zone, retirada de emitDecoratorMetadata y tema Material con API Sass namespaced. Se conserva AOT por defecto del builder, sin cambiar auth/API Rails.

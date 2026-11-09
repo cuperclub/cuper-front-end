@@ -14,3 +14,5 @@ Solo se aceptan tokens públicos `pk.*`; los secretos `sk.*` nunca deben llegar 
 Sin variable, se genera una cadena vacía para permitir build/tests sin credenciales. Los mapas requieren un token público válido para funcionar; no se proporciona uno compartido como fallback.
 
 Se eliminó el literal Mapbox de los commits locales de migración antes de publicar. El historial remoto anterior no se reescribe; revisar/rotar las credenciales históricas con el propietario si corresponde.
+
+Validación 2026-11-09: generador acepta ausencia y prefijo público, rechaza prefijo secreto sin imprimir el valor; archivo generado ignorado por Git. Build Angular 13 exit 0, suite existente 8/8 (`test_exit=0`) y navegador desktop/móvil: sesión heredada, login/logout/recarga con validate_token 200 y consola sin errores/warnings. Estas pruebas no validan mapas: hace falta configurar un token público real autorizado.

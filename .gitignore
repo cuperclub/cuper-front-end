@@ -7,6 +7,7 @@
 /src/environments/environment.generated.ts
 /.env
 /.env.local
+/.angular/cache
 
 # dependencies
 /node_modules

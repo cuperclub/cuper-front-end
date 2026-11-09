@@ -107,38 +107,16 @@ const components = [
 ];
 
 @NgModule({
-  declarations: components,
-  entryComponents: [
-    OfficeFormComponent,
-    CompanyDialogComponent,
-    ProfileFormComponent,
-    UpdatePasswordFormComponent,
-    InputTransactionFormComponent,
-    OutputTransactionFormComponent,
-    OfficePreviewComponent,
-    RequestCashierComponent,
-    DatetimeCellComponent,
-    UserCellComponent,
-    PromotionCellComponent,
-    RewardDialogComponent,
-    CategoryFormComponent,
-    RolesCellComponent,
-    ActionsCellComponent,
-    ChangePasswordDialogComponent,
-    FeedbackFormComponent,
-    PlanFormComponent,
-    SettingsFormComponent,
-    UserTransactionsComponent
-  ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    FormsModule,
-    HttpClientModule,
-    TranslateModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  exports: components
+    declarations: components,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        FormsModule,
+        HttpClientModule,
+        TranslateModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
+    exports: components
 })
 export class ComponentsModule { }
