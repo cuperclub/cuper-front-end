@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AvatarComponent } from '../avatar/avatar.component';
@@ -8,7 +8,7 @@ describe('TableCardComponent', () => {
   let component: TableCardComponent;
   let fixture: ComponentFixture<TableCardComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         MatCardModule,

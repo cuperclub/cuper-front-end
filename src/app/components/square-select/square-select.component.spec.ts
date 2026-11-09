@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SquareSelectComponent } from './square-select.component';
 
@@ -6,7 +6,7 @@ describe('SquareSelectComponent', () => {
   let component: SquareSelectComponent;
   let fixture: ComponentFixture<SquareSelectComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SquareSelectComponent ]
     })

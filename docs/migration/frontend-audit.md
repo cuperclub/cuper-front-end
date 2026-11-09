@@ -1,5 +1,14 @@
 # Auditoría frontend Cuper
 
+## Iteración 6 — Angular 11 (2026-11-09)
+
+Framework 11.2.14, CLI/build 11.2.19 y Material/CDK 11.2.13 mediante migraciones oficiales. TypeScript 4.0.8, RxJS 6.6.7 y Zone.js 0.10.3 permanecen compatibles; Node 10.16/npm 6 y lockfile v1 conservados. Se actualizó Codelyzer a 6.0.2 antes del salto para resolver sus peers sin `--force`. El schematic actualizó Jasmine/Karma, renombró `async` a `waitForAsync` en los ocho specs activos, fijó `relativeLinkResolution: 'legacy'` para preservar rutas y retiró `extractCss` deprecado. No se modificó el contrato Rails ni la lógica de autenticación.
+
+- Build development Ivy/AOT con bundles diferenciales: exit 0, salida `/tmp/ng11-dist` dentro del contenedor; tres warnings SCSS preexistentes.
+- Tests existentes: 8/8, exit 0, en dos ejecuciones. La primera reintentó PhantomJS tras timeout de captura. No se añadieron ni eliminaron pruebas.
+- Playwright MCP: escritorio 1280×800 y móvil 390×844; sesión heredada válida, recarga con validate_token 200, logout limpia las cinco claves y login por botón correcto. Cajero: transacciones entrada/salida 200; partner: empresas 202, sucursales/empleados 201 y solicitudes 200; admin: empresas 201. Cliente redirigido fuera de admin. Cero errores de consola; warnings del dev server por los tres SCSS existentes.
+- Rails sigue en `feat/backend-modernization`; backend y seeds sin cambios. Production/OAuth/correos y harness e2e legacy siguen pendientes. Los servidores Angular/Rails se detienen al concluir las pruebas. Siguiente salto: Angular 12.
+
 ## Iteración 5 — Angular 10 (2026-11-05)
 
 Framework 10.2.5, CLI/build 10.2.4, Material/CDK 10.2.7 y TypeScript 4.0.8 mediante migraciones oficiales, conservando Ivy/AOT, Node 10.16/npm 6 y lockfile v1. CLI renombró browserslist a `.browserslistrc`, actualizó helpers tslib y herramientas de tests/TSLint, y cambió module a es2020. No hubo cambios de lógica de aplicación ni de contrato Rails.
