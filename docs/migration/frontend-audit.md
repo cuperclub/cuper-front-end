@@ -1,5 +1,16 @@
 # Auditoría frontend Cuper
 
+## Iteración 10 — Angular 15 (2026-11-09)
+
+Framework 15.2.10, CLI/build 15.2.11, Material/CDK 15.2.9 y TypeScript 4.9.5 mediante migraciones oficiales. Se conservan RxJS 6.6.7, Zone.js 0.11.8, Node 14.21.3/npm 6 y lockfile v1. CLI retiró `require.context` de `src/test.ts` (el builder descubre specs), subió el target a ES2022 con `useDefineForClassFields: false`, eliminó `relativeLinkResolution` y migró `RouterLinkWithHref`. No se tocó autenticación, contrato Rails ni lógica de negocio.
+
+La primera ejecución del schematic de Material terminó con código 137 (proceso terminado por memoria) después de instalar las versiones. Se repitió con `--migrate-only --from=14.2.7 --to=15.2.9`, CI y más heap, y completó 39 archivos. La migración optó por la capa legacy (`MatLegacy*`, `mat.legacy-core`, `all-legacy-component-typographies`, `all-legacy-component-themes`) para preservar la apariencia; no se adoptó MDC todavía. Se ajustó `define-light-theme` a la forma de mapa (`color`/`typography`/`density`) para eliminar la advertencia de tema sin cambiar los componentes.
+
+- Build development Ivy/AOT: exit 0, salida `/tmp/ng15-dist`. Persisten advertencias de división Sass en Loader, `flex-end` de autoprefixer y Mapbox CommonJS; la advertencia de tema Material quedó resuelta. El CLI ignora `kaios 2.5`/`op_mini all` porque ya no emite ES5.
+- Suite existente 8/8 en Chrome capturado por Karma, `test_exit=0`. No se añaden ni eliminan tests. Con Angular 15 el proceso `ng test` permaneció vivo tras detener Karma hasta cerrar el navegador externo de Playwright; la suite ya había terminado y el código de salida fue 0, sin fallo de spec.
+- Playwright MCP 1280×800: sesión heredada, login/logout, recarga validate_token 200 y limpieza de las cinco claves. Cajero: transacciones entrada/salida 200; partner: empresas 202, sucursales/empleados 201 y solicitudes 200; admin: empresas 201. Cliente redirigido fuera de admin. Se abrió el diálogo legacy de sucursal y se renderizaron tabla, tabs, paginador y formularios. Consola sin errores de aplicación; el diálogo con mapa registra el error esperado de Mapbox por no configurar token, y el dashboard móvil conserva el desbordamiento horizontal de su layout de anchos fijos preexistente.
+- Production/OAuth/correos, mapas con token real, lint legacy y harness e2e siguen pendientes. Backend y seeds sin cambios. Angular/Rails se apagan al concluir. Siguiente salto: Angular 16, que retira ngcc; actualizar/sustituir `@ngx-translate/*` y `ngx-infinite-scroll`, y planificar el abandono de Material legacy antes de Angular 17.
+
 ## Iteración 9 — Angular 14 (2026-11-09)
 
 Framework 14.3.0, CLI/build 14.2.13 y Material/CDK 14.2.7. Se conservan TypeScript 4.6.4, RxJS 6.6.7, Zone.js 0.11.8, Node 14.21.3/npm 6 y lockfile v1. El CLI anterior no pudo ejecutar el primer schematic (`tree.readText`); reejecutar migraciones CLI/core con CLI 14 instalado, `--migrate-only` desde las versiones 13 anteriores, las completó sin parches de dependencias ni peers forzados.

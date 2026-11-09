@@ -3,10 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Promotion } from 'src/app/models';
 import { OfficeService, CompanyService, PromotionService } from 'src/app/services';
 import { Company } from '../../models';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { OfficeFormComponent } from '../office-form/office-form.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 interface OptionSquare {

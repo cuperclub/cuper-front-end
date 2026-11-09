@@ -1,5 +1,7 @@
 # Matriz de dependencias
 
+**Checkpoint Angular 15 (2026-11-09):** framework 15.2.10, CLI/build 15.2.11, Material/CDK 15.2.9, TypeScript 4.9.5, RxJS 6.6.7 y Zone.js 0.11.8. Node 14.21.3/npm 6 y lockfile v1 conservados. Material migró a la capa legacy para preservar apariencia; build, tests 8/8 en Chrome/Karma y navegador aprobados. Pendientes: abandonar Material legacy antes de Angular 17, sustituir bibliotecas View Engine antes de Angular 16, formularios Untyped y lint legacy. Este es el estado vigente por encima de los checkpoints históricos.
+
 **Checkpoint Angular 14 (2026-11-09):** framework 14.3.0, CLI/build 14.2.13, Material/CDK 14.2.7, TypeScript 4.6.4, RxJS 6.6.7 y Zone.js 0.11.8. Node 14.21.3/npm 6 y lockfile v1 conservados. Build, tests 8/8 en Chrome/Karma y navegador aprobados; formularios Untyped transitorios, lint legacy y bibliotecas View Engine pendientes. Este es el estado vigente por encima de los checkpoints históricos.
 
 **Checkpoint Angular 13 (2026-11-09):** framework 13.4.0, CLI/build 13.3.11, Material/CDK 13.3.9, TypeScript 4.6.4, RxJS 6.6.7 y Zone.js 0.11.8. Node 14.21.3/npm 6 y lockfile v1 conservados. Build, tests 8/8 y navegador aprobados; lint legacy no aprobado (TSLint directo, pendiente ESLint). Las bibliotecas View Engine aún pasan por ngcc y deben sustituirse/actualizarse antes de Angular 16. Estado vigente por encima de los checkpoints históricos.

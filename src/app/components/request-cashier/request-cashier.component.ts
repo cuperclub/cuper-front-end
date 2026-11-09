@@ -1,11 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { CardCashierComponent } from '../../components/card-cashier/card-cashier.component';
 import { User } from '../../models';
 import { CompanyService } from 'src/app/services';
 import { ButtonOption } from '../../components/user-search/user-search.component';
 import { TranslateService } from '@ngx-translate/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { UtilsService } from 'src/app/services';
 
 @Component({

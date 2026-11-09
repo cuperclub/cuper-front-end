@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { AdminCategoryService } from '../../../services';
 import { Category } from '../../../models';
 import {CategoryFormComponent} from '../../../components/category-form/category-form.component'
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 
 @Component({
   selector: 'cuper-categories',

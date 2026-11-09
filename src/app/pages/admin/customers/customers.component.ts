@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { AdminCustomerService } from 'src/app/services';
 import { User } from 'src/app/models';
 import { ColumnDefinition, PaginationDefinition } from 'src/app/components/table/table.component';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { Employee, UserStatus } from '../../models';
 import { EmployeeService, UtilsService } from 'src/app/services';
 import { RequestCashierComponent } from '../request-cashier/request-cashier.component';

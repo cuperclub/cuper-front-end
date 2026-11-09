@@ -140,6 +140,8 @@ Secuencia de major: 7→8→9→10→11→12→13→14→15→16→17→18→19�
 
 ## Fase 3 — Angular 7→15 y Material
 
+**Checkpoint Angular 15 (2026-11-09):** framework 15.2.10, CLI 15.2.11 y Material/CDK 15.2.9. Migración oficial optó por componentes Material legacy para conservar apariencia; tema adaptado a la API de mapa de v15. Build exit 0, tests existentes 8/8 y navegador desktop/móvil con cuatro roles. Se documenta deuda preexistente de layout móvil por anchos fijos y el error esperado de Mapbox sin token. Próxima iteración: Angular 16, retirando ngcc y actualizando bibliotecas View Engine antes de abandonar Material legacy.
+
 **Checkpoint Angular 14 (2026-11-09):** framework 14.3.0, CLI 14.2.13 y Material/CDK 14.2.7. Migraciones oficiales de formularios Untyped y target ES2020 para preservar compatibilidad. Build exit 0, tests existentes 8/8 y navegador desktop/móvil con cuatro roles sin errores de consola. Mapbox por variable de entorno preservado; CommonJS y otras deprecaciones siguen documentados. Próxima iteración: Angular 15, prestando atención a la transición Material/MDC.
 
 **Checkpoint Angular 13 (2026-11-09):** framework 13.4.0, CLI 13.3.11, Material/CDK 13.3.9 y TypeScript 4.6.4. Build exit 0, tests 8/8 en Chrome/Karma y navegador desktop/móvil con cuatro roles, sin errores/warnings de consola. Migraciones oficiales de IE/entryComponents/TestBed aplicadas; contrato Rails intacto. Builder TSLint retirado por CLI; script conserva invocación directa, lint legacy falla y requiere futura migración ESLint. Próxima iteración independiente: Angular 14.
