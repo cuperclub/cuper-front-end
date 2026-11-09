@@ -4,6 +4,9 @@
 /dist
 /tmp
 /out-tsc
+/src/environments/environment.generated.ts
+/.env
+/.env.local
 
 # dependencies
 /node_modules

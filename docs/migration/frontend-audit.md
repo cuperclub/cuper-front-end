@@ -1,5 +1,15 @@
 # Auditoría frontend Cuper
 
+## Iteración 7 — Angular 12 (2026-11-09)
+
+Framework 12.2.17, CLI/build 12.2.18, Material/CDK 12.2.13, TypeScript 4.3.5 y Zone.js 0.11.8. Toolchain aislado actualizado a Node 14.21.3/npm 6; `engines.node` refleja ese escalón transitorio (no es el runtime destino). Lockfile v1 conservado. Migraciones oficiales: Webpack 5, defaults de build explícitos preservando development, imports públicos Zone, retirada de emitDecoratorMetadata y tema Material con API Sass namespaced. Se conserva AOT por defecto del builder, sin cambiar auth/API Rails.
+
+- Build development con bundles ES2015/ES5: exit 0, salida `/tmp/ng12-dist` dentro del contenedor. Persisten tres warnings SCSS; Dart Sass también advierte divisiones `/` legacy en Loader (pendientes, sin modificar apariencia).
+- PhantomJS se intentó y dejó de ejecutar la suite con este build: primero falló su OpenSSL legacy en Bullseye; con configuración SSL aislada inició pero ejecutó 0 tests (no se aceptó ese resultado). Se conserva su dependencia temporalmente, pero Karma usa ChromeHeadless por defecto. No se añadieron ni eliminaron specs.
+- Los mismos ocho tests pasaron conectando Chrome de Playwright MCP a Karma, sin dependencia Playwright en el proyecto. Repetición final: 8/8 y `test_exit=0`; Karma registra desconexión del navegador externo al cerrar el servidor, después de completar los tests, no un fallo de spec. Para el contenedor sin Chrome instalado: publicar 127.0.0.1:9876, establecer `KARMA_EXTERNAL_BROWSER=true`, ejecutar `npm test -- --watch=false --progress=false` y conectar el navegador a `http://127.0.0.1:9876/`. Sin esa variable se usa ChromeHeadless instalado localmente, configurable con CHROME_BIN. No se desactiva el sandbox. Una imagen de pruebas con Chromium no pudo instalarse por 404 de paquetes Debian; se usó captura externa en lugar de alterar el sistema/repositorios del proyecto.
+- Playwright MCP contra Rails: desktop 1280×800 y móvil 390×844; sesión heredada, logout limpia las cinco claves, login por botón y recarga con validate_token 200. Cajero: transacciones entrada/salida 200; partner: empresas 202, sucursales/empleados 201 y solicitudes 200; admin: empresas 201. Cliente redirigido fuera de admin. Cero errores de consola de la aplicación; warnings del dev server por SCSS existentes.
+- Backend y seeds sin cambios; production/OAuth/correos/harness e2e siguen pendientes. Angular/Rails se apagan al finalizar. Siguiente salto: Angular 13.
+
 ## Iteración 6 — Angular 11 (2026-11-09)
 
 Framework 11.2.14, CLI/build 11.2.19 y Material/CDK 11.2.13 mediante migraciones oficiales. TypeScript 4.0.8, RxJS 6.6.7 y Zone.js 0.10.3 permanecen compatibles; Node 10.16/npm 6 y lockfile v1 conservados. Se actualizó Codelyzer a 6.0.2 antes del salto para resolver sus peers sin `--force`. El schematic actualizó Jasmine/Karma, renombró `async` a `waitForAsync` en los ocho specs activos, fijó `relativeLinkResolution: 'legacy'` para preservar rutas y retiró `extractCss` deprecado. No se modificó el contrato Rails ni la lógica de autenticación.

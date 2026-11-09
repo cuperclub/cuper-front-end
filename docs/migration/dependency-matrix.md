@@ -1,5 +1,7 @@
 # Matriz de dependencias
 
+**Checkpoint Angular 12 (2026-11-09):** framework 12.2.17, CLI/build 12.2.18, Material/CDK 12.2.13, TypeScript 4.3.5, RxJS 6.6.7 y Zone.js 0.11.8. Toolchain transitorio Node 14.21.3/npm 6; lockfile v1. Build y navegador aprobados; suite existente 8/8 en Chrome/Karma, ya no en PhantomJS. Dependencia PhantomJS conservada temporalmente, no predeterminada. Este checkpoint reemplaza los inferiores como estado vigente.
+
 **Checkpoint Angular 11 (2026-11-09):** framework 11.2.14, CLI/build 11.2.19, Material/CDK 11.2.13, TypeScript 4.0.8, RxJS 6.6.7, Zone.js 0.10.3, Codelyzer 6.0.2 y Karma 6.4.4. Lockfile v1 conservado; build, tests 8/8 y navegador aprobados. Este es el estado vigente; los checkpoints y tablas inferiores son históricos.
 
 **Checkpoint Angular 10 (2026-11-05):** framework 10.2.5, CLI/build 10.2.4, Material/CDK 10.2.7, TypeScript 4.0.8, tslib 2.9.1, RxJS 6.6.7 y Zone.js 0.10.3. Lockfile v1 conservado; build, tests 8/8 y navegador aprobados. Reemplaza los checkpoints inferiores como estado vigente; las tablas de inventario Angular 7 siguen siendo históricas.

@@ -26,7 +26,8 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['PhantomJS'],
+    // Allows a browser outside Docker to connect at http://localhost:9876.
+    browsers: process.env.KARMA_EXTERNAL_BROWSER === 'true' ? [] : ['ChromeHeadless'],
     singleRun: true
   });
 };
