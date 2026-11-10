@@ -1,5 +1,17 @@
 # Auditoría frontend Cuper
 
+## Iteración 14 — Angular 18 (2026-11-10)
+
+Framework 18.2.14, CLI/build 18.2.21, Material/CDK 18.2.14 y TypeScript 5.5.4. Node 20.19.6 cumple `^20.11.1`, TypeScript cumple `>=5.4 <5.6`; se conserva Zone.js 0.14.10 y RxJS 6.6.7. `ngx-infinite-scroll` sube a 18.0.0 por su peer Angular 18. `@ngx-translate` se mantiene.
+
+Se ejecutaron migraciones oficiales CLI/core/Material: core reemplazó usos de `HttpClientModule` por `provideHttpClient(withInterceptorsFromDi())`; se corrigió la referencia residual a `HttpClientModule` en AppModule que dejó el schematic. No se cambió la lógica del interceptor ni contrato de autenticación Rails. Material ajustó las funciones de tema a `m2-*`, preservando el tema Material 2 existente, paletas y Lato. La migración opcional application builder, control flow y zoneless no se aplicaron.
+
+- Instalación npm limpia y árbol de peers válido sin flags de fuerza; lockfile v3.
+- Build development: exit 0, `/tmp/ng18-dist-final`. Advertencias conservadas Sass division y Mapbox CommonJS; browserslist ignora ES5.
+- Suite existente: 8/8 en Chrome/Karma externo, `test_exit=0`; sin cambios de cantidad de suites.
+- Playwright MCP: login cargó sin errores JS en desktop 1200×800 y móvil 390×844; inputs presentes/visibles, Lato y sin overflow horizontal. Flujos de login autenticado, roles y endpoints no verificables: PostgreSQL (5432) no está disponible; API Rails no puede conectar a DB y la integración se ejecutó en 4201 porque 4200 pertenece a otro workspace. No se modificó backend ni datos/seeds.
+- Production/OAuth/correos, mapa con token real, lint y harness e2e siguen pendientes. Siguiente: Angular 19.
+
 ## Iteración 13 — MDC / Angular Material 17 sobre Angular 17 (2026-11-10)
 
 Se migró Material 16.2.14→17.3.10 y CDK 16.2.14→17.3.10 sin cambiar Angular (17.3.12), Node 20.19.6 ni TypeScript 5.4.5. Se usó el schematic oficial `ng generate @angular/material:mdc-migration --components all --defaults`, seguido por migración oficial `ng update @angular/material --migrate-only --from=16.2.14 --to=17.3.10`. Pasaron imports runtime y de tests, atributos de templates, selectores SCSS detectables y tema global a MDC. El tema continúa Material 2 con paletas CUPer y tipografía Lato; no se aplicó Material 3 ni rediseño. Cinco comentarios TODO sobre `mat-dialog-actions` se retiraron tras verificar que son reglas sobre el selector público del elemento, no clases internas MDC. Sin TODO MDC pendiente.

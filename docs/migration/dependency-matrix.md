@@ -1,5 +1,7 @@
 # Matriz de dependencias
 
+**Checkpoint Angular 18 (2026-11-10):** framework 18.2.14, CLI/build 18.2.21, Material/CDK 18.2.14, TypeScript 5.5.4, RxJS 6.6.7, Zone.js 0.14.10, Node 20.19.6/npm 10.8.2, lockfile v3. `ngx-infinite-scroll` 18.0.0; Material M2/Lato preservados. Migraciones oficiales CLI/core/Material; build exit 0, suite 8/8; browser inicial sin errores y login responsive inspeccionado, Rails DB no disponible para flujo autenticado.
+
 **Checkpoint MDC / Angular Material 17 sobre Angular 17 (2026-11-10):** Angular permanece 17.3.12; Material/CDK ahora 17.3.10. MDC schematic aplicado a imports, templates, estilos y tema; tema Material 2 y Lato preservados. Build exit 0, tests existentes 8/8. La validación browser fue parcial por DB Rails no disponible/puerto 4200 ocupado; ver auditoría. Material legacy eliminado.
 
 **Checkpoint Angular 17 (2026-11-10):** framework 17.3.12, CLI/build 17.3.17, TypeScript 5.4.5, RxJS 6.6.7, Zone.js 0.14.10, Node 20.19.6/npm 10.8.2 y lockfile v3. `ngx-infinite-scroll` 17.0.0. Material/CDK permanece en 16.2.14 (peer compatible con Angular 17): el schematic de Material 17 confirma que los componentes legacy se eliminaron y no acepta su actualización. Build exit 0 y suite existente 8/8; validación navegador funcional bloqueada por puerto ocupado y DB Rails inaccesible; detalle en auditoría.

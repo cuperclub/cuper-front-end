@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 
 // components
@@ -107,16 +107,16 @@ const components = [
 ];
 
 @NgModule({
-    declarations: components,
-    imports: [
-        CommonModule,
-        MaterialModule,
-        FormsModule,
-        HttpClientModule,
-        TranslateModule,
-        FormsModule,
-        ReactiveFormsModule
-    ],
-    exports: components
+  declarations: components,
+  exports: components,
+  imports: [
+    CommonModule,
+    MaterialModule,
+    FormsModule,
+    TranslateModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers: [provideHttpClient(withInterceptorsFromDi())]
 })
 export class ComponentsModule { }
