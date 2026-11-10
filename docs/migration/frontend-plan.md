@@ -158,6 +158,8 @@ Secuencia de major: 7→8→9→10→11→12→13→14→15→16→17→18→19�
 
 **Checkpoint Angular 22 (2026-11-10):** Angular 22.2.5, CLI/build 22.2.6, Material/CDK 22.2.6, TypeScript 6.0.3. Node runtime `engines.node` pasa a 22.22.3 con autorización del usuario, por ser requisito oficial. Build y suite existente 8/8 aprobados; login responsive comprobado. Aplicación/control flow mantiene NgModule y tema M2; builder Webpack/Karma queda pendiente como siguiente migración independiente.
 
+**Checkpoint application builder (2026-11-10):** migración oficial en Angular CLI 22 reemplazó el build `browser` por `application`. `main`/polyfills y flags se migraron; `outputPath.browser: ""` preserva `dist/cuper-front-end` para `server.js`/Heroku. Development/staging compilan y tests existentes 8/8; staging mantiene warning del budget CSS existente. Builders Karma y dev-server legacy pendientes.
+
 **Checkpoint Angular 14 (2026-11-09):** framework 14.3.0, CLI 14.2.13 y Material/CDK 14.2.7. Migraciones oficiales de formularios Untyped y target ES2020 para preservar compatibilidad. Build exit 0, tests existentes 8/8 y navegador desktop/móvil con cuatro roles sin errores de consola. Mapbox por variable de entorno preservado; CommonJS y otras deprecaciones siguen documentados. Próxima iteración: Angular 15, prestando atención a la transición Material/MDC.
 
 **Checkpoint Angular 13 (2026-11-09):** framework 13.4.0, CLI 13.3.11, Material/CDK 13.3.9 y TypeScript 4.6.4. Build exit 0, tests 8/8 en Chrome/Karma y navegador desktop/móvil con cuatro roles, sin errores/warnings de consola. Migraciones oficiales de IE/entryComponents/TestBed aplicadas; contrato Rails intacto. Builder TSLint retirado por CLI; script conserva invocación directa, lint legacy falla y requiere futura migración ESLint. Próxima iteración independiente: Angular 14.
@@ -209,8 +211,8 @@ Secuencia de major: 7→8→9→10→11→12→13→14→15→16→17→18→19�
 **Pasos:**
 - [ ] Migrar por 16→17→18→19→20 con update guide.
 - [ ] Resolver dependencias incompatibles con Angular/Ivy o zoneless. Una biblioteca mantenida consumible desde standalone puede seguir exponiendo NgModules externos; no exigir reescritura interna de terceros.
-- [ ] Adoptar application builder mediante migración oficial `use-application-builder` cuando proceda.
-- [ ] Cambiar opciones `main`/polyfills, imports Webpack/Sass y output path; validar `dist/.../browser`.
+- [x] Adoptar application builder mediante migración oficial `use-application-builder` (CLI 22); revisar builders dev-server/test de forma independiente.
+- [x] Cambiar opciones `main`/polyfills y adaptar output path para conservar el contrato de `server.js`/Heroku. Pendiente revisar imports Sass/CommonJS heredados.
 - [ ] Retirar script global Pusher e integrar el SDK por módulo/adaptador mantenido.
 - [ ] Desde Angular 17, aplicar `ng generate @angular/core:control-flow` en PR separado y revisar `@if`/`@for`/`@switch`, tracking y templates reutilizados; conservar imports de pipes/directivas que aún hagan falta.
 - [ ] Preparar antes del hito zoneless el estado de sesión/empresa activa y callbacks que actualizan vistas; sustituir el Subscriber mutable único donde bloquee esa preparación. El resto de refactors de estado queda en fase 6.

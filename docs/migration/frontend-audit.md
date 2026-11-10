@@ -1,5 +1,17 @@
 # Auditoría frontend Cuper
 
+## Iteración 19 — Application builder en Angular 22 (2026-11-10)
+
+Se ejecutó la migración oficial `ng update @angular/cli --name use-application-builder` en CLI 22.2.6. El builder de build pasó de Webpack `browser` a `application`; `main` pasó a `browser`, `polyfills` a arreglo y se retiraron `vendorChunk`/`buildOptimizer` que no aplican. Se añadió `esModuleInterop` al tsconfig.
+
+La salida del builder application separa browser en `browser/` por defecto. Se configuró `outputPath.browser: ""` para conservar `dist/cuper-front-end`, requerido por `server.js` y el comando Heroku, sin cambiar rutas de despliegue en esta fase.
+
+- Build development y staging: exit 0. `index.html` se genera en la ruta raíz de cada `outputPath`; staging conserva aviso de budget warning para `home.component.scss` (6.61 kB frente a 6 kB).
+- Tests existentes: 8/8 en Chrome/Karma externo, `test_exit=0`; no se modificó la suite.
+- No se modificó UI ni lógica de app y, por la petición explícita de apagar servidores, no se inició servidor web ni se repitió Playwright en esta subfase.
+- Quedan los targets de dev-server, Karma y Protractor con builders legacy, y `@angular-devkit/build-angular` aún aparece deprecado. Migrar los builders de serve/test y revisar posible movimiento a `@angular/build` requiere su propia iteración; no se cambió el runner de tests.
+- Producción no ejecutada: `environment.prod.ts` solo declara `production` y no contiene `apiBase`; no inventar valores de API. Rails/backend intacto.
+
 ## Iteración 18 — Angular 22 y Node 22 (2026-11-10)
 
 Actualización a framework 22.2.5, CLI/build 22.2.6, Material/CDK 22.2.6, TypeScript 6.0.3, Node destino 22.22.3, RxJS 6.6.7 y Zone.js 0.16.3. `ngx-infinite-scroll` pasa a 22.0.0. El cambio de runtime/`engines.node` fue autorizado antes de esta fase; Angular 22 ya no admite Node 20. La instalación npm se resolvió sin `--force` ni `--legacy-peer-deps`.
