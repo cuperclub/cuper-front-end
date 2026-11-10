@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import { CompanyService, UserService, AdminPlanService } from '../../services'
@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
     selector: 'cuper-company-register',
     templateUrl: './company-register.component.html',
     styleUrls: ['./company-register.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CompanyRegisterComponent implements OnInit {

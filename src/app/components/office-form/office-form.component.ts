@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { CardOfficeComponent } from '../../components/card-office/card-office.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -16,6 +16,7 @@ interface point {
     selector: 'cuper-office-form',
     templateUrl: './office-form.component.html',
     styleUrls: ['./office-form.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class OfficeFormComponent implements OnInit {

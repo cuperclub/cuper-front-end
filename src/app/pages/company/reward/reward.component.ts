@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PromotionService } from '../../../services';
 import { Promotion } from '../../../models';
@@ -9,6 +9,7 @@ import { DatetimeCellComponent, UserCellComponent } from '../../../components/ta
     selector: 'cuper-reward',
     templateUrl: './reward.component.html',
     styleUrls: ['./reward.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class RewardComponent implements OnInit {

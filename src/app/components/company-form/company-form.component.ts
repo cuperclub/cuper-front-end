@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Company, Category } from '../../models';
 import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 import { CategoryService } from '../../services';
@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
     selector: 'cuper-company-form',
     templateUrl: './company-form.component.html',
     styleUrls: ['./company-form.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CompanyFormComponent implements OnInit{

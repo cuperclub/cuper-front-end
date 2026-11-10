@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 
 interface Box {
   height: string;
@@ -14,6 +14,7 @@ interface FileOptions {
     selector: 'cuper-avatar-file',
     templateUrl: './avatar-file.component.html',
     styleUrls: ['./avatar-file.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AvatarFileComponent implements OnInit {

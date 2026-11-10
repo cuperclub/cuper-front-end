@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AdminSettingService, AdminPlanService } from '../../../services';
 import {SettingsFormComponent} from '../../../components/settings-form/settings-form.component'
 import { MatDialog } from '@angular/material/dialog';
@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
     selector: 'cuper-settings',
     templateUrl: './settings.component.html',
     styleUrls: ['./settings.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SettingsComponent implements OnInit {

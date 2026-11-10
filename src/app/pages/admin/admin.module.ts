@@ -7,7 +7,7 @@ import { ComponentsModule } from '../../components/components.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 
 //Pages
@@ -37,6 +37,6 @@ import { SettingsComponent } from './settings/settings.component';
     AdminRoutingModule,
     TranslateModule.forChild()
   ],
-  providers: [provideHttpClient(withInterceptorsFromDi())]
+  providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())]
 })
 export class AdminModule { }

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CompanyCardComponent } from '../company-card/company-card.component';
 import { Promotion } from 'src/app/models';
@@ -12,6 +12,7 @@ import { UtilsService } from 'src/app/services';
     selector: 'cuper-output-transaction-form',
     templateUrl: './output-transaction-form.component.html',
     styleUrls: ['./output-transaction-form.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class OutputTransactionFormComponent implements OnInit {

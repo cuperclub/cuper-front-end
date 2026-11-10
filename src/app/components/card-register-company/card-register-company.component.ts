@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Plan } from '../../models';
 
@@ -6,6 +6,7 @@ import { Plan } from '../../models';
     selector: 'cuper-card-register-company',
     templateUrl: './card-register-company.component.html',
     styleUrls: ['./card-register-company.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CardRegisterCompanyComponent {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from '../../../models';
 import { InputTransactionFormComponent } from '../../../components/input-transaction-form/input-transaction-form.component';
@@ -12,6 +12,7 @@ import { DatetimeCellComponent, UserCellComponent, PromotionCellComponent } from
     selector: 'cuper-transactions',
     templateUrl: './transactions.component.html',
     styleUrls: ['./transactions.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TransactionsComponent implements OnInit {

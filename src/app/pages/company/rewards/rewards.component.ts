@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { PromotionService } from '../../../services';
 import { Promotion } from '../../../models';
@@ -8,6 +8,7 @@ import { PaginationDefinition } from '../../../components/table/table.component'
     selector: 'cuper-rewards',
     templateUrl: './rewards.component.html',
     styleUrls: ['./rewards.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class RewardsComponent implements OnInit {

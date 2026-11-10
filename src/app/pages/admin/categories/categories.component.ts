@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AdminCategoryService } from '../../../services';
 import { Category } from '../../../models';
@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
     selector: 'cuper-categories',
     templateUrl: './categories.component.html',
     styleUrls: ['./categories.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CategoriesComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 interface FileOptions {
   file?: File;
@@ -9,6 +9,7 @@ interface FileOptions {
     selector: 'cuper-preview-reward',
     templateUrl: './preview-reward.component.html',
     styleUrls: ['./preview-reward.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PreviewRewardComponent implements OnInit {

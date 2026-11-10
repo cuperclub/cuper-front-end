@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Plan } from '../../../models';
 import { AdminPlanService } from '../../../services';
 import { MatDialog } from '@angular/material/dialog';
@@ -8,6 +8,7 @@ import {PlanFormComponent} from '../../../components/plan-form/plan-form.compone
     selector: 'cuper-plans',
     templateUrl: './plans.component.html',
     styleUrls: ['./plans.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PlansComponent implements OnInit {

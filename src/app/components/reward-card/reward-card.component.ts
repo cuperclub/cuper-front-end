@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Company, Promotion, Office } from '../../models';
 
 @Component({
     selector: 'cuper-reward-card',
     templateUrl: './reward-card.component.html',
     styleUrls: ['./reward-card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class RewardCardComponent implements OnInit {

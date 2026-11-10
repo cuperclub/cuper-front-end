@@ -1,7 +1,7 @@
 <mat-card appearance="outlined">
   <div class="card-content">
-    <cuper-preview-reward [disableEvents]="true" [file]="promotion?.image_url" [companyAvatar]="company?.logo"
-      [companyName]="company?.business_name" [promotionTitle]="promotion?.description">
+    <cuper-preview-reward [disableEvents]="true" [file]="$safeNavigationMigration(promotion?.image_url)" [companyAvatar]="$safeNavigationMigration(company?.logo)"
+      [companyName]="$safeNavigationMigration(company?.business_name)" [promotionTitle]="$safeNavigationMigration(promotion?.description)">
     </cuper-preview-reward>
     <div class="card-details">
       <div class="card-label">{{ 'promotion.terms' | translate }}</div>
@@ -9,14 +9,14 @@
       <div class="card-label">{{ 'common.office' | translate }}</div>
       <div class="card-text">{{ office?.address}}</div>
       <div class="card-label">{{ 'common.validity' | translate }}</div>
-      <div class="card-text"> {{ promotion?.start_at | date }} - {{ promotion?.end_at | date }}</div>
+      <div class="card-text"> {{ $safeNavigationMigration(promotion?.start_at) | date }} - {{ $safeNavigationMigration(promotion?.end_at) | date }}</div>
     </div>
     <div class="card-cards">
       <cuper-card-counter [title]="'common.available' | translate"
-        [count]="promotion?.unlimited ? null : promotion?.total_rewards"
+        [count]="promotion?.unlimited ? null : $safeNavigationMigration(promotion?.total_rewards)"
         [description]="promotion?.unlimited ? ('common.unlimited' | translate) : ('common.people' | translate)">
       </cuper-card-counter>
-      <cuper-card-counter [title]="'common.needed' | translate" [count]="promotion?.points_required"
+      <cuper-card-counter [title]="'common.needed' | translate" [count]="$safeNavigationMigration(promotion?.points_required)"
         [description]="'common.points' | translate">
       </cuper-card-counter>
     </div>

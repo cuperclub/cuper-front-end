@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfileFormComponent } from '../profile-form/profile-form.component';
 import { UpdatePasswordFormComponent } from '../update-password-form/update-password-form.component';
@@ -13,6 +13,7 @@ import { UserService, UtilsService } from 'src/app/services';
     selector: 'cuper-card-user',
     templateUrl: './card-user.component.html',
     styleUrls: ['./card-user.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CardUserComponent implements OnInit {

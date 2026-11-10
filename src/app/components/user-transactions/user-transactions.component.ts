@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { ColumnDefinition, PaginationDefinition } from '../table/table.component';
 import { DatetimeCellComponent } from '../table/partials';
 import { UserService } from 'src/app/services';
@@ -8,6 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
     selector: 'cuper-user-transactions',
     templateUrl: './user-transactions.component.html',
     styleUrls: ['./user-transactions.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class UserTransactionsComponent implements OnInit {

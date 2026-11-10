@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../../models';
 import { UserService, UtilsService, AuthService } from '../../../services';
@@ -7,6 +7,7 @@ import { UserService, UtilsService, AuthService } from '../../../services';
     selector: 'cuper-administration',
     templateUrl: './administration.component.html',
     styleUrls: ['./administration.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AdministrationComponent implements OnInit {

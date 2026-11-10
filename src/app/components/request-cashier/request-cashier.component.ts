@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CardCashierComponent } from '../../components/card-cashier/card-cashier.component';
 import { User } from '../../models';
@@ -12,6 +12,7 @@ import { UtilsService } from 'src/app/services';
     selector: 'cuper-request-cashier',
     templateUrl: './request-cashier.component.html',
     styleUrls: ['./request-cashier.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class RequestCashierComponent implements OnInit{

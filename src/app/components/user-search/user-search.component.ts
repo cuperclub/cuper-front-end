@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UntypedFormControl } from '@angular/forms';
 import { UserService, UtilsService } from '../../services';
@@ -13,6 +13,7 @@ export interface ButtonOption {
     selector: 'cuper-user-search',
     templateUrl: './user-search.component.html',
     styleUrls: ['./user-search.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class UserSearchComponent implements OnInit {

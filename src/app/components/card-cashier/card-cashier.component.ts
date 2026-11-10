@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Employee, UserStatus } from '../../models';
 import { EmployeeService, UtilsService } from 'src/app/services';
@@ -9,6 +9,7 @@ import { FeedbackFormComponent } from '../feedback-form/feedback-form.component'
     selector: 'cuper-card-cashier',
     templateUrl: './card-cashier.component.html',
     styleUrls: ['./card-cashier.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CardCashierComponent implements OnInit {

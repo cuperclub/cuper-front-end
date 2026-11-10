@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Company } from '../../models';
 import { CompanyService} from 'src/app/services';
@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     selector: 'cuper-company-card',
     templateUrl: './company-card.component.html',
     styleUrls: ['./company-card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CompanyCardComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CompanyCardComponent } from '../company-card/company-card.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,6 +16,7 @@ interface FileOptions {
     selector: 'cuper-company-dialog',
     templateUrl: './company-dialog.component.html',
     styleUrls: ['./company-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CompanyDialogComponent implements OnInit {

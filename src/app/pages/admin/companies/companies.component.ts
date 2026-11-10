@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AdminCompanyService, UtilsService } from '../../../services';
 import { Company } from '../../../models';
 import {FeedbackFormComponent} from '../../../components/feedback-form/feedback-form.component'
@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
     selector: 'cuper-companies',
     templateUrl: './companies.component.html',
     styleUrls: ['./companies.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CompaniesComponent implements OnInit {

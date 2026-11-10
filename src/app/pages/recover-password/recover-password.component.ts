@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services';
@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services';
     selector: 'cuper-recover-password',
     templateUrl: './recover-password.component.html',
     styleUrls: ['./recover-password.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class RecoverPasswordComponent {

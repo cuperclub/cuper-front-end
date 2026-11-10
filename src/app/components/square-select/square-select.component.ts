@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 interface OptionSquare {
   description: string
@@ -9,6 +9,7 @@ interface OptionSquare {
     selector: 'cuper-square-select',
     templateUrl: './square-select.component.html',
     styleUrls: ['./square-select.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SquareSelectComponent implements OnInit {

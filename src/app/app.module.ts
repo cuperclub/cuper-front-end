@@ -4,7 +4,8 @@ import {
   HttpClient,
   HTTP_INTERCEPTORS,
   provideHttpClient,
-  withInterceptorsFromDi
+  withInterceptorsFromDi,
+  withXhr
 } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -77,7 +78,7 @@ export function createTranslateLoader(http: HttpClient) {
         hasBackdrop: true
       }
     },
-    provideHttpClient(withInterceptorsFromDi())
+    provideHttpClient(withXhr(), withInterceptorsFromDi())
   ],
   bootstrap: [AppComponent]
 })

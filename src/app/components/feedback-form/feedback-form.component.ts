@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { CardUserComponent } from '../card-user/card-user.component';
@@ -10,6 +10,7 @@ import { EmployeeService } from 'src/app/services';
     selector: 'cuper-feedback-form',
     templateUrl: './feedback-form.component.html',
     styleUrls: ['./feedback-form.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class FeedbackFormComponent implements OnInit {

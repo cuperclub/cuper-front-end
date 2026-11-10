@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AdminCustomerService } from 'src/app/services';
 import { User } from 'src/app/models';
@@ -15,6 +15,7 @@ import { ChangePasswordDialogComponent } from 'src/app/components/change-passwor
     selector: 'cuper-customers',
     templateUrl: './customers.component.html',
     styleUrls: ['./customers.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CustomersComponent implements OnInit {

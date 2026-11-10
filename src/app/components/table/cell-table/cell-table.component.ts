@@ -4,16 +4,17 @@ import {
   Input,
   ViewChild,
   ViewContainerRef,
-  ComponentFactoryResolver,
   AfterContentInit,
   Type,
-  ComponentRef
+  ComponentRef,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 @Component({
     selector: 'cuper-cell-table',
     templateUrl: './cell-table.component.html',
     styleUrls: ['./cell-table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CellTableComponent implements OnDestroy, AfterContentInit {
@@ -22,13 +23,8 @@ export class CellTableComponent implements OnDestroy, AfterContentInit {
   @ViewChild('content', { read: ViewContainerRef, static: true }) content;
   componentRef: ComponentRef<Component>;
 
-  constructor(
-    private componentFactoryResolver: ComponentFactoryResolver
-  ) { }
-
   ngAfterContentInit() {
-    const resolverFactory = this.componentFactoryResolver.resolveComponentFactory(this.type);
-    this.componentRef = this.content.createComponent(resolverFactory);
+    this.componentRef = this.content.createComponent(this.type);
     this.componentRef.instance['data'] = this.data;
   }
 

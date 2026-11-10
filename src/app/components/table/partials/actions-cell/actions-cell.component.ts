@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 export interface ActionDefinition {
   label: string;
@@ -10,6 +10,7 @@ export interface ActionDefinition {
     selector: 'cuper-actions-cell',
     templateUrl: './actions-cell.component.html',
     styleUrls: ['./actions-cell.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ActionsCellComponent implements OnInit {

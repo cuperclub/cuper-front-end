@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { User } from '../../models';
 import { UserTransactionsComponent } from '../user-transactions/user-transactions.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
     selector: 'cuper-card-points',
     templateUrl: './card-points.component.html',
     styleUrls: ['./card-points.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CardPointsComponent implements OnInit {

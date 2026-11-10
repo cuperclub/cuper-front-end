@@ -5,7 +5,7 @@ import { CompanyRoutingModule } from './company-routing.module';
 import { MaterialModule } from '../../material.module';
 import { ComponentsModule } from '../../components/components.module';
 
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,6 +32,6 @@ import { CompanyComponent } from './company/company.component';
     ComponentsModule,
     TranslateModule.forChild()
   ],
-  providers: [provideHttpClient(withInterceptorsFromDi())]
+  providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())]
 })
 export class CompanyModule { }

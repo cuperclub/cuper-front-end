@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,6 +11,7 @@ import { RewardDialogComponent } from 'src/app/components/reward-dialog/reward-d
     selector: 'cuper-promotions',
     templateUrl: './promotions.component.html',
     styleUrls: ['./promotions.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PromotionsComponent implements OnInit {

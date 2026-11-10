@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { PaginationDefinition } from '../table/table.component';
 
 interface OptionRow {
@@ -13,6 +13,7 @@ interface OptionRow {
     selector: 'cuper-table-card',
     templateUrl: './table-card.component.html',
     styleUrls: ['./table-card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TableCardComponent implements OnInit {

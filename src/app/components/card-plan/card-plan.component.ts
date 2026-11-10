@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 export interface OptionPlan {
   active?: boolean;
@@ -13,6 +13,7 @@ export interface OptionPlan {
     selector: 'cuper-card-plan',
     templateUrl: './card-plan.component.html',
     styleUrls: ['./card-plan.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CardPlanComponent {

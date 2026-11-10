@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { Company } from '../../models';
 
@@ -6,6 +6,7 @@ import { Company } from '../../models';
     selector: 'cuper-billing-card',
     templateUrl: './billing-card.component.html',
     styleUrls: ['./billing-card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class BillingCardComponent implements OnInit {

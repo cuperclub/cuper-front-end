@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Promotion } from 'src/app/models';
 import { OfficeService, CompanyService, PromotionService } from 'src/app/services';
@@ -24,6 +24,7 @@ interface FileOptions {
     selector: 'cuper-new-reward-card',
     templateUrl: './new-reward-card.component.html',
     styleUrls: ['./new-reward-card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NewRewardCardComponent implements OnInit {

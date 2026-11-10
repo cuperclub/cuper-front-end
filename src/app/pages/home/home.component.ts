@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService, UserService, UtilsService, PusherService } from '../../services';
 import { Router } from '@angular/router';
 import { User, UserStatus, Notification } from '../../models';
@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
     selector: 'cuper-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class HomeComponent implements OnInit {

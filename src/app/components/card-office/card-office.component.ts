@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { OfficeFormComponent } from '../office-form/office-form.component';
@@ -9,6 +9,7 @@ import { OfficeService } from 'src/app/services';
     selector: 'cuper-card-office',
     templateUrl: './card-office.component.html',
     styleUrls: ['./card-office.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CardOfficeComponent implements OnInit {

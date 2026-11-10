@@ -1,5 +1,19 @@
 # Auditoría frontend Cuper
 
+## Iteración 18 — Angular 22 y Node 22 (2026-11-10)
+
+Actualización a framework 22.2.5, CLI/build 22.2.6, Material/CDK 22.2.6, TypeScript 6.0.3, Node destino 22.22.3, RxJS 6.6.7 y Zone.js 0.16.3. `ngx-infinite-scroll` pasa a 22.0.0. El cambio de runtime/`engines.node` fue autorizado antes de esta fase; Angular 22 ya no admite Node 20. La instalación npm se resolvió sin `--force` ni `--legacy-peer-deps`.
+
+Migraciones oficiales CLI/core/Material. CLI añadió `istanbul-lib-instrument` como peer necesario para Karma. Core añadió `ChangeDetectionStrategy.Eager` a 67 componentes para conservar el change detection previo a v22, añade `withXhr()` a los providers migrados para preservar el backend HTTP anterior, actualizó cuatro expresiones opcionales con `$safeNavigationMigration()` y fijó `strictTemplates: false` (no estaba habilitado previamente). El compilador v22 eliminó `ComponentFactoryResolver`; `CellTableComponent` usa ahora `ViewContainerRef.createComponent(this.type)`, preservando la creación dinámica.
+
+TypeScript 6 generó errores porque el proyecto heredado no explicitaba `strict: false`; se fijó ese valor explícitamente para mantener el nivel de comprobación previo, sin iniciar una migración de tipos ajena al salto. `downlevelIteration` (redundante con target ES2022) se quitó y `ignoreDeprecations: "6.0"` permite mantener `baseUrl`, aún usado por imports `src/...`, frente a una opción que TS6 marca para retirada futura. Se quitó `extendedDiagnostics` en tsconfigs de app/spec porque Angular exige `strictTemplates` activo al configurar esos diagnósticos.
+
+- Build development en Node 22.22.3: exit 0, `/tmp/ng22-dist3`.
+- Suite existente: 8/8 en Chrome/Karma externo, `test_exit=0`; sin suites añadidas ni eliminadas.
+- Playwright MCP: login sin errores JS de carga a 1280×800 y 390×844, Lato preservado, inputs visibles y sin overflow horizontal.
+- El builder Webpack y Karma builder anuncian deprecación; migración a application/esbuild y Vitest era opcional y queda fuera de esta fase. Persisten avisos Sass, Mapbox CommonJS y browserslist.
+- Producción, lint, harness e2e, OAuth/correos y mapa con token real pendientes. Rails/PostgreSQL no está disponible para completar autenticación, roles y endpoints; no se modificó backend ni datos.
+
 ## Iteración 17 — Angular 21 (2026-11-10)
 
 Framework 21.2.25, CLI/build 21.2.29, Material/CDK 21.2.14, TypeScript 5.9.3, Node 20.19.6, RxJS 6.6.7 y Zone.js 0.16.3 (Angular 21 admite `~0.15.0 || ~0.16.0`). `ngx-infinite-scroll` 21.0.0. Instalación limpia y peers resueltos.
