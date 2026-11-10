@@ -1,5 +1,16 @@
 # Auditoría frontend Cuper
 
+## Iteración 16 — Angular 20 (2026-11-10)
+
+Framework 20.3.18, CLI/build 20.3.17, Material/CDK 20.2.14, TypeScript 5.8.3, Node 20.19.6, RxJS 6.6.7 y Zone.js 0.15.1. `ngx-infinite-scroll` sube a 20.0.0. Instalación limpia y peers resueltos sin opciones de fuerza.
+
+Se aplicaron migraciones oficiales CLI/core/Material: defaults de generación explícitos en `angular.json`, `moduleResolution: bundler`, y sustitución de `TestBed.get` por `TestBed.inject`. Control flow, router signal y application builder son migraciones opcionales y se dejaron para fases independientes. No se cambiaron autenticación, API Rails, tema MDC/Material 2 ni Lato.
+
+- Build development: exit 0, `/tmp/ng20-dist`. Siguen avisos Sass (`@import`/división), Mapbox CommonJS y Browserslist; Angular 20 avisa además que algunas entradas Browserslist existentes están fuera de soporte.
+- Suite existente: 8/8 en Chrome/Karma externo, `test_exit=0`; no se modificó la cantidad de suites.
+- Playwright MCP: login visible en desktop 1280×800 y móvil 390×844, Lato y sin overflow horizontal. Pruebas autenticadas continúan bloqueadas por la base PostgreSQL de Rails inaccesible.
+- Production/OAuth/correos, token Mapbox, lint y harness e2e siguen pendientes. Próximo: Angular 21.
+
 ## Iteración 15 — Angular 19 (2026-11-10)
 
 Framework 19.2.15, CLI/build 19.2.17, Material/CDK 19.2.19, TypeScript 5.8.3, Node 20.19.6, RxJS 6.6.7 y Zone.js 0.15.1. Angular 19 requiere Zone.js `~0.15.0`; se actualizó desde 0.14.10. `ngx-infinite-scroll` sube a 19.0.0 por peer Angular 19. Instalación npm limpia, sin `--force`/`--legacy-peer-deps`.

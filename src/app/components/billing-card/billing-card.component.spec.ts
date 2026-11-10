@@ -21,7 +21,7 @@ describe('BillingCardComponent', () => {
   }));
 
   beforeEach(() => {
-    const translate = TestBed.get(TranslateService);
+    const translate = TestBed.inject(TranslateService);
     translate.setTranslation('en', {
       company: {
         billing_info: 'Billing information',
