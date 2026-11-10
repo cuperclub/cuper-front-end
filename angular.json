@@ -85,21 +85,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "cuper-front-end:build"
+            "buildTarget": "cuper-front-end:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "cuper-front-end:build:production"
+              "buildTarget": "cuper-front-end:build:production"
             },
             "staging": {
-              "browserTarget": "cuper-front-end:build:staging"
+              "buildTarget": "cuper-front-end:build:staging"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cuper-front-end:build"
+            "buildTarget": "cuper-front-end:build"
           }
         },
         "test": {

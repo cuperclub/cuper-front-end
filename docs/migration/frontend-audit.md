@@ -1,5 +1,17 @@
 # Auditoría frontend Cuper
 
+## Iteración 12 — Angular 17 (2026-11-10)
+
+Framework 17.3.12, CLI/build 17.3.17 y TypeScript 5.4.5. Angular 17 no admite oficialmente Node 22; esta fase fija Node 20.19.6/npm 10.8.2, dentro del rango `^20.9.0`, con lockfile v3. RxJS 6.6.7 queda dentro del rango soportado. Zone.js pasa a 0.14.10. `ngx-infinite-scroll` pasa a 17.0.0 por su peer `<18`; `@ngx-translate/core` 15.0.0 y loader 8.0.0 se conservan.
+
+Se ejecutaron migraciones oficiales CLI/core desde 16.2.16/16.2.12: reemplazo de `browserTarget` por `buildTarget` en `angular.json`; no se requirieron cambios de código de core. No se aplicaron las migraciones opcionales de application builder ni control flow. La migración oficial Material 17 reportó que no puede ejecutarse mientras el proyecto use componentes legacy, eliminados del paquete v17. Se mantiene Material/CDK 16.2.14, cuyos peers admiten Angular 17 y que aún compila; así se evita forzar el schematic o cambiar estilos sin validación visual. Deuda: Material legacy queda sin fixes/mejoras; migrar MDC y validar apariencia accesible en una iteración visual explícita.
+
+- Instalación npm limpia sin `--force`/`--legacy-peer-deps`; lockfile v3.
+- Build development: exit 0, `/tmp/ng17-dist`. Avisos heredados Sass division, autoprefixer `align-items: end`, Mapbox CommonJS y Browserslist sin ES5.
+- Tests existentes: 8/8 en Chrome/Karma, `test_exit=0`; no se añadieron ni eliminaron suites.
+- Playwright MCP abrió la pantalla de login con el servidor Angular 17 sin errores al cargar. Validación integral de login/roles/endpoints bloqueada: el puerto 4200 está ocupado por un servidor de otro workspace, y Rails no pudo conectar a PostgreSQL (5432 rechazó conexión); por ello las peticiones de autenticación fallaron. No se tocaron datos/seeds ni archivos/backend Rails. Repetir browser end-to-end al disponer de DB y puerto autorizado.
+- Lint legacy y production siguen pendientes; `npm install` informa dependencias obsoletas/vulnerabilidades heredadas, sin ejecutar auditorías correctivas automáticas.
+
 ## Iteración 11 — Angular 16 (2026-11-09)
 
 Framework 16.2.12, CLI/build 16.2.16, Material/CDK 16.2.14 y TypeScript 5.1.6. Toolchain Node 22.23.2/npm 10.9.8 (Angular 16 admite Node >=18.10) y lockfile v3. npm detectó que el reporter de Karma requiere Jasmine >=3.8 (estaba fijado 3.6); se actualizan Jasmine 4.6, types 4.3.6 y karma-jasmine 5.1, sin `--force`/`--legacy-peer-deps`. Zone.js 0.13.3. RxJS 6.6.7 se conserva.
