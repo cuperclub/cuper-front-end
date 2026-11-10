@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 interface FileOptions {
@@ -16,7 +16,7 @@ interface FileOptions {
 export class PreviewRewardComponent implements OnInit {
   placeholder: string = '../../../assets/images/background-reward.png';
 
-  constructor() { }
+  constructor(private changeDetector: ChangeDetectorRef) { }
 
   @Input() file: string | ArrayBuffer;
   @Input() companyAvatar: string;
@@ -38,6 +38,7 @@ export class PreviewRewardComponent implements OnInit {
         const uploadFile = { file: file, imageBase64: reader.result };
         this.propagateFile.emit(uploadFile);
         this.file = reader.result;
+        this.changeDetector.markForCheck();
       };
     }
   }

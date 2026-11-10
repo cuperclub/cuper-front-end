@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { NgStyle, NgIf } from '@angular/common';
 import { LoaderComponent } from '../loader/loader.component';
 
@@ -30,6 +30,7 @@ export class AvatarFileComponent implements OnInit {
 
   constructor(
     private elRef: ElementRef,
+    private changeDetector: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -53,6 +54,7 @@ export class AvatarFileComponent implements OnInit {
         const uploadFile = { file: file, imageBase64: reader.result };
         this.propagateFile.emit(uploadFile);
         this.file = reader.result;
+        this.changeDetector.markForCheck();
       };
     }
   }
