@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { AuthService, UserService, UtilsService, PusherService } from '../../services';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { User, UserStatus, Notification } from '../../models';
@@ -37,6 +37,7 @@ export class HomeComponent implements OnInit {
     private userService: UserService,
     private utilsService: UtilsService,
     private message: MatSnackBar,
+    private changeDetector: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -55,7 +56,8 @@ export class HomeComponent implements OnInit {
       });
       this.totalPendingNotifications = this.totalPendingNotifications + 1;
       current_user.pending_notifications = current_user.pending_notifications + 1;
-       this.userService.updateCurrentUserData(current_user);
+      this.userService.updateCurrentUserData(current_user);
+      this.changeDetector.markForCheck();
     });
   }
 
@@ -79,9 +81,13 @@ export class HomeComponent implements OnInit {
       this.userService.updateCompanyIdView(company.id).subscribe(() =>{
         const currentUser = this.userService.getCurrentUserData();
         currentUser.current_company_id = company.id;
-         this.userService.updateCurrentUserData(currentUser);
+        this.userService.updateCurrentUserData(currentUser);
         this.updatedView = true;
-        setTimeout(() => { this.updatedView = false }, 1000);
+        this.changeDetector.markForCheck();
+        setTimeout(() => {
+          this.updatedView = false;
+          this.changeDetector.markForCheck();
+        }, 1000);
       });
     }
   }
@@ -110,6 +116,7 @@ export class HomeComponent implements OnInit {
       if (current_user.pending_notifications > 0){
         this.userService.readNotifications().subscribe((resp)=>{
           this.totalPendingNotifications = this.totalPendingNotifications > 0 ? this.totalPendingNotifications - resp['total'] : this.totalPendingNotifications;
+          this.changeDetector.markForCheck();
           this.getMyNotifications();
         })
       }else{
@@ -122,6 +129,7 @@ export class HomeComponent implements OnInit {
     this.userService.getNotifications(this.currentPage, this.initItemsPerPage).subscribe((data) => {
       this.notifications = this.buildNotifications(data['notifications']);
       this.loadNotifications = true;
+      this.changeDetector.markForCheck();
     });
   }
 
@@ -131,6 +139,7 @@ export class HomeComponent implements OnInit {
       const newNotifications = this.buildNotifications(data['notifications']);
       this.notifications = this.notifications.concat(newNotifications);
       this.disabledInfiniteScroll = this.notifications.length === data['meta']['total_count'];
+      this.changeDetector.markForCheck();
     });
   }
 
@@ -184,6 +193,7 @@ export class HomeComponent implements OnInit {
     let updateNotification = resp['notification'] || {};
     this.notifications[this.findIndexNotification(updateNotification.id)].status = updateNotification.status;
     this.totalPendingNotifications = this.totalPendingNotifications > 0 ? this.totalPendingNotifications - 1 : this.totalPendingNotifications;
+    this.changeDetector.markForCheck();
   }
 
   isCompanyAproved() {

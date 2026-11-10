@@ -16,6 +16,8 @@ Angular 22 aplica scheduling zoneless por defecto al bootstrap standalone; mante
 
 Como primer ajuste de estado, `UserService` sustituye el `Subscriber` mutable único por `Subject` y `startWith` para conservar el primer valor inmediato; `updateCurrentUserData` centraliza la mutación/emisión y actualiza los cinco puntos de uso (perfil, empresa, alta de empresa y notificación Pusher). Esto permite que `AsyncPipe` notifique el render al actualizar el usuario, pero no resuelve los demás callbacks/fields del inventario. Build exit 0 y suite 8/8.
 
+Siguiente ajuste acotado: `HomeComponent` marca para revisión tras respuestas asíncronas de notificaciones, callback Pusher, cambio de empresa y vencimiento del timer. Build exit 0 y suite 8/8. Aún requieren atención las suscripciones/callbacks de las demás pantallas y las mutaciones programáticas de formularios.
+
 ## Iteración 20 — Declaraciones y poda de NgModules (2026-11-10)
 
 Se aplicó el primer modo del schematic oficial `@angular/core:standalone` (`convert-to-standalone`) sobre Angular 22.2.5. Los componentes, directivas y pipes declarados en los módulos pasan a ser standalone (standalone es el default en Angular 22); los módulos conservan temporalmente esas clases en `imports`, manteniendo su API y composición hasta las fases `prune-ng-modules` y `standalone-bootstrap`. `AppComponent` se conserva explícitamente `standalone: false` para seguir siendo bootstrappeado por `AppModule` durante este checkpoint.
