@@ -1,27 +1,15 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../../services';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class IsntSignedInGuard  {
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ){ }
+export const isntSignedInGuard: CanActivateFn = () => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
+  const canViewRoute = !authService.userSignedIn();
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Promise<boolean> | boolean {
-
-    let userSignedIn = this.authService.userSignedIn();
-    let canViewRoute = !userSignedIn;
-
-    if(!canViewRoute){
-      this.router.navigateByUrl('/home/dashboard');
-    }
-
-    return canViewRoute;
+  if (!canViewRoute) {
+    router.navigateByUrl('/home/dashboard');
   }
-}
+
+  return canViewRoute;
+};

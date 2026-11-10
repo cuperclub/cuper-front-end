@@ -1,38 +1,30 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
 import { AuthService, UserService } from '../../services';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class PartnerGuard  {
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    private userService: UserService
-  ) { }
+export const partnerGuard: CanActivateFn = () => {
+  const router = inject(Router);
+  const authService = inject(AuthService);
+  const userService = inject(UserService);
 
-  canActivate(): boolean | Promise<boolean> {
-    const userSignedIn = this.authService.userSignedIn();
-    if(userSignedIn) {
-      if(this.authService.currentUserData) {
-        return this.redirect();
-      } else {
-        return this.userService.validateToken()
-          .then(() => this.redirect())
-          .catch(() => false);
-      }
-    } else {
-      this.router.navigateByUrl('/login');
-      return false;
-    }
-  }
-
-  redirect() {
-    const isPartner = this.userService.userIsPartner();
-    if(!isPartner){
-      this.router.navigateByUrl('/home/dashboard');
+  const redirect = (): boolean => {
+    const isPartner = userService.userIsPartner();
+    if (!isPartner) {
+      router.navigateByUrl('/home/dashboard');
     }
     return isPartner;
+  };
+
+  if (!authService.userSignedIn()) {
+    router.navigateByUrl('/login');
+    return false;
   }
-}
+
+  if (authService.currentUserData) {
+    return redirect();
+  }
+
+  return userService.validateToken()
+    .then(() => redirect())
+    .catch(() => false);
+};

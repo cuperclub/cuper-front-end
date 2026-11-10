@@ -6,19 +6,19 @@ import { CustomersComponent } from './customers/customers.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { PlansComponent } from './plans/plans.component';
 import { SettingsComponent } from './settings/settings.component';
-import { AdminGuard } from '../../guards/admin/admin.guard';
+import { adminGuard } from '../../guards/admin/admin.guard';
 
 export const ADMIN_ROUTES: Routes = [
   {
     path: '',
     component: AdministrationComponent,
-    canActivate: [AdminGuard],
+    canActivate: [adminGuard],
     children: [
-      { path: 'companies', component: CompaniesComponent, canActivate: [AdminGuard] },
-      { path: 'customers', component: CustomersComponent, canActivate: [AdminGuard] },
-      { path: 'categories', component: CategoriesComponent, canActivate: [AdminGuard] },
-      { path: 'plans', component: PlansComponent, canActivate: [AdminGuard] },
-      { path: 'settings', component: SettingsComponent, canActivate: [AdminGuard] }
+      { path: 'companies', component: CompaniesComponent, canActivate: [adminGuard] },
+      { path: 'customers', component: CustomersComponent, canActivate: [adminGuard] },
+      { path: 'categories', component: CategoriesComponent, canActivate: [adminGuard] },
+      { path: 'plans', component: PlansComponent, canActivate: [adminGuard] },
+      { path: 'settings', component: SettingsComponent, canActivate: [adminGuard] }
     ]
   }
 ];

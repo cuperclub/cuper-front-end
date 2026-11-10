@@ -1,40 +1,30 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
 import { AuthService, UserService, UserTokenData } from '../../services';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AdminGuard  {
+export const adminGuard: CanActivateFn = () => {
+  const router = inject(Router);
+  const authService = inject(AuthService);
+  const userService = inject(UserService);
 
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    private userService: UserService
-  ) { }
-
-  canActivate(): boolean | Promise<boolean> {
-    const userSignedIn = this.authService.userSignedIn();
-    if(userSignedIn) {
-      if(this.authService.currentUserData) {
-        return this.redirect(this.authService.currentUserData);
-      } else {
-        return this.userService.validateToken().then((userData) => {
-          return this.redirect(userData);
-        }).catch(() => false);
-      }
-    } else {
-      this.router.navigateByUrl('/login');
-      return false;
-    }
-  }
-
-  redirect(userData) {
-    const currentUser: UserTokenData = userData;
-    const isAdmin = currentUser.is_admin;
+  const redirect = (userData: UserTokenData): boolean => {
+    const isAdmin = userData.is_admin;
     if (!isAdmin) {
-      this.router.navigateByUrl('/home/dashboard');
+      router.navigateByUrl('/home/dashboard');
     }
     return isAdmin;
+  };
+
+  if (!authService.userSignedIn()) {
+    router.navigateByUrl('/login');
+    return false;
   }
-}
+
+  if (authService.currentUserData) {
+    return redirect(authService.currentUserData);
+  }
+
+  return userService.validateToken()
+    .then(userData => redirect(userData))
+    .catch(() => false);
+};
