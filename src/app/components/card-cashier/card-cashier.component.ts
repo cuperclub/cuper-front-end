@@ -4,13 +4,21 @@ import { Employee, UserStatus } from '../../models';
 import { EmployeeService, UtilsService } from 'src/app/services';
 import { RequestCashierComponent } from '../request-cashier/request-cashier.component';
 import { FeedbackFormComponent } from '../feedback-form/feedback-form.component';
+import { MatCard } from '@angular/material/card';
+import { MatIconButton, MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MatDivider } from '@angular/material/divider';
+import { MatTabGroup, MatTab, MatTabContent } from '@angular/material/tabs';
+import { NgIf, NgFor, NgClass } from '@angular/common';
+import { AvatarComponent } from '../avatar/avatar.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'cuper-card-cashier',
     templateUrl: './card-cashier.component.html',
     styleUrls: ['./card-cashier.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatCard, MatIconButton, MatIcon, MatDivider, MatTabGroup, MatTab, MatTabContent, NgIf, NgFor, AvatarComponent, NgClass, MatButton, TranslateModule]
 })
 export class CardCashierComponent implements OnInit {
   myEmployees: Employee[];

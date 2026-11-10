@@ -1,16 +1,25 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService, UserService, UtilsService, PusherService } from '../../services';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { User, UserStatus, Notification } from '../../models';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { NgIf, NgClass, NgFor, AsyncPipe } from '@angular/common';
+import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { MatIcon } from '@angular/material/icon';
+import { AvatarComponent } from '../../components/avatar/avatar.component';
+import { MatIconButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
+import { LoaderComponent } from '../../components/loader/loader.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'cuper-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [RouterLink, NgIf, MatMenuTrigger, NgClass, MatIcon, MatMenu, NgFor, MatMenuItem, AvatarComponent, MatIconButton, MatTooltip, InfiniteScrollDirective, RouterLinkActive, RouterOutlet, LoaderComponent, AsyncPipe, TranslateModule]
 })
 export class HomeComponent implements OnInit {
   updatedView: boolean = false;

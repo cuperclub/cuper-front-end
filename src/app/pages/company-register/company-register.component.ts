@@ -1,18 +1,25 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-import { UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CompanyService, UserService, AdminPlanService } from '../../services'
-import { OptionPlan } from '../../components/card-plan/card-plan.component';
+import { OptionPlan, CardPlanComponent } from '../../components/card-plan/card-plan.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatStepper } from '@angular/material/stepper';
-import { TranslateService } from '@ngx-translate/core';
+import { MatStepper, MatStep, MatStepLabel, MatStepperNext, MatStepperPrevious } from '@angular/material/stepper';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { MatCard } from '@angular/material/card';
+import { NgIf, NgFor, KeyValuePipe } from '@angular/common';
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { CompanyFormComponent } from '../../components/company-form/company-form.component';
+import { LoaderComponent } from '../../components/loader/loader.component';
 
 @Component({
     selector: 'cuper-company-register',
     templateUrl: './company-register.component.html',
     styleUrls: ['./company-register.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatCard, NgIf, MatStepper, MatStep, FormsModule, ReactiveFormsModule, MatStepLabel, MatInput, NgFor, CardPlanComponent, MatButton, MatStepperNext, MatIcon, CompanyFormComponent, MatStepperPrevious, LoaderComponent, KeyValuePipe, TranslateModule]
 })
 export class CompanyRegisterComponent implements OnInit {
   planFormGroup: UntypedFormGroup;

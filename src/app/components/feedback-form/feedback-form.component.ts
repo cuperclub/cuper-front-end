@@ -1,17 +1,20 @@
 import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CardUserComponent } from '../card-user/card-user.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminCompanyService } from '../../services';
 import { EmployeeService } from 'src/app/services';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'cuper-feedback-form',
     templateUrl: './feedback-form.component.html',
     styleUrls: ['./feedback-form.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [FormsModule, MatFormField, MatInput, MatButton, TranslateModule]
 })
 export class FeedbackFormComponent implements OnInit {
   feedbackForm: any;

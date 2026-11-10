@@ -1,10 +1,14 @@
 import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CardUserComponent } from '../card-user/card-user.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormField, MatInput, MatError } from '@angular/material/input';
+import { MatIcon } from '@angular/material/icon';
+import { ControlMessagesComponent } from '../control-messages/control-messages.component';
+import { MatButton } from '@angular/material/button';
 
 interface Password {
   password: string;
@@ -16,7 +20,7 @@ interface Password {
     templateUrl: './update-password-form.component.html',
     styleUrls: ['./update-password-form.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, MatFormField, MatInput, MatIcon, MatError, ControlMessagesComponent, MatButton, TranslateModule]
 })
 export class UpdatePasswordFormComponent implements OnInit{
   passwordForm: UntypedFormGroup;

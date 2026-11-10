@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -7,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
     styleUrls: ['./app.component.scss'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [RouterOutlet]
 })
 export class AppComponent implements OnInit{
   title = 'cuper-front-end';

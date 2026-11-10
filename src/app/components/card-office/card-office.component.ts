@@ -4,13 +4,20 @@ import { MatDialog } from '@angular/material/dialog';
 import { OfficeFormComponent } from '../office-form/office-form.component';
 import { Office, Company } from '../../models';
 import { OfficeService } from 'src/app/services';
+import { MatCard } from '@angular/material/card';
+import { MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MatDivider } from '@angular/material/divider';
+import { NgIf, NgFor } from '@angular/common';
+import { LoaderComponent } from '../loader/loader.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'cuper-card-office',
     templateUrl: './card-office.component.html',
     styleUrls: ['./card-office.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatCard, MatIconButton, MatIcon, MatDivider, NgIf, NgFor, LoaderComponent, TranslateModule]
 })
 export class CardOfficeComponent implements OnInit {
   @Input() company: Company;

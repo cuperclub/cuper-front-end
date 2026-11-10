@@ -4,15 +4,21 @@ import { Company } from '../../models';
 import { CompanyService} from 'src/app/services';
 import { CompanyDialogComponent } from '../company-dialog/company-dialog.component';
 import { UtilsService, UserService } from 'src/app/services';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgIf, DatePipe } from '@angular/common';
+import { MatCard } from '@angular/material/card';
+import { MatIcon } from '@angular/material/icon';
+import { MatIconButton } from '@angular/material/button';
+import { MatDivider } from '@angular/material/divider';
+import { AvatarFileComponent } from '../avatar-file/avatar-file.component';
 
 @Component({
     selector: 'cuper-company-card',
     templateUrl: './company-card.component.html',
     styleUrls: ['./company-card.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [NgIf, MatCard, MatIcon, MatIconButton, MatDivider, AvatarFileComponent, DatePipe, TranslateModule]
 })
 export class CompanyCardComponent implements OnInit {
 

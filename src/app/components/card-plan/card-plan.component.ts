@@ -1,4 +1,7 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { MatCard } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
 
 export interface OptionPlan {
   active?: boolean;
@@ -14,7 +17,7 @@ export interface OptionPlan {
     templateUrl: './card-plan.component.html',
     styleUrls: ['./card-plan.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatCard, NgIf, MatIcon]
 })
 export class CardPlanComponent {
   @Input() option: OptionPlan;

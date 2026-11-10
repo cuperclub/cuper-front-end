@@ -4,13 +4,19 @@ import { AdminCategoryService } from '../../../services';
 import { Category } from '../../../models';
 import {CategoryFormComponent} from '../../../components/category-form/category-form.component'
 import { MatDialog } from '@angular/material/dialog';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { NgIf, NgFor } from '@angular/common';
+import { MatCard } from '@angular/material/card';
+import { MatIcon } from '@angular/material/icon';
+import { LoaderComponent } from '../../../components/loader/loader.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'cuper-categories',
     templateUrl: './categories.component.html',
     styleUrls: ['./categories.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatButton, NgIf, NgFor, MatCard, MatIconButton, MatIcon, LoaderComponent, TranslateModule]
 })
 export class CategoriesComponent implements OnInit {
   categories: Category[] = [];

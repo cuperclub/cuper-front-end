@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ChangeDetectionStrategy } from '@angular/core';
+import { NgStyle, NgIf } from '@angular/common';
+import { LoaderComponent } from '../loader/loader.component';
 
 interface Box {
   height: string;
@@ -15,7 +17,7 @@ interface FileOptions {
     templateUrl: './avatar-file.component.html',
     styleUrls: ['./avatar-file.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [NgStyle, NgIf, LoaderComponent]
 })
 export class AvatarFileComponent implements OnInit {
 

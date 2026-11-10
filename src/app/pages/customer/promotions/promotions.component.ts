@@ -6,13 +6,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { Promotion } from 'src/app/models';
 import { PromotionService } from 'src/app/services';
 import { RewardDialogComponent } from 'src/app/components/reward-dialog/reward-dialog.component';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { RewardSmallCardComponent } from '../../../components/reward-small-card/reward-small-card.component';
 
 @Component({
     selector: 'cuper-promotions',
     templateUrl: './promotions.component.html',
     styleUrls: ['./promotions.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [NgIf, NgFor, RewardSmallCardComponent, AsyncPipe]
 })
 export class PromotionsComponent implements OnInit {
   promotions$: Observable<Promotion[]>;

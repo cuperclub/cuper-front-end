@@ -1,14 +1,20 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { User } from '../../../models';
 import { UserService, UtilsService, AuthService } from '../../../services';
+import { NgIf } from '@angular/common';
+import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { AvatarComponent } from '../../../components/avatar/avatar.component';
+import { MatIcon } from '@angular/material/icon';
+import { LoaderComponent } from '../../../components/loader/loader.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'cuper-administration',
     templateUrl: './administration.component.html',
     styleUrls: ['./administration.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [RouterLink, NgIf, MatMenuTrigger, AvatarComponent, MatIcon, MatMenu, MatMenuItem, RouterLinkActive, RouterOutlet, LoaderComponent, TranslateModule]
 })
 export class AdministrationComponent implements OnInit {
   currentUser: User;

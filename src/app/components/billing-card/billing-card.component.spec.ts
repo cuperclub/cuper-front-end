@@ -10,13 +10,13 @@ describe('BillingCardComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [
+    imports: [
         MatCardModule,
         MatDividerModule,
         TranslateModule.forRoot(),
-      ],
-      declarations: [BillingCardComponent]
-    })
+        BillingCardComponent,
+    ]
+})
       .compileComponents();
   }));
 

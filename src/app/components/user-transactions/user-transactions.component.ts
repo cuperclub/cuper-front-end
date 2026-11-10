@@ -1,15 +1,20 @@
 import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
-import { ColumnDefinition, PaginationDefinition } from '../table/table.component';
+import { ColumnDefinition, PaginationDefinition, TableComponent } from '../table/table.component';
 import { DatetimeCellComponent } from '../table/partials';
 import { UserService } from 'src/app/services';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NgIf } from '@angular/common';
+import { MatPaginator } from '@angular/material/paginator';
+import { LoaderComponent } from '../loader/loader.component';
+import { MatButton } from '@angular/material/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'cuper-user-transactions',
     templateUrl: './user-transactions.component.html',
     styleUrls: ['./user-transactions.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [NgIf, TableComponent, MatPaginator, LoaderComponent, MatButton, TranslateModule]
 })
 export class UserTransactionsComponent implements OnInit {
   transactions: Array<any>;

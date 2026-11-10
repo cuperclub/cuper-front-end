@@ -1,17 +1,23 @@
 import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CardUserComponent } from '../card-user/card-user.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Setting } from '../../models';
 import { AdminSettingService } from '../../services';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { NgFor } from '@angular/common';
+import { MatOption } from '@angular/material/autocomplete';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'cuper-settings-form',
     templateUrl: './settings-form.component.html',
     styleUrls: ['./settings-form.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [FormsModule, MatFormField, MatInput, MatLabel, MatSelect, NgFor, MatOption, MatButton, TranslateModule]
 })
 export class SettingsFormComponent implements OnInit {
   settingForm: Setting;

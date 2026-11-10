@@ -4,10 +4,20 @@ import { Promotion } from 'src/app/models';
 import { OfficeService, CompanyService, PromotionService } from 'src/app/services';
 import { Company } from '../../models';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { OfficeFormComponent } from '../office-form/office-form.component';
 import { MatDialog } from '@angular/material/dialog';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButton } from '@angular/material/button';
+import { MatCard } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { PreviewRewardComponent } from '../preview-reward/preview-reward.component';
+import { MatFormField, MatInput, MatError, MatHint, MatSuffix } from '@angular/material/input';
+import { ControlMessagesComponent } from '../control-messages/control-messages.component';
+import { PlaceholderCardComponent } from '../placeholder-card/placeholder-card.component';
+import { SquareSelectComponent } from '../square-select/square-select.component';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
 
 interface OptionSquare {
   id?: number,
@@ -25,7 +35,7 @@ interface FileOptions {
     templateUrl: './new-reward-card.component.html',
     styleUrls: ['./new-reward-card.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, MatButton, MatCard, NgIf, PreviewRewardComponent, MatFormField, MatInput, MatError, ControlMessagesComponent, PlaceholderCardComponent, SquareSelectComponent, MatHint, MatCheckbox, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, TranslateModule]
 })
 export class NewRewardCardComponent implements OnInit {
   currentDate: Date = new Date();

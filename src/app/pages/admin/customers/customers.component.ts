@@ -10,13 +10,15 @@ import {
   ActionsCellComponent
 } from 'src/app/components/table/partials';
 import { ChangePasswordDialogComponent } from 'src/app/components/change-password-dialog/change-password-dialog.component';
+import { TableComponent } from '../../../components/table/table.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'cuper-customers',
     templateUrl: './customers.component.html',
     styleUrls: ['./customers.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [TableComponent, TranslateModule]
 })
 export class CustomersComponent implements OnInit {
   customers: User[];

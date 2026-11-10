@@ -19,8 +19,7 @@ interface Coordinate {
     selector: 'cuper-map',
     templateUrl: './map.component.html',
     styleUrls: ['./map.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MapComponent implements OnInit {
   @Input() coordinate: Coordinate;

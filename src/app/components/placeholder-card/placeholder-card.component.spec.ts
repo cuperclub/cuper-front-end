@@ -8,11 +8,11 @@ describe('PlaceholderCardComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [
-        MatIconModule
-      ],
-      declarations: [ PlaceholderCardComponent ]
-    })
+    imports: [
+        MatIconModule,
+        PlaceholderCardComponent
+    ]
+})
     .compileComponents();
   }));
 

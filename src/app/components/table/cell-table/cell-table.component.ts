@@ -14,8 +14,7 @@ import {
     selector: 'cuper-cell-table',
     templateUrl: './cell-table.component.html',
     styleUrls: ['./cell-table.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CellTableComponent implements OnDestroy, AfterContentInit {
   @Input() data: Object;

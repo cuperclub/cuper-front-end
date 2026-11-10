@@ -3,13 +3,19 @@ import { Router } from '@angular/router';
 import { PromotionService } from '../../../services';
 import { Promotion } from '../../../models';
 import { PaginationDefinition } from '../../../components/table/table.component';
+import { PlaceholderCardComponent } from '../../../components/placeholder-card/placeholder-card.component';
+import { NgFor, NgIf } from '@angular/common';
+import { RewardSmallCardComponent } from '../../../components/reward-small-card/reward-small-card.component';
+import { TableCardComponent } from '../../../components/table-card/table-card.component';
+import { MatCard } from '@angular/material/card';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'cuper-rewards',
     templateUrl: './rewards.component.html',
     styleUrls: ['./rewards.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [PlaceholderCardComponent, NgFor, RewardSmallCardComponent, NgIf, TableCardComponent, MatCard, TranslateModule]
 })
 export class RewardsComponent implements OnInit {
   myRewards: Promotion[];

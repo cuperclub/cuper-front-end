@@ -1,11 +1,16 @@
 import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardOfficeComponent } from '../../components/card-office/card-office.component';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { Office } from '../../models';
 import { OfficeService } from '../../services';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatInput, MatError } from '@angular/material/input';
+import { ControlMessagesComponent } from '../control-messages/control-messages.component';
+import { MapComponent } from '../map/map.component';
+import { MatButton } from '@angular/material/button';
 
 interface point {
   lat: number;
@@ -17,7 +22,7 @@ interface point {
     templateUrl: './office-form.component.html',
     styleUrls: ['./office-form.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [CdkScrollable, MatDialogContent, FormsModule, ReactiveFormsModule, MatFormField, MatInput, MatError, ControlMessagesComponent, MapComponent, MatDialogActions, MatButton, MatDialogClose, TranslateModule]
 })
 export class OfficeFormComponent implements OnInit {
   officeForm: UntypedFormGroup;

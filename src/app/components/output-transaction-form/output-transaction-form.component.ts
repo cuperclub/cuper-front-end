@@ -1,19 +1,22 @@
 import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { CompanyCardComponent } from '../company-card/company-card.component';
 import { Promotion } from 'src/app/models';
 import { PromotionService } from 'src/app/services';
 import { OutputTransactionService } from '../../services';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { UtilsService } from 'src/app/services';
+import { NgIf } from '@angular/common';
+import { SquareSelectComponent } from '../square-select/square-select.component';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'cuper-output-transaction-form',
     templateUrl: './output-transaction-form.component.html',
     styleUrls: ['./output-transaction-form.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [NgIf, SquareSelectComponent, MatDialogActions, MatButton, MatDialogClose, TranslateModule]
 })
 export class OutputTransactionFormComponent implements OnInit {
   rewards: Promotion [];

@@ -10,12 +10,12 @@ describe('TableCardComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [
+    imports: [
         MatCardModule,
-        MatPaginatorModule
-      ],
-      declarations: [ TableCardComponent, AvatarComponent ]
-    })
+        MatPaginatorModule,
+        TableCardComponent, AvatarComponent
+    ]
+})
     .compileComponents();
   }));
 

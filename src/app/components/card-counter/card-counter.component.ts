@@ -4,8 +4,7 @@ import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core
     selector: 'cuper-card-counter',
     templateUrl: './card-counter.component.html',
     styleUrls: ['./card-counter.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CardCounterComponent implements OnInit {
   @Input() title: string;

@@ -2,15 +2,19 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PromotionService } from '../../../services';
 import { Promotion } from '../../../models';
-import { ColumnDefinition } from '../../../components/table/table.component';
+import { ColumnDefinition, TableComponent } from '../../../components/table/table.component';
 import { DatetimeCellComponent, UserCellComponent } from '../../../components/table/partials';
+import { RewardCardComponent } from '../../../components/reward-card/reward-card.component';
+import { MatCard } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'cuper-reward',
     templateUrl: './reward.component.html',
     styleUrls: ['./reward.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [RewardCardComponent, MatCard, NgIf, TableComponent, TranslateModule]
 })
 export class RewardComponent implements OnInit {
   reward: Promotion;

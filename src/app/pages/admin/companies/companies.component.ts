@@ -3,13 +3,21 @@ import { AdminCompanyService, UtilsService } from '../../../services';
 import { Company } from '../../../models';
 import {FeedbackFormComponent} from '../../../components/feedback-form/feedback-form.component'
 import { MatDialog } from '@angular/material/dialog';
+import { NgIf, NgFor } from '@angular/common';
+import { TableCardComponent } from '../../../components/table-card/table-card.component';
+import { MatCard } from '@angular/material/card';
+import { AvatarComponent } from '../../../components/avatar/avatar.component';
+import { MatIconButton } from '@angular/material/button';
+import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { MatIcon } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'cuper-companies',
     templateUrl: './companies.component.html',
     styleUrls: ['./companies.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [NgIf, TableCardComponent, MatCard, AvatarComponent, MatIconButton, MatMenuTrigger, MatIcon, MatMenu, NgFor, MatMenuItem, TranslateModule]
 })
 export class CompaniesComponent implements OnInit {
   companies: Company[];

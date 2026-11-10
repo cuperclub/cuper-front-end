@@ -3,13 +3,18 @@ import { Plan } from '../../../models';
 import { AdminPlanService } from '../../../services';
 import { MatDialog } from '@angular/material/dialog';
 import {PlanFormComponent} from '../../../components/plan-form/plan-form.component'
+import { MatButton } from '@angular/material/button';
+import { NgIf, NgFor } from '@angular/common';
+import { CardPlanComponent } from '../../../components/card-plan/card-plan.component';
+import { LoaderComponent } from '../../../components/loader/loader.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'cuper-plans',
     templateUrl: './plans.component.html',
     styleUrls: ['./plans.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatButton, NgIf, NgFor, CardPlanComponent, LoaderComponent, TranslateModule]
 })
 export class PlansComponent implements OnInit {
   plans: Plan[] = [];

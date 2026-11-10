@@ -1,15 +1,21 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { UntypedFormGroup, Validators, UntypedFormBuilder } from '@angular/forms';
+import { UntypedFormGroup, Validators, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from 'src/app/services';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { MatFormField, MatInput, MatError } from '@angular/material/input';
+import { MatIcon } from '@angular/material/icon';
+import { ControlMessagesComponent } from '../../components/control-messages/control-messages.component';
+import { MatButton } from '@angular/material/button';
+import { FooterComponent } from '../../components/footer/footer.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'cuper-reset-password',
     templateUrl: './reset-password.component.html',
     styleUrls: ['./reset-password.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, MatFormField, MatInput, MatIcon, MatError, ControlMessagesComponent, MatButton, RouterLink, FooterComponent, TranslateModule]
 })
 export class ResetPasswordComponent implements OnInit {
   passwordForm: UntypedFormGroup;

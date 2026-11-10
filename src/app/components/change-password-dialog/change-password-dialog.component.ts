@@ -1,17 +1,20 @@
 import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { CustomersComponent } from 'src/app/pages/admin/customers/customers.component';
 import { UserService } from '../../services';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslateService } from '@ngx-translate/core';
-import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { UntypedFormBuilder, Validators, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormField, MatInput, MatError, MatHint } from '@angular/material/input';
+import { ControlMessagesComponent } from '../control-messages/control-messages.component';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'cuper-change-password-dialog',
     templateUrl: './change-password-dialog.component.html',
     styleUrls: ['./change-password-dialog.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, MatFormField, MatInput, MatError, ControlMessagesComponent, MatHint, MatDialogActions, MatButton, MatDialogClose, TranslateModule]
 })
 export class ChangePasswordDialogComponent implements OnInit{
   passwordFormGroup: UntypedFormGroup;

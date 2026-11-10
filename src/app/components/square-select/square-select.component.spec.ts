@@ -8,8 +8,8 @@ describe('SquareSelectComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SquareSelectComponent ]
-    })
+    imports: [SquareSelectComponent]
+})
     .compileComponents();
   }));
 

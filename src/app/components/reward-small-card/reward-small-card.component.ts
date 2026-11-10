@@ -5,8 +5,7 @@ import { Promotion } from 'src/app/models';
     selector: 'cuper-reward-small-card',
     templateUrl: './reward-small-card.component.html',
     styleUrls: ['./reward-small-card.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class RewardSmallCardComponent implements OnInit {
   private defaultImage = '../../../../assets/images/background-reward.png';

@@ -1,4 +1,8 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { MatIconButton } from '@angular/material/button';
+import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { MatIcon } from '@angular/material/icon';
+import { NgFor } from '@angular/common';
 
 export interface ActionDefinition {
   label: string;
@@ -11,7 +15,7 @@ export interface ActionDefinition {
     templateUrl: './actions-cell.component.html',
     styleUrls: ['./actions-cell.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatIconButton, MatMenuTrigger, MatIcon, MatMenu, NgFor, MatMenuItem]
 })
 export class ActionsCellComponent implements OnInit {
   @Input() data: { actions?: ActionDefinition[] };

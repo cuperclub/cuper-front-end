@@ -3,17 +3,22 @@ import { MatDialog } from '@angular/material/dialog';
 import { User } from '../../../models';
 import { InputTransactionFormComponent } from '../../../components/input-transaction-form/input-transaction-form.component';
 import { OutputTransactionFormComponent } from '../../../components/output-transaction-form/output-transaction-form.component';
-import { ButtonOption } from '../../../components/user-search/user-search.component';
+import { ButtonOption, UserSearchComponent } from '../../../components/user-search/user-search.component';
 import { InputTransactionService, OutputTransactionService } from '../../../services';
-import { ColumnDefinition, PaginationDefinition } from '../../../components/table/table.component';
+import { ColumnDefinition, PaginationDefinition, TableComponent } from '../../../components/table/table.component';
 import { DatetimeCellComponent, UserCellComponent, PromotionCellComponent } from '../../../components/table/partials';
+import { MatTabGroup, MatTab } from '@angular/material/tabs';
+import { NgIf } from '@angular/common';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatCard } from '@angular/material/card';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'cuper-transactions',
     templateUrl: './transactions.component.html',
     styleUrls: ['./transactions.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [UserSearchComponent, MatTabGroup, MatTab, TableComponent, NgIf, MatPaginator, MatCard, TranslateModule]
 })
 export class TransactionsComponent implements OnInit {
   currentUser: User;

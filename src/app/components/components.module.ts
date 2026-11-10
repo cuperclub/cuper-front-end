@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../material.module';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
@@ -107,16 +107,15 @@ const components = [
 ];
 
 @NgModule({
-  declarations: components,
-  exports: components,
-  imports: [
+    exports: components,
+    imports: [
     CommonModule,
-    MaterialModule,
     FormsModule,
     TranslateModule,
     FormsModule,
-    ReactiveFormsModule
-  ],
-  providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())]
+    ReactiveFormsModule,
+    ...components
+],
+    providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())]
 })
 export class ComponentsModule { }

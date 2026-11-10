@@ -1,11 +1,14 @@
 import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { CompanyCardComponent } from '../company-card/company-card.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CompanyService } from '../../services';
 import { Company } from '../../models';
 import { UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { AvatarFileComponent } from '../avatar-file/avatar-file.component';
+import { CompanyFormComponent } from '../company-form/company-form.component';
+import { MatButton } from '@angular/material/button';
 
 interface FileOptions {
   file?: File;
@@ -17,7 +20,7 @@ interface FileOptions {
     templateUrl: './company-dialog.component.html',
     styleUrls: ['./company-dialog.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [AvatarFileComponent, CompanyFormComponent, MatDialogActions, MatButton, MatDialogClose, TranslateModule]
 })
 export class CompanyDialogComponent implements OnInit {
   companyFormGroup: UntypedFormGroup;

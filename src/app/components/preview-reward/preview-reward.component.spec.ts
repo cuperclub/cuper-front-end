@@ -10,8 +10,8 @@ describe('PreviewRewardComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [PreviewRewardComponent, AvatarComponent]
-    })
+    imports: [PreviewRewardComponent, AvatarComponent]
+})
       .compileComponents();
   }));
 

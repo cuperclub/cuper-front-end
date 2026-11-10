@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { NgClass, NgFor } from '@angular/common';
 
 interface OptionSquare {
   description: string
@@ -10,7 +11,7 @@ interface OptionSquare {
     templateUrl: './square-select.component.html',
     styleUrls: ['./square-select.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [NgClass, NgFor]
 })
 export class SquareSelectComponent implements OnInit {
   @Input() options: OptionSquare [];

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { NgClass } from '@angular/common';
 
 interface FileOptions {
   file?: File;
@@ -10,7 +11,7 @@ interface FileOptions {
     templateUrl: './preview-reward.component.html',
     styleUrls: ['./preview-reward.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [NgClass]
 })
 export class PreviewRewardComponent implements OnInit {
   placeholder: string = '../../../assets/images/background-reward.png';

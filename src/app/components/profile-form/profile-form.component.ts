@@ -1,11 +1,15 @@
 import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CardUserComponent } from '../card-user/card-user.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService, UtilsService } from 'src/app/services';
 import { User } from '../../models';
+import { AvatarFileComponent } from '../avatar-file/avatar-file.component';
+import { MatFormField, MatInput, MatError } from '@angular/material/input';
+import { ControlMessagesComponent } from '../control-messages/control-messages.component';
+import { MatButton } from '@angular/material/button';
 
 interface FileOptions {
   file?: File;
@@ -21,7 +25,7 @@ interface DataOptions {
     templateUrl: './profile-form.component.html',
     styleUrls: ['./profile-form.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, AvatarFileComponent, MatFormField, MatInput, MatError, ControlMessagesComponent, MatButton, TranslateModule]
 })
 export class ProfileFormComponent implements OnInit {
   profileForm: UntypedFormGroup;

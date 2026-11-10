@@ -2,11 +2,17 @@ import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core
 import { MatDialog } from '@angular/material/dialog';
 import { ProfileFormComponent } from '../profile-form/profile-form.component';
 import { UpdatePasswordFormComponent } from '../update-password-form/update-password-form.component';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { User } from '../../models';
 import { UserService, UtilsService } from 'src/app/services';
+import { MatCard } from '@angular/material/card';
+import { MatIconButton } from '@angular/material/button';
+import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { MatIcon } from '@angular/material/icon';
+import { NgIf } from '@angular/common';
+import { AvatarFileComponent } from '../avatar-file/avatar-file.component';
 
 
 @Component({
@@ -14,7 +20,7 @@ import { UserService, UtilsService } from 'src/app/services';
     templateUrl: './card-user.component.html',
     styleUrls: ['./card-user.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatCard, MatIconButton, MatMenuTrigger, MatIcon, MatMenu, MatMenuItem, NgIf, AvatarFileComponent, TranslateModule]
 })
 export class CardUserComponent implements OnInit {
   @Input() user: User;

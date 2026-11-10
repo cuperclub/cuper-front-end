@@ -1,5 +1,17 @@
 # Auditoría frontend Cuper
 
+## Iteración 20 — Declaraciones y poda de NgModules (2026-11-10)
+
+Se aplicó el primer modo del schematic oficial `@angular/core:standalone` (`convert-to-standalone`) sobre Angular 22.2.5. Los componentes, directivas y pipes declarados en los módulos pasan a ser standalone (standalone es el default en Angular 22); los módulos conservan temporalmente esas clases en `imports`, manteniendo su API y composición hasta las fases `prune-ng-modules` y `standalone-bootstrap`. `AppComponent` se conserva explícitamente `standalone: false` para seguir siendo bootstrappeado por `AppModule` durante este checkpoint.
+
+- Dry-run y conversión aplicados; build application/development exit 0 en `/tmp/standalone-convert-dist`; los tests de conversión pasaron 8/8.
+- Después, dry-run y migración oficial `prune-ng-modules`: quitó el módulo de solo re-export de Material y sacó referencias redundantes a módulos de imports standalone; preservó los feature NgModules/rutas lazy que aún tienen función. Build tras pruning exit 0 en `/tmp/standalone-prune-dist`.
+- Tests posteriores al prune: 8/8 en Chrome Headless/Karma, `test_exit=0`; no se añadieron ni retiraron suites.
+- Se aplicó en checkpoint separado `standalone-bootstrap`: `main.ts` usa `bootstrapApplication`, `AppComponent` es standalone e importa `RouterOutlet`; CLI generó `importProvidersFrom(...)` para mantener provisionalmente routers/features NgModule, HTTP/interceptor, Material, forms y traducción. Build application/development exit 0 en `/tmp/standalone-bootstrap-dist`.
+- Se retiró el `AppModule` residual generado por la transición y se movió su factory de traducción a `src/app/translate-loader.ts`; build tras la limpieza exit 0 en `/tmp/standalone-bootstrap-clean-dist`.
+- Tests posteriores al bootstrap: 8/8 en Chrome/Karma externo, `test_exit=0`; no se modificó la suite. Zone.js sigue instalado; no se modifica en esta subfase. Rails/API intactos.
+- Tras validar tests: revisar providers duplicados/transitorios y deshacer módulos de routing por fases; zoneless requiere auditoría y pruebas de notificaciones/callbacks antes de retirar Zone.
+
 ## Iteración 19 — Application builder en Angular 22 (2026-11-10)
 
 Se ejecutó la migración oficial `ng update @angular/cli --name use-application-builder` en CLI 22.2.6. El builder de build pasó de Webpack `browser` a `application`; `main` pasó a `browser`, `polyfills` a arreglo y se retiraron `vendorChunk`/`buildOptimizer` que no aplican. Se añadió `esModuleInterop` al tsconfig.

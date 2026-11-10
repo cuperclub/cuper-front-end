@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MaterialModule } from '../../material.module';
+
 import { AdminRoutingModule } from './admin-routing.module';
 import { ComponentsModule } from '../../components/components.module';
 
@@ -20,23 +20,20 @@ import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
-  declarations: [
+    imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ComponentsModule,
+    AdminRoutingModule,
+    TranslateModule.forChild(),
     AdministrationComponent,
     CompaniesComponent,
     CustomersComponent,
     CategoriesComponent,
     PlansComponent,
     SettingsComponent
-  ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ComponentsModule,
-    AdminRoutingModule,
-    TranslateModule.forChild()
-  ],
-  providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())]
+],
+    providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())]
 })
 export class AdminModule { }

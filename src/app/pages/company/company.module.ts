@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CompanyRoutingModule } from './company-routing.module';
-import { MaterialModule } from '../../material.module';
+
 import { ComponentsModule } from '../../components/components.module';
 
 import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
@@ -17,21 +17,18 @@ import { RewardComponent } from './reward/reward.component';
 import { CompanyComponent } from './company/company.component';
 
 @NgModule({
-  declarations: [
-    MyCompanyComponent,
-    RewardsComponent,
-    RewardComponent,
-    CompanyComponent
-  ],
-  imports: [
+    imports: [
     CommonModule,
     CompanyRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,
     ComponentsModule,
-    TranslateModule.forChild()
-  ],
-  providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())]
+    TranslateModule.forChild(),
+    MyCompanyComponent,
+    RewardsComponent,
+    RewardComponent,
+    CompanyComponent
+],
+    providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())]
 })
 export class CompanyModule { }
