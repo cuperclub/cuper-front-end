@@ -106,8 +106,7 @@ export class CompanyRegisterComponent implements OnInit {
       }else {
         currentUser.companies = [formatCompany];
       }
-      this.userService.observerData.next(currentUser);
-      this.userService.userDataEdited = currentUser;
+      this.userService.updateCurrentUserData(currentUser);
       this.router.navigate(['home']);
     });
   }

@@ -97,7 +97,7 @@ export class CompanyCardComponent implements OnInit {
     currentUser.companies[currentCompanyId].logo_url = companyData.logo_url || this.utilsService.getAvatar(this.company.join_at);
     this.company = companyData;
     this.company.logo_url = this.company.logo_url || this.utilsService.getAvatar(this.company.join_at);
-    this.userService.observerData.next(currentUser);
+    this.userService.updateCurrentUserData(currentUser);
   }
 
 }

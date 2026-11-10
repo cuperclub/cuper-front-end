@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
       });
       this.totalPendingNotifications = this.totalPendingNotifications + 1;
       current_user.pending_notifications = current_user.pending_notifications + 1;
-      this.userService.userDataEdited = current_user;
+       this.userService.updateCurrentUserData(current_user);
     });
   }
 
@@ -79,8 +79,7 @@ export class HomeComponent implements OnInit {
       this.userService.updateCompanyIdView(company.id).subscribe(() =>{
         const currentUser = this.userService.getCurrentUserData();
         currentUser.current_company_id = company.id;
-        this.userService.observerData.next(currentUser);
-        this.userService.userDataEdited = currentUser;
+         this.userService.updateCurrentUserData(currentUser);
         this.updatedView = true;
         setTimeout(() => { this.updatedView = false }, 1000);
       });

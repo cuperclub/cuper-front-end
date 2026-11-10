@@ -89,7 +89,6 @@ export class CardUserComponent implements OnInit {
 
   updateUserData = (data) => {
     this.user = data;
-    this.userService.userDataEdited = data;
-    this.userService.observerData.next(data);
+    this.userService.updateCurrentUserData(data);
   }
 }

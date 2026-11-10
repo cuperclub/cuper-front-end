@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AuthService } from '../auth/auth.service';
 import type { User, InputTransaction } from '../../models';
-import { Observable, Subscriber } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { startWith } from 'rxjs/operators';
 
 interface UserProfile extends User{
   current_company_id?: number;
@@ -20,7 +21,7 @@ export interface UserTokenData extends User {
 })
 export class UserService {
   apiURL = environment.apiBase;
-  observerData: Subscriber<any>;
+  private userDataChanges = new Subject<UserProfile>();
   userDataEdited: UserProfile;
 
   constructor(
@@ -33,13 +34,12 @@ export class UserService {
   }
 
   public getObservableUserData() {
-    return new Observable<UserProfile>(observer => {
-      this.observerData = observer;
-      observer.next(this.getCurrentUserData());
-      return () => {
-        if (this.observerData === observer) this.observerData = null;
-      };
-    });
+    return this.userDataChanges.pipe(startWith(this.getCurrentUserData()));
+  }
+
+  public updateCurrentUserData(userData: UserProfile): void {
+    this.userDataEdited = userData;
+    this.userDataChanges.next(userData);
   }
 
   public updateMyData(userInput: FormData): Observable<User>{
