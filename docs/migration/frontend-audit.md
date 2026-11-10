@@ -1,5 +1,16 @@
 # Auditoría frontend Cuper
 
+## Iteración 17 — Angular 21 (2026-11-10)
+
+Framework 21.2.25, CLI/build 21.2.29, Material/CDK 21.2.14, TypeScript 5.9.3, Node 20.19.6, RxJS 6.6.7 y Zone.js 0.16.3 (Angular 21 admite `~0.15.0 || ~0.16.0`). `ngx-infinite-scroll` 21.0.0. Instalación limpia y peers resueltos.
+
+Se ejecutaron migraciones oficiales CLI/core/Material. CLI elevó `lib` a ES2022; core migró bootstrap options y control flow en 34 templates a bloques `@if/@for/@switch` como parte de la migración no opcional, aunque se había planificado evaluar control flow por separado. Se conserva NgModule; no se ejecutó la migración opcional al application builder ni `Router.currentNavigation`. Un error del build por importar interfaces desde barrel como valores se corrigió con `import type` en `user.service.ts`. No se cambió autenticación/API Rails ni el tema Material 2/MDC/Lato.
+
+- Build development: exit 0, `/tmp/ng21-dist2`. Siguen avisos Sass (`@import`/división), Mapbox CommonJS y Browserslist.
+- Suite existente: 8/8 en Chrome/Karma externo, `test_exit=0`; no se añadió ni quitó suite.
+- Playwright MCP: login visible a 1280×800 y 390×844, Lato preservado y sin overflow horizontal. Autenticación/endpoints requieren DB Rails que sigue inaccesible.
+- Production/OAuth/correos, token Mapbox, lint y harness e2e permanecen pendientes.
+
 ## Iteración 16 — Angular 20 (2026-11-10)
 
 Framework 20.3.18, CLI/build 20.3.17, Material/CDK 20.2.14, TypeScript 5.8.3, Node 20.19.6, RxJS 6.6.7 y Zone.js 0.15.1. `ngx-infinite-scroll` sube a 20.0.0. Instalación limpia y peers resueltos sin opciones de fuerza.

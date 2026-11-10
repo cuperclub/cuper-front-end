@@ -1,5 +1,7 @@
 # Matriz de dependencias
 
+**Checkpoint Angular 21 (2026-11-10):** framework 21.2.25, CLI/build 21.2.29, Material/CDK 21.2.14, TypeScript 5.9.3, RxJS 6.6.7, Zone.js 0.16.3, Node 20.19.6/npm 10.8.2. `ngx-infinite-scroll` 21.0.0. Build y tests 8/8 aprobados; control flow oficial migró 34 templates; login responsive inspeccionado.
+
 **Checkpoint Angular 20 (2026-11-10):** framework 20.3.18, CLI/build 20.3.17, Material/CDK 20.2.14, TypeScript 5.8.3, RxJS 6.6.7, Zone.js 0.15.1, Node 20.19.6/npm 10.8.2. `ngx-infinite-scroll` 20.0.0. Build y suite existente 8/8; login responsive inspeccionado. Material MDC con tema M2/Lato preservado.
 
 **Checkpoint Angular 19 (2026-11-10):** framework 19.2.15, CLI/build 19.2.17, Material/CDK 19.2.19, TypeScript 5.8.3, RxJS 6.6.7, Zone.js 0.15.1, Node 20.19.6/npm 10.8.2. `ngx-infinite-scroll` 19.0.0. Tema MDC/Material 2 y Lato preservados. Build exit 0, suite existente 8/8; login responsive inspeccionado.
