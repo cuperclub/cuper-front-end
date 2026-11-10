@@ -1,7 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 
-//Pages
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -11,14 +9,13 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CompanyRegisterComponent } from './pages/company-register/company-register.component';
 
-//Guards
 import { AuthGuard } from './guards/auth/auth.guard';
 import { IsntSignedInGuard } from './guards/routes/isnt-signed-in.guard';
 import { AdminGuard } from './guards/admin/admin.guard';
 import { PartnerGuard } from './guards/partner/partner.guard';
 import { CashierGuard } from './guards/cashier/cashier.guard';
 
-const routes: Routes = [
+export const APP_ROUTES: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, pathMatch: 'full', canActivate: [IsntSignedInGuard] },
   { path: 'register', component: RegisterComponent, pathMatch: 'full', canActivate: [IsntSignedInGuard] },
@@ -36,29 +33,23 @@ const routes: Routes = [
       {
         path: 'company',
         canActivate: [PartnerGuard],
-        loadChildren: () => import('./pages/company/company.module').then(m => m.CompanyModule)
+        loadChildren: () => import('./pages/company/company.routes').then(m => m.COMPANY_ROUTES)
       },
       {
         path: 'promotions',
         canActivate: [AuthGuard],
-        loadChildren: () => import('./pages/customer/customer.module').then(m => m.CustomerModule)
+        loadChildren: () => import('./pages/customer/customer.routes').then(m => m.CUSTOMER_ROUTES)
       },
       {
         path: 'transactions',
         canActivate: [CashierGuard],
-        loadChildren: () => import('./pages/employee/employee.module').then(m => m.EmployeeModule)
+        loadChildren: () => import('./pages/employee/employee.routes').then(m => m.EMPLOYEE_ROUTES)
       }
-    ],
+    ]
   },
   {
     path: 'admin',
     canActivate: [AdminGuard],
-    loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
-  },
+    loadChildren: () => import('./pages/admin/admin.routes').then(m => m.ADMIN_ROUTES)
+  }
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes, {})],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

@@ -162,6 +162,8 @@ Secuencia de major: 7→8→9→10→11→12→13→14→15→16→17→18→19�
 
 **Checkpoint standalone (2026-11-10):** completados los tres modos oficiales: `convert-to-standalone`, `prune-ng-modules` y `standalone-bootstrap`. Componentes standalone y `bootstrapApplication`; se eliminó `AppModule` y la factoría de traducción quedó en `translate-loader.ts`. Feature/routing NgModules todavía se importan transitoriamente para conservar rutas/proveedores. Eliminado `MaterialModule`. Builds development pasan y tests 8/8 tras cada modo. Zone.js sigue presente; auditoría zoneless pendiente.
 
+**Checkpoint rutas standalone (2026-11-10):** `provideRouter(APP_ROUTES)` reemplaza los routing NgModules; las cuatro áreas con carga lazy ahora exportan arrays de rutas. Retirados todos los NgModules propios; se conservaron URLs, estructura y guards. Build y suite 8/8. Zone.js sigue cargado; falta la auditoría de notificaciones/callbacks y validación funcional autenticada antes de declararse zoneless.
+
 **Checkpoint Angular 14 (2026-11-09):** framework 14.3.0, CLI 14.2.13 y Material/CDK 14.2.7. Migraciones oficiales de formularios Untyped y target ES2020 para preservar compatibilidad. Build exit 0, tests existentes 8/8 y navegador desktop/móvil con cuatro roles sin errores de consola. Mapbox por variable de entorno preservado; CommonJS y otras deprecaciones siguen documentados. Próxima iteración: Angular 15, prestando atención a la transición Material/MDC.
 
 **Checkpoint Angular 13 (2026-11-09):** framework 13.4.0, CLI 13.3.11, Material/CDK 13.3.9 y TypeScript 4.6.4. Build exit 0, tests 8/8 en Chrome/Karma y navegador desktop/móvil con cuatro roles, sin errores/warnings de consola. Migraciones oficiales de IE/entryComponents/TestBed aplicadas; contrato Rails intacto. Builder TSLint retirado por CLI; script conserva invocación directa, lint legacy falla y requiere futura migración ESLint. Próxima iteración independiente: Angular 14.
@@ -239,9 +241,9 @@ Secuencia de major: 7→8→9→10→11→12→13→14→15→16→17→18→19�
 **Archivos:** 12 NgModules, 67 componentes; `main.ts`, rutas, polyfills, servicios y componentes dinámicos.
 
 **Pasos:**
-- [ ] Antes del schematic: Angular >=15.2 (en este plan, 20.3), build sin errores y cambios guardados/árbol limpio. Ejecutar `ng generate @angular/core:standalone` en los tres modos oficiales y compilar/revisar entre cada paso.
-- [ ] Convertir declarations a standalone con imports explícitos.
-- [ ] Eliminar módulos innecesarios y módulos de routing propios.
+- [x] Antes del schematic: Angular >=15.2 (en este plan, Angular 22), build sin errores y cambios guardados. Ejecutados los tres modos oficiales con build/tests entre checkpoints.
+- [x] Convertir declarations a standalone con imports explícitos.
+- [x] Eliminar módulos propios innecesarios y módulos de routing; URLs lazy quedan como arrays `Routes`.
 - [ ] Crear `app.config.ts`, `app.routes.ts`; bootstrap con `bootstrapApplication`.
 - [ ] Configurar providers de Router, HttpClient/interceptors, traducción y Material. No introducir providers de animación legacy como destino permanente: deprecados desde 20.2; mantener solo transitoriamente si un consumidor comprobado los exige y registrar su retirada.
 - [ ] Registrar interceptors funcionales con `withInterceptors`; si queda un interceptor class-based transitorio, habilitarlo explícitamente mediante `withInterceptorsFromDi()` sin duplicar la cadena ni perder headers auth.

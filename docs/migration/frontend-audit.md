@@ -1,5 +1,15 @@
 # Auditoría frontend Cuper
 
+## Iteración 21 — Rutas standalone y retiro de NgModules propios (2026-11-10)
+
+Se reemplazó `AppRoutingModule` por `APP_ROUTES`/`provideRouter`; las rutas lazy de admin, company, customer y employee ahora cargan arrays `Routes` standalone. Se eliminaron los NgModules propios de app/features/components y módulos de routing. Los paths, jerarquía y guards se copiaron sin cambios; el HTTP client XHR y `AuthInterceptor` quedan registrados una vez en el bootstrap. Los módulos de librerías externas necesarios (traducción y animaciones) siguen importados solo para providers.
+
+- Build application/development: exit 0, `/tmp/routes-standalone-dist`.
+- Tests existentes: 8/8 en Chrome/Karma, `test_exit=0`.
+- `grep` confirma cero `@NgModule` propios en `src/app`; no se tocaron guards, URLs ni contrato Rails.
+- La revisión autenticada de roles y rutas continúa bloqueada por Rails/PostgreSQL no disponible.
+- Próximo: revisar alcance/proveedores standalone y auditar notificaciones por HTTP/forms/Pusher/FileReader/timers. No retirar Zone.js hasta validar esas interacciones; el runtime sigue cargado.
+
 ## Iteración 20 — Declaraciones y poda de NgModules (2026-11-10)
 
 Se aplicó el primer modo del schematic oficial `@angular/core:standalone` (`convert-to-standalone`) sobre Angular 22.2.5. Los componentes, directivas y pipes declarados en los módulos pasan a ser standalone (standalone es el default en Angular 22); los módulos conservan temporalmente esas clases en `imports`, manteniendo su API y composición hasta las fases `prune-ng-modules` y `standalone-bootstrap`. `AppComponent` se conserva explícitamente `standalone: false` para seguir siendo bootstrappeado por `AppModule` durante este checkpoint.
