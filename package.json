@@ -65,6 +65,7 @@
     "protractor": "~7.0.0",
     "ts-node": "~7.0.0",
     "tslint": "~6.1.0",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "@angular/build": "22.2.6"
   }
 }

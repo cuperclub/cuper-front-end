@@ -24,6 +24,15 @@ Se extrajo la configuración de providers de `main.ts` a `src/app/app.config.ts`
 
 Se migraron las cinco guards class-based a `CanActivateFn` con `inject()`. Las rutas continúan usando los mismos guards; se preservaron las decisiones, destinos de redirect y validación Rails/token, sin modificar endpoints ni headers. Build exit 0 y suite 8/8. El comportamiento autenticado no puede probarse sin Rails/PostgreSQL.
 
+## Iteración 22 — Builders `@angular/build` (2026-11-10)
+
+En una copia aislada se migraron `build`, `serve`, `extract-i18n` y `test` a los builders de `@angular/build` 22.2.6. Se conserva Karma/Jasmine y el harness Protractor; no se cambia ni se elimina ninguna suite. El builder Karma requiere `polyfills` como arreglo. También se quitó de `src/karma.conf.js` el framework/plugin interno de `@angular-devkit/build-angular`, que provocaba el aviso de incompatibilidad; el builder moderno lo integra directamente.
+
+- Build development y staging con output por defecto `dist/cuper-front-end`: exit 0; staging mantiene el warning conocido de `home.component.scss` (6.61 kB frente a 6 kB).
+- Validación final integrada (dev + staging + Karma): `validation_exit=0`; suite existente 8/8, sin el aviso de framework incompatible.
+- Karma reporta 404 de fuentes en `media` (Lato y, en una ejecución, Circular); no falla la suite, pero queda como detalle visual pendiente de resolver/verificar.
+- Sass `@import` y Browserslist siguen emitiendo avisos existentes. Producción continúa pendiente por `environment.prod.ts` sin `apiBase`.
+
 ## Iteración 20 — Declaraciones y poda de NgModules (2026-11-10)
 
 Se aplicó el primer modo del schematic oficial `@angular/core:standalone` (`convert-to-standalone`) sobre Angular 22.2.5. Los componentes, directivas y pipes declarados en los módulos pasan a ser standalone (standalone es el default en Angular 22); los módulos conservan temporalmente esas clases en `imports`, manteniendo su API y composición hasta las fases `prune-ng-modules` y `standalone-bootstrap`. `AppComponent` se conserva explícitamente `standalone: false` para seguir siendo bootstrappeado por `AppModule` durante este checkpoint.
