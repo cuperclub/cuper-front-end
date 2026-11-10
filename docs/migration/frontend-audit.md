@@ -20,6 +20,8 @@ Siguiente ajuste acotado: `HomeComponent` marca para revisión tras respuestas a
 
 Se añadió también `markForCheck()` en ambos callbacks `FileReader.onload` (avatar y preview de reward), después de actualizar el archivo/emitirlo. Build exit 0 y suite 8/8. La comprobación de uploads reales depende de los flujos autenticados pendientes.
 
+Se extrajo la configuración de providers de `main.ts` a `src/app/app.config.ts` (`ApplicationConfig`), preservando `provideRouter`, `AuthInterceptor`, `withXhr`, traducciones, animaciones, opciones de diálogo y el puente `provideZoneChangeDetection`. Build exit 0 y suite 8/8.
+
 ## Iteración 20 — Declaraciones y poda de NgModules (2026-11-10)
 
 Se aplicó el primer modo del schematic oficial `@angular/core:standalone` (`convert-to-standalone`) sobre Angular 22.2.5. Los componentes, directivas y pipes declarados en los módulos pasan a ser standalone (standalone es el default en Angular 22); los módulos conservan temporalmente esas clases en `imports`, manteniendo su API y composición hasta las fases `prune-ng-modules` y `standalone-bootstrap`. `AppComponent` se conserva explícitamente `standalone: false` para seguir siendo bootstrappeado por `AppModule` durante este checkpoint.
