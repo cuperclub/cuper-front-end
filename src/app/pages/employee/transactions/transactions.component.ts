@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { User } from '../../../models';
 import { InputTransactionFormComponent } from '../../../components/input-transaction-form/input-transaction-form.component';
 import { OutputTransactionFormComponent } from '../../../components/output-transaction-form/output-transaction-form.component';

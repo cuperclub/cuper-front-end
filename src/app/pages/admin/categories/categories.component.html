@@ -6,7 +6,7 @@
     </button>
   </div>
   <div class="categories-container" *ngIf="loaded">
-    <mat-card class="category" *ngFor="let category of categories; let i = index">
+    <mat-card appearance="outlined" class="category" *ngFor="let category of categories; let i = index">
       <div class="content">
         <span class="name">{{category.name}}</span>
         <br>

@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Company } from '../../models';
 import { CompanyService} from 'src/app/services';
 import { CompanyDialogComponent } from '../company-dialog/company-dialog.component';
 import { UtilsService, UserService } from 'src/app/services';
 import { TranslateService } from '@ngx-translate/core';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'cuper-company-card',

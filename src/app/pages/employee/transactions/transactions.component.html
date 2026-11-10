@@ -14,7 +14,7 @@
         [pageSizeOptions]="pagniationOptionsInputTransactions.pageSizeOptions"
         (page)="pagniationOptionsInputTransactions.pageEvent($event)">
       </mat-paginator>
-      <mat-card *ngIf="inputTransactions && !inputTransactions.length">
+      <mat-card appearance="outlined" *ngIf="inputTransactions && !inputTransactions.length">
         <div class="empty-state">
           <span class="title">{{ 'empty-state.transactions.input.title' | translate }}</span>
           <span class="tip">{{ 'empty-state.transactions.input.tip' | translate }}</span>
@@ -29,7 +29,7 @@
         [pageSizeOptions]="pagniationOptionsOutputTransactions.pageSizeOptions"
         (page)="pagniationOptionsOutputTransactions.pageEvent($event)">
       </mat-paginator>
-      <mat-card *ngIf="outputTransactions && !outputTransactions.length">
+      <mat-card appearance="outlined" *ngIf="outputTransactions && !outputTransactions.length">
         <div class="empty-state">
           <span class="title">{{ 'empty-state.transactions.output.title' | translate }}</span>
           <span class="tip">{{ 'empty-state.transactions.output.tip' | translate }}</span>

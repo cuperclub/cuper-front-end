@@ -9,7 +9,7 @@
         [office]="reward?.office"
         [editReward]="onEditReward">
       </cuper-reward-card>
-      <mat-card class="column-card beneficiaries">
+      <mat-card appearance="outlined" class="column-card beneficiaries">
         <div class="title-column">{{ 'reward.beneficiaries' | translate }}</div>
         <div class="empty-state" *ngIf="outputTransactions && !outputTransactions.length">
           <span class="title">{{ 'empty-state.beneficiaries.title' | translate }}</span>

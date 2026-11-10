@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ProfileFormComponent } from '../profile-form/profile-form.component';
 import { UpdatePasswordFormComponent } from '../update-password-form/update-password-form.component';
 import { TranslateService } from '@ngx-translate/core';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { User } from '../../models';
 import { UserService, UtilsService } from 'src/app/services';

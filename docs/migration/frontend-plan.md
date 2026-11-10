@@ -146,6 +146,8 @@ Secuencia de major: 7→8→9→10→11→12→13→14→15→16→17→18→19�
 
 **Checkpoint Angular 17 (2026-11-10):** framework 17.3.12, CLI/build 17.3.17, Node 20.19.6/npm 10.8.2 y TypeScript 5.4.5; migraciones CLI/core oficiales y `ngx-infinite-scroll` 17. Build y tests 8/8 aprobados. Material 16.2.14 se mantiene con peer Angular 17: el schematic de Material 17 bloquea la actualización por los componentes legacy eliminados. Migración MDC pasa a trabajo visual separado; validación funcional del navegador pendiente por DB Rails no disponible y puerto 4200 ajeno ocupado.
 
+**Checkpoint MDC / Angular Material 17 (2026-11-10):** separado del salto Angular; migration schematic oficial aplicado a todos los componentes y Material/CDK en 17.3.10. Se preservan tema M2, paletas de marca y Lato. Build y tests existentes 8/8 pasan. Browser autenticado parcial por DB Rails/puerto de integración no disponibles; repetir dialogs y roles antes de dar por cerrada la revisión visual.
+
 **Checkpoint Angular 14 (2026-11-09):** framework 14.3.0, CLI 14.2.13 y Material/CDK 14.2.7. Migraciones oficiales de formularios Untyped y target ES2020 para preservar compatibilidad. Build exit 0, tests existentes 8/8 y navegador desktop/móvil con cuatro roles sin errores de consola. Mapbox por variable de entorno preservado; CommonJS y otras deprecaciones siguen documentados. Próxima iteración: Angular 15, prestando atención a la transición Material/MDC.
 
 **Checkpoint Angular 13 (2026-11-09):** framework 13.4.0, CLI 13.3.11, Material/CDK 13.3.9 y TypeScript 4.6.4. Build exit 0, tests 8/8 en Chrome/Karma y navegador desktop/móvil con cuatro roles, sin errores/warnings de consola. Migraciones oficiales de IE/entryComponents/TestBed aplicadas; contrato Rails intacto. Builder TSLint retirado por CLI; script conserva invocación directa, lint legacy falla y requiere futura migración ESLint. Próxima iteración independiente: Angular 14.
@@ -171,7 +173,7 @@ Secuencia de major: 7→8→9→10→11→12→13→14→15→16→17→18→19�
 - [ ] Atender TS/Node y migraciones/compilación del escalón, sin saltar majors.
 - [ ] Convertir sintaxis lazy routes y eliminar admin import eager cuando sea seguro.
 - [ ] Resolver librerías incompatibles con Ivy antes de continuar; actualizar/sustituir/implementar pieza acotada/eliminar según matriz.
-- [ ] Material legacy no permite actualizar Material a v17: mantener temporalmente Material 16 (peer Angular 17) y crear una iteración visual MDC con revisión de imports/CSS/TODOs y pruebas de dialogs, forms, tables y navegación antes de subir Material a 17.
+- [x] Material legacy no permite actualizar Material a v17: ejecutar iteración visual MDC independiente antes del siguiente Angular; tema M2/Lato preservado. Resta validar dialogs/forms/tables y roles en browser autenticado cuando Rails DB esté disponible.
 - [ ] No confundir migración MDC con rediseño Material 3: preservar tema/identidad visual; decidir M3 por separado si hace falta.
 - [ ] Modernizar Sass y los imports `@angular/material` por paquetes conforme al major.
 - [ ] Mantener contenido y UX; no reescribir por estilo.

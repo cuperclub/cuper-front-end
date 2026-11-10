@@ -22,7 +22,7 @@ body {
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-$cuper-typography: mat.define-legacy-typography-config( $font-family: 'Lato-Regular');
+$cuper-typography: mat.define-typography-config( $font-family: 'Lato-Regular');
 // TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
 //  The following line adds:
 //    1. Default typography styles for all components
@@ -31,8 +31,8 @@ $cuper-typography: mat.define-legacy-typography-config( $font-family: 'Lato-Regu
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy($cuper-typography);`
-@include mat.all-legacy-component-typographies($cuper-typography);
-@include mat.legacy-core();
+@include mat.all-component-typographies($cuper-typography);
+@include mat.core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -55,4 +55,4 @@ $cuper-app-theme: mat.define-light-theme((
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-legacy-component-themes($cuper-app-theme);
+@include mat.all-component-themes($cuper-app-theme);

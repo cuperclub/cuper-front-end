@@ -19,7 +19,7 @@
     [pagniationOptions]="pagniationOptions"
     [onClick]="onEditReward">
   </cuper-table-card>
-  <mat-card *ngIf="myRewards && myRewards.length === 0">
+  <mat-card appearance="outlined" *ngIf="myRewards && myRewards.length === 0">
     <div class="empty-state">
       <span class="title">{{ 'empty-state.rewards.title' | translate }}</span>
       <span class="tip">{{ 'empty-state.rewards.tip' | translate }}</span>

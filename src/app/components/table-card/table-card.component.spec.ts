@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
-import { MatLegacyPaginatorModule as MatPaginatorModule } from '@angular/material/legacy-paginator';
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { AvatarComponent } from '../avatar/avatar.component';
 import { TableCardComponent } from './table-card.component';
 

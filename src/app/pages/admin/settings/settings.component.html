@@ -3,7 +3,7 @@
     <div class="title">Configuraciones del sistema</div>
   </div>
   <div class="settings-container" *ngIf="loaded">
-    <mat-card class="setting">
+    <mat-card appearance="outlined" class="setting">
       <h4>Puntos por Registro</h4>
       <p>{{setting.points_by_register}}</p>
       <div class="plan-selected" *ngIf="planSelected">

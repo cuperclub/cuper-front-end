@@ -1,5 +1,14 @@
 # Auditoría frontend Cuper
 
+## Iteración 13 — MDC / Angular Material 17 sobre Angular 17 (2026-11-10)
+
+Se migró Material 16.2.14→17.3.10 y CDK 16.2.14→17.3.10 sin cambiar Angular (17.3.12), Node 20.19.6 ni TypeScript 5.4.5. Se usó el schematic oficial `ng generate @angular/material:mdc-migration --components all --defaults`, seguido por migración oficial `ng update @angular/material --migrate-only --from=16.2.14 --to=17.3.10`. Pasaron imports runtime y de tests, atributos de templates, selectores SCSS detectables y tema global a MDC. El tema continúa Material 2 con paletas CUPer y tipografía Lato; no se aplicó Material 3 ni rediseño. Cinco comentarios TODO sobre `mat-dialog-actions` se retiraron tras verificar que son reglas sobre el selector público del elemento, no clases internas MDC. Sin TODO MDC pendiente.
+
+- Build development: exit 0, `/tmp/mdc-ng17-dist-final`. Se quitaron advertencias por mixins de tema/densidad duplicados que el schematic inicial había dejado en la hoja global. Permanecen advertencias Sass division, autoprefixer y Mapbox CommonJS.
+- Suite existente: 8/8 en Chrome/Karma externo, `test_exit=0`; no se agregaron ni eliminaron tests. La primera ejecución headless dentro de Docker no encontró Chrome; se repitió mediante el mecanismo externo habitual y pasó.
+- Playwright MCP: login carga en desktop 1280×800 y móvil 390×844, Lato preservado y sin overflow horizontal en esta pantalla. No fue posible validar dialogs/flujos autenticados: PostgreSQL no está disponible; Rails responde error de conexión a DB y el puerto 4200 está ocupado por otra app, por lo que se usó 4201 y Rails development (CORS predeterminado solo permite 4200) bloqueó autenticación. No se tocaron Rails ni datos/seeds. Pendiente repetir revisión visual de dialogs/tablas/roles cuando haya base y puerto de integración disponibles.
+- Próximo: Angular 18, ya con Material/CDK 17 compatibles; abordar builder/zoneless/control flow únicamente si procede, en subpasos verificables.
+
 ## Iteración 12 — Angular 17 (2026-11-10)
 
 Framework 17.3.12, CLI/build 17.3.17 y TypeScript 5.4.5. Angular 17 no admite oficialmente Node 22; esta fase fija Node 20.19.6/npm 10.8.2, dentro del rango `^20.9.0`, con lockfile v3. RxJS 6.6.7 queda dentro del rango soportado. Zone.js pasa a 0.14.10. `ngx-infinite-scroll` pasa a 17.0.0 por su peer `<18`; `@ngx-translate/core` 15.0.0 y loader 8.0.0 se conservan.

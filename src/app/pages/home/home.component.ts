@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService, UserService, UtilsService, PusherService } from '../../services';
 import { Router } from '@angular/router';
 import { User, UserStatus, Notification } from '../../models';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 
 @Component({

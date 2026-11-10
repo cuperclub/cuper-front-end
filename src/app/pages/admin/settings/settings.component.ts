@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminSettingService, AdminPlanService } from '../../../services';
 import {SettingsFormComponent} from '../../../components/settings-form/settings-form.component'
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'cuper-settings',

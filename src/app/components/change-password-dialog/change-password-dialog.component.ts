@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CustomersComponent } from 'src/app/pages/admin/customers/customers.component';
 import { UserService } from '../../services';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminCompanyService, UtilsService } from '../../../services';
 import { Company } from '../../../models';
 import {FeedbackFormComponent} from '../../../components/feedback-form/feedback-form.component'
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'cuper-companies',

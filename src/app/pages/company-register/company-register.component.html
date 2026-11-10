@@ -3,7 +3,7 @@
     <div class="header-card">
       <span class="title">{{ 'company.register_company' | translate }}</span>
     </div>
-    <mat-card class="form-container">
+    <mat-card appearance="outlined" class="form-container">
       <mat-horizontal-stepper *ngIf="loaded" [linear]="true" #stepper>
         <mat-step [stepControl]="planFormGroup">
           <form [formGroup]="planFormGroup">

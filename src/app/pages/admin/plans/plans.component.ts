@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Plan } from '../../../models';
 import { AdminPlanService } from '../../../services';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import {PlanFormComponent} from '../../../components/plan-form/plan-form.component'
 
 @Component({

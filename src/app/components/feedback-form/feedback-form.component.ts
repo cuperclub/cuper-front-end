@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { CardUserComponent } from '../card-user/card-user.component';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminCompanyService } from '../../services';
 import { EmployeeService } from 'src/app/services';
 
