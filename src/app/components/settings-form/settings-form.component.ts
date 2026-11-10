@@ -7,9 +7,10 @@ import { Setting } from '../../models';
 import { AdminSettingService } from '../../services';
 
 @Component({
-  selector: 'cuper-settings-form',
-  templateUrl: './settings-form.component.html',
-  styleUrls: ['./settings-form.component.scss']
+    selector: 'cuper-settings-form',
+    templateUrl: './settings-form.component.html',
+    styleUrls: ['./settings-form.component.scss'],
+    standalone: false
 })
 export class SettingsFormComponent implements OnInit {
   settingForm: Setting;

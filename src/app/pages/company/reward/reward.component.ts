@@ -6,9 +6,10 @@ import { ColumnDefinition } from '../../../components/table/table.component';
 import { DatetimeCellComponent, UserCellComponent } from '../../../components/table/partials';
 
 @Component({
-  selector: 'cuper-reward',
-  templateUrl: './reward.component.html',
-  styleUrls: ['./reward.component.scss']
+    selector: 'cuper-reward',
+    templateUrl: './reward.component.html',
+    styleUrls: ['./reward.component.scss'],
+    standalone: false
 })
 export class RewardComponent implements OnInit {
   reward: Promotion;

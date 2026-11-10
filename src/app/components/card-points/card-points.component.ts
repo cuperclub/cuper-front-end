@@ -4,9 +4,10 @@ import { UserTransactionsComponent } from '../user-transactions/user-transaction
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'cuper-card-points',
-  templateUrl: './card-points.component.html',
-  styleUrls: ['./card-points.component.scss']
+    selector: 'cuper-card-points',
+    templateUrl: './card-points.component.html',
+    styleUrls: ['./card-points.component.scss'],
+    standalone: false
 })
 export class CardPointsComponent implements OnInit {
   @Input() user: User;

@@ -9,9 +9,10 @@ import { ColumnDefinition, PaginationDefinition } from '../../../components/tabl
 import { DatetimeCellComponent, UserCellComponent, PromotionCellComponent } from '../../../components/table/partials';
 
 @Component({
-  selector: 'cuper-transactions',
-  templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.scss']
+    selector: 'cuper-transactions',
+    templateUrl: './transactions.component.html',
+    styleUrls: ['./transactions.component.scss'],
+    standalone: false
 })
 export class TransactionsComponent implements OnInit {
   currentUser: User;

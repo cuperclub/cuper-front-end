@@ -5,9 +5,10 @@ import {FeedbackFormComponent} from '../../../components/feedback-form/feedback-
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'cuper-companies',
-  templateUrl: './companies.component.html',
-  styleUrls: ['./companies.component.scss']
+    selector: 'cuper-companies',
+    templateUrl: './companies.component.html',
+    styleUrls: ['./companies.component.scss'],
+    standalone: false
 })
 export class CompaniesComponent implements OnInit {
   companies: Company[];

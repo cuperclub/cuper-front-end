@@ -6,9 +6,10 @@ import {CategoryFormComponent} from '../../../components/category-form/category-
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'cuper-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss']
+    selector: 'cuper-categories',
+    templateUrl: './categories.component.html',
+    styleUrls: ['./categories.component.scss'],
+    standalone: false
 })
 export class CategoriesComponent implements OnInit {
   categories: Category[] = [];

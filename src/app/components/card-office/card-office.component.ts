@@ -6,9 +6,10 @@ import { Office, Company } from '../../models';
 import { OfficeService } from 'src/app/services';
 
 @Component({
-  selector: 'cuper-card-office',
-  templateUrl: './card-office.component.html',
-  styleUrls: ['./card-office.component.scss']
+    selector: 'cuper-card-office',
+    templateUrl: './card-office.component.html',
+    styleUrls: ['./card-office.component.scss'],
+    standalone: false
 })
 export class CardOfficeComponent implements OnInit {
   @Input() company: Company;

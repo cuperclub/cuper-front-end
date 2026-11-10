@@ -1,5 +1,16 @@
 # Auditoría frontend Cuper
 
+## Iteración 15 — Angular 19 (2026-11-10)
+
+Framework 19.2.15, CLI/build 19.2.17, Material/CDK 19.2.19, TypeScript 5.8.3, Node 20.19.6, RxJS 6.6.7 y Zone.js 0.15.1. Angular 19 requiere Zone.js `~0.15.0`; se actualizó desde 0.14.10. `ngx-infinite-scroll` sube a 19.0.0 por peer Angular 19. Instalación npm limpia, sin `--force`/`--legacy-peer-deps`.
+
+Migraciones oficiales CLI/core/Material ejecutadas. Core migró los componentes no standalone a `standalone: false` explícito, acorde al nuevo default; Material ajustó el setup global a `elevation-classes` y `app-background`, preservando Material 2, paletas CUPer y tipografía Lato. Migración opcional al application builder e initializer no aplicada. No se alteraron autenticación, interceptor ni contrato Rails.
+
+- Build development: exit 0, `/tmp/ng19-dist`. Permanecen advertencias preexistentes Sass `@import` y Mapbox CommonJS.
+- Suite existente: 8/8 en Chrome/Karma externo, `test_exit=0`; cantidad de suites sin cambios.
+- Playwright MCP: login visible en desktop 1280×800 y móvil 390×844; Lato conservado y sin overflow horizontal. API autenticada pendiente por PostgreSQL Rails no disponible, igual que en iteraciones anteriores.
+- Production/OAuth/correos, mapa con token real, lint y harness e2e pendientes.
+
 ## Iteración 14 — Angular 18 (2026-11-10)
 
 Framework 18.2.14, CLI/build 18.2.21, Material/CDK 18.2.14 y TypeScript 5.5.4. Node 20.19.6 cumple `^20.11.1`, TypeScript cumple `>=5.4 <5.6`; se conserva Zone.js 0.14.10 y RxJS 6.6.7. `ngx-infinite-scroll` sube a 18.0.0 por su peer Angular 18. `@ngx-translate` se mantiene.

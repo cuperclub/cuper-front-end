@@ -3,9 +3,10 @@ import { User } from '../../models';
 import { UserService } from '../../services';
 
 @Component({
-  selector: 'cuper-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+    selector: 'cuper-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.scss'],
+    standalone: false
 })
 export class DashboardComponent implements OnInit {
 

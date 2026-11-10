@@ -11,9 +11,10 @@ interface FileOptions {
 }
 
 @Component({
-  selector: 'cuper-avatar-file',
-  templateUrl: './avatar-file.component.html',
-  styleUrls: ['./avatar-file.component.scss']
+    selector: 'cuper-avatar-file',
+    templateUrl: './avatar-file.component.html',
+    styleUrls: ['./avatar-file.component.scss'],
+    standalone: false
 })
 export class AvatarFileComponent implements OnInit {
 

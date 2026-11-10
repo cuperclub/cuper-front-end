@@ -8,9 +8,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'cuper-company-card',
-  templateUrl: './company-card.component.html',
-  styleUrls: ['./company-card.component.scss']
+    selector: 'cuper-company-card',
+    templateUrl: './company-card.component.html',
+    styleUrls: ['./company-card.component.scss'],
+    standalone: false
 })
 export class CompanyCardComponent implements OnInit {
 

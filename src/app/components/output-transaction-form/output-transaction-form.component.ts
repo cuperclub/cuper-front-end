@@ -9,9 +9,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { UtilsService } from 'src/app/services';
 
 @Component({
-  selector: 'cuper-output-transaction-form',
-  templateUrl: './output-transaction-form.component.html',
-  styleUrls: ['./output-transaction-form.component.scss']
+    selector: 'cuper-output-transaction-form',
+    templateUrl: './output-transaction-form.component.html',
+    styleUrls: ['./output-transaction-form.component.scss'],
+    standalone: false
 })
 export class OutputTransactionFormComponent implements OnInit {
   rewards: Promotion [];

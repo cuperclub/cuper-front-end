@@ -17,9 +17,10 @@ interface DataOptions {
 }
 
 @Component({
-  selector: 'cuper-profile-form',
-  templateUrl: './profile-form.component.html',
-  styleUrls: ['./profile-form.component.scss']
+    selector: 'cuper-profile-form',
+    templateUrl: './profile-form.component.html',
+    styleUrls: ['./profile-form.component.scss'],
+    standalone: false
 })
 export class ProfileFormComponent implements OnInit {
   profileForm: UntypedFormGroup;

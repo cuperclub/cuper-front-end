@@ -9,9 +9,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UtilsService } from 'src/app/services';
 
 @Component({
-  selector: 'cuper-request-cashier',
-  templateUrl: './request-cashier.component.html',
-  styleUrls: ['./request-cashier.component.scss']
+    selector: 'cuper-request-cashier',
+    templateUrl: './request-cashier.component.html',
+    styleUrls: ['./request-cashier.component.scss'],
+    standalone: false
 })
 export class RequestCashierComponent implements OnInit{
   emailInvitation: string;

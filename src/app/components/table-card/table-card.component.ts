@@ -10,9 +10,10 @@ interface OptionRow {
 }
 
 @Component({
-  selector: 'cuper-table-card',
-  templateUrl: './table-card.component.html',
-  styleUrls: ['./table-card.component.scss']
+    selector: 'cuper-table-card',
+    templateUrl: './table-card.component.html',
+    styleUrls: ['./table-card.component.scss'],
+    standalone: false
 })
 export class TableCardComponent implements OnInit {
   @Input() items: OptionRow[];

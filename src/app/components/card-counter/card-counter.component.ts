@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'cuper-card-counter',
-  templateUrl: './card-counter.component.html',
-  styleUrls: ['./card-counter.component.scss']
+    selector: 'cuper-card-counter',
+    templateUrl: './card-counter.component.html',
+    styleUrls: ['./card-counter.component.scss'],
+    standalone: false
 })
 export class CardCounterComponent implements OnInit {
   @Input() title: string;

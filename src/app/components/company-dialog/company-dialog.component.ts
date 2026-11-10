@@ -13,9 +13,10 @@ interface FileOptions {
 }
 
 @Component({
-  selector: 'cuper-company-dialog',
-  templateUrl: './company-dialog.component.html',
-  styleUrls: ['./company-dialog.component.scss']
+    selector: 'cuper-company-dialog',
+    templateUrl: './company-dialog.component.html',
+    styleUrls: ['./company-dialog.component.scss'],
+    standalone: false
 })
 export class CompanyDialogComponent implements OnInit {
   companyFormGroup: UntypedFormGroup;

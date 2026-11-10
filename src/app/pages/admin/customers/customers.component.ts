@@ -12,9 +12,10 @@ import {
 import { ChangePasswordDialogComponent } from 'src/app/components/change-password-dialog/change-password-dialog.component';
 
 @Component({
-  selector: 'cuper-customers',
-  templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.scss']
+    selector: 'cuper-customers',
+    templateUrl: './customers.component.html',
+    styleUrls: ['./customers.component.scss'],
+    standalone: false
 })
 export class CustomersComponent implements OnInit {
   customers: User[];

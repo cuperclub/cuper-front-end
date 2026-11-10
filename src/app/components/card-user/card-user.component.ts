@@ -10,9 +10,10 @@ import { UserService, UtilsService } from 'src/app/services';
 
 
 @Component({
-  selector: 'cuper-card-user',
-  templateUrl: './card-user.component.html',
-  styleUrls: ['./card-user.component.scss']
+    selector: 'cuper-card-user',
+    templateUrl: './card-user.component.html',
+    styleUrls: ['./card-user.component.scss'],
+    standalone: false
 })
 export class CardUserComponent implements OnInit {
   @Input() user: User;

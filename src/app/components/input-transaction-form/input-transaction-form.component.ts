@@ -7,9 +7,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { UtilsService } from 'src/app/services';
 
 @Component({
-  selector: 'cuper-input-transaction-form',
-  templateUrl: './input-transaction-form.component.html',
-  styleUrls: ['./input-transaction-form.component.scss']
+    selector: 'cuper-input-transaction-form',
+    templateUrl: './input-transaction-form.component.html',
+    styleUrls: ['./input-transaction-form.component.scss'],
+    standalone: false
 })
 export class InputTransactionFormComponent {
 

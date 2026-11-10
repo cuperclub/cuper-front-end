@@ -14,9 +14,10 @@ export interface PaginationDefinition {
 }
 
 @Component({
-  selector: 'cuper-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+    selector: 'cuper-table',
+    templateUrl: './table.component.html',
+    styleUrls: ['./table.component.scss'],
+    standalone: false
 })
 export class TableComponent implements OnInit {
   @Input() columnsDef: ColumnDefinition[];

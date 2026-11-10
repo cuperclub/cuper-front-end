@@ -7,9 +7,10 @@ export interface ActionDefinition {
 }
 
 @Component({
-  selector: 'cuper-actions-cell',
-  templateUrl: './actions-cell.component.html',
-  styleUrls: ['./actions-cell.component.scss']
+    selector: 'cuper-actions-cell',
+    templateUrl: './actions-cell.component.html',
+    styleUrls: ['./actions-cell.component.scss'],
+    standalone: false
 })
 export class ActionsCellComponent implements OnInit {
   @Input() data: { actions?: ActionDefinition[] };

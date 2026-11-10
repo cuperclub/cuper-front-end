@@ -7,9 +7,10 @@ import { AdminCompanyService } from '../../services';
 import { EmployeeService } from 'src/app/services';
 
 @Component({
-  selector: 'cuper-feedback-form',
-  templateUrl: './feedback-form.component.html',
-  styleUrls: ['./feedback-form.component.scss']
+    selector: 'cuper-feedback-form',
+    templateUrl: './feedback-form.component.html',
+    styleUrls: ['./feedback-form.component.scss'],
+    standalone: false
 })
 export class FeedbackFormComponent implements OnInit {
   feedbackForm: any;

@@ -7,9 +7,10 @@ import { Category } from '../../models';
 import { CategoryService } from '../../services';
 
 @Component({
-  selector: 'cuper-category-form',
-  templateUrl: './category-form.component.html',
-  styleUrls: ['./category-form.component.scss']
+    selector: 'cuper-category-form',
+    templateUrl: './category-form.component.html',
+    styleUrls: ['./category-form.component.scss'],
+    standalone: false
 })
 export class CategoryFormComponent implements OnInit {
   categoryForm: Category = {};

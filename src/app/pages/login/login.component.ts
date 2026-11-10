@@ -6,9 +6,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserLogin } from 'src/app/models';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    standalone: false
 })
 export class LoginComponent implements OnInit {
   user: UserLogin = {

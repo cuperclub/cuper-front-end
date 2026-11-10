@@ -3,9 +3,10 @@ import { User } from '../../models';
 import { UserService } from '../../services';
 
 @Component({
-  selector: 'cuper-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+    selector: 'cuper-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.scss'],
+    standalone: false
 })
 export class ProfileComponent implements OnInit {
   currentUser: User;

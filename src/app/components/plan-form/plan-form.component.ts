@@ -7,9 +7,10 @@ import { Plan } from '../../models';
 import { AdminPlanService } from '../../services';
 
 @Component({
-  selector: 'cuper-plan-form',
-  templateUrl: './plan-form.component.html',
-  styleUrls: ['./plan-form.component.scss']
+    selector: 'cuper-plan-form',
+    templateUrl: './plan-form.component.html',
+    styleUrls: ['./plan-form.component.scss'],
+    standalone: false
 })
 export class PlanFormComponent implements OnInit {
   planForm: Plan;

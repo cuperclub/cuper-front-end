@@ -6,9 +6,10 @@ interface Box {
 }
 
 @Component({
-  selector: 'cuper-avatar',
-  templateUrl: './avatar.component.html',
-  styleUrls: ['./avatar.component.scss']
+    selector: 'cuper-avatar',
+    templateUrl: './avatar.component.html',
+    styleUrls: ['./avatar.component.scss'],
+    standalone: false
 })
 export class AvatarComponent implements OnInit {
 

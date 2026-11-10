@@ -8,9 +8,10 @@ import { PromotionService } from 'src/app/services';
 import { RewardDialogComponent } from 'src/app/components/reward-dialog/reward-dialog.component';
 
 @Component({
-  selector: 'cuper-promotions',
-  templateUrl: './promotions.component.html',
-  styleUrls: ['./promotions.component.scss']
+    selector: 'cuper-promotions',
+    templateUrl: './promotions.component.html',
+    styleUrls: ['./promotions.component.scss'],
+    standalone: false
 })
 export class PromotionsComponent implements OnInit {
   promotions$: Observable<Promotion[]>;

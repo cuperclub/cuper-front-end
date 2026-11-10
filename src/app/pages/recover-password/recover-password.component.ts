@@ -4,9 +4,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services';
 
 @Component({
-  selector: 'cuper-recover-password',
-  templateUrl: './recover-password.component.html',
-  styleUrls: ['./recover-password.component.scss']
+    selector: 'cuper-recover-password',
+    templateUrl: './recover-password.component.html',
+    styleUrls: ['./recover-password.component.scss'],
+    standalone: false
 })
 export class RecoverPasswordComponent {
   user_email: string = '';

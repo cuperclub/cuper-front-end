@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'cuper-datetime-cell',
-  templateUrl: './datetime-cell.component.html',
-  styleUrls: ['./datetime-cell.component.scss']
+    selector: 'cuper-datetime-cell',
+    templateUrl: './datetime-cell.component.html',
+    styleUrls: ['./datetime-cell.component.scss'],
+    standalone: false
 })
 export class DatetimeCellComponent implements OnInit {
   @Input() data: { created_at?: string | Date };

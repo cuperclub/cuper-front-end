@@ -6,9 +6,10 @@ interface OptionSquare {
 }
 
 @Component({
-  selector: 'cuper-square-select',
-  templateUrl: './square-select.component.html',
-  styleUrls: ['./square-select.component.scss']
+    selector: 'cuper-square-select',
+    templateUrl: './square-select.component.html',
+    styleUrls: ['./square-select.component.scss'],
+    standalone: false
 })
 export class SquareSelectComponent implements OnInit {
   @Input() options: OptionSquare [];

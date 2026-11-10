@@ -10,9 +10,10 @@ export interface ButtonOption {
 };
 
 @Component({
-  selector: 'cuper-user-search',
-  templateUrl: './user-search.component.html',
-  styleUrls: ['./user-search.component.scss']
+    selector: 'cuper-user-search',
+    templateUrl: './user-search.component.html',
+    styleUrls: ['./user-search.component.scss'],
+    standalone: false
 })
 export class UserSearchComponent implements OnInit {
   @Input() rightButton: ButtonOption;

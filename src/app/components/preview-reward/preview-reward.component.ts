@@ -6,9 +6,10 @@ interface FileOptions {
 }
 
 @Component({
-  selector: 'cuper-preview-reward',
-  templateUrl: './preview-reward.component.html',
-  styleUrls: ['./preview-reward.component.scss']
+    selector: 'cuper-preview-reward',
+    templateUrl: './preview-reward.component.html',
+    styleUrls: ['./preview-reward.component.scss'],
+    standalone: false
 })
 export class PreviewRewardComponent implements OnInit {
   placeholder: string = '../../../assets/images/background-reward.png';

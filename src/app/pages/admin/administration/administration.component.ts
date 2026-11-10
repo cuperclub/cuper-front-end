@@ -4,9 +4,10 @@ import { User } from '../../../models';
 import { UserService, UtilsService, AuthService } from '../../../services';
 
 @Component({
-  selector: 'cuper-administration',
-  templateUrl: './administration.component.html',
-  styleUrls: ['./administration.component.scss']
+    selector: 'cuper-administration',
+    templateUrl: './administration.component.html',
+    styleUrls: ['./administration.component.scss'],
+    standalone: false
 })
 export class AdministrationComponent implements OnInit {
   currentUser: User;

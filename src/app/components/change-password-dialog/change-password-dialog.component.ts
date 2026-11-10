@@ -7,9 +7,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'cuper-change-password-dialog',
-  templateUrl: './change-password-dialog.component.html',
-  styleUrls: ['./change-password-dialog.component.scss']
+    selector: 'cuper-change-password-dialog',
+    templateUrl: './change-password-dialog.component.html',
+    styleUrls: ['./change-password-dialog.component.scss'],
+    standalone: false
 })
 export class ChangePasswordDialogComponent implements OnInit{
   passwordFormGroup: UntypedFormGroup;

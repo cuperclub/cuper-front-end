@@ -14,9 +14,10 @@ interface Coordinate {
 }
 
 @Component({
-  selector: 'cuper-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+    selector: 'cuper-map',
+    templateUrl: './map.component.html',
+    styleUrls: ['./map.component.scss'],
+    standalone: false
 })
 export class MapComponent implements OnInit {
   @Input() coordinate: Coordinate;

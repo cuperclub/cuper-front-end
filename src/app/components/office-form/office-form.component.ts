@@ -13,9 +13,10 @@ interface point {
 }
 
 @Component({
-  selector: 'cuper-office-form',
-  templateUrl: './office-form.component.html',
-  styleUrls: ['./office-form.component.scss']
+    selector: 'cuper-office-form',
+    templateUrl: './office-form.component.html',
+    styleUrls: ['./office-form.component.scss'],
+    standalone: false
 })
 export class OfficeFormComponent implements OnInit {
   officeForm: UntypedFormGroup;

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Company } from '../../../models';
 
 @Component({
-  selector: 'cuper-my-company',
-  templateUrl: './my-company.component.html',
-  styleUrls: ['./my-company.component.scss']
+    selector: 'cuper-my-company',
+    templateUrl: './my-company.component.html',
+    styleUrls: ['./my-company.component.scss'],
+    standalone: false
 })
 export class MyCompanyComponent implements OnInit {
   myCompany: Company;

@@ -2,9 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Promotion } from 'src/app/models';
 
 @Component({
-  selector: 'cuper-reward-small-card',
-  templateUrl: './reward-small-card.component.html',
-  styleUrls: ['./reward-small-card.component.scss']
+    selector: 'cuper-reward-small-card',
+    templateUrl: './reward-small-card.component.html',
+    styleUrls: ['./reward-small-card.component.scss'],
+    standalone: false
 })
 export class RewardSmallCardComponent implements OnInit {
   private defaultImage = '../../../../assets/images/background-reward.png';

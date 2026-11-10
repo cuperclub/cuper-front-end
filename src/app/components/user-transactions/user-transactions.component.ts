@@ -5,9 +5,10 @@ import { UserService } from 'src/app/services';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'cuper-user-transactions',
-  templateUrl: './user-transactions.component.html',
-  styleUrls: ['./user-transactions.component.scss']
+    selector: 'cuper-user-transactions',
+    templateUrl: './user-transactions.component.html',
+    styleUrls: ['./user-transactions.component.scss'],
+    standalone: false
 })
 export class UserTransactionsComponent implements OnInit {
   transactions: Array<any>;

@@ -5,9 +5,10 @@ import { MatDialog } from '@angular/material/dialog';
 import {PlanFormComponent} from '../../../components/plan-form/plan-form.component'
 
 @Component({
-  selector: 'cuper-plans',
-  templateUrl: './plans.component.html',
-  styleUrls: ['./plans.component.scss']
+    selector: 'cuper-plans',
+    templateUrl: './plans.component.html',
+    styleUrls: ['./plans.component.scss'],
+    standalone: false
 })
 export class PlansComponent implements OnInit {
   plans: Plan[] = [];

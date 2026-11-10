@@ -4,9 +4,10 @@ import { PromotionsComponent } from 'src/app/pages/customer/promotions/promotion
 import { Promotion } from 'src/app/models';
 
 @Component({
-  selector: 'cuper-reward-dialog',
-  templateUrl: './reward-dialog.component.html',
-  styleUrls: ['./reward-dialog.component.scss']
+    selector: 'cuper-reward-dialog',
+    templateUrl: './reward-dialog.component.html',
+    styleUrls: ['./reward-dialog.component.scss'],
+    standalone: false
 })
 export class RewardDialogComponent implements OnInit {
 

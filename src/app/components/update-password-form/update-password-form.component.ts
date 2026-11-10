@@ -12,9 +12,10 @@ interface Password {
 }
 
 @Component({
-  selector: 'cuper-update-password-form',
-  templateUrl: './update-password-form.component.html',
-  styleUrls: ['./update-password-form.component.scss']
+    selector: 'cuper-update-password-form',
+    templateUrl: './update-password-form.component.html',
+    styleUrls: ['./update-password-form.component.scss'],
+    standalone: false
 })
 export class UpdatePasswordFormComponent implements OnInit{
   passwordForm: UntypedFormGroup;

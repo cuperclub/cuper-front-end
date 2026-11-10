@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { Plan } from '../../models';
 
 @Component({
-  selector: 'cuper-card-register-company',
-  templateUrl: './card-register-company.component.html',
-  styleUrls: ['./card-register-company.component.scss']
+    selector: 'cuper-card-register-company',
+    templateUrl: './card-register-company.component.html',
+    styleUrls: ['./card-register-company.component.scss'],
+    standalone: false
 })
 export class CardRegisterCompanyComponent {
   @Input() selectedPlan: Plan;

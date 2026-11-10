@@ -21,9 +21,10 @@ interface FileOptions {
 }
 
 @Component({
-  selector: 'cuper-new-reward-card',
-  templateUrl: './new-reward-card.component.html',
-  styleUrls: ['./new-reward-card.component.scss']
+    selector: 'cuper-new-reward-card',
+    templateUrl: './new-reward-card.component.html',
+    styleUrls: ['./new-reward-card.component.scss'],
+    standalone: false
 })
 export class NewRewardCardComponent implements OnInit {
   currentDate: Date = new Date();

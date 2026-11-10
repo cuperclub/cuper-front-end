@@ -6,9 +6,10 @@ import { RequestCashierComponent } from '../request-cashier/request-cashier.comp
 import { FeedbackFormComponent } from '../feedback-form/feedback-form.component';
 
 @Component({
-  selector: 'cuper-card-cashier',
-  templateUrl: './card-cashier.component.html',
-  styleUrls: ['./card-cashier.component.scss']
+    selector: 'cuper-card-cashier',
+    templateUrl: './card-cashier.component.html',
+    styleUrls: ['./card-cashier.component.scss'],
+    standalone: false
 })
 export class CardCashierComponent implements OnInit {
   myEmployees: Employee[];

@@ -10,9 +10,10 @@ export interface OptionPlan {
 }
 
 @Component({
-  selector: 'cuper-card-plan',
-  templateUrl: './card-plan.component.html',
-  styleUrls: ['./card-plan.component.scss']
+    selector: 'cuper-card-plan',
+    templateUrl: './card-plan.component.html',
+    styleUrls: ['./card-plan.component.scss'],
+    standalone: false
 })
 export class CardPlanComponent {
   @Input() option: OptionPlan;

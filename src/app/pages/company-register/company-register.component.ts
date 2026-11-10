@@ -8,9 +8,10 @@ import { MatStepper } from '@angular/material/stepper';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'cuper-company-register',
-  templateUrl: './company-register.component.html',
-  styleUrls: ['./company-register.component.scss']
+    selector: 'cuper-company-register',
+    templateUrl: './company-register.component.html',
+    styleUrls: ['./company-register.component.scss'],
+    standalone: false
 })
 export class CompanyRegisterComponent implements OnInit {
   planFormGroup: UntypedFormGroup;

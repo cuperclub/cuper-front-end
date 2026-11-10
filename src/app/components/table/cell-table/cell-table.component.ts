@@ -11,9 +11,10 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'cuper-cell-table',
-  templateUrl: './cell-table.component.html',
-  styleUrls: ['./cell-table.component.scss']
+    selector: 'cuper-cell-table',
+    templateUrl: './cell-table.component.html',
+    styleUrls: ['./cell-table.component.scss'],
+    standalone: false
 })
 export class CellTableComponent implements OnDestroy, AfterContentInit {
   @Input() data: Object;

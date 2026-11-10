@@ -3,9 +3,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CompanyCardComponent } from '../company-card/company-card.component';
 
 @Component({
-  selector: 'cuper-office-preview',
-  templateUrl: './office-preview.component.html',
-  styleUrls: ['./office-preview.component.scss']
+    selector: 'cuper-office-preview',
+    templateUrl: './office-preview.component.html',
+    styleUrls: ['./office-preview.component.scss'],
+    standalone: false
 })
 export class OfficePreviewComponent {
 

@@ -5,9 +5,10 @@ import { Promotion } from '../../../models';
 import { PaginationDefinition } from '../../../components/table/table.component';
 
 @Component({
-  selector: 'cuper-rewards',
-  templateUrl: './rewards.component.html',
-  styleUrls: ['./rewards.component.scss']
+    selector: 'cuper-rewards',
+    templateUrl: './rewards.component.html',
+    styleUrls: ['./rewards.component.scss'],
+    standalone: false
 })
 export class RewardsComponent implements OnInit {
   myRewards: Promotion[];

@@ -4,9 +4,10 @@ import {SettingsFormComponent} from '../../../components/settings-form/settings-
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'cuper-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+    selector: 'cuper-settings',
+    templateUrl: './settings.component.html',
+    styleUrls: ['./settings.component.scss'],
+    standalone: false
 })
 export class SettingsComponent implements OnInit {
   setting: any;

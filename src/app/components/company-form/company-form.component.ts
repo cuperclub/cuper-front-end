@@ -5,9 +5,10 @@ import { CategoryService } from '../../services';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'cuper-company-form',
-  templateUrl: './company-form.component.html',
-  styleUrls: ['./company-form.component.scss']
+    selector: 'cuper-company-form',
+    templateUrl: './company-form.component.html',
+    styleUrls: ['./company-form.component.scss'],
+    standalone: false
 })
 export class CompanyFormComponent implements OnInit{
   @Input() companyFormGroup: UntypedFormGroup;
