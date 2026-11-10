@@ -1,4 +1,4 @@
-import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { enableProdMode, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 
 import { createTranslateLoader } from './app/translate-loader';
 import { environment } from './environments/environment';
@@ -38,7 +38,8 @@ bootstrapApplication(AppComponent, {
             }
         },
         provideHttpClient(withXhr(), withInterceptorsFromDi()),
-        provideRouter(APP_ROUTES)
+        provideRouter(APP_ROUTES),
+        provideZoneChangeDetection()
     ]
 })
   .catch(err => console.error(err));

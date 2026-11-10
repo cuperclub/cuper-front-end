@@ -10,6 +10,10 @@ Se reemplazó `AppRoutingModule` por `APP_ROUTES`/`provideRouter`; las rutas laz
 - La revisión autenticada de roles y rutas continúa bloqueada por Rails/PostgreSQL no disponible.
 - Próximo: revisar alcance/proveedores standalone y auditar notificaciones por HTTP/forms/Pusher/FileReader/timers. No retirar Zone.js hasta validar esas interacciones; el runtime sigue cargado.
 
+## Auditoría zoneless — hallazgo y puente temporal (2026-11-10)
+
+Angular 22 aplica scheduling zoneless por defecto al bootstrap standalone; mantener `zone.js` en polyfills no equivale a habilitar detección por Zone. El inventario encuentra más de 100 suscripciones/callbacks en componentes y servicios, incluyendo respuestas HTTP/Translate que mutan campos, un `UserService` con `Subscriber` mutable, Reactive Forms con setters programáticos, callbacks Pusher en `HomeComponent`, dos `FileReader.onload` y un timer. Para preservar el comportamiento Zone-based heredado mientras se migran y validan notificaciones, se añadió `provideZoneChangeDetection()` explícito en el bootstrap. Build exit 0 y suite existente 8/8 con el puente activo. No es el destino final: no retirar Zone ni habilitar zoneless hasta cubrir cada flujo con validación manual autorizada.
+
 ## Iteración 20 — Declaraciones y poda de NgModules (2026-11-10)
 
 Se aplicó el primer modo del schematic oficial `@angular/core:standalone` (`convert-to-standalone`) sobre Angular 22.2.5. Los componentes, directivas y pipes declarados en los módulos pasan a ser standalone (standalone es el default en Angular 22); los módulos conservan temporalmente esas clases en `imports`, manteniendo su API y composición hasta las fases `prune-ng-modules` y `standalone-bootstrap`. `AppComponent` se conserva explícitamente `standalone: false` para seguir siendo bootstrappeado por `AppModule` durante este checkpoint.
