@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { UntypedFormGroup, Validators, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from 'src/app/services';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -27,6 +27,7 @@ export class ResetPasswordComponent implements OnInit {
     private userService: UserService,
     private message: MatSnackBar,
     private router: Router,
+    private changeDetector: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -49,6 +50,7 @@ export class ResetPasswordComponent implements OnInit {
         for (let key in error.errors) {
           this.passwordForm.controls[key].setErrors({'backendError': error.errors[key]});
         }
+        this.changeDetector.markForCheck();
       }
     );
   }
