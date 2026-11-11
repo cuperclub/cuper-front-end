@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { OfficeFormComponent } from '../office-form/office-form.component';
@@ -25,12 +25,14 @@ export class CardOfficeComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private officeService: OfficeService
+    private officeService: OfficeService,
+    private changeDetector: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
     this.officeService.getOffices().subscribe(data => {
       this.offices = data['offices'];
+      this.changeDetector.markForCheck();
     });
   }
 
@@ -46,6 +48,7 @@ export class CardOfficeComponent implements OnInit {
       if(currentOffice){
         const indexOffice = this.offices.findIndex(office => office.id === currentOffice.id);
         this.offices[indexOffice] = currentOffice;
+        this.changeDetector.markForCheck();
       }
     });
   }
@@ -60,6 +63,7 @@ export class CardOfficeComponent implements OnInit {
     dialogRef.beforeClosed().subscribe(currentOffice => {
       if(currentOffice){
         this.offices.push(currentOffice);
+        this.changeDetector.markForCheck();
       }
     });
   }

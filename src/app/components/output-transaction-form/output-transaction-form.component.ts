@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Inject, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { CompanyCardComponent } from '../company-card/company-card.component';
 import { Promotion } from 'src/app/models';
@@ -29,11 +29,15 @@ export class OutputTransactionFormComponent implements OnInit {
     private message: MatSnackBar,
     private translate: TranslateService,
     private utilsService: UtilsService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private changeDetector: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
-    this.promotionService.getMyPromotions().subscribe(resp => this.rewards = resp['promotions']);
+    this.promotionService.getMyPromotions().subscribe(resp => {
+      this.rewards = resp['promotions'];
+      this.changeDetector.markForCheck();
+    });
   }
 
   onSelectReward = (reward) => this.selectedReward = reward;

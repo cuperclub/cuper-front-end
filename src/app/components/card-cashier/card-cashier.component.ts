@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Employee, UserStatus } from '../../models';
 import { EmployeeService, UtilsService } from 'src/app/services';
@@ -45,12 +45,19 @@ export class CardCashierComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private employeeService: EmployeeService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private changeDetector: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    this.employeeService.getMyEmployees().subscribe((data) => this.myEmployees = data['employees']);
-    this.employeeService.getPendingRequestEmployees().subscribe((data) => this.requestsEmployees = data);
+    this.employeeService.getMyEmployees().subscribe((data) => {
+      this.myEmployees = data['employees'];
+      this.changeDetector.markForCheck();
+    });
+    this.employeeService.getPendingRequestEmployees().subscribe((data) => {
+      this.requestsEmployees = data;
+      this.changeDetector.markForCheck();
+    });
   }
 
   getAvatar = this.utilsService.getAvatar;
@@ -73,6 +80,7 @@ export class CardCashierComponent implements OnInit {
     dialogRef.beforeClosed().subscribe(request => {
       if(request){
         this.requestsEmployees = [request].concat(this.requestsEmployees);
+        this.changeDetector.markForCheck();
       }
     });
   }
@@ -92,6 +100,7 @@ export class CardCashierComponent implements OnInit {
       if(cashier){
         const indexEmployee = this.myEmployees.findIndex(employee => employee.id === cashier.id);
         this.myEmployees[indexEmployee] = cashier;
+        this.changeDetector.markForCheck();
       }
     });
   }

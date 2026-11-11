@@ -39,6 +39,8 @@ En `ResetPasswordComponent`, los errores de validación recibidos por HTTP se es
 
 En esta continuación, se extendió el mismo patrón a errores de validación de perfil, empresa, oficina, reward y cambio de contraseña; las callbacks HTTP que cargan planes, perfil y empresa ahora notifican explícitamente tras mutar estado visible. En cargas fallidas de avatar/logo se limpia además el indicador de carga antes de notificar. Build de desarrollo exit 0. Karma se mantiene detenido por la solicitud de no reactivar Chrome MCP; Rails no está disponible para probar las respuestas reales.
 
+También se agregaron notificaciones a la carga asíncrona de oficinas, empleados/solicitudes de cajero y promociones, así como a los cierres de diálogos que actualizan esas listas. Build de desarrollo exit 0. No se inició ningún servidor ni Chrome MCP y no se ejecutó Karma.
+
 ## Iteración 20 — Declaraciones y poda de NgModules (2026-11-10)
 
 Se aplicó el primer modo del schematic oficial `@angular/core:standalone` (`convert-to-standalone`) sobre Angular 22.2.5. Los componentes, directivas y pipes declarados en los módulos pasan a ser standalone (standalone es el default en Angular 22); los módulos conservan temporalmente esas clases en `imports`, manteniendo su API y composición hasta las fases `prune-ng-modules` y `standalone-bootstrap`. `AppComponent` se conserva explícitamente `standalone: false` para seguir siendo bootstrappeado por `AppModule` durante este checkpoint.
