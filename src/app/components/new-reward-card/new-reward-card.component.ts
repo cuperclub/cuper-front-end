@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Promotion } from 'src/app/models';
 import { OfficeService, CompanyService, PromotionService } from 'src/app/services';
@@ -66,6 +66,7 @@ export class NewRewardCardComponent implements OnInit {
     private translate: TranslateService,
     private dialog: MatDialog,
     private _formBuilder: UntypedFormBuilder,
+    private changeDetector: ChangeDetectorRef,
   ) { }
 
   ngOnInit() {
@@ -173,6 +174,7 @@ export class NewRewardCardComponent implements OnInit {
     for (let key in resp.error) {
       this.rewardFormGroup.controls[key].setErrors({'backendError': resp.error[key]});
     }
+    this.changeDetector.markForCheck();
   }
 
   onNewOffice = () => {

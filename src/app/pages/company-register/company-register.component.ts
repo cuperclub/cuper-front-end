@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CompanyService, UserService, AdminPlanService } from '../../services'
@@ -37,7 +37,8 @@ export class CompanyRegisterComponent implements OnInit {
     private message: MatSnackBar,
     private translate: TranslateService,
     private userService: UserService,
-    private planService: AdminPlanService
+    private planService: AdminPlanService,
+    private changeDetector: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -67,6 +68,7 @@ export class CompanyRegisterComponent implements OnInit {
         id: [this.planSelected.id, Validators.required]
       });
       this.loaded = true;
+      this.changeDetector.markForCheck();
     });
   }
 
@@ -116,5 +118,6 @@ export class CompanyRegisterComponent implements OnInit {
       this.companyFormGroup.controls[key].setErrors({'backendError': resp.error[key]});
     }
     stepper.previous();
+    this.changeDetector.markForCheck();
   }
 }

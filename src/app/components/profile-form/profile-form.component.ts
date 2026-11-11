@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Inject, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CardUserComponent } from '../card-user/card-user.component';
@@ -37,6 +37,7 @@ export class ProfileFormComponent implements OnInit {
     private utilsService: UtilsService,
     private message: MatSnackBar,
     private translate: TranslateService,
+    private changeDetector: ChangeDetectorRef,
     public dialogRef: MatDialogRef<CardUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DataOptions
   ) {}
@@ -81,6 +82,7 @@ export class ProfileFormComponent implements OnInit {
         for (let key in error) {
           this.profileForm.controls[key].setErrors({'backendError': error[key]});
         }
+        this.changeDetector.markForCheck();
       }
     );
   }

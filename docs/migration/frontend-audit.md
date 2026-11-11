@@ -37,6 +37,8 @@ En una copia aislada se migraron `build`, `serve`, `extract-i18n` y `test` a los
 
 En `ResetPasswordComponent`, los errores de validación recibidos por HTTP se escriben programáticamente en los controles reactivos. Se añadió `ChangeDetectorRef.markForCheck()` tras asignar esos errores para que el estado aparezca en la vista sin depender de Zone. Build de desarrollo exit 0. No se ejecutó Karma porque se dejó detenido Chrome MCP y los servidores como pidió el usuario; no se alteró la suite. Login/registro/recuperación solo navegan o abren snackbars en sus callbacks, por lo que no se añadieron marcas de detección innecesarias ahí.
 
+En esta continuación, se extendió el mismo patrón a errores de validación de perfil, empresa, oficina, reward y cambio de contraseña; las callbacks HTTP que cargan planes, perfil y empresa ahora notifican explícitamente tras mutar estado visible. En cargas fallidas de avatar/logo se limpia además el indicador de carga antes de notificar. Build de desarrollo exit 0. Karma se mantiene detenido por la solicitud de no reactivar Chrome MCP; Rails no está disponible para probar las respuestas reales.
+
 ## Iteración 20 — Declaraciones y poda de NgModules (2026-11-10)
 
 Se aplicó el primer modo del schematic oficial `@angular/core:standalone` (`convert-to-standalone`) sobre Angular 22.2.5. Los componentes, directivas y pipes declarados en los módulos pasan a ser standalone (standalone es el default en Angular 22); los módulos conservan temporalmente esas clases en `imports`, manteniendo su API y composición hasta las fases `prune-ng-modules` y `standalone-bootstrap`. `AppComponent` se conserva explícitamente `standalone: false` para seguir siendo bootstrappeado por `AppModule` durante este checkpoint.

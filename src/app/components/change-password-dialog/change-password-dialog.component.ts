@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Inject, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { CustomersComponent } from 'src/app/pages/admin/customers/customers.component';
 import { UserService } from '../../services';
@@ -25,6 +25,7 @@ export class ChangePasswordDialogComponent implements OnInit{
     private translate: TranslateService,
     public dialogRef: MatDialogRef<CustomersComponent>,
     private fb: UntypedFormBuilder,
+    private changeDetector: ChangeDetectorRef,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
@@ -61,6 +62,7 @@ export class ChangePasswordDialogComponent implements OnInit{
     for (let key in resp.error) {
       this.passwordFormGroup.controls[key].setErrors({'backendError': resp.error[key]});
     }
+    this.changeDetector.markForCheck();
   }
 
 }

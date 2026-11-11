@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Inject, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CardUserComponent } from '../card-user/card-user.component';
@@ -31,6 +31,7 @@ export class UpdatePasswordFormComponent implements OnInit{
     private message: MatSnackBar,
     private authService: AuthService,
     private translate: TranslateService,
+    private changeDetector: ChangeDetectorRef,
     public dialogRef: MatDialogRef<CardUserComponent>,
     @Inject(MAT_DIALOG_DATA) public password: Password
   ) {}
@@ -71,6 +72,7 @@ export class UpdatePasswordFormComponent implements OnInit{
     for (let key in resp.error.errors) {
       this.passwordForm.controls[key].setErrors({'backendError': resp.error.errors[key]});
     }
+    this.changeDetector.markForCheck();
   }
 
   toggleShowPassword(field) {

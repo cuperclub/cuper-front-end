@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfileFormComponent } from '../profile-form/profile-form.component';
 import { UpdatePasswordFormComponent } from '../update-password-form/update-password-form.component';
@@ -31,7 +31,8 @@ export class CardUserComponent implements OnInit {
     private userService: UserService,
     private message: MatSnackBar,
     private translate: TranslateService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private changeDetector: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -77,14 +78,17 @@ export class CardUserComponent implements OnInit {
       });
       this.updateUserData(resp);
       this.isLodingImage = false;
+      this.changeDetector.markForCheck();
     });
   }
 
   onError(resp): void {
+    this.isLodingImage = false;
     let errors = resp.error ? resp.error.errors : {};
     this.message.open(errors, '', {
       duration: 2000
     });
+    this.changeDetector.markForCheck();
   }
 
   updateUserData = (data) => {

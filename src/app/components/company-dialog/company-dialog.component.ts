@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Inject, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { CompanyCardComponent } from '../company-card/company-card.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -33,6 +33,7 @@ export class CompanyDialogComponent implements OnInit {
     private message: MatSnackBar,
     private translate: TranslateService,
     private _formBuilder: UntypedFormBuilder,
+    private changeDetector: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -95,6 +96,7 @@ export class CompanyDialogComponent implements OnInit {
     for (let key in resp.error) {
       this.companyFormGroup.controls[key].setErrors({'backendError': resp.error[key]});
     }
+    this.changeDetector.markForCheck();
   }
 
   onListenerFile = (uploadFile) => this.uploadFile = uploadFile;

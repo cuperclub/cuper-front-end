@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardOfficeComponent } from '../../components/card-office/card-office.component';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
@@ -35,6 +35,7 @@ export class OfficeFormComponent implements OnInit {
     private officeService: OfficeService,
     private message: MatSnackBar,
     private translate: TranslateService,
+    private changeDetector: ChangeDetectorRef,
     @Inject(MAT_DIALOG_DATA) public data
   ) { }
 
@@ -108,6 +109,7 @@ export class OfficeFormComponent implements OnInit {
     for (let key in resp.error) {
       this.officeForm.controls[key].setErrors({'backendError': resp.error[key]});
     }
+    this.changeDetector.markForCheck();
   }
 
   onListerMapPosition(coordinates) {
