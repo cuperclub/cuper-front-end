@@ -7,7 +7,38 @@
     },
     "signin": "Sign in",
     "forgot_password": "Forgot your password?",
-    "create_account": "Don't have an account? Create One!"
+    "create_account": "Don't have an account?",
+    "register": "Create one",
+    "login-facebook": "Continue with Facebook",
+    "login-google": "Continue with Google"
+  },
+  "register": {
+    "title": "Create an account",
+    "form": {
+      "name": "Full name",
+      "email": "Email address",
+      "password": "Password"
+    },
+    "create": "Create account",
+    "already_account": "Already have an account? Sign in",
+    "condition": "Or",
+    "login-facebook": "Continue with Facebook",
+    "login-google": "Continue with Google"
+  },
+  "recover_password": {
+    "title": "Recover password",
+    "form": {
+      "email": "Email address"
+    },
+    "recover": "Send recovery instructions"
+  },
+  "reset_password": {
+    "title": "Reset password",
+    "form": {
+      "password": "New password",
+      "password_confirmation": "Confirm password"
+    },
+    "change": "Change password"
   },
   "common": {
     "update_data": "Update Data",

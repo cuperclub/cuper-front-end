@@ -58,6 +58,12 @@ También se agregaron notificaciones a la carga asíncrona de oficinas, empleado
 - Guards admin/partner/cashier y guest ahora retornan `UrlTree` en vez de llamar `navigateByUrl` como efecto secundario; errores de validación de token redirigen a login. Navegación privada sin sesión probada a 390×844, termina en `/login` sin overflow. Build exit 0 y Karma/Jasmine 8/8. Siguen los 404 de las dos fuentes en el servidor de pruebas y warnings conocidos de Sass/Browserslist.
 - En smoke test UI aislado (host `localhost`, para mantener el origen CORS esperado) el login llegó a `/admin/companies`. La base vacía reveló que el componente asumía al menos una empresa; ahora tolera lista vacía. Se adaptó el shell admin a móvil: `/admin/companies` a 390×844 quedó con `scrollWidth=390` y sin errores de consola. La base se verificó de nuevo vacía. Build y Karma/Jasmine finales pasan (8/8); persisten warnings Sass/Browserslist y fuentes en Karma.
 
+## Traducciones públicas EN (2026-11-12)
+
+- El catálogo inglés carecía de las claves usadas por login, registro, recuperación y reset de contraseña; la UI mostraba nombres como `register.create`. Se añadieron traducciones EN para esas cuatro vistas sin cambiar rutas ni llamadas API.
+- Verificación visual en host aislado `localhost:4200`: las cuatro vistas muestran texto inglés legible y sin claves sin resolver; no hay overflow a 1200px. Build exit 0 y Karma/Jasmine 8/8.
+- Continúan identificadas advertencias de fuentes en Karma (`/base/media/Lato-Regular.woff` y `circular-book.woff`), Sass y Browserslist; no reproducen en las vistas de desarrollo.
+
 ## Iteración 20 — Declaraciones y poda de NgModules (2026-11-10)
 
 Se aplicó el primer modo del schematic oficial `@angular/core:standalone` (`convert-to-standalone`) sobre Angular 22.2.5. Los componentes, directivas y pipes declarados en los módulos pasan a ser standalone (standalone es el default en Angular 22); los módulos conservan temporalmente esas clases en `imports`, manteniendo su API y composición hasta las fases `prune-ng-modules` y `standalone-bootstrap`. `AppComponent` se conserva explícitamente `standalone: false` para seguir siendo bootstrappeado por `AppModule` durante este checkpoint.
