@@ -192,7 +192,7 @@ export class AuthService {
     this.storageSet('uid', authData.uid);
   }
 
-  private clearAuthData(): void {
+  clearAuthData(): void {
     ['accessToken', 'client', 'expiry', 'tokenType', 'uid'].forEach(key => this.storageRemove(key));
     this.authData = null;
     this.userData = null;

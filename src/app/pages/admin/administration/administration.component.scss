@@ -2,7 +2,7 @@
 
 :host {
   position: absolute;
-  display: table;
+  display: block;
   height: 100%;
   width: 100%;
 }
@@ -164,6 +164,8 @@
 
 .main-view {
   display: flex;
+  width: 100%;
+  min-width: 0;
   height: 100%;
 
   .left-panel {
@@ -204,7 +206,9 @@
   }
 
   .render-container {
-    width: 100%;
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
     height: 100%;
 
     .loader {
@@ -213,6 +217,43 @@
       height: 100%;
       justify-content: center;
       align-items: center;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    min-width: 0;
+    padding: 0 1rem;
+
+    .logo-container {
+      width: 8rem;
+      padding-left: 0;
+
+      .logo {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .main-view {
+    height: calc(100vh - 3.7rem);
+
+    .left-panel {
+      box-sizing: border-box;
+      flex: 0 0 10rem;
+      width: 10rem;
+      padding: 1rem 0.5rem 0;
+
+      .tabs {
+        mat-icon {
+          padding-left: 0;
+        }
+
+        span {
+          padding: 0.75rem 0.5rem;
+        }
+      }
     }
   }
 }

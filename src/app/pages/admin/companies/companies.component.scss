@@ -20,7 +20,8 @@
 
   .table-view {
     display: flex;
-    width: 50rem;
+    width: 100%;
+    max-width: 50rem;
 
     .table {
       width: 60%;
@@ -114,6 +115,19 @@
       .buttons {
         text-align: end;
       }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .companies-container .table-view {
+    flex-direction: column;
+    gap: 1rem;
+
+    .table,
+    .content-row {
+      width: 100%;
+      box-sizing: border-box;
     }
   }
 }

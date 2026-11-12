@@ -50,6 +50,14 @@ También se agregaron notificaciones a la carga asíncrona de oficinas, empleado
 - En Chrome MCP a 390×844, login/registro/recuperación renderizan sin overflow horizontal. Registro/recuperación siguen mostrando claves de traducción sin resolver (hallazgo existente). Navegar a `/home/dashboard` sin sesión reveló una ruta vacía; se ajustó `authGuard` para devolver `UrlTree('/login')` en vez de navegar lateralmente a `/`, preservando el destino final previsto. Después, la redirección termina correctamente en `/login`, sin errores de consola.
 - Servidores Angular, Rails y PostgreSQL quedan activos por solicitud del usuario; Karma se cierra al terminar la suite.
 
+## Seguimiento de guards y autenticación (2026-11-12)
+
+- Tras actualizar `feat/backend-modernization` con `git pull --ff-only`, estaba al día en `7a3b9db` y sin cambios locales.
+- La base `cuperclub-backend_development` respondió a `SELECT 1`; `/up` dio 200. Se probó `sign_in` y `validate_token` (200) con usuario admin temporal y `AppSetting`/`Plan` mínimos, creados directamente sin registro ni correo. Todos los registros temporales se eliminaron; la base queda sin users, plans ni app_settings.
+- El GET autenticado `/api/admin/categories` devuelve HTTP 201 porque `Api::Admin::CategoriesController#index` establece explícitamente `status: :created`; no se cambió el backend ni el contrato.
+- Guards admin/partner/cashier y guest ahora retornan `UrlTree` en vez de llamar `navigateByUrl` como efecto secundario; errores de validación de token redirigen a login. Navegación privada sin sesión probada a 390×844, termina en `/login` sin overflow. Build exit 0 y Karma/Jasmine 8/8. Siguen los 404 de las dos fuentes en el servidor de pruebas y warnings conocidos de Sass/Browserslist.
+- En smoke test UI aislado (host `localhost`, para mantener el origen CORS esperado) el login llegó a `/admin/companies`. La base vacía reveló que el componente asumía al menos una empresa; ahora tolera lista vacía. Se adaptó el shell admin a móvil: `/admin/companies` a 390×844 quedó con `scrollWidth=390` y sin errores de consola. La base se verificó de nuevo vacía. Build y Karma/Jasmine finales pasan (8/8); persisten warnings Sass/Browserslist y fuentes en Karma.
+
 ## Iteración 20 — Declaraciones y poda de NgModules (2026-11-10)
 
 Se aplicó el primer modo del schematic oficial `@angular/core:standalone` (`convert-to-standalone`) sobre Angular 22.2.5. Los componentes, directivas y pipes declarados en los módulos pasan a ser standalone (standalone es el default en Angular 22); los módulos conservan temporalmente esas clases en `imports`, manteniendo su API y composición hasta las fases `prune-ng-modules` y `standalone-bootstrap`. `AppComponent` se conserva explícitamente `standalone: false` para seguir siendo bootstrappeado por `AppModule` durante este checkpoint.

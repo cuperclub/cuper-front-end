@@ -8,8 +8,8 @@ export const isntSignedInGuard: CanActivateFn = () => {
   const canViewRoute = !authService.userSignedIn();
 
   if (!canViewRoute) {
-    router.navigateByUrl('/home/dashboard');
+    return router.parseUrl('/home/dashboard');
   }
 
-  return canViewRoute;
+  return true;
 };

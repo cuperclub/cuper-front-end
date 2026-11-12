@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivateFn, Router, UrlTree } from '@angular/router';
 import { AuthService, UserService } from '../../services';
 
 export const partnerGuard: CanActivateFn = () => {
@@ -7,17 +7,16 @@ export const partnerGuard: CanActivateFn = () => {
   const authService = inject(AuthService);
   const userService = inject(UserService);
 
-  const redirect = (): boolean => {
+  const redirect = (): boolean | UrlTree => {
     const isPartner = userService.userIsPartner();
     if (!isPartner) {
-      router.navigateByUrl('/home/dashboard');
+      return router.parseUrl('/home/dashboard');
     }
-    return isPartner;
+    return true;
   };
 
   if (!authService.userSignedIn()) {
-    router.navigateByUrl('/login');
-    return false;
+    return router.parseUrl('/login');
   }
 
   if (authService.currentUserData) {
@@ -26,5 +25,5 @@ export const partnerGuard: CanActivateFn = () => {
 
   return userService.validateToken()
     .then(() => redirect())
-    .catch(() => false);
+    .catch(() => router.parseUrl('/login'));
 };

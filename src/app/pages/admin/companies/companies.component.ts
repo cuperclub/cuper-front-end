@@ -21,7 +21,7 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class CompaniesComponent implements OnInit {
   companies: Company[];
-  companySelected: Company = {};
+  companySelected: Company | null = null;
   optionsStatus: any = [];
   indexSelected: number = 0;
 
@@ -33,12 +33,15 @@ export class CompaniesComponent implements OnInit {
 
   ngOnInit() {
     this.companyService.getCompanies().subscribe(resp => {
-      this.companies = resp['companies'].map(company => {
+      const companies = resp['companies'] || [];
+      this.companies = companies.map(company => {
         return this.formatData(company);
       });
-      this.companySelected = resp['companies'][0];
-      this.companySelected.logo = this.getAvatar(this.companySelected);
-      this.optionsBuild();
+      this.companySelected = companies[0] || null;
+      if (this.companySelected) {
+        this.companySelected.logo = this.getAvatar(this.companySelected);
+        this.optionsBuild();
+      }
     });
   }
 
@@ -54,7 +57,7 @@ export class CompaniesComponent implements OnInit {
   }
 
   optionsBuild () {
-    let currentStatus = this.companySelected['status'];
+    let currentStatus = this.companySelected?.['status'];
 
     this.optionsStatus = [
       {

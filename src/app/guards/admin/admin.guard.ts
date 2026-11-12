@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivateFn, Router, UrlTree } from '@angular/router';
 import { AuthService, UserService, UserTokenData } from '../../services';
 
 export const adminGuard: CanActivateFn = () => {
@@ -7,17 +7,16 @@ export const adminGuard: CanActivateFn = () => {
   const authService = inject(AuthService);
   const userService = inject(UserService);
 
-  const redirect = (userData: UserTokenData): boolean => {
+  const redirect = (userData: UserTokenData): boolean | UrlTree => {
     const isAdmin = userData.is_admin;
     if (!isAdmin) {
-      router.navigateByUrl('/home/dashboard');
+      return router.parseUrl('/home/dashboard');
     }
-    return isAdmin;
+    return true;
   };
 
   if (!authService.userSignedIn()) {
-    router.navigateByUrl('/login');
-    return false;
+    return router.parseUrl('/login');
   }
 
   if (authService.currentUserData) {
@@ -26,5 +25,5 @@ export const adminGuard: CanActivateFn = () => {
 
   return userService.validateToken()
     .then(userData => redirect(userData))
-    .catch(() => false);
+    .catch(() => router.parseUrl('/login'));
 };

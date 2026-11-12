@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivateFn, Router, UrlTree } from '@angular/router';
 import { AuthService } from '../../services';
 
 export const authGuard: CanActivateFn = () => {
@@ -14,10 +14,13 @@ export const authGuard: CanActivateFn = () => {
     return true;
   }
 
-  return new Promise<boolean>((resolve, reject) => {
+  return new Promise<boolean | UrlTree>(resolve => {
     authService.validateToken().subscribe(
       () => resolve(true),
-      () => reject(false)
+      () => {
+        authService.clearAuthData();
+        resolve(router.parseUrl('/login'));
+      }
     );
   });
 };
