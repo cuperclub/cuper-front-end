@@ -184,6 +184,8 @@ Secuencia de major: 7→8→9→10→11→12→13→14→15→16→17→18→19�
 
 **Listas async de oficinas/cajeros/promociones (2026-11-11):** las cargas HTTP y actualizaciones tras cerrar diálogos notifican la vista explícitamente. Build pasa; no se ejecutó Karma por mantener servidores/MCP detenidos.
 
+**Smoke test local (2026-11-11/12):** Angular/Rails/PostgreSQL iniciados. Base development vacía migrada con autorización, sin seeds/correos; `validate_token` retorna 401 sin sesión. Build y Karma 8/8. Chrome a 390px sin overflow; las claves de traducción sin resolver continúan. El guard auth ahora retorna `UrlTree('/login')` y corrige la navegación vacía en rutas privadas. Queda pendiente decidir sobre la base `cuperclub-backend_test` vacía que `rails db:create` también creó, y probar roles/endpoints con datos/cuentas aprobados.
+
 **Checkpoint Angular 14 (2026-11-09):** framework 14.3.0, CLI 14.2.13 y Material/CDK 14.2.7. Migraciones oficiales de formularios Untyped y target ES2020 para preservar compatibilidad. Build exit 0, tests existentes 8/8 y navegador desktop/móvil con cuatro roles sin errores de consola. Mapbox por variable de entorno preservado; CommonJS y otras deprecaciones siguen documentados. Próxima iteración: Angular 15, prestando atención a la transición Material/MDC.
 
 **Checkpoint Angular 13 (2026-11-09):** framework 13.4.0, CLI 13.3.11, Material/CDK 13.3.9 y TypeScript 4.6.4. Build exit 0, tests 8/8 en Chrome/Karma y navegador desktop/móvil con cuatro roles, sin errores/warnings de consola. Migraciones oficiales de IE/entryComponents/TestBed aplicadas; contrato Rails intacto. Builder TSLint retirado por CLI; script conserva invocación directa, lint legacy falla y requiere futura migración ESLint. Próxima iteración independiente: Angular 14.

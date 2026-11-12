@@ -41,6 +41,15 @@ En esta continuación, se extendió el mismo patrón a errores de validación de
 
 También se agregaron notificaciones a la carga asíncrona de oficinas, empleados/solicitudes de cajero y promociones, así como a los cierres de diálogos que actualizan esas listas. Build de desarrollo exit 0. No se inició ningún servidor ni Chrome MCP y no se ejecutó Karma.
 
+## Smoke test con servicios locales (2026-11-11/12)
+
+- Angular dev server en `127.0.0.1:4200`, Rails 8.0.5.1 en `127.0.0.1:3000` y PostgreSQL host en `127.0.0.1:5432` arrancados a petición del usuario. No se modificó código Rails ni se cargaron seeds/fixtures ni se enviaron correos.
+- Aprobada la creación de `cuperclub-backend_development` vacío y `db:migrate`; `SELECT 1` funciona y `User.count` da 0. `GET /auth/validate_token` responde 401 sin credenciales, por lo que no se valida ningún rol ni flujo autenticado.
+- `rails db:create` creó además `cuperclub-backend_test` vacío; no se ejecutó test DB ni se eliminó esa base. Se requiere decisión del usuario sobre conservarla o eliminarla.
+- Build development exit 0; Karma/Jasmine 8/8 tras el cambio del guard de auth. Persisten los 404 de fuentes `Lato-Regular.woff`/`circular-book.woff` y warnings conocidos Sass/Browserslist.
+- En Chrome MCP a 390×844, login/registro/recuperación renderizan sin overflow horizontal. Registro/recuperación siguen mostrando claves de traducción sin resolver (hallazgo existente). Navegar a `/home/dashboard` sin sesión reveló una ruta vacía; se ajustó `authGuard` para devolver `UrlTree('/login')` en vez de navegar lateralmente a `/`, preservando el destino final previsto. Después, la redirección termina correctamente en `/login`, sin errores de consola.
+- Servidores Angular, Rails y PostgreSQL quedan activos por solicitud del usuario; Karma se cierra al terminar la suite.
+
 ## Iteración 20 — Declaraciones y poda de NgModules (2026-11-10)
 
 Se aplicó el primer modo del schematic oficial `@angular/core:standalone` (`convert-to-standalone`) sobre Angular 22.2.5. Los componentes, directivas y pipes declarados en los módulos pasan a ser standalone (standalone es el default en Angular 22); los módulos conservan temporalmente esas clases en `imports`, manteniendo su API y composición hasta las fases `prune-ng-modules` y `standalone-bootstrap`. `AppComponent` se conserva explícitamente `standalone: false` para seguir siendo bootstrappeado por `AppModule` durante este checkpoint.
