@@ -1,11 +1,14 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { CompanyCardComponent } from '../company-card/company-card.component';
-import { MatSnackBar } from '@angular/material';
-import { TranslateService } from '@ngx-translate/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CompanyService } from '../../services';
 import { Company } from '../../models';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { AvatarFileComponent } from '../avatar-file/avatar-file.component';
+import { CompanyFormComponent } from '../company-form/company-form.component';
+import { MatButton } from '@angular/material/button';
 
 interface FileOptions {
   file?: File;
@@ -13,12 +16,14 @@ interface FileOptions {
 }
 
 @Component({
-  selector: 'cuper-company-dialog',
-  templateUrl: './company-dialog.component.html',
-  styleUrls: ['./company-dialog.component.scss']
+    selector: 'cuper-company-dialog',
+    templateUrl: './company-dialog.component.html',
+    styleUrls: ['./company-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [AvatarFileComponent, CompanyFormComponent, MatDialogActions, MatButton, MatDialogClose, TranslateModule]
 })
 export class CompanyDialogComponent implements OnInit {
-  companyFormGroup: FormGroup;
+  companyFormGroup: UntypedFormGroup;
   uploadFile: FileOptions;
 
   constructor(
@@ -27,7 +32,8 @@ export class CompanyDialogComponent implements OnInit {
     private companyService: CompanyService,
     private message: MatSnackBar,
     private translate: TranslateService,
-    private _formBuilder: FormBuilder,
+    private _formBuilder: UntypedFormBuilder,
+    private changeDetector: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -90,6 +96,7 @@ export class CompanyDialogComponent implements OnInit {
     for (let key in resp.error) {
       this.companyFormGroup.controls[key].setErrors({'backendError': resp.error[key]});
     }
+    this.changeDetector.markForCheck();
   }
 
   onListenerFile = (uploadFile) => this.uploadFile = uploadFile;

@@ -1,41 +1,29 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-import { UserService, UserTokenData } from '../../services';
-import { AngularTokenService } from 'angular-token';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router, UrlTree } from '@angular/router';
+import { AuthService, UserService, UserTokenData } from '../../services';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AdminGuard implements CanActivate {
+export const adminGuard: CanActivateFn = () => {
+  const router = inject(Router);
+  const authService = inject(AuthService);
+  const userService = inject(UserService);
 
-  constructor(
-    private router: Router,
-    private tokenService: AngularTokenService,
-    private userService: UserService
-  ) { }
-
-  canActivate(): boolean | Promise<boolean> {
-    const userSignedIn = this.tokenService.userSignedIn();
-    if(userSignedIn) {
-      if(this.tokenService.currentUserData) {
-        return this.redirect(this.tokenService.currentUserData);
-      } else {
-        return this.userService.validateToken().then((userData) => {
-          return this.redirect(userData);
-        }).catch(() => false);
-      }
-    } else {
-      this.router.navigateByUrl('/login');
-      return false;
-    }
-  }
-
-  redirect(userData) {
-    const currentUser: UserTokenData = userData;
-    const isAdmin = currentUser.is_admin;
+  const redirect = (userData: UserTokenData): boolean | UrlTree => {
+    const isAdmin = userData.is_admin;
     if (!isAdmin) {
-      this.router.navigateByUrl('/home/dashboard');
+      return router.parseUrl('/home/dashboard');
     }
-    return isAdmin;
+    return true;
+  };
+
+  if (!authService.userSignedIn()) {
+    return router.parseUrl('/login');
   }
-}
+
+  if (authService.currentUserData) {
+    return redirect(authService.currentUserData);
+  }
+
+  return userService.validateToken()
+    .then(userData => redirect(userData))
+    .catch(() => router.parseUrl('/login'));
+};

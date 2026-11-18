@@ -1,39 +1,29 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-import { UserService } from '../../services';
-import { AngularTokenService } from 'angular-token';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router, UrlTree } from '@angular/router';
+import { AuthService, UserService } from '../../services';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class CashierGuard implements CanActivate {
-  constructor(
-    private router: Router,
-    private tokenService: AngularTokenService,
-    private userService: UserService
-  ) { }
+export const cashierGuard: CanActivateFn = () => {
+  const router = inject(Router);
+  const authService = inject(AuthService);
+  const userService = inject(UserService);
 
-  canActivate(): boolean | Promise<boolean> {
-    const userSignedIn = this.tokenService.userSignedIn();
-    if(userSignedIn) {
-      if(this.tokenService.currentUserData) {
-        return this.redirect();
-      } else {
-        return this.userService.validateToken()
-          .then(() => this.redirect())
-          .catch(() => false);
-      }
-    } else {
-      this.router.navigateByUrl('/login');
-      return false;
+  const redirect = (): boolean | UrlTree => {
+    const isCashier = userService.userIsCashier();
+    if (!isCashier) {
+      return router.parseUrl('/home/dashboard');
     }
+    return true;
+  };
+
+  if (!authService.userSignedIn()) {
+    return router.parseUrl('/login');
   }
 
-  redirect() {
-    const isCashier = this.userService.userIsCashier();
-    if(!isCashier){
-      this.router.navigateByUrl('/home/dashboard');
-    }
-    return isCashier;
+  if (authService.currentUserData) {
+    return redirect();
   }
-}
+
+  return userService.validateToken()
+    .then(() => redirect())
+    .catch(() => router.parseUrl('/login'));
+};

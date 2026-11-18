@@ -1,5 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { PaginationDefinition } from '../table/table.component';
+import { MatCard } from '@angular/material/card';
+import { NgFor, NgIf } from '@angular/common';
+import { AvatarComponent } from '../avatar/avatar.component';
+import { MatPaginator } from '@angular/material/paginator';
 
 interface OptionRow {
   title: string;
@@ -10,9 +14,11 @@ interface OptionRow {
 }
 
 @Component({
-  selector: 'cuper-table-card',
-  templateUrl: './table-card.component.html',
-  styleUrls: ['./table-card.component.scss']
+    selector: 'cuper-table-card',
+    templateUrl: './table-card.component.html',
+    styleUrls: ['./table-card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [MatCard, NgFor, AvatarComponent, NgIf, MatPaginator]
 })
 export class TableCardComponent implements OnInit {
   @Input() items: OptionRow[];

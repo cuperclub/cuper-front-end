@@ -1,11 +1,15 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CardUserComponent } from '../card-user/card-user.component';
-import { MatSnackBar } from '@angular/material';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService, UtilsService } from 'src/app/services';
 import { User } from '../../models';
+import { AvatarFileComponent } from '../avatar-file/avatar-file.component';
+import { MatFormField, MatInput, MatError } from '@angular/material/input';
+import { ControlMessagesComponent } from '../control-messages/control-messages.component';
+import { MatButton } from '@angular/material/button';
 
 interface FileOptions {
   file?: File;
@@ -17,20 +21,23 @@ interface DataOptions {
 }
 
 @Component({
-  selector: 'cuper-profile-form',
-  templateUrl: './profile-form.component.html',
-  styleUrls: ['./profile-form.component.scss']
+    selector: 'cuper-profile-form',
+    templateUrl: './profile-form.component.html',
+    styleUrls: ['./profile-form.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [FormsModule, ReactiveFormsModule, AvatarFileComponent, MatFormField, MatInput, MatError, ControlMessagesComponent, MatButton, TranslateModule]
 })
 export class ProfileFormComponent implements OnInit {
-  profileForm: FormGroup;
+  profileForm: UntypedFormGroup;
   uploadFile: FileOptions;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private userService: UserService,
     private utilsService: UtilsService,
     private message: MatSnackBar,
     private translate: TranslateService,
+    private changeDetector: ChangeDetectorRef,
     public dialogRef: MatDialogRef<CardUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DataOptions
   ) {}
@@ -75,6 +82,7 @@ export class ProfileFormComponent implements OnInit {
         for (let key in error) {
           this.profileForm.controls[key].setErrors({'backendError': error[key]});
         }
+        this.changeDetector.markForCheck();
       }
     );
   }

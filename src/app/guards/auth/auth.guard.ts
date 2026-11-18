@@ -1,34 +1,26 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { AngularTokenService } from 'angular-token';
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthGuard implements CanActivate {
-  constructor(
-    private tokenService: AngularTokenService,
-    private router: Router
-  ){ }
+import { inject } from '@angular/core';
+import { CanActivateFn, Router, UrlTree } from '@angular/router';
+import { AuthService } from '../../services';
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Promise<any> | boolean {
-      let isAuthenticated = this.tokenService.userSignedIn();
-      if(!isAuthenticated){
-        this.router.navigateByUrl('');
-        return false;
+export const authGuard: CanActivateFn = () => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
+
+  if (!authService.userSignedIn()) {
+    return router.parseUrl('/login');
+  }
+
+  if (authService.currentUserData) {
+    return true;
+  }
+
+  return new Promise<boolean | UrlTree>(resolve => {
+    authService.validateToken().subscribe(
+      () => resolve(true),
+      () => {
+        authService.clearAuthData();
+        resolve(router.parseUrl('/login'));
       }
-      const hasUserData = this.tokenService.currentUserData ? true : this.validateToken();
-      return hasUserData;
-  }
-
-  validateToken() {
-    let promise = new Promise((resolve, reject) => {
-      this.tokenService.validateToken().subscribe(
-        () =>  resolve(true),
-        () =>  reject(false)
-      )
-    });
-    return promise;
-  }
-}
+    );
+  });
+};

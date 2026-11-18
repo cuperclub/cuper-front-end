@@ -1,17 +1,22 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { CompanyCardComponent } from '../company-card/company-card.component';
 import { Promotion } from 'src/app/models';
 import { PromotionService } from 'src/app/services';
 import { OutputTransactionService } from '../../services';
-import { MatSnackBar } from '@angular/material';
-import { TranslateService } from '@ngx-translate/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { UtilsService } from 'src/app/services';
+import { NgIf } from '@angular/common';
+import { SquareSelectComponent } from '../square-select/square-select.component';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  selector: 'cuper-output-transaction-form',
-  templateUrl: './output-transaction-form.component.html',
-  styleUrls: ['./output-transaction-form.component.scss']
+    selector: 'cuper-output-transaction-form',
+    templateUrl: './output-transaction-form.component.html',
+    styleUrls: ['./output-transaction-form.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [NgIf, SquareSelectComponent, MatDialogActions, MatButton, MatDialogClose, TranslateModule]
 })
 export class OutputTransactionFormComponent implements OnInit {
   rewards: Promotion [];
@@ -24,11 +29,15 @@ export class OutputTransactionFormComponent implements OnInit {
     private message: MatSnackBar,
     private translate: TranslateService,
     private utilsService: UtilsService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private changeDetector: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
-    this.promotionService.getMyPromotions().subscribe(resp => this.rewards = resp['promotions']);
+    this.promotionService.getMyPromotions().subscribe(resp => {
+      this.rewards = resp['promotions'];
+      this.changeDetector.markForCheck();
+    });
   }
 
   onSelectReward = (reward) => this.selectedReward = reward;

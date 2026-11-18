@@ -4,7 +4,9 @@ import {
   OnInit,
   Output,
   ElementRef,
-  EventEmitter } from '@angular/core';
+  EventEmitter,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
 import { environment } from '../../../environments/environment';
 
@@ -14,9 +16,10 @@ interface Coordinate {
 }
 
 @Component({
-  selector: 'cuper-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+    selector: 'cuper-map',
+    templateUrl: './map.component.html',
+    styleUrls: ['./map.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MapComponent implements OnInit {
   @Input() coordinate: Coordinate;

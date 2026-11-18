@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularTokenService } from 'angular-token';
-import { Router } from '@angular/router';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { AuthService, UserService, UtilsService, PusherService } from '../../services';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { User, UserStatus, Notification } from '../../models';
-import { UserService, UtilsService, PusherService } from '../../services';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { NgIf, NgClass, NgFor, AsyncPipe } from '@angular/common';
+import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { MatIcon } from '@angular/material/icon';
+import { AvatarComponent } from '../../components/avatar/avatar.component';
+import { MatIconButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
+import { LoaderComponent } from '../../components/loader/loader.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'cuper-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+    selector: 'cuper-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [RouterLink, NgIf, MatMenuTrigger, NgClass, MatIcon, MatMenu, NgFor, MatMenuItem, AvatarComponent, MatIconButton, MatTooltip, InfiniteScrollDirective, RouterLinkActive, RouterOutlet, LoaderComponent, AsyncPipe, TranslateModule]
 })
 export class HomeComponent implements OnInit {
   updatedView: boolean = false;
@@ -22,11 +32,12 @@ export class HomeComponent implements OnInit {
   disabledInfiniteScroll = false;
 
   constructor(
-    private tokenService: AngularTokenService,
+    private authService: AuthService,
     private router: Router,
     private userService: UserService,
     private utilsService: UtilsService,
     private message: MatSnackBar,
+    private changeDetector: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -45,12 +56,13 @@ export class HomeComponent implements OnInit {
       });
       this.totalPendingNotifications = this.totalPendingNotifications + 1;
       current_user.pending_notifications = current_user.pending_notifications + 1;
-      this.userService.userDataEdited = current_user;
+      this.userService.updateCurrentUserData(current_user);
+      this.changeDetector.markForCheck();
     });
   }
 
   logOut() {
-    this.tokenService.signOut().subscribe(resp =>{
+    this.authService.signOut().subscribe(resp =>{
       if(resp.success){
         this.router.navigateByUrl('');
       }
@@ -69,10 +81,13 @@ export class HomeComponent implements OnInit {
       this.userService.updateCompanyIdView(company.id).subscribe(() =>{
         const currentUser = this.userService.getCurrentUserData();
         currentUser.current_company_id = company.id;
-        this.userService.observerData.next(currentUser);
-        this.userService.userDataEdited = currentUser;
+        this.userService.updateCurrentUserData(currentUser);
         this.updatedView = true;
-        setTimeout(() => { this.updatedView = false }, 1000);
+        this.changeDetector.markForCheck();
+        setTimeout(() => {
+          this.updatedView = false;
+          this.changeDetector.markForCheck();
+        }, 1000);
       });
     }
   }
@@ -101,6 +116,7 @@ export class HomeComponent implements OnInit {
       if (current_user.pending_notifications > 0){
         this.userService.readNotifications().subscribe((resp)=>{
           this.totalPendingNotifications = this.totalPendingNotifications > 0 ? this.totalPendingNotifications - resp['total'] : this.totalPendingNotifications;
+          this.changeDetector.markForCheck();
           this.getMyNotifications();
         })
       }else{
@@ -113,6 +129,7 @@ export class HomeComponent implements OnInit {
     this.userService.getNotifications(this.currentPage, this.initItemsPerPage).subscribe((data) => {
       this.notifications = this.buildNotifications(data['notifications']);
       this.loadNotifications = true;
+      this.changeDetector.markForCheck();
     });
   }
 
@@ -122,6 +139,7 @@ export class HomeComponent implements OnInit {
       const newNotifications = this.buildNotifications(data['notifications']);
       this.notifications = this.notifications.concat(newNotifications);
       this.disabledInfiniteScroll = this.notifications.length === data['meta']['total_count'];
+      this.changeDetector.markForCheck();
     });
   }
 
@@ -175,6 +193,7 @@ export class HomeComponent implements OnInit {
     let updateNotification = resp['notification'] || {};
     this.notifications[this.findIndexNotification(updateNotification.id)].status = updateNotification.status;
     this.totalPendingNotifications = this.totalPendingNotifications > 0 ? this.totalPendingNotifications - 1 : this.totalPendingNotifications;
+    this.changeDetector.markForCheck();
   }
 
   isCompanyAproved() {

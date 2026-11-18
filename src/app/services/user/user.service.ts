@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { AngularTokenService } from 'angular-token';
-import { User, InputTransaction } from '../../models';
-import { Observable, Subscriber } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
+import type { User, InputTransaction } from '../../models';
+import { Observable, Subject } from 'rxjs';
+import { startWith } from 'rxjs/operators';
 
 interface UserProfile extends User{
   current_company_id?: number;
@@ -20,21 +21,25 @@ export interface UserTokenData extends User {
 })
 export class UserService {
   apiURL = environment.apiBase;
-  observerData: Subscriber<any>;
+  private userDataChanges = new Subject<UserProfile>();
   userDataEdited: UserProfile;
 
   constructor(
     private httpClient: HttpClient,
-    private tokenService: AngularTokenService) { }
+    private authService: AuthService) { }
 
   public getCurrentUserData() {
-    const currentUser: UserProfile = {...this.tokenService.currentUserData, ...this.userDataEdited};
-    if(this.observerData) this.observerData.next(currentUser);
+    const currentUser: UserProfile = {...this.authService.currentUserData, ...this.userDataEdited};
     return currentUser;
   }
 
   public getObservableUserData() {
-    return new Observable(observer => this.observerData = observer);
+    return this.userDataChanges.pipe(startWith(this.getCurrentUserData()));
+  }
+
+  public updateCurrentUserData(userData: UserProfile): void {
+    this.userDataEdited = userData;
+    this.userDataChanges.next(userData);
   }
 
   public updateMyData(userInput: FormData): Observable<User>{
@@ -81,7 +86,7 @@ export class UserService {
 
   public validateToken() {
     let promise: Promise<any> = new Promise((resolve, reject) => {
-      this.tokenService.validateToken().subscribe(
+      this.authService.validateToken().subscribe(
         (resp) =>  resolve(resp['data']),
         () =>  reject(false)
       )

@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { NgStyle, NgIf } from '@angular/common';
+import { LoaderComponent } from '../loader/loader.component';
 
 interface Box {
   height: string;
@@ -11,9 +13,11 @@ interface FileOptions {
 }
 
 @Component({
-  selector: 'cuper-avatar-file',
-  templateUrl: './avatar-file.component.html',
-  styleUrls: ['./avatar-file.component.scss']
+    selector: 'cuper-avatar-file',
+    templateUrl: './avatar-file.component.html',
+    styleUrls: ['./avatar-file.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [NgStyle, NgIf, LoaderComponent]
 })
 export class AvatarFileComponent implements OnInit {
 
@@ -26,6 +30,7 @@ export class AvatarFileComponent implements OnInit {
 
   constructor(
     private elRef: ElementRef,
+    private changeDetector: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -49,6 +54,7 @@ export class AvatarFileComponent implements OnInit {
         const uploadFile = { file: file, imageBase64: reader.result };
         this.propagateFile.emit(uploadFile);
         this.file = reader.result;
+        this.changeDetector.markForCheck();
       };
     }
   }

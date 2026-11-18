@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { AdminCustomerService } from 'src/app/services';
 import { User } from 'src/app/models';
 import { ColumnDefinition, PaginationDefinition } from 'src/app/components/table/table.component';
@@ -10,11 +10,15 @@ import {
   ActionsCellComponent
 } from 'src/app/components/table/partials';
 import { ChangePasswordDialogComponent } from 'src/app/components/change-password-dialog/change-password-dialog.component';
+import { TableComponent } from '../../../components/table/table.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'cuper-customers',
-  templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.scss']
+    selector: 'cuper-customers',
+    templateUrl: './customers.component.html',
+    styleUrls: ['./customers.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [TableComponent, TranslateModule]
 })
 export class CustomersComponent implements OnInit {
   customers: User[];

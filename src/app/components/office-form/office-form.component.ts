@@ -1,11 +1,16 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, Inject, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardOfficeComponent } from '../../components/card-office/card-office.component';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { Office } from '../../models';
 import { OfficeService } from '../../services';
-import { MatSnackBar } from '@angular/material';
-import { TranslateService } from '@ngx-translate/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatInput, MatError } from '@angular/material/input';
+import { ControlMessagesComponent } from '../control-messages/control-messages.component';
+import { MapComponent } from '../map/map.component';
+import { MatButton } from '@angular/material/button';
 
 interface point {
   lat: number;
@@ -13,21 +18,24 @@ interface point {
 }
 
 @Component({
-  selector: 'cuper-office-form',
-  templateUrl: './office-form.component.html',
-  styleUrls: ['./office-form.component.scss']
+    selector: 'cuper-office-form',
+    templateUrl: './office-form.component.html',
+    styleUrls: ['./office-form.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [CdkScrollable, MatDialogContent, FormsModule, ReactiveFormsModule, MatFormField, MatInput, MatError, ControlMessagesComponent, MapComponent, MatDialogActions, MatButton, MatDialogClose, TranslateModule]
 })
 export class OfficeFormComponent implements OnInit {
-  officeForm: FormGroup;
+  officeForm: UntypedFormGroup;
   officePosition: point;
   isEditMode: boolean = false;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private dialogRef: MatDialogRef<CardOfficeComponent>,
     private officeService: OfficeService,
     private message: MatSnackBar,
     private translate: TranslateService,
+    private changeDetector: ChangeDetectorRef,
     @Inject(MAT_DIALOG_DATA) public data
   ) { }
 
@@ -101,6 +109,7 @@ export class OfficeFormComponent implements OnInit {
     for (let key in resp.error) {
       this.officeForm.controls[key].setErrors({'backendError': resp.error[key]});
     }
+    this.changeDetector.markForCheck();
   }
 
   onListerMapPosition(coordinates) {

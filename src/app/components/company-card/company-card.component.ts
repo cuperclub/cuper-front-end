@@ -1,16 +1,24 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Company } from '../../models';
 import { CompanyService} from 'src/app/services';
 import { CompanyDialogComponent } from '../company-dialog/company-dialog.component';
 import { UtilsService, UserService } from 'src/app/services';
-import { TranslateService } from '@ngx-translate/core';
-import { MatSnackBar } from '@angular/material';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgIf, DatePipe } from '@angular/common';
+import { MatCard } from '@angular/material/card';
+import { MatIcon } from '@angular/material/icon';
+import { MatIconButton } from '@angular/material/button';
+import { MatDivider } from '@angular/material/divider';
+import { AvatarFileComponent } from '../avatar-file/avatar-file.component';
 
 @Component({
-  selector: 'cuper-company-card',
-  templateUrl: './company-card.component.html',
-  styleUrls: ['./company-card.component.scss']
+    selector: 'cuper-company-card',
+    templateUrl: './company-card.component.html',
+    styleUrls: ['./company-card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [NgIf, MatCard, MatIcon, MatIconButton, MatDivider, AvatarFileComponent, DatePipe, TranslateModule]
 })
 export class CompanyCardComponent implements OnInit {
 
@@ -26,7 +34,8 @@ export class CompanyCardComponent implements OnInit {
     private utilsService: UtilsService,
     private message: MatSnackBar,
     private translate: TranslateService,
-    private userService: UserService
+    private userService: UserService,
+    private changeDetector: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -34,6 +43,7 @@ export class CompanyCardComponent implements OnInit {
       this.company = resp
       this.propagateCompanyData.emit(this.company);
       this.company.logo_url = this.company.logo_url || this.utilsService.getAvatar(this.company.join_at);
+      this.changeDetector.markForCheck();
     });
   }
 
@@ -71,14 +81,17 @@ export class CompanyCardComponent implements OnInit {
       });
       this.isLodingImage = false;
       this.updateCompanyData(resp);
+      this.changeDetector.markForCheck();
     });
   }
 
   onError(resp): void {
+    this.isLodingImage = false;
     let errors = resp.error ? resp.error.errors : {};
     this.message.open(errors, '', {
       duration: 2000
     });
+    this.changeDetector.markForCheck();
   }
 
 
@@ -89,7 +102,7 @@ export class CompanyCardComponent implements OnInit {
     currentUser.companies[currentCompanyId].logo_url = companyData.logo_url || this.utilsService.getAvatar(this.company.join_at);
     this.company = companyData;
     this.company.logo_url = this.company.logo_url || this.utilsService.getAvatar(this.company.join_at);
-    this.userService.observerData.next(currentUser);
+    this.userService.updateCurrentUserData(currentUser);
   }
 
 }

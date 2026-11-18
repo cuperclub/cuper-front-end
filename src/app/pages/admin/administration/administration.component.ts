@@ -1,20 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularTokenService } from 'angular-token';
-import { Router } from '@angular/router';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { User } from '../../../models';
-import { UserService, UtilsService } from '../../../services';
+import { UserService, UtilsService, AuthService } from '../../../services';
+import { NgIf } from '@angular/common';
+import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { AvatarComponent } from '../../../components/avatar/avatar.component';
+import { MatIcon } from '@angular/material/icon';
+import { LoaderComponent } from '../../../components/loader/loader.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'cuper-administration',
-  templateUrl: './administration.component.html',
-  styleUrls: ['./administration.component.scss']
+    selector: 'cuper-administration',
+    templateUrl: './administration.component.html',
+    styleUrls: ['./administration.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [RouterLink, NgIf, MatMenuTrigger, AvatarComponent, MatIcon, MatMenu, MatMenuItem, RouterLinkActive, RouterOutlet, LoaderComponent, TranslateModule]
 })
 export class AdministrationComponent implements OnInit {
   currentUser: User;
   updatedView: boolean = false
 
   constructor(
-    private tokenService: AngularTokenService,
+    private authService: AuthService,
     private router: Router,
     private userService: UserService,
     private utilsService: UtilsService,
@@ -25,7 +32,7 @@ export class AdministrationComponent implements OnInit {
   }
 
   logOut() {
-    this.tokenService.signOut().subscribe(resp =>{
+    this.authService.signOut().subscribe(resp =>{
       if(resp.success){
         this.router.navigateByUrl('');
       }

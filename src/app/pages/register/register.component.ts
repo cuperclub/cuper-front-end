@@ -1,13 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AngularTokenService } from 'angular-token';
-import { MatSnackBar } from '@angular/material';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from 'src/app/services';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserRegister } from 'src/app/models';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
+import { FooterComponent } from '../../components/footer/footer.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'cuper-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+    selector: 'cuper-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [FormsModule, MatFormField, MatInput, MatButton, RouterLink, FooterComponent, TranslateModule]
 })
 export class RegisterComponent implements OnInit {
   user: UserRegister = {
@@ -18,7 +25,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private tokenService: AngularTokenService,
+    private authService: AuthService,
     private message: MatSnackBar
   ) { }
 
@@ -26,7 +33,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.tokenService.registerAccount({
+    this.authService.registerAccount({
       login: this.user.email,
       password: this.user.password,
       passwordConfirmation: this.user.password,
@@ -46,7 +53,7 @@ export class RegisterComponent implements OnInit {
   }
 
   loginWithFacebook() {
-    this.tokenService.signInOAuth(
+    this.authService.signInOAuth(
       'facebook',
       ).subscribe(
         () =>    this.onSuccess(),
@@ -55,7 +62,7 @@ export class RegisterComponent implements OnInit {
   }
 
   loginWithGoogle() {
-    this.tokenService.signInOAuth(
+    this.authService.signInOAuth(
       'google_oauth2',
       ).subscribe(
         () =>    this.onSuccess(),

@@ -1,19 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CompanyService, UserService, AdminPlanService } from '../../services'
-import { OptionPlan } from '../../components/card-plan/card-plan.component';
-import { MatSnackBar, MatStepper } from '@angular/material';
-import { TranslateService } from '@ngx-translate/core';
+import { OptionPlan, CardPlanComponent } from '../../components/card-plan/card-plan.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatStepper, MatStep, MatStepLabel, MatStepperNext, MatStepperPrevious } from '@angular/material/stepper';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { MatCard } from '@angular/material/card';
+import { NgIf, NgFor, KeyValuePipe } from '@angular/common';
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { CompanyFormComponent } from '../../components/company-form/company-form.component';
+import { LoaderComponent } from '../../components/loader/loader.component';
 
 @Component({
-  selector: 'cuper-company-register',
-  templateUrl: './company-register.component.html',
-  styleUrls: ['./company-register.component.scss']
+    selector: 'cuper-company-register',
+    templateUrl: './company-register.component.html',
+    styleUrls: ['./company-register.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [MatCard, NgIf, MatStepper, MatStep, FormsModule, ReactiveFormsModule, MatStepLabel, MatInput, NgFor, CardPlanComponent, MatButton, MatStepperNext, MatIcon, CompanyFormComponent, MatStepperPrevious, LoaderComponent, KeyValuePipe, TranslateModule]
 })
 export class CompanyRegisterComponent implements OnInit {
-  planFormGroup: FormGroup;
-  companyFormGroup: FormGroup;
+  planFormGroup: UntypedFormGroup;
+  companyFormGroup: UntypedFormGroup;
 
   plans: OptionPlan [];
   planSelected: OptionPlan;
@@ -21,13 +31,14 @@ export class CompanyRegisterComponent implements OnInit {
   loaded: boolean = false;
 
   constructor(
-    private _formBuilder: FormBuilder,
+    private _formBuilder: UntypedFormBuilder,
     private router: Router,
     private companyService: CompanyService,
     private message: MatSnackBar,
     private translate: TranslateService,
     private userService: UserService,
-    private planService: AdminPlanService
+    private planService: AdminPlanService,
+    private changeDetector: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -57,6 +68,7 @@ export class CompanyRegisterComponent implements OnInit {
         id: [this.planSelected.id, Validators.required]
       });
       this.loaded = true;
+      this.changeDetector.markForCheck();
     });
   }
 
@@ -96,8 +108,7 @@ export class CompanyRegisterComponent implements OnInit {
       }else {
         currentUser.companies = [formatCompany];
       }
-      this.userService.observerData.next(currentUser);
-      this.userService.userDataEdited = currentUser;
+      this.userService.updateCurrentUserData(currentUser);
       this.router.navigate(['home']);
     });
   }
@@ -107,5 +118,6 @@ export class CompanyRegisterComponent implements OnInit {
       this.companyFormGroup.controls[key].setErrors({'backendError': resp.error[key]});
     }
     stepper.previous();
+    this.changeDetector.markForCheck();
   }
 }

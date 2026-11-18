@@ -1,18 +1,26 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfileFormComponent } from '../profile-form/profile-form.component';
 import { UpdatePasswordFormComponent } from '../update-password-form/update-password-form.component';
-import { TranslateService } from '@ngx-translate/core';
-import { MatSnackBar } from '@angular/material';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { User } from '../../models';
 import { UserService, UtilsService } from 'src/app/services';
+import { MatCard } from '@angular/material/card';
+import { MatIconButton } from '@angular/material/button';
+import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { MatIcon } from '@angular/material/icon';
+import { NgIf } from '@angular/common';
+import { AvatarFileComponent } from '../avatar-file/avatar-file.component';
 
 
 @Component({
-  selector: 'cuper-card-user',
-  templateUrl: './card-user.component.html',
-  styleUrls: ['./card-user.component.scss']
+    selector: 'cuper-card-user',
+    templateUrl: './card-user.component.html',
+    styleUrls: ['./card-user.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [MatCard, MatIconButton, MatMenuTrigger, MatIcon, MatMenu, MatMenuItem, NgIf, AvatarFileComponent, TranslateModule]
 })
 export class CardUserComponent implements OnInit {
   @Input() user: User;
@@ -23,7 +31,8 @@ export class CardUserComponent implements OnInit {
     private userService: UserService,
     private message: MatSnackBar,
     private translate: TranslateService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private changeDetector: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -69,19 +78,21 @@ export class CardUserComponent implements OnInit {
       });
       this.updateUserData(resp);
       this.isLodingImage = false;
+      this.changeDetector.markForCheck();
     });
   }
 
   onError(resp): void {
+    this.isLodingImage = false;
     let errors = resp.error ? resp.error.errors : {};
     this.message.open(errors, '', {
       duration: 2000
     });
+    this.changeDetector.markForCheck();
   }
 
   updateUserData = (data) => {
     this.user = data;
-    this.userService.userDataEdited = data;
-    this.userService.observerData.next(data);
+    this.userService.updateCurrentUserData(data);
   }
 }

@@ -10,6 +10,7 @@ export interface UserRegister {
 }
 
 export interface User {
+  is_partner?: boolean;
   id?: number;
   name?: string;
   nickname?: string;

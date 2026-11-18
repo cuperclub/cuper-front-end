@@ -1,14 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AngularTokenService } from 'angular-token';
-import { MatSnackBar } from '@angular/material';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from 'src/app/services';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { UserLogin } from 'src/app/models';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
+import { FooterComponent } from '../../components/footer/footer.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [FormsModule, MatFormField, MatInput, MatButton, RouterLink, FooterComponent, TranslateModule]
 })
 export class LoginComponent implements OnInit {
   user: UserLogin = {
@@ -19,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private tokenService: AngularTokenService,
+    private authService: AuthService,
     private message: MatSnackBar
   ) { }
 
@@ -27,7 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.tokenService.signIn({
+    this.authService.signIn({
       login: this.user.email,
       password: this.user.password
     }).subscribe(
@@ -40,7 +47,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithFacebook() {
-    this.tokenService.signInOAuth(
+    this.authService.signInOAuth(
       'facebook',
       ).subscribe(
         res =>    this.onSuccess(res),
@@ -49,7 +56,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithGoogle() {
-    this.tokenService.signInOAuth(
+    this.authService.signInOAuth(
       'google_oauth2',
       ).subscribe(
         res =>    this.onSuccess(res),

@@ -1,4 +1,4 @@
-<mat-card class="card-container" *ngIf="company">
+<mat-card appearance="outlined" class="card-container" *ngIf="company">
   <div class="card-header">
     <div class="card-header-title">
       <mat-icon>business</mat-icon>
@@ -17,13 +17,13 @@
   <div class="card-content">
     <div class="avatar-container">
       <cuper-avatar-file
-        [file]="company?.logo_url"
+        [file]="$safeNavigationMigration(company?.logo_url)"
         [isLoading]="isLodingImage"
         (propagateFile)="onListenerFile($event)">
       </cuper-avatar-file>
     </div>
     <div class="company-name">{{company?.business_name}}</div>
     <div class="company-slogan">{{company?.slogan || 'company.not_slogan' | translate}}</div>
-    <div class="company-created-at">{{'company.registered_at' | translate}}: {{company?.join_at | date }}</div>
+    <div class="company-created-at">{{'company.registered_at' | translate}}: {{$safeNavigationMigration(company?.join_at) | date }}</div>
   </div>
 </mat-card>

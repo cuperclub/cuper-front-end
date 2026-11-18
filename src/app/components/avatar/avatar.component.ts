@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { NgStyle } from '@angular/common';
 
 interface Box {
   height: string;
@@ -6,9 +7,11 @@ interface Box {
 }
 
 @Component({
-  selector: 'cuper-avatar',
-  templateUrl: './avatar.component.html',
-  styleUrls: ['./avatar.component.scss']
+    selector: 'cuper-avatar',
+    templateUrl: './avatar.component.html',
+    styleUrls: ['./avatar.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [NgStyle]
 })
 export class AvatarComponent implements OnInit {
 

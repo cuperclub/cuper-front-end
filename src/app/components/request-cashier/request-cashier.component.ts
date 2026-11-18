@@ -1,17 +1,22 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CardCashierComponent } from '../../components/card-cashier/card-cashier.component';
 import { User } from '../../models';
 import { CompanyService } from 'src/app/services';
 import { ButtonOption } from '../../components/user-search/user-search.component';
 import { TranslateService } from '@ngx-translate/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UtilsService } from 'src/app/services';
+import { UserSearchComponent } from '../user-search/user-search.component';
+import { MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  selector: 'cuper-request-cashier',
-  templateUrl: './request-cashier.component.html',
-  styleUrls: ['./request-cashier.component.scss']
+    selector: 'cuper-request-cashier',
+    templateUrl: './request-cashier.component.html',
+    styleUrls: ['./request-cashier.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [UserSearchComponent, MatIconButton, MatIcon]
 })
 export class RequestCashierComponent implements OnInit{
   emailInvitation: string;

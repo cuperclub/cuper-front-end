@@ -1,25 +1,38 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MaterialModule } from '../../../app/material.module';
-import { TranslateModule, TranslateStore } from '@ngx-translate/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { BillingCardComponent } from './billing-card.component';
 
 describe('BillingCardComponent', () => {
   let component: BillingCardComponent;
   let fixture: ComponentFixture<BillingCardComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [
-        MaterialModule,
-        TranslateModule.forChild(),
-      ],
-      declarations: [BillingCardComponent],
-      providers: [TranslateStore]
-    })
+    imports: [
+        MatCardModule,
+        MatDividerModule,
+        TranslateModule.forRoot(),
+        BillingCardComponent,
+    ]
+})
       .compileComponents();
   }));
 
   beforeEach(() => {
+    const translate = TestBed.inject(TranslateService);
+    translate.setTranslation('en', {
+      company: {
+        billing_info: 'Billing information',
+        legal_representative: 'Legal representative',
+        ruc: 'RUC',
+        contributor_type: 'Contributor type',
+        economic_activity: 'Economic activity'
+      },
+      common: { not_registered_yet: 'Not registered yet' }
+    });
+    translate.use('en');
     fixture = TestBed.createComponent(BillingCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -27,5 +40,8 @@ describe('BillingCardComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    const content = fixture.nativeElement.textContent;
+    expect(content).toContain('Billing information');
+    expect(content).toContain('Not registered yet');
   });
 });

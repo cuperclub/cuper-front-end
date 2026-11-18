@@ -1,17 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AdminCompanyService, UtilsService } from '../../../services';
 import { Company } from '../../../models';
 import {FeedbackFormComponent} from '../../../components/feedback-form/feedback-form.component'
 import { MatDialog } from '@angular/material/dialog';
+import { NgIf, NgFor } from '@angular/common';
+import { TableCardComponent } from '../../../components/table-card/table-card.component';
+import { MatCard } from '@angular/material/card';
+import { AvatarComponent } from '../../../components/avatar/avatar.component';
+import { MatIconButton } from '@angular/material/button';
+import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { MatIcon } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'cuper-companies',
-  templateUrl: './companies.component.html',
-  styleUrls: ['./companies.component.scss']
+    selector: 'cuper-companies',
+    templateUrl: './companies.component.html',
+    styleUrls: ['./companies.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [NgIf, TableCardComponent, MatCard, AvatarComponent, MatIconButton, MatMenuTrigger, MatIcon, MatMenu, NgFor, MatMenuItem, TranslateModule]
 })
 export class CompaniesComponent implements OnInit {
   companies: Company[];
-  companySelected: Company = {};
+  companySelected: Company | null = null;
   optionsStatus: any = [];
   indexSelected: number = 0;
 
@@ -23,12 +33,15 @@ export class CompaniesComponent implements OnInit {
 
   ngOnInit() {
     this.companyService.getCompanies().subscribe(resp => {
-      this.companies = resp['companies'].map(company => {
+      const companies = resp['companies'] || [];
+      this.companies = companies.map(company => {
         return this.formatData(company);
       });
-      this.companySelected = resp['companies'][0];
-      this.companySelected.logo = this.getAvatar(this.companySelected);
-      this.optionsBuild();
+      this.companySelected = companies[0] || null;
+      if (this.companySelected) {
+        this.companySelected.logo = this.getAvatar(this.companySelected);
+        this.optionsBuild();
+      }
     });
   }
 
@@ -44,7 +57,7 @@ export class CompaniesComponent implements OnInit {
   }
 
   optionsBuild () {
-    let currentStatus = this.companySelected['status'];
+    let currentStatus = this.companySelected?.['status'];
 
     this.optionsStatus = [
       {

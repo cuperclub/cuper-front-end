@@ -1,5 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MaterialModule } from '../../../app/material.module';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { AvatarComponent } from '../avatar/avatar.component';
 import { TableCardComponent } from './table-card.component';
 
@@ -7,13 +8,14 @@ describe('TableCardComponent', () => {
   let component: TableCardComponent;
   let fixture: ComponentFixture<TableCardComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [
-        MaterialModule
-      ],
-      declarations: [ TableCardComponent, AvatarComponent ]
-    })
+    imports: [
+        MatCardModule,
+        MatPaginatorModule,
+        TableCardComponent, AvatarComponent
+    ]
+})
     .compileComponents();
   }));
 

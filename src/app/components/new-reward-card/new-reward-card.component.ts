@@ -1,13 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Promotion } from 'src/app/models';
 import { OfficeService, CompanyService, PromotionService } from 'src/app/services';
 import { Company } from '../../models';
-import { MatSnackBar } from '@angular/material';
-import { TranslateService } from '@ngx-translate/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { OfficeFormComponent } from '../office-form/office-form.component';
-import { MatDialog } from '@angular/material';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButton } from '@angular/material/button';
+import { MatCard } from '@angular/material/card';
+import { NgIf } from '@angular/common';
+import { PreviewRewardComponent } from '../preview-reward/preview-reward.component';
+import { MatFormField, MatInput, MatError, MatHint, MatSuffix } from '@angular/material/input';
+import { ControlMessagesComponent } from '../control-messages/control-messages.component';
+import { PlaceholderCardComponent } from '../placeholder-card/placeholder-card.component';
+import { SquareSelectComponent } from '../square-select/square-select.component';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
 
 interface OptionSquare {
   id?: number,
@@ -21,9 +31,11 @@ interface FileOptions {
 }
 
 @Component({
-  selector: 'cuper-new-reward-card',
-  templateUrl: './new-reward-card.component.html',
-  styleUrls: ['./new-reward-card.component.scss']
+    selector: 'cuper-new-reward-card',
+    templateUrl: './new-reward-card.component.html',
+    styleUrls: ['./new-reward-card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [FormsModule, ReactiveFormsModule, MatButton, MatCard, NgIf, PreviewRewardComponent, MatFormField, MatInput, MatError, ControlMessagesComponent, PlaceholderCardComponent, SquareSelectComponent, MatHint, MatCheckbox, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, TranslateModule]
 })
 export class NewRewardCardComponent implements OnInit {
   currentDate: Date = new Date();
@@ -41,7 +53,7 @@ export class NewRewardCardComponent implements OnInit {
   isEditRoute: boolean = false;
   officeSelected: OptionSquare;
   uploadFile: FileOptions;
-  rewardFormGroup: FormGroup;
+  rewardFormGroup: UntypedFormGroup;
   reward;
 
   constructor(
@@ -53,7 +65,8 @@ export class NewRewardCardComponent implements OnInit {
     private message: MatSnackBar,
     private translate: TranslateService,
     private dialog: MatDialog,
-    private _formBuilder: FormBuilder,
+    private _formBuilder: UntypedFormBuilder,
+    private changeDetector: ChangeDetectorRef,
   ) { }
 
   ngOnInit() {
@@ -161,6 +174,7 @@ export class NewRewardCardComponent implements OnInit {
     for (let key in resp.error) {
       this.rewardFormGroup.controls[key].setErrors({'backendError': resp.error[key]});
     }
+    this.changeDetector.markForCheck();
   }
 
   onNewOffice = () => {

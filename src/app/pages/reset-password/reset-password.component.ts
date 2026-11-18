@@ -1,24 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { UntypedFormGroup, Validators, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from 'src/app/services';
-import { MatSnackBar } from '@angular/material';
-import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router, RouterLink } from '@angular/router';
+import { MatFormField, MatInput, MatError } from '@angular/material/input';
+import { MatIcon } from '@angular/material/icon';
+import { ControlMessagesComponent } from '../../components/control-messages/control-messages.component';
+import { MatButton } from '@angular/material/button';
+import { FooterComponent } from '../../components/footer/footer.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'cuper-reset-password',
-  templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.scss']
+    selector: 'cuper-reset-password',
+    templateUrl: './reset-password.component.html',
+    styleUrls: ['./reset-password.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [FormsModule, ReactiveFormsModule, MatFormField, MatInput, MatIcon, MatError, ControlMessagesComponent, MatButton, RouterLink, FooterComponent, TranslateModule]
 })
 export class ResetPasswordComponent implements OnInit {
-  passwordForm: FormGroup;
+  passwordForm: UntypedFormGroup;
   showPassword: any = {password: false, password_confirmation: false};
   queryParams: any;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private userService: UserService,
     private message: MatSnackBar,
     private router: Router,
+    private changeDetector: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -41,6 +50,7 @@ export class ResetPasswordComponent implements OnInit {
         for (let key in error.errors) {
           this.passwordForm.controls[key].setErrors({'backendError': error.errors[key]});
         }
+        this.changeDetector.markForCheck();
       }
     );
   }

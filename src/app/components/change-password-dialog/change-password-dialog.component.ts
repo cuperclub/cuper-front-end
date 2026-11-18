@@ -1,25 +1,31 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { CustomersComponent } from 'src/app/pages/admin/customers/customers.component';
 import { UserService } from '../../services';
-import { MatSnackBar } from '@angular/material';
-import { TranslateService } from '@ngx-translate/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { UntypedFormBuilder, Validators, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormField, MatInput, MatError, MatHint } from '@angular/material/input';
+import { ControlMessagesComponent } from '../control-messages/control-messages.component';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  selector: 'cuper-change-password-dialog',
-  templateUrl: './change-password-dialog.component.html',
-  styleUrls: ['./change-password-dialog.component.scss']
+    selector: 'cuper-change-password-dialog',
+    templateUrl: './change-password-dialog.component.html',
+    styleUrls: ['./change-password-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [FormsModule, ReactiveFormsModule, MatFormField, MatInput, MatError, ControlMessagesComponent, MatHint, MatDialogActions, MatButton, MatDialogClose, TranslateModule]
 })
 export class ChangePasswordDialogComponent implements OnInit{
-  passwordFormGroup: FormGroup;
+  passwordFormGroup: UntypedFormGroup;
 
   constructor(
     private userService: UserService,
     private message: MatSnackBar,
     private translate: TranslateService,
     public dialogRef: MatDialogRef<CustomersComponent>,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
+    private changeDetector: ChangeDetectorRef,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
@@ -56,6 +62,7 @@ export class ChangePasswordDialogComponent implements OnInit{
     for (let key in resp.error) {
       this.passwordFormGroup.controls[key].setErrors({'backendError': resp.error[key]});
     }
+    this.changeDetector.markForCheck();
   }
 
 }

@@ -1,12 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { MatChipListbox, MatChipOption } from '@angular/material/chips';
 
 @Component({
-  selector: 'cuper-roles-cell',
-  templateUrl: './roles-cell.component.html',
-  styleUrls: ['./roles-cell.component.scss']
+    selector: 'cuper-roles-cell',
+    templateUrl: './roles-cell.component.html',
+    styleUrls: ['./roles-cell.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [NgIf, MatChipListbox, MatChipOption]
 })
 export class RolesCellComponent implements OnInit {
-  @Input() data: Object;
+  @Input() data: { permisions?: { is_cashier?: boolean; is_partner?: boolean; is_admin?: boolean } };
 
   constructor() { }
 

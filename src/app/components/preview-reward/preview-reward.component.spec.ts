@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { PreviewRewardComponent } from './preview-reward.component';
 import { AvatarComponent } from '../avatar/avatar.component';
@@ -8,10 +8,10 @@ describe('PreviewRewardComponent', () => {
   let component: PreviewRewardComponent;
   let fixture: ComponentFixture<PreviewRewardComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [PreviewRewardComponent, AvatarComponent]
-    })
+    imports: [PreviewRewardComponent, AvatarComponent]
+})
       .compileComponents();
   }));
 
